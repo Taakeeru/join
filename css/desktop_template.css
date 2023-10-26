@@ -13,12 +13,19 @@
 
 .helpImg{
     margin-left: 16px;
+    cursor: pointer;
 }
 
-.ellipse{
+.profileImg{
     width: 56px;
     height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* background-image: url("/assets/img/ellipse3.svg");
+    background-size: 60px 60px;
+    background-repeat: no-repeat; */
     margin: 16px;
+    cursor: pointer;
 }
 
 .positionRightHeader{
@@ -26,4 +33,62 @@
     justify-content: center;
     align-items: center;
     color: white;
+}
+
+.leftWhiteBox{
+    width: 232px;
+    height: calc(100vh - 98px);
+    border:  1px ;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.positionCategory{
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BoxOfCategory{
+    display: flex;
+    flex-direction: column;
+}
+
+.category{
+    margin-left: 8px;
+}
+
+.positionTaskIcons{
+    cursor: pointer;
+    display: flex;
+    justify-items: center;
+    transition: all .2s ease-in-out; 
+}
+
+.positionTaskIcons:hover {
+    background-color: #D2E3FF;
+    border-radius: 8px;
+    transform: scale(1.1); 
+
+}
+
+.positionFooterBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerBox{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.linksFooter{
+    margin-top: 0;
+    margin-bottom: 24px;
+    cursor: pointer;
 }
