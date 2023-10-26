@@ -2,4 +2,28 @@
     height: 96px;
     width: 100vw;
     background-color: #4589FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon{
+    margin: 16px;
+}
+
+.helpImg{
+    margin-left: 16px;
+}
+
+.ellipse{
+    width: 56px;
+    height: 56px;
+    margin: 16px;
+}
+
+.positionRightHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
