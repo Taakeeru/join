@@ -2,6 +2,12 @@ body{
     margin: 0;
 }
 
+.displaFlex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .positionMainBox{
     width: calc(100vw - 232px);
     height: calc(100vh - 96px);
@@ -16,7 +22,6 @@ body{
 .boxForBoxes{
     width: 912px;
     height: 591px;
-    background-color: aqua;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -39,3 +44,74 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+
+.showGreed{
+    color: #2A3647;
+    font-size: 77px;
+}
+
+.showName{
+    color: #4589FF;
+    font-size: 77px;
+    font-weight: 900;
+}
+
+.showDate{
+    width: 672px;
+    height: 191px;
+    background-color: #4589FF;
+    color: white;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in-out;
+    cursor: pointer; 
+}
+
+.showDate:hover{
+    transform: scale(1.05); 
+    background-color: white;
+    color: #4589FF;
+    border-top-left-radius: 0;
+}
+
+.showTasksInBoard{
+    height: 191px;
+    width: 208px;
+    border: 1px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in-out;
+    cursor: pointer; 
+}
+
+.showTasksInBoard:hover{
+    transform: scale(1.1);
+    border-top-left-radius: 0;
+    background-color: #0038FF;
+}
+
+.tasksInBoard{
+    width: 204px;
+    height: 219px;
+    border: 1px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in-out;
+    cursor: pointer; 
+}
+
+.tasksInBoard:hover{
+    transform: scale(1.1); 
+    border-top-left-radius: 0;
+    background-color: #0038FF;
+}
+
