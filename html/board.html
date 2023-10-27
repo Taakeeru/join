@@ -5,17 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
     <link rel="stylesheet" href="/css/board.css">
+    <script src="/js/include.js" defer></script>
+    <link rel="stylesheet" href="/css/desktop_template.css">
 </head>
-<body>
+<body onload="includeHTML()">
+    <div w3-include-html="../assets/templates/desktop_template.html" ></div>
     <div class="boardTopSektion" >
-        <div>
-        <input type="text" placeholder="Find Task"> 
-        <button>Add task</button>
+        <div class="inputSektion">
+            <div class="inputfieldIconsContainer">
+            <input class="boardInputfield" type="text" placeholder="Find Task">
+            <img src="/assets/img/vector3.svg" alt="">
+            <img src="/assets/img/search.svg" alt=""></div>
+            
+       
+         <div class="buttonIconContainer">
+            <button class="boardButton" >Add task</button> 
+           
+            <img src="/assets/img/plus.svg">
+            
+        </div>
+        </div>
     </div>
-        <div class="boardCategorysSektion"><p>To Do</p>
+        <div class="boardCategorysSektion">
+            <p>To do</p>
+            <img src="/assets/img/plus_button.svg" alt="">
             <p>In progress</p>
+            <img src="/assets/img/plus_button.svg" alt="">
             <p>Await feedback</p>
+            <img src="/assets/img/plus_button.svg" alt="">
             <p>Done</p>
+            <img src="/assets/img/plus_button.svg" alt="">
         </div>
     </div>
     <div class="boardBotSektion" >
@@ -24,6 +43,19 @@
         <div class="boardFeedbackSektion">Technical Task</div>
         <div class="boardDoneSektion">Technical Task</div>
 
+    </div>
+    <div class="cards">
+        <div class="cardContent">
+        <div class="cardHeader"><p class="userStory">User Story</p></div>
+        <div class="cardDescription" >
+            <p class="cardDescriptionHeader">Contact Form & Imprint</p>
+            <p class="cardDescriptionInfo"> Create a contact from and imprint page..</p>
+        </div>
+        <div class="cardSub">------balken</div>
+        <div class="cardAddUser"><div class="cardUserSymbole">AS</div>  
+        <img src="/assets/img/priority_symbols.svg" alt="">
+    </div> 
+    </div>
     </div>
     
 </body>
