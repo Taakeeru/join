@@ -37,13 +37,20 @@
 </head>
 <body>
 
-    <header>
-
-    </header>
+    
 
     <div class="login-content">  
+
+        <div class="logo" id="logo"><img src="/assets/img/join_logo.svg" alt="Logo Bild"></div>
+
+        <div class="login-header" id="login-header">
+        <span>Not a Join user?</span>
+        <button onclick="renderSignUpContent()" type="button" class="btn btn-primary mg-l">Sign up</button>
+        </div>
+        
         <div class="card login-card-div">
             <div class="card-body">
+                <div class="login-card-title"><h1>Log in</h1></div>
                 <form>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
@@ -101,9 +108,9 @@
         </div>
     </div>
 
-    <footer class="login-footer">
-        <a href="">Datenschutz</a>
-        <a href="">Impressum</a>
-    </footer>
+    <div class="login-footer">
+        <a href="privacy.html">Datenschutz</a>
+        <a href="legal_notice.html">Impressum</a>
+    </div>
 </body>
 </html>
