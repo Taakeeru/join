@@ -30,7 +30,10 @@ body {
   border: 1px solid #4589ff;
 }
 .boardInputfield {
-  border: 0px;
+  border:0px;
+}
+.boardInputfield:focus{
+    outline: none;
 }
 .boardButton {
   background: #4589ff;
