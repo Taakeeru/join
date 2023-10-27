@@ -50,47 +50,48 @@
         </div>
         
         <div class="card login-card-div">
-            <div class="card-body mg-20">
-                <div class="login-card-title"><h1>Log in</h1>
+            <div class="card-body">
+                <div class="login-card-title">
+                    <h1>Log in</h1>
                     <svg xmlns="http://www.w3.org/2000/svg" width="154" height="3" viewBox="0 0 154 3" fill="none">
                         <path d="M152 1.5L2 1.5" stroke="#4589FF" stroke-width="3" stroke-linecap="round"/>
                     </svg>
                 </div>
+
                 <form>
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        <input type="email" id="form2Example1" class="form-control" />
-                        <label class="form-label" for="form2Example1">Email address</label>
-                    </div>
-                
-                    <!-- Password input -->
-                    <div class="form-outline mb-4">
-                        <input type="password" id="form2Example2" class="form-control" />
-                        <label class="form-label" for="form2Example2">Password</label>
-                    </div>
-                
-                    <!-- 2 column grid layout for inline styling -->
-                    <div class="row mb-4">
-                        <div class="col d-flex justify-content-center">
+                    <div class="form-div">
+                        <!-- Email input -->
+                        <input type="email" id="form2Example1" class="form-control" placeholder="Email"/>
+
+                        <!-- Password input -->
+                        <input type="password" id="form2Example2" class="form-control" placeholder="Password"/>
+                    </div>        
+                        <!-- 2 column grid layout for inline styling -->
+                    <div class="row mb-4 mg-40">
+                        <div class="col d-flex">
                             <!-- Checkbox -->
                             <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                            <input class="form-check-input " type="checkbox" value="" id="form2Example31" checked />
                             <label class="form-check-label" for="form2Example31"> Remember me </label>
                             </div>
                         </div>
                     </div>
-                
-                    <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
-                
+                    
                 </form>
+
+                <div class="login-button-div">
+                    <!-- Submit button -->
+                    <button type="button" class="btn btn-primary btn-block mb-4">Log in</button>
+                    <button type="button" class="btn btn-outline-secondary btn-block mb-4 btn2">Guest log in</button>
+                </div>
+                
             </div>
         </div>
     </div>
 
     <div class="login-footer">
-        <a href="privacy.html">Datenschutz</a>
-        <a href="legal_notice.html">Impressum</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="legal_notice.html">Legal Notice</a>
     </div>
 </body>
 </html>
