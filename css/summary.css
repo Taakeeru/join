@@ -2,10 +2,16 @@ body{
     margin: 0;
 }
 
-.displaFlex{
+.displayFlex{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.displayRow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .positionMainBox{
@@ -77,6 +83,26 @@ body{
     border-top-left-radius: 0;
 }
 
+.clockCircle{
+    width: 80px;
+    height: 80px;
+    background-image: url("/assets/img/clock.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.showNumber{
+    font-size: 58px;
+    font-weight: bolder;
+    margin-left: 16px;
+}
+
+.tasksUrgent{
+    margin-top: -40px;
+    font-size: 28px;
+    font-weight: 100;
+}
+
 .showTasksInBoard{
     height: 191px;
     width: 208px;
@@ -88,12 +114,15 @@ body{
     align-items: center;
     transition: all .2s ease-in-out;
     cursor: pointer; 
+    color: #4589FF;
 }
 
 .showTasksInBoard:hover{
     transform: scale(1.1);
     border-top-left-radius: 0;
-    background-color: #0038FF;
+    background-color: #2756ff;
+    color: white;
+
 }
 
 .tasksInBoard{
@@ -107,11 +136,92 @@ body{
     align-items: center;
     transition: all .2s ease-in-out;
     cursor: pointer; 
+    color: #4589FF;
 }
 
 .tasksInBoard:hover{
     transform: scale(1.1); 
     border-top-left-radius: 0;
-    background-color: #0038FF;
+    background-color: #2756ff;
+    color: white;
 }
 
+.whiteLine {
+    width: 3px;
+    height: 140px;
+    background-color: white;
+    margin-left: 32px;
+}
+  
+.showDate:hover .whiteLine {
+    background-color: #4589FF;
+}
+
+.deadlineBox{
+    width: 274px;
+    height: 81px;
+    margin-left: 32px;
+}
+
+.dateDeadline{
+    margin-top: 0;
+    padding-bottom: 16px;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.showTaskInBoardImg{
+    width: 80px;
+    height: 80px;
+    background-image: url("/assets/img/board.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.showTheNumbers{
+    font-size: 58px;
+    font-weight: bolder;
+    margin-left: 16px;
+}
+
+.showTo-doImg{
+    width: 80px;
+    height: 80px;
+    background-image: url("/assets/img/urgent.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.showTaskInProgressImg{
+    width: 80px;
+    height: 80px;
+    background-image: url("/assets/img/inProgress.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.showAwaitingFeedbackImg{
+    width: 80px;
+    height: 80px;
+    background-image: url("/assets/img/awaitingFeedback.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.showTasksDoneImg{
+    width: 80px;
+    height: 80px;
+    background-image: url("/assets/img/done.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.textInBoxes{
+    width: 80px;
+    margin-top: -40px;
+    font-size: 28px;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
