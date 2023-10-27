@@ -1,3 +1,41 @@
 body{
     margin: 0;
 }
+
+.positionMainBox{
+    width: calc(100vw - 232px);
+    height: calc(100vh - 96px);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxForBoxes{
+    width: 912px;
+    height: 591px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.positionGreed{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.positionTime{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.positionTasksCards{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
