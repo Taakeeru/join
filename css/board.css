@@ -1,0 +1,35 @@
+.boardTopSektion{
+    display: flex;
+    padding: 72px 0px 16px 0px;
+    gap: 48px;
+    flex-direction: column;
+}
+.boardCategorysSektion{
+    display: flex;
+   justify-content: space-between;
+   padding: 0px 64px 0px 64px;
+  
+}
+.boardBotSektion{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 64px 0px 64px;
+    gap: 24px;
+
+}
+.boardtoDoSektion{
+    width: 252px;
+    gap: 24px;
+}
+.boardProgressSektion{
+    width: 252px;
+    gap: 16px;
+}
+.boardFeedbackSektion{
+    width: 252px;
+    gap: 16px;
+}
+.boardDoneSektion{
+    width: 252px;
+    gap: 16px;
+}  
