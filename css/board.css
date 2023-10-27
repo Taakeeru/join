@@ -1,74 +1,150 @@
-.boardTopSektion{
-    display: flex;
-    padding: 72px 0px 16px 0px;
-    gap: 48px;
-    flex-direction: column;
+body {
+  margin: 0;
 }
-.inputSektion{
-    display: flex;
-    gap: 35px;
-    padding: 0px 64px 0px 64px;
-    /*padding-left: 64px; Clarify with team */ 
+.boardTopSektion {
+  display: flex;
+  padding: 72px 0px 16px 0px;
+  gap: 48px;
+  flex-direction: column;
 }
-.inputfieldIconsContainer{
-    display: flex;
-    padding: 8px 16px 8px 16px;
-    border-radius: 10px;
-    
-    gap: 10px;
-   border: 1px solid #A8A8A8
-
-
+.inputSektion {
+  display: flex;
+  gap: 35px;
+  padding: 0px 64px 0px 64px;
 }
-.buttonIconContainer{
-    display: flex;
-    padding: 16px 10px 16px 10px;
-    border-radius: 10px;
-    border: 1px;
-    gap: 10px;
-    background: #4589FF;
-    border: 1px solid #4589FF;
+.inputfieldIconsContainer {
+  display: flex;
+  padding: 8px 16px 8px 16px;
+  border-radius: 10px;
 
-
-
+  gap: 10px;
+  border: 1px solid #a8a8a8;
 }
-.boardInputfield{
-    border: 0px;
-   
+.buttonIconContainer {
+  display: flex;
+  padding: 16px 10px 16px 10px;
+  border-radius: 10px;
+  border: 1px;
+  gap: 10px;
+  background: #4589ff;
+  border: 1px solid #4589ff;
 }
-.boardButton{
-    background: #4589FF;
-    border: 0;
-    color: white;
-    
+.boardInputfield {
+  border: 0px;
+}
+.boardButton {
+  background: #4589ff;
+  border: 0;
+  color: white;
+  font-size: 23px;
 }
 
-.boardCategorysSektion{
-    display: flex;
-   justify-content: space-between;
-   padding: 0px 64px 0px 64px;
-  
+.boardCategorysSektion {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 64px 0px 64px;
 }
-.boardBotSektion{
+.boardBotSektion {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 64px 0px 64px;
+  gap: 24px;
+}
+.boardtoDoSektion {
+  width: 252px;
+  gap: 24px;
+}
+.boardProgressSektion {
+  width: 252px;
+  gap: 16px;
+}
+.boardFeedbackSektion {
+  width: 252px;
+  gap: 16px;
+}
+.boardDoneSektion {
+  width: 252px;
+  gap: 16px;
+}
+.cards {
+  width: 252px;
+  height: 244px;
+  padding: 16px;
+  border-radius: 24px;
+  gap: 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 3px #00000014;
+}
+.cardContent {
+  gap: 24px;
+  display: grid;
+}
+.cardHeader {
+  width: 110px;
+  height: 27px;
+  padding: 4px 16px 4px 16px;
+  border-radius: 8px;
+  background: #ff7a00;
+}
+
+.userStory {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-block-start: 5px;
+}
+.cardDescription {
+    display: grid;
+  border-radius: 10px;
+  gap: 8px;
+}
+.cardDescriptionHeader {
+  width: 220px;
+  height: 19px;
+  color: #4589ff;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.cardDescriptionInfo {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  color: #A8A8A8;
+}
+
+.cardSub {
+    Width:220px;
+   Height:16px;
+}
+.cardAddUser {
     display: flex;
     justify-content: space-between;
-    padding: 0px 64px 0px 64px;
-    gap: 24px;
-
+    padding-top: 17px;
+    align-items: center;
 }
-.boardtoDoSektion{
-    width: 252px;
-    gap: 24px;
+.cardUserSymbole{
+    display: inline-block;
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    background-color: #ff5733; 
+    color: #fff; 
+    text-align: center;
+    line-height: 30px; 
 }
-.boardProgressSektion{
-    width: 252px;
-    gap: 16px;
-}
-.boardFeedbackSektion{
-    width: 252px;
-    gap: 16px;
-}
-.boardDoneSektion{
-    width: 252px;
-    gap: 16px;
-}  
