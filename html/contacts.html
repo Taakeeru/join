@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COntacts</title>
+    <script src="/js/include.js" defer></script>
+    <link rel="stylesheet" href="/css/desktop_template.css">
+    <link rel="stylesheet" href="/css/contacts.css">
+</head>
+<body onload="includeHTML()">
+    <div w3-include-html="../assets/templates/desktop_template.html" ></div>
+    <div class="allContacts">
+        <div class="boxOfAllContacts">
+            <div class="positionBtnAddContact">
+                <button class="btnAddContact" onclick="addNewContact()">
+                    <p class="lettersInBtn">Add new contact</p>
+                    <img src="/assets/img/person_add.svg" alt="">
+                </button>
+            </div>
+            <div>
+                <div class="positionLetterContact">
+                    <p class="letterContact" id="letterContact">A</p>
+                </div>
+                <div class="positionLineContact">
+                    <p class="lineContact"></p>
+                </div>
+            </div>
+            <div class="positionNewContact">
+                <div class="sizeOfContactBox displayFlex">
+                    <div>
+                        <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
+                    </div>
+                    <div>
+                        <p style="margin: 6px;">name</p>
+                        <p class="styleMail">Mail</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div> hier der conakt</div>
+    </div>
+</body>
+</html>

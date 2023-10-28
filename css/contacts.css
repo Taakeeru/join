@@ -1,0 +1,107 @@
+body{
+    margin: 0;
+}
+
+.displayFlex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allContacts{
+    width: calc(100vw - 232px);
+    height: calc(100vh - 96px);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+}
+
+.boxOfAllContacts{
+    width: 456px;
+    height: calc(100vh - 96px);
+    border:  1px ;
+    box-shadow: rgba(99, 99, 99, 0.2) 2px 0px 8px 0px;
+}
+
+.positionBtnAddContact{
+    display: flex;
+    justify-content: center;
+}
+
+.btnAddContact{
+    margin: 40px;
+    width: 357px;
+    height: 56px;
+    background-color: #4589FF;
+    border: 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnAddContact:hover{
+    background-color: #2776ff;
+}
+
+.lettersInBtn{
+    font-size: 24px;
+    font-weight: 100;
+    color: white;
+    margin-right: 8px;
+}
+
+.positionLetterContact{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 56px;
+}
+
+.letterContact{
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.positionLineContact{
+    display: flex;
+    justify-content: center;
+}
+
+.lineContact{
+    width: 384px;
+    height: 1px;
+    background-color: gray;
+    margin-top: 0;
+}
+
+.positionNewContact{
+    display: flex;
+    justify-content: center;
+}
+
+.sizeOfContactBox{
+    width: 384px;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.sizeOfContactBox:hover{
+    background-color: #D2E3FF;
+    border-radius: 10px;
+}
+
+.imgOfContackt{
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.styleMail{
+    margin: 6px;
+    color: #73A6FF;
+    font-size: small;
+}
