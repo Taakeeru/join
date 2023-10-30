@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: sans-serif;
 }
 .boardTopSektion {
   display: flex;
@@ -24,13 +25,14 @@ body {
   display: flex;
   padding: 16px 10px 16px 10px;
   border-radius: 10px;
-  border: 1px;
   gap: 10px;
   background: #4589ff;
   border: 1px solid #4589ff;
 }
 .boardInputfield {
   border:0px;
+  font-size: 16px;
+  font-family: inter;
 }
 .boardInputfield:focus{
     outline: none;
@@ -40,12 +42,16 @@ body {
   border: 0;
   color: white;
   font-size: 23px;
+  font-weight: 400;
 }
 
 .boardCategorysSektion {
   display: flex;
   justify-content: space-between;
   padding: 0px 64px 0px 64px;
+  font-weight: 700;
+  color: #42526E;
+  font-size: 23px;
 }
 .boardBotSektion {
   display: flex;
@@ -104,6 +110,7 @@ body {
   font-size: 16px;
   text-align: center;
   margin-block-start: 5px;
+  font-weight: 400;
 }
 .cardDescription {
     display: grid;
@@ -138,6 +145,7 @@ body {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   color: #A8A8A8;
+  font-family: 'Inter';
 }
 
 .cardSub {
