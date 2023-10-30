@@ -44,7 +44,7 @@ font-family:Open Sans;
 }
 .descriptionContent{
     display: flex;
-    gap: 4px;
+    height: 23px;
 }
 .descriptionText{
     font-size: 19px;
