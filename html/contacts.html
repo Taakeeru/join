@@ -27,18 +27,39 @@
                 </div>
             </div>
             <div class="positionNewContact">
-                <div class="sizeOfContactBox displayFlex">
+                <div class="sizeOfContactBox displayFlex" onclick="shwoDetailsOfContact()">
                     <div>
                         <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
                     </div>
                     <div>
-                        <p style="margin: 6px;">name</p>
-                        <p class="styleMail">Mail</p>
+                        <p style="margin: 6px;">Max Mustermann</p>
+                        <p class="styleMail">MaxMustermann@gmx.de</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div> hier der conakt</div>
+        <div class="boxOfDetailsContacts">
+            <div class="positionHeaderContactDetails">
+                <img src="/assets/img/ellipse5.svg" class="bigImgContacts">
+                <div>
+                    <p class="nameHeaderContactDetails">Max Mustermann</p>
+                    <div class="positionEditAndDelete">
+                        <button onclick="editContact()" class="displayFlex clearBtn"><img src="/assets/img/edit.svg" style="margin-right: 8px;">Edit</button>
+                        <button onclick="deleteContact()" class="displayFlex clearBtn"><img src="/assets/img/delete.svg" style="margin-right: 8px">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="contantInformation">Contant Information</p>
+                <p style="font-weight: 600;">Email</p>
+                <a href="MaxMustermann@gmx.de" class="mailContact">MaxMustermann@gmx.de</a>
+                <p style="font-weight: 600;">Phone</p>
+                <p>+49 111 1111111</p>
+            </div>
+        </div>
+    </div>
+    <div class="boxOfAddingNewContact">
+
     </div>
 </body>
 </html>

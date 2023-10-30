@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: "Open Sans", sans-serif;
 }
 
 .displayFlex{
@@ -27,9 +28,9 @@ body{
 }
 
 .boxOfAllContacts::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(158, 158, 158, 0.1);
     background-color: #F5F5F5;
+    border-radius: 10px;
 }
 
 .boxOfAllContacts::-webkit-scrollbar{
@@ -38,9 +39,9 @@ body{
 }
 
 .boxOfAllContacts::-webkit-scrollbar-thumb{
-    border-radius: 10px;
+    border-radius: 5px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
+    background-color: #A8A8A8;
 }
 
 .positionBtnAddContact{
@@ -127,4 +128,67 @@ body{
     margin: 6px;
     color: #73A6FF;
     font-size: small;
+}
+
+.boxOfDetailsContacts{
+    width: auto;
+    height: 318px;
+    margin: 64px;
+}
+
+.bigImgContacts{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-right: 56px;
+}
+
+.positionHeaderContactDetails{
+    display: flex;
+    align-items: center;
+}
+
+.nameHeaderContactDetails{
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.positionEditAndDelete{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.clearBtn{
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 8px;
+}
+
+.clearBtn:hover{
+    color: #176cff;
+    font-weight: bolder;
+}
+
+.contantInformation{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.mailContact{
+    text-decoration: none;
+    color: #2776ff;
+}
+
+.boxOfAddingNewContact{
+    height: 100vh;
+    width: 548px;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    background-color: aqua;
 }
