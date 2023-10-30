@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/css/board.css">
     <script src="/js/include.js" defer></script>
     <link rel="stylesheet" href="/css/desktop_template.css">
+    <script src="/js/board.js"></script>
 </head>
-<body onload="includeHTML()">
+<body>
     <div w3-include-html="../assets/templates/desktop_template.html" ></div>
     <div class="boardTopSektion" >
         <div class="inputSektion">
@@ -38,13 +39,50 @@
         </div>
     </div>
     <div class="boardBotSektion" >
-        <div class="boardtoDoSektion">No task To do</div>
-        <div class="boardProgressSektion">User Story</div>
-        <div class="boardFeedbackSektion">Technical Task</div>
-        <div class="boardDoneSektion">Technical Task</div>
-
+        <div class="boardtoDoSektion">  
+            <div class="cards">
+            <div class="cardContent">
+            <div class="cardHeader"><p class="userStory">User Story</p></div>
+            <div class="cardDescription" >
+                <p class="cardDescriptionHeader">Contact Form & Imprint</p>
+                <p class="cardDescriptionInfo"> Create a contact from and imprint page..</p>
+            </div>
+            <div class="cardSub">------balken</div>
+            <div class="cardAddUser"><div class="cardUserSymbole">AS</div>  
+            <img src="/assets/img/priority_symbols.svg" alt="">
+        </div> 
+        </div>
+        </div>
+        <div class="cards">
+            <div class="cardContent">
+            <div class="cardHeader"><p class="userStory">User Story</p></div>
+            <div class="cardDescription" >
+                <p class="cardDescriptionHeader">Contact Form & Imprint</p>
+                <p class="cardDescriptionInfo"> Create a contact from and imprint page..</p>
+            </div>
+            <div class="cardSub">------balken</div>
+            <div class="cardAddUser"><div class="cardUserSymbole">AS</div>  
+            <img src="/assets/img/priority_symbols.svg" alt="">
+        </div> 
+        </div>
+        </div>
     </div>
-    <div class="cards">
+
+        <div class="boardProgressSektion"><div class="cards">
+            <div class="cardContent">
+            <div class="cardHeader"><p class="userStory">User Story</p></div>
+            <div class="cardDescription" >
+                <p class="cardDescriptionHeader">Contact Form & Imprint</p>
+                <p class="cardDescriptionInfo"> Create a contact from and imprint page..</p>
+            </div>
+            <div class="cardSub">------balken</div>
+            <div class="cardAddUser"><div class="cardUserSymbole">AS</div>  
+            <img src="/assets/img/priority_symbols.svg" alt="">
+        </div> 
+        </div>
+        </div></div>
+
+        <div class="boardFeedbackSektion"><div class="cards">
         <div class="cardContent">
         <div class="cardHeader"><p class="userStory">User Story</p></div>
         <div class="cardDescription" >
@@ -56,7 +94,24 @@
         <img src="/assets/img/priority_symbols.svg" alt="">
     </div> 
     </div>
+    </div></div>
+        <div class="boardDoneSektion"><div class="cards">
+        <div class="cardContent">
+        <div class="cardHeader"><p class="userStory">User Story</p></div>
+        <div class="cardDescription" >
+            <p class="cardDescriptionHeader">Contact Form & Imprint</p>
+            <p class="cardDescriptionInfo"> Create a contact from and imprint page..</p>
+        </div>
+        <div class="cardSub">------balken</div>
+        <div class="cardAddUser"><div class="cardUserSymbole">AS</div>  
+        <img src="/assets/img/priority_symbols.svg" alt="">
+    </div> 
     </div>
+    </div></div>
+
+    </div>
+    
+    
     
 </body>
 </html>

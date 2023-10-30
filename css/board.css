@@ -54,20 +54,28 @@ body {
   gap: 24px;
 }
 .boardtoDoSektion {
-  width: 252px;
+  width: auto;
   gap: 24px;
+  display: flex;
+  flex-direction: column;
 }
 .boardProgressSektion {
-  width: 252px;
-  gap: 16px;
+  width: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
 }
 .boardFeedbackSektion {
-  width: 252px;
-  gap: 16px;
+  width: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
 }
 .boardDoneSektion {
-  width: 252px;
-  gap: 16px;
+  width: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
 }
 .cards {
   width: 252px;
