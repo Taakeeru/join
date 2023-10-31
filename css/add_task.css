@@ -21,7 +21,7 @@ font-family:Open Sans;
     width: 440px;
     height: 84px;
 }
-.inputField{
+.inputFieldTitle{
     color: rgba(209, 209, 209, 1);
     width: 440px;
     height: 64px;
@@ -63,4 +63,50 @@ font-family:Open Sans;
     padding: 18px;
     font-size: 19px;
     font-family: 'Open Sans';
+    resize: calc(); 
+}
+.inputFieldTitle:focus{
+    outline: none;
+}
+.textArea:focus{
+    outline: none;
+}
+.dateContent{
+    display: flex;
+    flex-direction: column;
+ height: 99px;
+
+}
+.dateTitle{
+    font-size: 19px;
+    font-weight: 700;
+    color: rgba(66, 82, 110, 1);
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.inputfieldDateContainer{
+height: 48px;
+border-bottom: 1px solid;
+color: rgba(209, 209, 209, 1);
+margin-inline-start: 0px;
+gap: 4px;
+display: flex;
+justify-content: space-between;
+padding: 12px 16px 0px 16px;
+align-items: center;
+}
+.inputfieldDate{
+border: 0;
+font-size: 19px;
+font-weight: 400;
+}
+.inputfieldDate:focus{
+    outline: none;
+}
+.dateImg{
+    height: 24px;
+    width: 24px;
 }
