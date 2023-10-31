@@ -68,12 +68,21 @@
         <div class="witheBoxAddContact">
             <div class="detailsOFAddContact">
                 <img src="/assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
-                <input type="text" class="inputField" placeholder="Name">
-                <input type="text" class="inputField" placeholder="Email">
-                <input type="text" class="inputField" placeholder="Phone">
+                <div class="displayFlex">
+                    <input type="text" class="inputField" placeholder="Name" id="nameAddContact">
+                    <img src="/assets/img/person.svg" class="imgInInput">
+                </div>
+                <div class="displayFlex">
+                    <input type="text" class="inputField" placeholder="Email" id="emailAddContact">
+                    <img src="/assets/img/mail.svg" class="imgInInput">
+                </div>
+                <div class="displayFlex">
+                    <input type="text" class="inputField" placeholder="Phone" id="phoneAddContact">
+                    <img src="/assets/img/call.svg" class="imgInInput">
+                </div>
                 <div class="btnsAddContact">
-                    <button class="displayFlex btnCloseContact">Close <img src="/assets/img/vector.svg" class="samllIconsContact"></button>
-                    <button class="displayFlex btnCreateContact">Create contact <img src="/assets/img/check.svg" class="samllIconsContact"></button>
+                    <button class="displayFlex btnCloseContact" onclick="closeAddContactWindow()">Close <img src="/assets/img/vector.svg" class="samllIconsContactX"></button>
+                    <button class="displayFlex btnCreateContact" onclick="createNewContactWindow()">Create contact <img src="/assets/img/check.svg" class="samllIconsContactOK"></button>
                 </div>
             </div>
         </div>

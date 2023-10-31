@@ -256,7 +256,6 @@ body{
 .detailsOFAddContact{
     width: 422px;
     height: 438px;
-    background-color: aqua;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -271,21 +270,39 @@ body{
 }
 
 .inputField{
-    width: 418px;
-    height: 64px;
-    border: 0;
+    width: 320px;
+    height: 40px;
+    border: 0px;
     border-bottom: 1px solid rgba(209, 209, 209, 1);
+    padding: 13px 16px 0px 16px;
+    gap: 10px;
+    display: flex;
+    font-weight: 400;
+    font-size: 16px;
+    outline: none;
+}
+
+.imgInInput{
+    margin-left: -40px;
 }
 
 .btnsAddContact{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin: 24px;
+    margin: 40px;
     gap: 35px;
+    
 }
 
-.samllIconsContact{
+.samllIconsContactX{
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    margin-left: 8px;
+}
+
+.samllIconsContactOK{
     width: 14px;
     height: 14px;
     object-fit: contain;
@@ -298,7 +315,16 @@ body{
     border-radius: 5px;
     color: #647188;
     border: 1px #647188;
+    font-size: 16px;
+    cursor: pointer;
 }
+
+.btnCloseContact:hover{
+    outline: 0.5px solid #2776ff;
+    color: #2776ff;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
 
 .btnCreateContact{
     padding: 12px;
@@ -306,4 +332,11 @@ body{
     border: 0;
     border-radius: 5px;
     color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btnCreateContact:hover{
+    background-color: #176cff;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
