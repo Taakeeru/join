@@ -3,6 +3,10 @@ body{
     font-family: "Open Sans", sans-serif;
 }
 
+.d-none{
+    display: none;
+}
+
 .displayFlex{
     display: flex;
     justify-content: center;
@@ -188,7 +192,118 @@ body{
 .boxOfAddingNewContact{
     height: 100vh;
     width: 548px;
-    border-bottom-left-radius: 15px;
-    border-top-left-radius: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.blueBoxAddContact{
+    height: 35%;
+    background-color: #176cff;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 30px;
+    box-shadow: inset rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.imgBlueBox{
+    width: 64px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.h1AddContact{
+    font-size: 44px;
+    margin: 0;
+    margin-top: 16px;
+}
+
+.pAddContact{
+    font-size: 24px;
+    font-weight: 100;
+    margin-top: 8px;
+}
+
+.closeAddContactBox{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 16px;
+    cursor: pointer;
+}
+
+.closeAddContactBox:hover{
+    background-color: #4589FF;
+    border-radius: 50%;
+}
+
+.witheBoxAddContact{
+    z-index: 20;
+    height: 65%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailsOFAddContact{
+    width: 422px;
+    height: 438px;
     background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.witheBoxAddContactImg{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.inputField{
+    width: 418px;
+    height: 64px;
+    border: 0;
+    border-bottom: 1px solid rgba(209, 209, 209, 1);
+}
+
+.btnsAddContact{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 24px;
+    gap: 35px;
+}
+
+.samllIconsContact{
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    margin-left: 8px;
+}
+
+.btnCloseContact{
+    padding: 12px;
+    border: 0;
+    border-radius: 5px;
+    color: #647188;
+    border: 1px #647188;
+}
+
+.btnCreateContact{
+    padding: 12px;
+    background-color: #4589FF;
+    border: 0;
+    border-radius: 5px;
+    color: white;
 }
