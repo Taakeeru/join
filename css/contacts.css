@@ -242,7 +242,7 @@ body{
 }
 
 .witheBoxAddContact{
-    z-index: 20;
+    z-index: 1;
     height: 65%;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -284,6 +284,7 @@ body{
 
 .imgInInput{
     margin-left: -40px;
+    
 }
 
 .btnsAddContact{
@@ -339,4 +340,39 @@ body{
 .btnCreateContact:hover{
     background-color: #176cff;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.boxOfEdingContact{
+    height: 100vh;
+    width: 548px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.blueBoxEditContact{
+    height: 35%;
+    background-color: #176cff;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 30px;
+    box-shadow: inset rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.h1EditContact{
+    font-size: 44px;
+    margin: 0;
+    margin-top: 16px;
+}
+
+.closeEditContactBox{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 16px;
+    cursor: pointer;
 }
