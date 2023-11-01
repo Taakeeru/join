@@ -132,7 +132,7 @@ body {
 
 .assignedSelect {
   display: flex;
-  padding-left:14px;
+  padding-left:16px;
   border: 0;
   margin-top: 16px;
   font-size: 19px;
@@ -150,4 +150,24 @@ body {
   width: 26px;
   height: 26px;
   margin-top: 16px;
+}
+.SubtaskContent{
+  display: flex;
+  flex-direction: column;
+  height: 79px;
+}
+.subtaskInput{
+  display: flex;
+  padding-left:16px;
+  border: 0;
+  margin-top: 16px;
+  font-size: 19px;
+  font-family: "Open Sans";
+  appearance: none;
+  background: url("/assets/img/subtask_icons.svg") 97% / 5% no-repeat #ffff;
+  border-bottom: 1px solid rgba(209, 209, 209, 1);
+  line-height: 39px;
+}
+.subtaskInput:focus {
+  outline: none;
 }
