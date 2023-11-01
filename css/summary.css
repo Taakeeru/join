@@ -36,8 +36,9 @@ body{
 
 .positionGreed{
     display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
 }
 
 .positionTime{
@@ -54,12 +55,12 @@ body{
 
 .showGreed{
     color: #2A3647;
-    font-size: 77px;
+    font-size: 48px;
 }
 
 .showName{
     color: #4589FF;
-    font-size: 77px;
+    font-size: 54px;
     font-weight: 900;
 }
 
@@ -159,15 +160,18 @@ body{
 }
 
 .deadlineBox{
-    width: 274px;
+    width: auto;
     height: 81px;
     margin-left: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .dateDeadline{
     margin-top: 0;
     padding-bottom: 16px;
-    font-size: 40px;
+    font-size: 34px;
     font-weight: bolder;
 }
 
@@ -220,7 +224,7 @@ body{
 .textInBoxes{
     width: 80px;
     margin-top: -40px;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 100;
     display: flex;
     justify-content: center;
