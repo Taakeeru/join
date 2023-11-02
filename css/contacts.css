@@ -6,6 +6,7 @@ body{
 .dislayRowBody{
     display: flex;
     flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 .d-none{
@@ -19,8 +20,6 @@ body{
 }
 
 .allContacts{
-    width: calc(100vw - 232px);
-    
     display: flex;
 }
 
@@ -191,6 +190,13 @@ body{
     color: #2776ff;
 }
 
+.backgrondColor{
+    width: 100vw;
+    height: 100vh;
+    background-color: #d1d1d1;
+    z-index: 1;
+}
+
 .boxOfAddingNewContact{
     height: 100vh;
     width: 548px;
@@ -198,6 +204,7 @@ body{
     top: 0;
     right: 0;
     z-index: 1;
+    
 }
 
 .blueBoxAddContact{
