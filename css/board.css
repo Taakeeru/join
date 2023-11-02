@@ -2,6 +2,14 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
+.contentContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.mainContent{
+  width: 100vw;
+}
 .boardTopSektion {
   display: flex;
   padding: 72px 0px 16px 0px;
