@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Summary</title>
-    <script src="/js/include.js" defer></script>
-    <link rel="stylesheet" href="/css/desktop_template.css">
-    <link rel="stylesheet" href="/css/summary.css">
-  </head>
-  <body onload="includeHTML()">
 
-    <div w3-include-html="../assets/templates/desktop_template.html" ></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summary</title>
+  <script src="/js/include.js" defer></script>
+  <link rel="stylesheet" href="/css/desktop_template_header.css">
+  <link rel="stylesheet" href="/css/desktop_template_footer.css">
+  <link rel="stylesheet" href="/css/summary.css">
+</head>
+
+<body onload="includeHTML()">
+
+  <div w3-include-html="../assets/templates/desktop_template_header.html"></div>
+  <div class="dislayRowBody">
     <div class="positionMainBox">
       <div class="boxForBoxes">
         <div class="positionGreed">
@@ -24,14 +28,14 @@
                 <img src="/assets/img/ellipse3.svg" class="clockCircle">
                 <p class="showNumber" id="showAllTasks">1</p>
               </div>
-                <p class="tasksUrgent">Tasks Urgent</p>
-              </div>
-              <div class="whiteLine"></div>
-              <div class="deadlineBox">
-                <p class="dateDeadline">monat 01.01.2023</p>
-                <p class="tasksUrgent">Upkomming Deadline</p>
-              </div>
+              <p class="tasksUrgent">Tasks Urgent</p>
             </div>
+            <div class="whiteLine"></div>
+            <div class="deadlineBox">
+              <p class="dateDeadline">monat 01.01.2023</p>
+              <p class="tasksUrgent">Upkomming Deadline</p>
+            </div>
+          </div>
           <div class="showTasksInBoard displayRow" onclick="showTaskBoard()">
             <div class="displayFlex ">
               <img src="/assets/img/ellipse3.svg" class="showTaskInBoardImg">
@@ -72,5 +76,8 @@
         </div>
       </div>
     </div>
-  </body>
+    <div w3-include-html="../assets/templates/desktop_template_footer.html"></div>
+  </div>
+</body>
+
 </html>

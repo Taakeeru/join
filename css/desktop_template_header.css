@@ -1,0 +1,36 @@
+.headerBlue{
+    height: 96px;
+    width: 100vw;
+    background-color: #4589FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon{
+    margin: 16px;
+}
+
+.helpImg{
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.profileImg{
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-image: url("/assets/img/head-663997_640.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 16px;
+    cursor: pointer;
+}
+
+.positionRightHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

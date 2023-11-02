@@ -3,6 +3,11 @@ body{
     font-family: "Open Sans", sans-serif;
 }
 
+.dislayRowBody{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .displayFlex{
     display: flex;
     justify-content: center;
@@ -16,11 +21,8 @@ body{
 }
 
 .positionMainBox{
-    width: calc(100vw - 232px);
-    height: calc(100vh - 96px);
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
