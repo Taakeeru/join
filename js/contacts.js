@@ -1,9 +1,11 @@
 let allContacts = [];
 let firstLetter = [];
 
+
 function init(){
     // generateLatter();
 }
+
 
 function generateLatter(){
     let letter = document.getElementById('generateLatter');
@@ -19,6 +21,7 @@ function generateLatter(){
             </div>`;
     }
 }
+
 
 function addNewContactBtn(){
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
@@ -43,11 +46,22 @@ function createNewContact(){
     localStorage.setItem('fullContactInfo', stringOfJSON);
 }
 
+
 function closeAddContactWindow(){
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
 }
+
 
 function closeAddContactBoxWithX(){
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
 }
 
+
+function editContact(){
+    document.getElementById('boxOfEdingContact').classList.toggle('d-none');
+}
+
+
+function closeEditContactBox(){
+    document.getElementById('boxOfEdingContact').classList.toggle('d-none');
+}
