@@ -61,6 +61,19 @@ body {
   color: #42526E;
   font-size: 23px;
 }
+.boardCategorysSektionContainer{   
+display: flex;
+gap: 0px;
+width: 252px;
+justify-content: space-between;
+padding: 0px 16px 0px 16px;
+align-items: center;
+}
+.boardCategorysSektionIcons{
+  width: 24px;
+  height: 34px;
+
+}
 .boardBotSektion {
   display: flex;
   justify-content: space-between;
