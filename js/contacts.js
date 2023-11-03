@@ -1,19 +1,19 @@
 let allContacts = [];
-let firstLetter = [];
+let firstLetter = ['A'];
 
 
 function init(){
     includeHTML();
-    // generateLatter();
+    generateLatter();
 }
 
 
 function generateLatter(){
     let letter = document.getElementById('generateLatter');
-    // letter.innerHTML = '';
+    letter.innerHTML = '';
     for (let i = 0; i < firstLetter.length; i++) {
         const letters = firstLetter[i];
-        letter.innerHTML = /*html*/`
+        letter.innerHTML += `
             <div class="positionLetterContact">
                 <p class="letterContact" id="letterContact">${letters}</p>
             </div>
@@ -21,30 +21,45 @@ function generateLatter(){
                 <p class="lineContact"></p>
             </div>`;
     }
+    generateContactInSmall(); 
 }
+
+async function generateContactInSmall(){
+    let contact = document.getElementById('contactInSmall');
+    contact.innerHTML = ''; 
+    for (let i = 0; i < getItem.length; i++) {
+        const fullName = await getItem(`fullName${i}`);
+        const email = await getItem(`email${i}`);
+        contact.innerHTML += `
+            <div class="sizeOfContactBox displayFlex" onclick="shwoDetailsOfContact()">
+                <div>
+                    <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
+                </div>
+                <div>
+                    <p style="margin: 6px;">${fullName}</p>
+                    <p class="styleMail">${email}</p>
+                </div>
+            </div>`;
+    }
+}
+
 
 
 function addNewContactBtn(){
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
-    createNewContact();
 }
 
 
 /**
- * create new contact vlaues and push it to the localStorage
+ * create new contact vlaues and push it to the backendStorage
  */
 function createNewContact(){
     const fullName = document.getElementById('nameAddContact').value;
     const email = document.getElementById('emailAddContact').value;
     const phone = document.getElementById('phoneAddContact').value;
-    allContacts.push({
-        "Neme": fullName,
-        "Email": email,
-        "Phone": phone
-    });
-    
-    let stringOfJSON = JSON.stringify(allContacts);
-    localStorage.setItem('fullContactInfo', stringOfJSON);
+    setItem('fullName', fullName);
+    setItem('email', email);
+    setItem('phone', phone);
 }
 
 

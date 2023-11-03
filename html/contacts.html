@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/desktop_template_footer.css">
     <link rel="stylesheet" href="/css/contacts.css">
     <script src="/js/contacts.js"></script>
+    <script src="/js/storage.js"></script>
 </head>
 
 <body onload="init()">
@@ -24,15 +25,15 @@
                     </button>
                 </div>
                 <div id="generateLatter">
-                    <div class="positionLetterContact">
+                    <!-- <div class="positionLetterContact">
                         <p class="letterContact" id="letterContact">A</p>
                     </div>
                     <div class="positionLineContact">
                         <p class="lineContact"></p>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="positionNewContact">
-                    <div class="sizeOfContactBox displayFlex" onclick="shwoDetailsOfContact()">
+                <div class="positionNewContact" id="contactInSmall">
+                    <!-- <div class="sizeOfContactBox displayFlex" onclick="shwoDetailsOfContact()">
                         <div>
                             <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
                         </div>
@@ -40,7 +41,7 @@
                             <p style="margin: 6px;">Max Mustermann</p>
                             <p class="styleMail">MaxMustermann@gmx.de</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="boxOfDetailsContacts">
@@ -65,6 +66,7 @@
                 </div>
             </div>
         </div>
+    <!--ab hier die add contact bereich-->
         <div class="backgrondColor d-none" id="boxOfAddingNewContact">
             <div class="boxOfAddingNewContact">
                 <div class="blueBoxAddContact">
@@ -98,7 +100,7 @@
                 </div>
             </div>
         </div>
-
+    <!--ab hier die edit contact bereich-->
         <div class="boxOfEdingContact d-none" id="boxOfEdingContact">
             <div class="blueBoxEditContact">
                 <img src="/assets/img/capa1.svg" class="imgBlueBox">
