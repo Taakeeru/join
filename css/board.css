@@ -67,7 +67,7 @@ gap: 0px;
 width: 252px;
 justify-content: space-between;
 padding: 0px 16px 0px 16px;
-align-items: center;
+
 }
 .boardCategorysSektionIcons{
   width: 24px;
@@ -115,13 +115,12 @@ align-items: center;
   display: flex;
 }
 .cardContent {
-  gap: 24px;
+  gap: 22px;
   display: grid;
 }
 .cardHeader {
   width: 110px;
   height: 27px;
-  padding: 4px 16px 4px 16px;
   border-radius: 8px;
   background: #ff7a00;
 }
@@ -130,7 +129,7 @@ align-items: center;
   color: white;
   font-size: 16px;
   text-align: center;
-  margin-block-start: 5px;
+  margin-block-start: 1px;
   font-weight: 400;
 }
 .cardDescription {
@@ -171,7 +170,22 @@ align-items: center;
 
 .cardSub {
     Width:220px;
-   Height:16px;
+    Height:16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.progress{
+  width: 128px;
+}
+.cardSubNumber {
+  font-size: 13px;
+  font-family: 'Inter';
+  font-weight: 400;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 .cardAddUser {
     display: flex;
