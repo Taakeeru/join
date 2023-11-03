@@ -1,4 +1,3 @@
-let allContacts = [];
 let firstLetter = ['A'];
 
 
@@ -44,6 +43,30 @@ async function generateContactInSmall(){
 }
 
 
+function shwoDetailsOfContact(i){
+    let detailsContact = document.getElementById('boxOfDetailsContacts');
+    detailsContact.innerHTML = `
+        <div class="positionHeaderContactDetails">
+            <img src="/assets/img/ellipse5.svg" class="bigImgContacts">
+            <div>
+                <p class="nameHeaderContactDetails">${getItem(`fullName${i}`)}</p>
+                <div class="positionEditAndDelete">
+                    <button onclick="editContact()" class="displayFlex clearBtn"><img src="/assets/img/edit.svg"
+                            style="margin-right: 8px;">Edit</button>
+                    <button onclick="deleteContact()" class="displayFlex clearBtn"><img
+                            src="/assets/img/delete.svg" style="margin-right: 8px">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p class="contantInformation">Contant Information</p>
+            <p style="font-weight: 600;">Email</p>
+            <a href="MaxMustermann@gmx.de" class="mailContact">${getItem(`email${i}`)}</a>
+            <p style="font-weight: 600;">Phone</p>
+            <p>${getItem(`phone${i}`)}</p>
+        </div>`;
+}
+
 
 function addNewContactBtn(){
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
@@ -54,9 +77,9 @@ function addNewContactBtn(){
  * create new contact vlaues and push it to the backendStorage
  */
 function createNewContact(){
-    const fullName = document.getElementById('nameAddContact').value;
-    const email = document.getElementById('emailAddContact').value;
-    const phone = document.getElementById('phoneAddContact').value;
+    const fullName = document.getElementById('nameAddContact').value.trim();
+    const email = document.getElementById('emailAddContact').value.trim();
+    const phone = document.getElementById('phoneAddContact').value.trim();
     setItem('fullName', fullName);
     setItem('email', email);
     setItem('phone', phone);
