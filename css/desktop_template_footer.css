@@ -22,6 +22,8 @@
 
 .category{
     margin-left: 8px;
+    color: black;
+    text-decoration: none;
 }
 
 .positionTaskIcons{
@@ -29,8 +31,7 @@
     display: flex;
     justify-items: center;
     transition: all .2s ease-in-out; 
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 8px;
 }
 
 .positionTaskIcons:hover {

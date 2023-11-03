@@ -3,6 +3,7 @@ let firstLetter = [];
 
 
 function init(){
+    includeHTML();
     // generateLatter();
 }
 
