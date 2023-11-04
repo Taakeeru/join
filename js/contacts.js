@@ -1,9 +1,10 @@
 let firstLetter = ['A'];
+let newContactData = [];
 
-
-function init(){
+async function init(){
     includeHTML();
     generateLatter();
+    await generateContactInSmall();
 }
 
 
@@ -19,28 +20,36 @@ function generateLatter(){
             <div class="positionLineContact">
                 <p class="lineContact"></p>
             </div>`;
-    }
-    generateContactInSmall(); 
+    } 
 }
 
-async function generateContactInSmall(){
+async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
-    contact.innerHTML = ''; 
-    for (let i = 0; i < getItem.length; i++) {
-        const fullName = await getItem(`fullName${i}`);
-        const email = await getItem(`email${i}`);
-        contact.innerHTML += `
-            <div class="sizeOfContactBox displayFlex" onclick="shwoDetailsOfContact()">
-                <div>
-                    <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
-                </div>
-                <div>
-                    <p style="margin: 6px;">${fullName}</p>
-                    <p class="styleMail">${email}</p>
-                </div>
-            </div>`;
+    contact.innerHTML = ''; // Initialisiere den Inhalt des Elements.
+  
+    // Iteriere über die Anzahl der Elemente im Array, das von getItem() zurückgegeben wird.
+    for (let i = 0; i < 2; i++) {
+      // Deklariere die Variablen fullName und email nach dem Aufruf von await getItem().
+      const fullName = await getItem(`fullName${i}`);
+      const email = await getItem(`email${i}`);
+  
+      contact.innerHTML += `
+                <div class="sizeOfContactBox displayFlex" onclick="shwoDetailsOfContact(${i})">
+                    <div>
+                        <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
+                    </div>
+                    <div>
+                        <p style="margin: 6px;">${fullName}</p>
+                        <p class="styleMail">${email}</p>
+                    </div>
+                </div>`;
     }
-}
+  }
+  
+
+
+
+  
 
 
 function shwoDetailsOfContact(i){
@@ -63,7 +72,7 @@ function shwoDetailsOfContact(i){
             <p style="font-weight: 600;">Email</p>
             <a href="MaxMustermann@gmx.de" class="mailContact">${getItem(`email${i}`)}</a>
             <p style="font-weight: 600;">Phone</p>
-            <p>${getItem(`phone${i}`)}</p>
+            <p>${getItem(`phone`)[i]}</p>
         </div>`;
 }
 
@@ -77,14 +86,29 @@ function addNewContactBtn(){
  * create new contact vlaues and push it to the backendStorage
  */
 function createNewContact(){
-    const fullName = document.getElementById('nameAddContact').value.trim();
-    const email = document.getElementById('emailAddContact').value.trim();
-    const phone = document.getElementById('phoneAddContact').value.trim();
+    const fullName = document.getElementById('nameAddContact').value;
+    const email = document.getElementById('emailAddContact').value;
+    const phone = document.getElementById('phoneAddContact').value;
+    // let newContact = {
+    //     'fullName': fullName.value.trim(),
+    //     'email': email.value.trim(),
+    //     'phone': phone.value.trim()
+    // };
+    // newContactData.push(newContact);
+    // console.log(newContactData);
+
+    // setItem('newContactData', newContactData);
+
+    // fullName.value = '';
+    // email.value = '';
+    // phone.value = '';
+
+
     setItem('fullName', fullName);
     setItem('email', email);
     setItem('phone', phone);
+    generateContactInSmall();
 }
-
 
 function closeAddContactWindow(){
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
