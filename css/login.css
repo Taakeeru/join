@@ -34,12 +34,20 @@ body {
 }
 
 .login-card-div {
-  height: 491px !important;
+  /* height: 491px !important; */
   width: 652px !important;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   border-radius: 30px !important;
   margin: 0px 20px;
-  padding: 48px 115px;
+  padding: 48px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-body {
+  width: 422px;
+  min-width: 250px;
 }
 
 .login-card-title {
@@ -119,6 +127,12 @@ body {
     color: rgb(13,110,253);
 }
 
+.name::placeholder {
+  background-image: url("/assets/img/person.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
 .email::placeholder {
   background-image: url("/assets/img/mail.svg");
   background-repeat: no-repeat;
@@ -148,4 +162,10 @@ body {
 
 .d-none {
   display: none;
+}
+
+@media (max-width: 500px) {
+  .card-body {
+    width: auto;
+  }
 }
