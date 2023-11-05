@@ -30,13 +30,13 @@
     <link rel="html" href="/assets/templates/desktop_template.html">
     <link rel="html" href="/assets/templates/mobile_template.html">
 
-    <script src="login.js"></script>
+    <script src="/js/login.js" ></script>
     <script src="include.js"></script>
     <script src="variables.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
-<body>
+<body id="body">
 
     
 
@@ -44,7 +44,7 @@
 
         <div class="logo" id="logo"><img src="/assets/img/join_logo.svg" alt="Logo Bild"></div>
 
-        <div class="login-header" id="login-header">
+        <div id="login-header" class="login-header" >
         <span>Not a Join user?</span>
         <button onclick="renderSignUpContent()" type="button" class="btn btn-primary mg-l">Sign up</button>
         </div>
@@ -61,10 +61,10 @@
                 <form>
                     <div class="form-div">
                         <!-- Email input -->
-                        <input type="email" id="form2Example1" class="form-control" placeholder="Email"/>
+                        <input type="email" id="form2Example1" class="form-control email" placeholder="Email" /> 
 
                         <!-- Password input -->
-                        <input type="password" id="form2Example2" class="form-control" placeholder="Password"/>
+                        <input type="password" id="form2Example2" class="form-control password" placeholder="Password"/>
                     </div>        
                         <!-- 2 column grid layout for inline styling -->
                     <div class="row mb-4 mg-40">
@@ -89,9 +89,9 @@
         </div>
     </div>
 
-    <div class="login-footer">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="legal_notice.html">Legal Notice</a>
+    <div id="login-footer" class="login-footer">
+        <a id="privacy" href="privacy.html">Privacy Policy</a>
+        <a id="legal" href="legal_notice.html">Legal Notice</a>
     </div>
 </body>
 </html>

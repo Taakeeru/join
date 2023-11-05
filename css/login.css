@@ -118,3 +118,34 @@ body {
 .login-footer a:hover {
     color: rgb(13,110,253);
 }
+
+.email::placeholder {
+  background-image: url("/assets/img/mail.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+.password::placeholder {
+  background-image: url("/assets/img/lock.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  margin-right: 4px;
+}
+
+/* .password {
+  background-image: url("/assets/img/lock.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+} */
+
+.bg-color {
+  background-color: rgb(69,137,255) !important;
+}
+
+.w-color {
+  color: white !important;
+}
+
+.d-none {
+  display: none;
+}
