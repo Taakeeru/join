@@ -27,26 +27,83 @@ async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
     contact.innerHTML = ''; 
 
-    for (let i = 0; i < 5; i++) { // 1 beheben - eine Var muss statt 1 rein um die länge auszulesen
-        const fullName = await getItem(`fullName`);
-        const email = await getItem(`email`);
-        let newName = fullName.data.value;
-        let newEmail = email.data.value;
-            contact.innerHTML += `
-                <div class="sizeOfContactBox displayFlex" onclick="shwoDetailsOfContact(${i})">
-                    <div>
-                        <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
-                    </div>
-                    <div>
-                        <p style="margin: 6px;">${newName}</p>
-                        <p class="styleMail">${newEmail}</p>
-                    </div>
-                </div>`;
+    const response = await getItem(`newContactData`);
+    const storedContacts = JSON.parse(response.data.value);
+
+    for (let i = 0; i < 20; i++) {
+        let newName = storedContacts.fullName; 
+        let newEmail = storedContacts.email; 
+        contact.innerHTML += `
+            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact(${i})">
+                <div>
+                    <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
+                </div>
+                <div>
+                    <p style="margin: 6px;">${newName}</p>
+                    <p class="styleMail">${newEmail}</p>
+                </div>
+            </div>`;
     }
-  }
-  
+}
 
 
+
+async function createNewContact() {
+    // Holen Sie sich die Werte der Eingabefelder für Name, E-Mail und Telefon
+    const fullName = document.getElementById('nameAddContact');
+    const email = document.getElementById('emailAddContact');
+    const phone = document.getElementById('phoneAddContact');
+
+    // Rufen Sie die vorhandenen Daten aus dem Storage ab
+    const existingDataResponse = await getItem('newContactData');
+    const existingData = existingDataResponse.data.value ? JSON.parse(existingDataResponse.data.value) : {};
+
+    // Fügen Sie die neuen Daten zu den vorhandenen Daten hinzu
+    const newContact = {
+        fullName: fullName.value.trim(),
+        email: email.value.trim(),
+        phone: phone.value.trim()
+    };
+    const updatedContactData = { ...existingData, ...newContact };
+
+    // Speichern Sie die aktualisierten Daten im Storage
+    setItem('newContactData', updatedContactData);
+    generateContactInSmall();
+    // Leeren Sie die Eingabefelder
+    fullName.value = '';
+    email.value = '';
+    phone.value = '';
+}
+
+
+
+/**
+ * create new contact vlaues and push it to the backendStorage
+ */
+// function createNewContact(){
+//     const fullName = document.getElementById('nameAddContact');
+//     const email = document.getElementById('emailAddContact');
+//     const phone = document.getElementById('phoneAddContact');
+//     let newContact = {
+//         'fullName': fullName.value.trim(),
+//         'email': email.value.trim(),
+//         'phone': phone.value.trim()
+//     };
+//     setItem('newContactData', newContact);
+
+//     fullName.value = '';
+//     email.value = '';
+//     phone.value = '';
+//     generateContactInSmall();
+
+//     // setItem('fullName', fullName.value.trim());
+//     // setItem('email', email.value.trim());
+//     // setItem('phone', phone.value.trim());
+//     // generateContactInSmall();
+//     // fullName.value = '';
+//     // email.value = '';
+//     // phone.value = '';
+// }
 
   
 
@@ -80,36 +137,6 @@ function addNewContactBtn(){
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
 }
 
-
-/**
- * create new contact vlaues and push it to the backendStorage
- */
-function createNewContact(){
-    const fullName = document.getElementById('nameAddContact');
-    const email = document.getElementById('emailAddContact');
-    const phone = document.getElementById('phoneAddContact');
-    // let newContact = {
-    //     'fullName': fullName.value.trim(),
-    //     'email': email.value.trim(),
-    //     'phone': phone.value.trim()
-    // };
-
-    // console.log(newContactData);
-    // setItem('newContactData', newContact);
-
-    // fullName.value = '';
-    // email.value = '';
-    // phone.value = '';
-
-
-    setItem('fullName', fullName.value.trim());
-    setItem('email', email.value.trim());
-    setItem('phone', phone.value.trim());
-    generateContactInSmall();
-    fullName.value = '';
-    email.value = '';
-    phone.value = '';
-}
 
 function closeAddContactWindow(){
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
