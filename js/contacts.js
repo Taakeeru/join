@@ -33,16 +33,18 @@ async function generateContactInSmall() {
     for (const key in storedContacts) {
         let newName = storedContacts[key].fullName;
         let newEmail = storedContacts[key].email;
+        let newPhone = storedContacts[key].phone;
         contact.innerHTML += `
-            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact(${key})">
-                <div>
-                    <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
-                </div>
-                <div>
-                    <p style="margin: 6px;">${newName}</p>
-                    <p class="styleMail">${newEmail}</p>
-                </div>
-            </div>`;
+        <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact(${newName, newEmail, newPhone})">
+            <div>
+                <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
+            </div>
+            <div>
+                <p style="margin: 6px;">${newName}</p>
+                <p class="styleMail">${newEmail}</p>
+            </div>
+        </div>`;
+    
     }
 }
 
@@ -115,13 +117,14 @@ async function createNewContact() {
   
 
 
-function showDetailsOfContact(i){  
+function showDetailsOfContact(newName, newEmail, newPhone){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
+    detailsContact.innerHTML ='';
     detailsContact.innerHTML = `
         <div class="positionHeaderContactDetails">
             <img src="/assets/img/ellipse5.svg" class="bigImgContacts">
             <div>
-                <p class="nameHeaderContactDetails">${getItem(`${i}`)}</p>
+                <p class="nameHeaderContactDetails">${newName}</p>
                 <div class="positionEditAndDelete">
                     <button onclick="editContact()" class="displayFlex clearBtn"><img src="/assets/img/edit.svg"
                             style="margin-right: 8px;">Edit</button>
@@ -133,9 +136,9 @@ function showDetailsOfContact(i){
         <div>
             <p class="contantInformation">Contant Information</p>
             <p style="font-weight: 600;">Email</p>
-            <a href="MaxMustermann@gmx.de" class="mailContact">${getItem(`email${i}`)}</a>
+            <a href="#" class="mailContact">${newEmail}</a>
             <p style="font-weight: 600;">Phone</p>
-            <p>${getItem(`phone`)[i]}</p>
+            <p>${newPhone}</p>
         </div>`;
 }
 
