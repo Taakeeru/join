@@ -27,9 +27,14 @@ function renderCard() {
     let confirmPassword = document.getElementById('confirm-password');
     let labelText = document.getElementById('label-text');
     let guestButton = document.getElementById('guest-button');
+    let title = document.getElementById('title');
+    let titleArrow = document.getElementById('arrow-left');
+
 
     name.classList.remove('d-none');
     confirmPassword.classList.remove('d-none');
     labelText.innerHTML = /* html */ `I accept the <a href="privacy.html">Privacy Policy</a>`
     guestButton.classList.add('d-none');
+    title.innerHTML = 'Sign up';
+    titleArrow.classList.remove('d-none');
 }
