@@ -65,6 +65,20 @@ body {
   margin-bottom: 12px;
 }
 
+#arrow-left {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  height: 45px;
+  width: 45px;
+}
+
+#arrow-left:hover {
+  background-color: rgba(200, 222, 255, 0.226);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
 .login-card-title svg {
     margin-bottom: 39px;
 }
@@ -81,6 +95,7 @@ body {
     border-bottom: 2px solid rgba(209, 209, 209, 1) !important;
     border-radius: 0;
     border: none;
+    box-shadow: none !important;
 }
 
 .form-div input::placeholder {
@@ -96,6 +111,8 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 35px;
+    margin-top: 40px;
+    margin-bottom: 0px !important;
 }
 
 .btn2:hover {
@@ -108,6 +125,7 @@ body {
     display: flex;
     padding: 10px 35px 10px 35px;
     font-size: 23px;
+    margin-bottom: 0px !important;
 }
 
 .login-footer {
