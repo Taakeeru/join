@@ -25,16 +25,16 @@ function generateLatter(){
 
 async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
-    contact.innerHTML = ''; 
+    contact.innerHTML = '';
 
     const response = await getItem(`newContactData`);
     const storedContacts = JSON.parse(response.data.value);
 
-    for (let i = 0; i < 20; i++) {
-        let newName = storedContacts.fullName; 
-        let newEmail = storedContacts.email; 
+    for (const key in storedContacts) {
+        let newName = storedContacts[key].fullName;
+        let newEmail = storedContacts[key].email;
         contact.innerHTML += `
-            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact(${i})">
+            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact(${key})">
                 <div>
                     <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
                 </div>
@@ -47,29 +47,35 @@ async function generateContactInSmall() {
 }
 
 
-
 async function createNewContact() {
-    // Holen Sie sich die Werte der Eingabefelder für Name, E-Mail und Telefon
     const fullName = document.getElementById('nameAddContact');
     const email = document.getElementById('emailAddContact');
     const phone = document.getElementById('phoneAddContact');
 
-    // Rufen Sie die vorhandenen Daten aus dem Storage ab
     const existingDataResponse = await getItem('newContactData');
     const existingData = existingDataResponse.data.value ? JSON.parse(existingDataResponse.data.value) : {};
-
-    // Fügen Sie die neuen Daten zu den vorhandenen Daten hinzu
     const newContact = {
         fullName: fullName.value.trim(),
         email: email.value.trim(),
         phone: phone.value.trim()
     };
-    const updatedContactData = { ...existingData, ...newContact };
 
-    // Speichern Sie die aktualisierten Daten im Storage
-    setItem('newContactData', updatedContactData);
-    generateContactInSmall();
-    // Leeren Sie die Eingabefelder
+    // Überprüfen Sie, ob der Schlüssel bereits vorhanden ist, und fügen Sie ggf. den neuen Kontakt hinzu
+    if (existingData) {
+        // Überprüfen Sie, ob der neue Schlüssel bereits vorhanden ist
+        if (existingData.hasOwnProperty(newContact.fullName)) {
+            // Hier können Sie eine entsprechende Logik für den Fall implementieren, dass der Schlüssel bereits vorhanden ist
+            // Zum Beispiel könnten Sie eine Warnung ausgeben oder eine andere Vorgehensweise wählen
+        } else {
+            existingData[newContact.fullName] = newContact;
+        }
+    } else {
+        existingData[newContact.fullName] = newContact;
+    }
+
+    await setItem('newContactData', existingData);
+    generateContactInSmall(existingData);
+
     fullName.value = '';
     email.value = '';
     phone.value = '';
@@ -77,7 +83,8 @@ async function createNewContact() {
 
 
 
-/**
+
+/** --- erstmal ignorieren
  * create new contact vlaues and push it to the backendStorage
  */
 // function createNewContact(){
@@ -108,13 +115,13 @@ async function createNewContact() {
   
 
 
-function shwoDetailsOfContact(i){
+function showDetailsOfContact(i){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
     detailsContact.innerHTML = `
         <div class="positionHeaderContactDetails">
             <img src="/assets/img/ellipse5.svg" class="bigImgContacts">
             <div>
-                <p class="nameHeaderContactDetails">${getItem(`fullName${i}`)}</p>
+                <p class="nameHeaderContactDetails">${getItem(`${i}`)}</p>
                 <div class="positionEditAndDelete">
                     <button onclick="editContact()" class="displayFlex clearBtn"><img src="/assets/img/edit.svg"
                             style="margin-right: 8px;">Edit</button>
