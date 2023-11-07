@@ -1,6 +1,7 @@
 body {
   font-family: Open Sans;
   margin: 0;
+  overflow: hidden;
 }
 .contentContainer {
   display: flex;
@@ -9,10 +10,10 @@ body {
 }
 .addTask {
   width: 488px;
-  height: 928px;
   padding: 64px 24px 0px 24px;
   gap: 24px;
   display: flex;
+  overflow-y: scroll;
 }
 .topSektion {
   gap: 12px;
@@ -33,11 +34,14 @@ body {
   height: 64px;
   border: 0px;
   border-bottom: 1px solid rgba(209, 209, 209, 1);
-  padding: 13px 16px 0px 16px;
+  padding: 0px 0px 0px 0px;
   gap: 10px;
   display: flex;
   font-weight: 400;
   font-size: 32px;
+}
+.inputFieldTitle::placeholder{
+  padding: 16px;
 }
 .description {
   height: 154px;
@@ -45,6 +49,7 @@ body {
   gap: 8px;
   display: flex;
   flex-direction: column;
+  padding-top: 8px;
 }
 .descriptionContent {
   display: flex;
@@ -82,6 +87,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 99px;
+  padding-top: 8px;
 }
 .dateTitle {
   font-size: 19px;
@@ -120,11 +126,38 @@ body {
   display: flex;
   flex-direction: column;
   height: 79px;
+  padding-top: 24px;
 }
 .assignedTitleContainer {
   display: flex;
   height: 23px;
   gap: 5px;
+}
+.buttonContainer{
+  display: flex;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.prioButton{
+  gap: 10px;
+  display: flex;
+  width: 136px;
+  height: 51px;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  font-family: "Open Sans";
+  font-weight: 400;
+  cursor: pointer;
+    background: white;
+    border: 0px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+}
+.buttonImg{
+  width: 20px;
+  height: 20px;
 }
 .assignedTitle {
   font-size: 19px;
@@ -161,6 +194,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 79px;
+  padding-top: 24px;
 }
 .subtaskInput{
   display: flex;
