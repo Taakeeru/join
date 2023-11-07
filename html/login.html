@@ -30,9 +30,10 @@
     <link rel="html" href="/assets/templates/desktop_template.html">
     <link rel="html" href="/assets/templates/mobile_template.html">
 
+    
+    <script src="/js/storage2.js"></script>
+    <script src="/js/register.js"></script>
     <script src="/js/login.js" ></script>
-    <!-- <script src="include.js"></script>
-    <script src="variables.js"></script> -->
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
@@ -62,38 +63,39 @@
                     </svg>
                 </div>
 
-                <form>
+                <form required onsubmit="initRegister(); return false;">
                     <div class="form-div">
                         <!-- Name input -->
-                        <input type="text" id="input-name" class="form-control name d-none" placeholder="Name" /> 
+                        <input required type="text" id="input-name" class="form-control name d-none" placeholder="Name" /> 
 
                         <!-- Email input -->
-                        <input type="email" id="form2Example1" class="form-control email" placeholder="Email" /> 
+                        <input required type="email" id="form2Example1" class="form-control email" placeholder="Email" /> 
 
                         <!-- Password input -->
-                        <input type="password" id="form2Example2" class="form-control password" placeholder="Password"/>
+                        <input required type="password" id="form2Example2" class="form-control password" placeholder="Password"/>
 
                         <!-- Confirm Password input -->
-                        <input type="password" id="confirm-password" class="form-control password d-none" placeholder="Confirm Password"/>
+                        <input required type="password" id="confirm-password" class="form-control password d-none" placeholder="Confirm Password"/>
                     </div>        
                         <!-- 2 column grid layout for inline styling -->
                     <div class="row mb-4 mg-40">
                         <div class="col d-flex">
                             <!-- Checkbox -->
                             <div class="form-check">
-                            <input class="form-check-input " type="checkbox" value="" id="form2Example31" checked />
+                            <input required class="form-check-input " type="checkbox" value="" id="form2Example31" unchecked />
                             <label class="form-check-label" for="form2Example31"> <span id="label-text"> Remember me </span></label>
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="login-button-div">
+                        <!-- Submit button -->
+                        <button id="login-button" type="button" class="btn btn-primary btn-block mb-4">Log in</button>
+                        <button id="signup-button" type="submit" class="btn btn-primary btn-block mb-4 d-none">Sign Up</button>
+                        <button id="guest-button" type="button" class="btn btn-outline-secondary btn-block mb-4 btn2">Guest log in</button>
+                    </div>
                 </form>
 
-                <div class="login-button-div">
-                    <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4">Log in</button>
-                    <button id="guest-button" type="button" class="btn btn-outline-secondary btn-block mb-4 btn2">Guest log in</button>
-                </div>
+                
                 
             </div>
         </div>
