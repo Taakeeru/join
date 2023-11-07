@@ -40,19 +40,19 @@
 
     
 
-    <div class="login-content ">  
+    <div class="login-content">  
         
         <div class="loader">
-            <div class="logo"></div>
+            <div class="logo" id="logo"></div>
         </div>
         <!-- <div class="logo" id="logo"><img src="/assets/img/join_logo.svg" alt="Logo Bild"></div> -->
 
-        <div id="login-header" class="login-header" >
-        <span>Not a Join user?</span>
-        <button onclick="renderSignUpContent()" type="button" class="btn btn-primary mg-l">Sign up</button>
+        <div id="login-header" class="login-header d-none-js" >
+            <span>Not a Join user?</span>
+            <button onclick="renderSignUpContent()" type="button" class="btn btn-primary mg-l">Sign up</button>
         </div>
         
-        <div class="card login-card-div">
+        <div class="card login-card-div d-none-js" id="login-card-div">
             <div class="card-body">
                 <div class="login-card-title" id="login-card-title">
                     <img onclick="renderLogInContent()" id="arrow-left" class="d-none" src="/assets/img/arrow-left-line.svg" alt="">
@@ -99,7 +99,7 @@
         </div>
     </div>
 
-    <div id="login-footer" class="login-footer d-none">
+    <div id="login-footer" class="login-footer d-none-js">
         <a id="privacy" href="privacy.html">Privacy Policy</a>
         <a id="legal" href="legal_notice.html">Legal Notice</a>
     </div>

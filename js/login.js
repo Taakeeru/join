@@ -1,7 +1,7 @@
 
 
 function init() {
-   
+    showContentDuringAnimation();
 }
 
 function renderSignUpContent() {
@@ -79,4 +79,21 @@ function renderLogInCard() {
     guestButton.classList.remove('d-none');
     title.innerHTML = 'Log in';
     titleArrow.classList.add('d-none');
+}
+
+
+function showContentDuringAnimation() {
+    setTimeout(function() {
+        let elementsToDisplay = [
+            document.getElementById('login-header'),
+            document.getElementById('login-card-div'),
+            document.getElementById('login-footer')
+        ];
+
+        elementsToDisplay.forEach(function(element) {
+            if (element) {
+                element.classList.remove('d-none-js');
+            }
+        });
+    }, 300);
 }
