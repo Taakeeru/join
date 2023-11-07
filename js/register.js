@@ -1,4 +1,4 @@
-let users = [{}];
+let users = [{id: 'demo', username: 'demo', email: 'demo@demo.com', password: 'demo123'}];
 
 
 function generateUniqueId() {
@@ -12,12 +12,12 @@ function generateUniqueId() {
 }
 
 
-async function initRegister(){
+async function initRegister() {
     register();
 }
 
 
-async function loadUsers(){
+async function loadUsers() {
     try {
         users = JSON.parse(await getItem('users'));
     } catch(e) {
@@ -34,7 +34,13 @@ async function register() {
     let confirmPassword = document.getElementById('confirm-password');
 
     signUpButton.disabled = true;
+    pushUserInfo(username, email, password);
+    await setItem('users', JSON.stringify(users));
+    resetForm(signUpButton, username, email, password, confirmPassword);
+}
 
+
+function pushUserInfo(username, email, password) {
     const UNIQUE_ID = generateUniqueId();
 
     users.push({
@@ -43,8 +49,6 @@ async function register() {
         email: email.value,
         password: password.value,
     });
-    await setItem('users', JSON.stringify(users));
-    resetForm(signUpButton, username, email, password, confirmPassword);
 }
 
 
