@@ -1,5 +1,4 @@
-const uniqueId = generateUniqueId();
-let users = [];
+let users = [{}];
 
 
 function generateUniqueId() {
@@ -21,28 +20,43 @@ async function initRegister(){
 async function loadUsers(){
     try {
         users = JSON.parse(await getItem('users'));
-    } catch(e){
+    } catch(e) {
         console.error('Loading error:', e);
     }
 }
 
 
 async function register() {
-    registerBtn.disabled = true;
+    getInputValues()
+    signUpButton.disabled = true;
+
+    const UNIQUE_ID = generateUniqueId();
 
     users.push({
-        id: uniqueId,
+        id: UNIQUE_ID,
         username: username.value,
         email: email.value,
         password: password.value,
     });
     await setItem('users', JSON.stringify(users));
-    resetForm();
+    resetForm(signUpButton, username, email, password, confirmPassword);
 }
 
 
-function resetForm() {
+function getInputValues() {
+    let signUpButton = document.getElementById('signup-button');
+    let username = document.getElementById('user-name');
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let confirmPassword = document.getElementById('confirm-password');
+}
+
+
+function resetForm(signUpButton, username, email, password, confirmPassword) {
+
+    username.value = '';
     email.value = '';
     password.value = '';
-    registerBtn.disabled = false;
+    confirmPassword.value = '';
+    signUpButton.disabled = false;
 }

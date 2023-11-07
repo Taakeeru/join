@@ -2,6 +2,7 @@
 
 function init() {
     showContentDuringAnimation();
+    loadUsers();
 }
 
 function renderSignUpContent() {
@@ -33,7 +34,7 @@ function renderBody() {
 
 
 function renderCard() {
-    let name = document.getElementById('input-name');
+    let name = document.getElementById('user-name');
     let confirmPassword = document.getElementById('confirm-password');
     let labelText = document.getElementById('label-text');
     let logInButton = document.getElementById('login-button');
@@ -70,7 +71,7 @@ function renderLogInBody() {
 
 
 function renderLogInCard() {
-    let name = document.getElementById('input-name');
+    let name = document.getElementById('user-name');
     let confirmPassword = document.getElementById('confirm-password');
     let labelText = document.getElementById('label-text');
     let logInButton = document.getElementById('login-button');
