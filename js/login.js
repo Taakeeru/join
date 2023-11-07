@@ -33,7 +33,7 @@ function renderBody() {
 
 
 function renderCard() {
-    let name = document.getElementById('name');
+    let name = document.getElementById('input-name');
     let confirmPassword = document.getElementById('confirm-password');
     let labelText = document.getElementById('label-text');
     let guestButton = document.getElementById('guest-button');
@@ -66,7 +66,7 @@ function renderLogInBody() {
 
 
 function renderLogInCard() {
-    let name = document.getElementById('name');
+    let name = document.getElementById('input-name');
     let confirmPassword = document.getElementById('confirm-password');
     let labelText = document.getElementById('label-text');
     let guestButton = document.getElementById('guest-button');
