@@ -81,25 +81,28 @@ padding: 0px 16px 0px 16px;
   gap: 24px;
 }
 .boardtoDoSektion {
-  width: auto;
+  width: 200px;    /*erstmal test*/
   gap: 16px;
   display: flex;
   flex-direction: column;
 }
+.boardtoDoSektion-highlight {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 .boardProgressSektion {
-  width: auto;
+  width: 200px;    /*erstmal test*/
   gap: 16px;
   display: flex;
   flex-direction: column;
 }
 .boardFeedbackSektion {
-  width: auto;
+  width: 200px;    /*erstmal test*/
   gap: 16px;
   display: flex;
   flex-direction: column;
 }
 .boardDoneSektion {
-  width: auto;
+  width: 200px;    /*erstmal test*/
   gap: 16px;
   display: flex;
   flex-direction: column;
