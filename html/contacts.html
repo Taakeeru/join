@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-    <script src="/js/include.js" defer></script>
-    <link rel="stylesheet" href="/css/desktop_template_header.css">
-    <link rel="stylesheet" href="/css/desktop_template_footer.css">
-    <link rel="stylesheet" href="/css/contacts.css">
-    <script src="/js/contacts.js"></script>
-    <script src="/js/storage.js"></script>
+    <script src="../js/include.js" defer></script>
+    <link rel="stylesheet" href="../css/desktop_template_header.css">
+    <link rel="stylesheet" href="../css/desktop_template_footer.css">
+    <link rel="stylesheet" href="../css/contacts.css">
+    <script src="../js/contacts.js"></script>
+    <script src="../js/storage.js"></script>
 </head>
 
 <body onload="init()">
@@ -21,7 +21,7 @@
                 <div class="positionBtnAddContact">
                     <button class="btnAddContact" onclick="addNewContactBtn()">
                         <p class="lettersInBtn">Add new contact</p>
-                        <img src="/assets/img/person_add.svg" alt="">
+                        <img src="../assets/img/person_add.svg" alt="">
                     </button>
                 </div>
                 <div id="generateLatter">
@@ -70,31 +70,31 @@
         <div class="backgrondColor d-none" id="boxOfAddingNewContact">
             <div class="boxOfAddingNewContact">
                 <div class="blueBoxAddContact">
-                <img src="/assets/img/capa1.svg" class="imgBlueBox">
+                <img src="../assets/img/capa1.svg" class="imgBlueBox">
                     <h1 class="h1AddContact">Add Contact</h1>
                     <p class="pAddContact">Tasks are better with a team!</p>
                 </div>
-                <img src="/assets/img/close.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
+                <img src="../assets/img/close.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
                 <div class="witheBoxAddContact">
                     <div class="detailsOFAddContact">
-                        <img src="/assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
+                        <img src="../assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
                         <div class="displayFlex">
                             <input type="text" class="inputField" placeholder="Name" id="nameAddContact">
-                            <img src="/assets/img/person.svg" class="imgInInput">
+                            <img src="../assets/img/person.svg" class="imgInInput">
                         </div>
                         <div class="displayFlex">
                             <input type="text" class="inputField" placeholder="Email" id="emailAddContact">
-                            <img src="/assets/img/mail.svg" class="imgInInput">
+                            <img src="../assets/img/mail.svg" class="imgInInput">
                         </div>
                         <div class="displayFlex">
                             <input type="text" class="inputField" placeholder="Phone" id="phoneAddContact">
-                            <img src="/assets/img/call.svg" class="imgInInput">
+                            <img src="../assets/img/call.svg" class="imgInInput">
                         </div>
                         <div class="btnsAddContact">
                             <button class="displayFlex btnCloseContact" onclick="closeAddContactWindow()">Close <img
-                                    src="/assets/img/vector.svg" class="samllIconsContactX"></button>
+                                    src="../assets/img/vector.svg" class="samllIconsContactX"></button>
                             <button class="displayFlex btnCreateContact" onclick="createNewContact()">Create contact
-                                <img src="/assets/img/check.svg" class="samllIconsContactOK"></button>
+                                <img src="../assets/img/check.svg" class="samllIconsContactOK"></button>
                         </div>
                     </div>
                 </div>
@@ -103,29 +103,29 @@
     <!--ab hier die edit contact bereich-->
         <div class="boxOfEdingContact d-none" id="boxOfEdingContact">
             <div class="blueBoxEditContact">
-                <img src="/assets/img/capa1.svg" class="imgBlueBox">
+                <img src="../assets/img/capa1.svg" class="imgBlueBox">
                 <h1 class="h1EditContact">Edit Contact</h1>
             </div>
-            <img src="/assets/img/close.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
+            <img src="../assets/img/close.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
             <div class="witheBoxAddContact">
                 <div class="detailsOFAddContact">
-                    <img src="/assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
+                    <img src="../assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
                     <div class="displayFlex">
                         <input type="text" class="inputField" placeholder="Name" id="nameEditContact">
-                        <img src="/assets/img/person.svg" class="imgInInput">
+                        <img src="../assets/img/person.svg" class="imgInInput">
                     </div>
                     <div class="displayFlex">
                         <input type="text" class="inputField" placeholder="Email" id="emailEditContact">
-                        <img src="/assets/img/mail.svg" class="imgInInput">
+                        <img src="../assets/img/mail.svg" class="imgInInput">
                     </div>
                     <div class="displayFlex">
                         <input type="text" class="inputField" placeholder="Phone" id="phoneEditContact">
-                        <img src="/assets/img/call.svg" class="imgInInput">
+                        <img src="../assets/img/call.svg" class="imgInInput">
                     </div>
                     <div class="btnsAddContact">
                         <button class="displayFlex btnCloseContact" onclick="deleteEditContactWindow()">Delete</button>
                         <button class="displayFlex btnCreateContact" onclick="saveEditContactWindow()">Save <img
-                                src="/assets/img/check.svg" class="samllIconsContactOK"></button>
+                                src="../assets/img/check.svg" class="samllIconsContactOK"></button>
                     </div>
                 </div>
             </div>

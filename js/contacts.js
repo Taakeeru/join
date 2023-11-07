@@ -37,7 +37,7 @@ async function generateContactInSmall() {
         contact.innerHTML += `
         <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact(${newName, newEmail, newPhone})">
             <div>
-                <img src="/assets/img/head-663997_640.jpg" class="imgOfContackt">
+                <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
             </div>
             <div>
                 <p style="margin: 6px;">${newName}</p>
@@ -122,14 +122,14 @@ function showDetailsOfContact(newName, newEmail, newPhone){
     detailsContact.innerHTML ='';
     detailsContact.innerHTML = `
         <div class="positionHeaderContactDetails">
-            <img src="/assets/img/ellipse5.svg" class="bigImgContacts">
+            <img src="../assets/img/ellipse5.svg" class="bigImgContacts">
             <div>
                 <p class="nameHeaderContactDetails">${newName}</p>
                 <div class="positionEditAndDelete">
-                    <button onclick="editContact()" class="displayFlex clearBtn"><img src="/assets/img/edit.svg"
+                    <button onclick="editContact()" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
                             style="margin-right: 8px;">Edit</button>
                     <button onclick="deleteContact()" class="displayFlex clearBtn"><img
-                            src="/assets/img/delete.svg" style="margin-right: 8px">Delete</button>
+                            src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
                 </div>
             </div>
         </div>
