@@ -5,6 +5,7 @@ function init() {
     loadUsers();
 }
 
+
 function renderSignUpContent() {
     renderBody();
     renderCard();
