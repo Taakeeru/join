@@ -1,5 +1,9 @@
 
 
+function init() {
+   
+}
+
 function renderSignUpContent() {
     renderBody();
     renderCard();

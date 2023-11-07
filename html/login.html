@@ -36,13 +36,16 @@
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
-<body id="body">
+<body id="body" class="" onload="init()">
 
     
 
-    <div class="login-content">  
-
-        <div class="logo" id="logo"><img src="/assets/img/join_logo.svg" alt="Logo Bild"></div>
+    <div class="login-content ">  
+        
+        <div class="loader">
+            <div class="logo"></div>
+        </div>
+        <!-- <div class="logo" id="logo"><img src="/assets/img/join_logo.svg" alt="Logo Bild"></div> -->
 
         <div id="login-header" class="login-header" >
         <span>Not a Join user?</span>
@@ -96,7 +99,7 @@
         </div>
     </div>
 
-    <div id="login-footer" class="login-footer">
+    <div id="login-footer" class="login-footer d-none">
         <a id="privacy" href="privacy.html">Privacy Policy</a>
         <a id="legal" href="legal_notice.html">Legal Notice</a>
     </div>
