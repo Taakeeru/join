@@ -27,7 +27,12 @@ async function loadUsers(){
 
 
 async function register() {
-    getInputValues()
+    let signUpButton = document.getElementById('signup-button');
+    let username = document.getElementById('user-name');
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let confirmPassword = document.getElementById('confirm-password');
+
     signUpButton.disabled = true;
 
     const UNIQUE_ID = generateUniqueId();
@@ -43,17 +48,7 @@ async function register() {
 }
 
 
-function getInputValues() {
-    let signUpButton = document.getElementById('signup-button');
-    let username = document.getElementById('user-name');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let confirmPassword = document.getElementById('confirm-password');
-}
-
-
 function resetForm(signUpButton, username, email, password, confirmPassword) {
-
     username.value = '';
     email.value = '';
     password.value = '';
