@@ -23,6 +23,7 @@ function generateLatter(){
     } 
 }
 
+
 async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
     contact.innerHTML = '';
@@ -35,8 +36,8 @@ async function generateContactInSmall() {
         let newEmail = storedContacts[key].email;
         let newPhone = storedContacts[key].phone;
         contact.innerHTML += `
-        <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact(${newName, newEmail, newPhone})">
-            <div>
+        <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${newPhone}', '${newEmail}', '${newName}')">
+        <div>
                 <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
             </div>
             <div>
@@ -117,7 +118,7 @@ async function createNewContact() {
   
 
 
-function showDetailsOfContact(newName, newEmail, newPhone){  
+function showDetailsOfContact(newPhone, newEmail, newName){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
     detailsContact.innerHTML ='';
     detailsContact.innerHTML = `
@@ -140,6 +141,7 @@ function showDetailsOfContact(newName, newEmail, newPhone){
             <p style="font-weight: 600;">Phone</p>
             <p>${newPhone}</p>
         </div>`;
+
 }
 
 
@@ -158,10 +160,52 @@ function closeAddContactBoxWithX(){
 }
 
 
-function editContact(){
+async function editContact(){
+    const response = await getItem(`newContactData`);
+    const storedContacts = JSON.parse(response.data.value);
+    let newName = storedContacts.fullName;
+    let newEmail = storedContacts.email;
+    let newPhone = storedContacts.phone;
     document.getElementById('boxOfEdingContact').classList.toggle('d-none');
+    let valueBox = document.getElementById('boxOfEdingContact');
+    valueBox.innerHTML = '';
+    valueBox.innerHTML = `
+        <div class="blueBoxEditContact">
+            <img src="../assets/img/capa1.svg" class="imgBlueBox">
+            <h1 class="h1EditContact">Edit Contact</h1>
+        </div>
+        <img src="../assets/img/close.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
+        <div class="witheBoxAddContact">
+            <div class="detailsOFAddContact">
+                <img src="../assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
+                <div class="displayFlex">
+                    <input type="text" class="inputField" placeholder="Name" id="nameEditContact">
+                    <img src="../assets/img/person.svg" class="imgInInput">
+                </div>
+                <div class="displayFlex">
+                    <input type="text" class="inputField" placeholder="Email" id="emailEditContact">
+                    <img src="../assets/img/mail.svg" class="imgInInput">
+                </div>
+                <div class="displayFlex">
+                    <input type="text" class="inputField" placeholder="Phone" id="phoneEditContact">
+                    <img src="../assets/img/call.svg" class="imgInInput">
+                </div>
+                <div class="btnsAddContact">
+                    <button class="displayFlex btnCloseContact" onclick="deleteEditContactWindow()">Delete</button>
+                    <button class="displayFlex btnCreateContact" onclick="saveEditContactWindow()">Save <img
+                            src="../assets/img/check.svg" class="samllIconsContactOK"></button>
+                </div>
+            </div>
+        </div>`;
+    setValueInIput(newPhone, newEmail, newName);
 }
 
+
+function setValueInIput(newPhone, newEmail, newName){
+    document.getElementById('nameEditContact').value =`${newName}`;
+    document.getElementById('emailEditContact').value =`${newEmail}`;
+    document.getElementById('phoneEditContact').value =`${newPhone}`;
+}
 
 function closeEditContactBox(){
     document.getElementById('boxOfEdingContact').classList.toggle('d-none');
