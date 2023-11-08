@@ -1,31 +1,25 @@
-let loggedInUser; // Define loggedInUser in the global scope
+let loggedInUser;
 
 async function init() {
-    loggedInUser = await getLoggedInUser(); // Wait for the Promise to resolve
+    loggedInUser = await getLoggedInUser();
     greetUser(loggedInUser);
+    loadProfile(loggedInUser);
 }
 
 async function getLoggedInUser() {
     const userData = await getItem('loggedInUser');
-    return JSON.parse(userData); // Parse the JSON data
+    return JSON.parse(userData);
 }
 
-async function greetUser(loggedInUser) {
+function greetUser(loggedInUser) {
     let name = document.getElementById('greet-name');
     name.textContent = loggedInUser.username;
 }
 
 
-// getItem('loggedInUser')
-//             .then(loggedInUser => {
-//                 // Der Benutzer ist eingeloggt. Sie können auf seine Daten zugreifen.
-//                 console.log('Eingeloggter Benutzer:', loggedInUser);
+function loadProfile(loggedInUser) {
+    let name = document.getElementById('greet-name');
+    name.textContent = loggedInUser.username;
+}
 
-//                 // Hier können Sie den Benutzernamen in Ihren HTML-Code einbetten.
-//                 const greetName = document.getElementById('greet-name');
-//                 greetName.textContent = loggedInUser.username;
-//             })
-//             .catch(error => {
-//                 // Der Benutzer ist nicht eingeloggt oder die Daten wurden nicht gefunden.
-//                 console.error('Benutzer nicht eingeloggt.', error);
-//             });
+
