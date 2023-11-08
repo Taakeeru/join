@@ -76,7 +76,7 @@ padding: 0px 16px 0px 16px;
 
 }
 .scrollContainer{
-  height: 65vh;
+  height: 72vh;
   overflow: scroll;
 }
 .scrollContainer::-webkit-scrollbar {
