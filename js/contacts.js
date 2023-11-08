@@ -35,16 +35,16 @@ async function generateContactInSmall() {
         let newName = storedContacts[key].fullName;
         let newEmail = storedContacts[key].email;
         let newPhone = storedContacts[key].phone;
-        contact.innerHTML += `
-        <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${newPhone}', '${newEmail}', '${newName}')">
-        <div>
-                <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
-            </div>
+        contact.innerHTML += /*html*/`
+            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${newPhone}', '${newEmail}', '${newName}')">
             <div>
-                <p style="margin: 6px;">${newName}</p>
-                <p class="styleMail">${newEmail}</p>
-            </div>
-        </div>`;
+                    <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
+                </div>
+                <div>
+                    <p style="margin: 6px;">${newName}</p>
+                    <p class="styleMail">${newEmail}</p>
+                </div>
+            </div>`;
     }
 }
 
@@ -115,14 +115,15 @@ async function createNewContact() {
   
 function showDetailsOfContact(newPhone, newEmail, newName){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
+    detailsContact.classList.toggle('d-none');
     detailsContact.innerHTML ='';
-    detailsContact.innerHTML = `
+    detailsContact.innerHTML =  /*html*/`
         <div class="positionHeaderContactDetails">
             <img src="../assets/img/ellipse5.svg" class="bigImgContacts">
             <div>
                 <p class="nameHeaderContactDetails">${newName}</p>
                 <div class="positionEditAndDelete">
-                    <button onclick="editContact()" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
+                    <button onclick="editContact('${newName}','${newEmail}','${newPhone}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
                             style="margin-right: 8px;">Edit</button>
                     <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}')" class="displayFlex clearBtn"><img
                             src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
@@ -154,11 +155,11 @@ function closeAddContactBoxWithX(){
 }
 
 
-async function editContact(newPhone, newEmail, newName){
+async function editContact(newName, newEmail, newPhone){
     document.getElementById('boxOfEdingContact').classList.toggle('d-none');
     let valueBox = document.getElementById('boxOfEdingContact');
     valueBox.innerHTML = '';
-    valueBox.innerHTML = `
+    valueBox.innerHTML = /*html*/`
         <div class="blueBoxEditContact">
             <img src="../assets/img/capa1.svg" class="imgBlueBox">
             <h1 class="h1EditContact">Edit Contact</h1>
@@ -180,7 +181,7 @@ async function editContact(newPhone, newEmail, newName){
                     <img src="../assets/img/call.svg" class="imgInInput">
                 </div>
                 <div class="btnsAddContact">
-                    <button class="displayFlex btnCloseContact" onclick="deleteEditContactWindow()">Delete</button>
+                    <button class="displayFlex btnCloseContact" onclick="deleteContact('${newName}','${newEmail}','${newPhone}')">Delete</button>
                     <button class="displayFlex btnCreateContact" onclick="saveEditContactWindow()">Save <img
                             src="../assets/img/check.svg" class="samllIconsContactOK"></button>
                 </div>
@@ -190,7 +191,7 @@ async function editContact(newPhone, newEmail, newName){
 }
 
 
-function setValueInIput(newPhone, newEmail, newName){
+function setValueInIput(newName, newEmail, newPhone){
     document.getElementById('nameEditContact').value = newName;
     document.getElementById('emailEditContact').value = newEmail;
     document.getElementById('phoneEditContact').value = newPhone;
@@ -202,16 +203,14 @@ function closeEditContactBox(){
 }
 
 
-async function deleteContact(fullName, email, phone) {
+async function deleteContact(newName, newEmail, newPhone) {
     const response = await getItem('newContactData');
     const storedContacts = JSON.parse(response.data.value);
 
     for (const key in storedContacts) {
-        if (
-            storedContacts[key].fullName === fullName &&
-            storedContacts[key].email === email &&
-            storedContacts[key].phone === phone
-        ) {
+        if (storedContacts[key].fullName === newName &&
+            storedContacts[key].email === newEmail &&
+            storedContacts[key].phone === newPhone) {
             delete storedContacts[key];
             break;
         }
@@ -219,5 +218,6 @@ async function deleteContact(fullName, email, phone) {
 
     await setItem('newContactData', JSON.stringify(storedContacts));
     await generateContactInSmall();
-
+    document.getElementById('boxOfDetailsContacts').classList.toggle('d-none');
+    document.getElementById('boxOfEdingContact').classList.toggle('d-none');
 }
