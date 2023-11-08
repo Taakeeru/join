@@ -9,7 +9,7 @@ body {
   justify-content: flex-end;
 }
 .mainContent{
-  width: 100vw;
+  width: auto;
 }
 .boardTopSektion {
   display: flex;
@@ -75,28 +75,20 @@ padding: 0px 16px 0px 16px;
   height: 34px;
 
 }
+.scrollContainer{
+  height: 65vh;
+  overflow: scroll;
+}
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
 .boardBotSektion {
   display: flex;
   justify-content: space-between;
   padding: 0px 64px 0px 64px;
   gap: 24px;
-  height: 66vh;
-  overflow: scroll;
-  scrollbar-width: thin; 
-  scrollbar-color: transparent transparent;
-
-}
-.boardBotSektion::-webkit-scrollbar {
-  width: 6px; 
 }
 
-.boardBotSektion::-webkit-scrollbar-thumb {
-  background-color: transparent; 
-}
-
-.boardBotSektion::-webkit-scrollbar-track {
-  background-color: transparent; 
-}
 .boardtoDoSektion {
   width: 200px;    /*erstmal test*/
   gap: 16px;

@@ -32,7 +32,11 @@
         <div class="boardTopSektion">
           <div class="inputSektion">
             <div class="inputfieldIconsContainer">
-              <input class="boardInputfield"type="text"placeholder="Find Task"/>
+              <input
+                class="boardInputfield"
+                type="text"
+                placeholder="Find Task"
+              />
               <img src="/assets/img/vector3.svg" alt="" />
               <img src="/assets/img/search.svg" alt="" />
             </div>
@@ -46,34 +50,63 @@
           <div class="boardCategorysSektion">
             <div class="boardCategorysSektionContainer">
               <p>To do</p>
-              <img class="boardCategorysSektionIcons"src="/assets/img/plus_button.svg"alt=""/>
+              <img
+                class="boardCategorysSektionIcons"
+                src="/assets/img/plus_button.svg"
+                alt=""
+              />
             </div>
             <div class="boardCategorysSektionContainer">
               <p>In progress</p>
-              <img class="boardCategorysSektionIcons"src="/assets/img/plus_button.svg"alt=""/>
+              <img
+                class="boardCategorysSektionIcons"
+                src="/assets/img/plus_button.svg"
+                alt=""
+              />
             </div>
             <div class="boardCategorysSektionContainer">
               <p>Await feedback</p>
-              <img class="boardCategorysSektionIcons"src="/assets/img/plus_button.svg"alt=""/>
+              <img
+                class="boardCategorysSektionIcons"
+                src="/assets/img/plus_button.svg"
+                alt=""
+              />
             </div>
             <div class="boardCategorysSektionContainer"><p>Done</p></div>
           </div>
         </div>
+        <div class="scrollContainer">
+          <div class="boardBotSektion">
+            <div
+              class="boardtoDoSektion"
+              id="toDo"
+              ondragleave="removeHighlight('toDo')"
+              ondragover="allowDrop(event); highlight('toDo')"
+              ondrop="moveTo('toDo'); removeHighlight('toDo')">
+            </div>
 
-        <div class="boardBotSektion">
-          <div class="boardtoDoSektion" id="toDo" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')" ondrop="moveTo('toDo'); removeHighlight('toDo')"  >
-        
-          </div>
+            <div
+              class="boardProgressSektion"
+              id="progress"
+              ondragleave="removeHighlight('progress')"
+              ondragover="allowDrop(event); highlight('progress')"
+              ondrop="moveTo('progress'); removeHighlight('progress')"
+            ></div>
 
-          <div  class="boardProgressSektion" id="progress" ondragleave="removeHighlight('progress')" ondragover="allowDrop(event); highlight('progress')" ondrop="moveTo('progress'); removeHighlight('progress')">
-       
-          </div>
-
-          <div class="boardFeedbackSektion" id="feedBack" ondragleave="removeHighlight('feedBack')" ondragover="allowDrop(event); highlight('feedBack')" ondrop="moveTo('feedBack'); removeHighlight('feedBack')">
-        
-          </div>
-          <div class="boardDoneSektion" id="done" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')" ondrop="moveTo('done'); removeHighlight('done')">
-      
+            <div
+              class="boardFeedbackSektion"
+              id="feedBack"
+              ondragleave="removeHighlight('feedBack')"
+              ondragover="allowDrop(event); highlight('feedBack')"
+              ondrop="moveTo('feedBack'); removeHighlight('feedBack')"
+            ></div>
+            <div
+              class="boardDoneSektion"
+              id="done"
+              ondragleave="removeHighlight('done')"
+              ondragover="allowDrop(event); highlight('done')"
+              ondrop="moveTo('done'); removeHighlight('done')"
+            ></div>
           </div>
         </div>
       </div>
