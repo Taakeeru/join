@@ -45,7 +45,6 @@ async function generateContactInSmall() {
                 <p class="styleMail">${newEmail}</p>
             </div>
         </div>`;
-    
     }
 }
 
@@ -85,8 +84,6 @@ async function createNewContact() {
 }
 
 
-
-
 /** --- erstmal ignorieren
  * create new contact vlaues and push it to the backendStorage
  */
@@ -116,8 +113,6 @@ async function createNewContact() {
 // }
 
   
-
-
 function showDetailsOfContact(newPhone, newEmail, newName){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
     detailsContact.innerHTML ='';
@@ -129,7 +124,7 @@ function showDetailsOfContact(newPhone, newEmail, newName){
                 <div class="positionEditAndDelete">
                     <button onclick="editContact()" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
                             style="margin-right: 8px;">Edit</button>
-                    <button onclick="deleteContact()" class="displayFlex clearBtn"><img
+                    <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}')" class="displayFlex clearBtn"><img
                             src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
                 </div>
             </div>
@@ -141,7 +136,6 @@ function showDetailsOfContact(newPhone, newEmail, newName){
             <p style="font-weight: 600;">Phone</p>
             <p>${newPhone}</p>
         </div>`;
-
 }
 
 
@@ -207,6 +201,31 @@ function setValueInIput(newPhone, newEmail, newName){
     document.getElementById('phoneEditContact').value =`${newPhone}`;
 }
 
+
 function closeEditContactBox(){
     document.getElementById('boxOfEdingContact').classList.toggle('d-none');
+}
+
+
+async function deleteContact(fullName, email, phone) {
+    const response = await getItem('newContactData');
+    const storedContacts = JSON.parse(response.data.value);
+
+    for (const key in storedContacts) {
+        if (
+            storedContacts[key].fullName === fullName &&
+            storedContacts[key].email === email &&
+            storedContacts[key].phone === phone
+        ) {
+            delete storedContacts[key];
+            break;
+        }
+    }
+
+    // Aktualisierte Daten im Speicher speichern
+    await setItem('newContactData', JSON.stringify(storedContacts));
+
+    // Nach dem Löschen die Kontaktliste aktualisieren
+    await generateContactInSmall();
+
 }
