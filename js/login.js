@@ -2,7 +2,9 @@
 
 function init() {
     showContentDuringAnimation();
+    loadUsers();
 }
+
 
 function renderSignUpContent() {
     renderBody();
@@ -33,9 +35,11 @@ function renderBody() {
 
 
 function renderCard() {
-    let name = document.getElementById('input-name');
+    let name = document.getElementById('user-name');
     let confirmPassword = document.getElementById('confirm-password');
     let labelText = document.getElementById('label-text');
+    let logInButton = document.getElementById('login-button');
+    let signUpButton = document.getElementById('signup-button');
     let guestButton = document.getElementById('guest-button');
     let title = document.getElementById('title');
     let titleArrow = document.getElementById('arrow-left');
@@ -43,8 +47,10 @@ function renderCard() {
     name.classList.remove('d-none');
     confirmPassword.classList.remove('d-none');
     labelText.innerHTML = /* html */ `I accept the <a href="privacy.html">Privacy Policy</a>`
+    logInButton.classList.add('d-none');
+    signUpButton.classList.remove('d-none');
     guestButton.classList.add('d-none');
-    title.innerHTML = 'Sign up';
+    title.innerHTML = 'Sign in'
     titleArrow.classList.remove('d-none');
 }
 
@@ -66,9 +72,11 @@ function renderLogInBody() {
 
 
 function renderLogInCard() {
-    let name = document.getElementById('input-name');
+    let name = document.getElementById('user-name');
     let confirmPassword = document.getElementById('confirm-password');
     let labelText = document.getElementById('label-text');
+    let logInButton = document.getElementById('login-button');
+    let signUpButton = document.getElementById('signup-button');
     let guestButton = document.getElementById('guest-button');
     let title = document.getElementById('title');
     let titleArrow = document.getElementById('arrow-left');
@@ -76,6 +84,8 @@ function renderLogInCard() {
     name.classList.add('d-none');
     confirmPassword.classList.add('d-none');
     labelText.innerHTML = /* html */ `Remember me`
+    logInButton.classList.remove('d-none');
+    signUpButton.classList.add('d-none');
     guestButton.classList.remove('d-none');
     title.innerHTML = 'Log in';
     titleArrow.classList.add('d-none');
