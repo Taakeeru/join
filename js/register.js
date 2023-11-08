@@ -48,6 +48,7 @@ function pushUserInfo(username, email, password) {
         username: username.value,
         email: email.value,
         password: password.value,
+        contacts: []
     });
 }
 
