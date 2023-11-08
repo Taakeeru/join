@@ -154,12 +154,7 @@ function closeAddContactBoxWithX(){
 }
 
 
-async function editContact(){
-    const response = await getItem(`newContactData`);
-    const storedContacts = JSON.parse(response.data.value);
-    let newName = storedContacts.fullName;
-    let newEmail = storedContacts.email;
-    let newPhone = storedContacts.phone;
+async function editContact(newPhone, newEmail, newName){
     document.getElementById('boxOfEdingContact').classList.toggle('d-none');
     let valueBox = document.getElementById('boxOfEdingContact');
     valueBox.innerHTML = '';
@@ -196,9 +191,9 @@ async function editContact(){
 
 
 function setValueInIput(newPhone, newEmail, newName){
-    document.getElementById('nameEditContact').value =`${newName}`;
-    document.getElementById('emailEditContact').value =`${newEmail}`;
-    document.getElementById('phoneEditContact').value =`${newPhone}`;
+    document.getElementById('nameEditContact').value = newName;
+    document.getElementById('emailEditContact').value = newEmail;
+    document.getElementById('phoneEditContact').value = newPhone;
 }
 
 
@@ -222,10 +217,7 @@ async function deleteContact(fullName, email, phone) {
         }
     }
 
-    // Aktualisierte Daten im Speicher speichern
     await setItem('newContactData', JSON.stringify(storedContacts));
-
-    // Nach dem Löschen die Kontaktliste aktualisieren
     await generateContactInSmall();
 
 }

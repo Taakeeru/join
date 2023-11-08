@@ -1,14 +1,15 @@
 
 
 function init() {
+    renderLogInContent()
     showContentDuringAnimation();
     loadUsers();
 }
 
 
 function renderSignUpContent() {
-    renderBody();
-    renderCard();
+    renderSignUpBody();
+    renderSignUpCard();
 }
 
 
@@ -18,7 +19,7 @@ function renderLogInContent() {
 }
 
 
-function renderBody() {
+function renderSignUpBody() {
     let body = document.getElementById('body');
     let privacy = document.getElementById('privacy');
     let legal = document.getElementById('legal');
@@ -34,24 +35,15 @@ function renderBody() {
 }
 
 
-function renderCard() {
-    let name = document.getElementById('user-name');
-    let confirmPassword = document.getElementById('confirm-password');
-    let labelText = document.getElementById('label-text');
-    let logInButton = document.getElementById('login-button');
-    let signUpButton = document.getElementById('signup-button');
-    let guestButton = document.getElementById('guest-button');
+function renderSignUpCard() {
     let title = document.getElementById('title');
     let titleArrow = document.getElementById('arrow-left');
-
-    name.classList.remove('d-none');
-    confirmPassword.classList.remove('d-none');
-    labelText.innerHTML = /* html */ `I accept the <a href="privacy.html">Privacy Policy</a>`
-    logInButton.classList.add('d-none');
-    signUpButton.classList.remove('d-none');
-    guestButton.classList.add('d-none');
+    let form = document.getElementById('form-div');
+     
     title.innerHTML = 'Sign in'
     titleArrow.classList.remove('d-none');
+    form.innerHTML = '';
+    form.innerHTML = signUpFormTemplate();
 }
 
 
@@ -72,23 +64,25 @@ function renderLogInBody() {
 
 
 function renderLogInCard() {
-    let name = document.getElementById('user-name');
-    let confirmPassword = document.getElementById('confirm-password');
-    let labelText = document.getElementById('label-text');
-    let logInButton = document.getElementById('login-button');
-    let signUpButton = document.getElementById('signup-button');
-    let guestButton = document.getElementById('guest-button');
     let title = document.getElementById('title');
     let titleArrow = document.getElementById('arrow-left');
+    let form = document.getElementById('form-div');
 
-    name.classList.add('d-none');
-    confirmPassword.classList.add('d-none');
-    labelText.innerHTML = /* html */ `Remember me`
-    logInButton.classList.remove('d-none');
-    signUpButton.classList.add('d-none');
-    guestButton.classList.remove('d-none');
     title.innerHTML = 'Log in';
     titleArrow.classList.add('d-none');
+    form.innerHTML = '';
+    form.innerHTML = logInFormTemplate();
+}
+
+
+function login() {
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let user = users.find(u => u.email == email.value && u.password == password.value);
+    console.log(user);
+    if(user) {
+        console.log('User gefunden!')
+    }
 }
 
 
