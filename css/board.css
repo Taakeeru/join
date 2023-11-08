@@ -9,7 +9,7 @@ body {
   justify-content: flex-end;
 }
 .mainContent{
-  width: auto;
+  width: 100%;
 }
 .boardTopSektion {
   display: flex;
@@ -56,7 +56,7 @@ body {
 
 .boardCategorysSektion {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0px 64px 0px 64px;
   font-weight: 700;
   color: #42526E;
@@ -84,13 +84,12 @@ padding: 0px 16px 0px 16px;
 }
 .boardBotSektion {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0px 64px 0px 64px;
-  gap: 24px;
 }
 
 .boardtoDoSektion {
-  width: 200px;    /*erstmal test*/
+  width: 252px;   
   gap: 16px;
   display: flex;
   flex-direction: column;
@@ -100,19 +99,19 @@ padding: 0px 16px 0px 16px;
   background-color: rgba(195, 189, 189, 0.1);
 }
 .boardProgressSektion {
-  width: 200px;    /*erstmal test*/
+  width: 252px;  
   gap: 16px;
   display: flex;
   flex-direction: column;
 }
 .boardFeedbackSektion {
-  width: 200px;    /*erstmal test*/
+  width: 252px;  
   gap: 16px;
   display: flex;
   flex-direction: column;
 }
 .boardDoneSektion {
-  width: 200px;    /*erstmal test*/
+  width: 252px;  
   gap: 16px;
   display: flex;
   flex-direction: column;
@@ -146,7 +145,7 @@ padding: 0px 16px 0px 16px;
   font-weight: 400;
 }
 .cardDescription {
-    display: grid;
+  display: grid;
   border-radius: 10px;
   gap: 8px;
 }
