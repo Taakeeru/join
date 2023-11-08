@@ -40,7 +40,7 @@ async function register() {
 }
 
 
-function pushUserInfo(username, email, password, newContact) {
+function pushUserInfo(username, email, password) {
     const UNIQUE_ID = generateUniqueId();
 
     users.push({
@@ -48,7 +48,6 @@ function pushUserInfo(username, email, password, newContact) {
         username: username.value,
         email: email.value,
         password: password.value,
-        contact: [newContact]
     });
 }
 
