@@ -86,6 +86,7 @@ padding: 0px 16px 0px 16px;
   display: flex;
   justify-content: space-around;
   padding: 0px 64px 0px 64px;
+  padding-bottom: 12px;
 }
 
 .boardtoDoSektion {
@@ -93,6 +94,7 @@ padding: 0px 16px 0px 16px;
   gap: 16px;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 
 .boardtoDoSektion-highlight {
@@ -103,18 +105,21 @@ padding: 0px 16px 0px 16px;
   gap: 16px;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 .boardFeedbackSektion {
   width: 252px;  
   gap: 16px;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 .boardDoneSektion {
   width: 252px;  
   gap: 16px;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 .cards {
   width: 252px;
