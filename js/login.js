@@ -1,7 +1,7 @@
 
 
 function init() {
-    renderLogInContent()
+    renderLogInCard();
     showContentDuringAnimation();
     loadUsers();
 }
@@ -82,6 +82,10 @@ function login() {
     console.log(user);
     if(user) {
         console.log('User gefunden!');
+        window.location
+    } else {
+        //wenn passwort falsch = fehlermeldung under passwort
+        //wenn email falsch = fehlermeldung unter email
     }
 }
 
@@ -99,5 +103,5 @@ function showContentDuringAnimation() {
                 element.classList.remove('d-none-js');
             }
         });
-    }, 300);
+    }, 1300);
 }

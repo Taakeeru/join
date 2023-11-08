@@ -192,7 +192,7 @@ body {
   padding: 0;
   background: rgb(69, 137, 255);
   overflow: hidden;
-  animation: bodyBackgroundAnimation 0.5s ease-in forwards;
+  animation: bodyBackgroundAnimation 1.5s ease-in forwards;
 }
 
 .loader {
@@ -202,7 +202,7 @@ body {
   transform: translate(-50%, -50%);
   width: 265px; /* Start size */
   height: 323px;
-  animation: logoAnimation 0.5s ease-in forwards;
+  animation: logoAnimation 0.5s ease-in forwards 1s;
   background: url('/assets/img/join-big.svg') no-repeat center top, url('/assets/img/join_logo.svg') no-repeat center top;
   background-size: contain;
   z-index: 999;
@@ -210,6 +210,9 @@ body {
 
 @keyframes bodyBackgroundAnimation {
   0% {
+    background: rgb(69, 137, 255);
+  }
+  50% {
     background: rgb(69, 137, 255);
   }
   100% {
