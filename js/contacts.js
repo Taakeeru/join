@@ -76,7 +76,8 @@ async function createNewContact() {
         existingData[newContact.fullName] = newContact;
     }
 
-    await setItem('newContactData', existingData);
+    pushUserInfo(newContact);
+    // await setItem('newContactData', existingData);
     generateContactInSmall(existingData);
 
     fullName.value = '';
