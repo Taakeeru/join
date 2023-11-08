@@ -29,5 +29,3 @@ async function greetUser(loggedInUser) {
 //                 // Der Benutzer ist nicht eingeloggt oder die Daten wurden nicht gefunden.
 //                 console.error('Benutzer nicht eingeloggt.', error);
 //             });
-
-
