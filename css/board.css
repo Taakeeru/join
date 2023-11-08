@@ -220,3 +220,21 @@ padding: 0px 16px 0px 16px;
     text-align: center;
     line-height: 30px; 
 }
+@media (max-height: 667px) {
+
+  .boardCategorysSektion {
+    flex-direction: column;
+    padding: 0px 64px 0px 64px;
+    font-weight: 700;
+    color: #42526E;
+    font-size: 23px;
+    display: flex;
+}
+.boardBotSektion {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 64px 0px 64px;
+  padding-bottom: 12px;
+  flex-direction: column;
+}}
+
