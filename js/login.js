@@ -75,19 +75,26 @@ function renderLogInCard() {
 }
 
 
-function login() {
+async function login() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let user = users.find(u => u.email == email.value && u.password == password.value);
     console.log(user);
     if(user) {
         console.log('User gefunden!');
-        window.location
+        await setItem('loggedInUser', JSON.stringify(user));
+        window.location.href = '/html/summary.html';
     } else {
-        //wenn passwort falsch = fehlermeldung under passwort
-        //wenn email falsch = fehlermeldung unter email
+        if (user === undefined) {
+            document.getElementById('emailError').textContent = 'Worng E-Mail';
+        } else {
+            document.getElementById('passwordError').textContent = 'Worng Password';
+        }
     }
 }
+
+
+
 
 
 function showContentDuringAnimation() {

@@ -6,12 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Summary</title>
   <script src="../js/include.js" defer></script>
+  <script src="../js/storage2.js"></script>
+  <script src="../js/register.js"></script>
+  <script src="../js/login.js" ></script>
+  <script src="../js/summary.js"></script>
   <link rel="stylesheet" href="../css/desktop_template_header.css">
   <link rel="stylesheet" href="../css/desktop_template_footer.css">
   <link rel="stylesheet" href="../css/summary.css">
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); init()">
 
   <div w3-include-html="../assets/templates/desktop_template_header.html"></div>
   <div class="dislayRowBody">
@@ -19,7 +23,7 @@
       <div class="boxForBoxes">
         <div class="positionGreed">
           <h1 class="showGreed">Good morning,</h1>
-          <h1 class="showName">Max Mustermann</h1>
+          <h1 class="showName" id="greet-name">Max Mustermann</h1>
         </div>
         <div class="positionTime">
           <div class="showDate" onclick="showTaskBoard()">
@@ -33,7 +37,7 @@
             <div class="whiteLine"></div>
             <div class="deadlineBox">
               <p class="dateDeadline">monat 01.01.2023</p>
-              <p class="tasksUrgent">Upkomming Deadline</p>
+              <p class="tasksUrgent">Upcoming Deadline</p>
             </div>
           </div>
           <div class="showTasksInBoard displayRow" onclick="showTaskBoard()">
