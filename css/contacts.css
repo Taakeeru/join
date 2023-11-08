@@ -192,12 +192,6 @@ body{
     color: #2776ff;
 }
 
-.backgrondColor{
-    width: 100vw;
-    height: 100vh;
-    background-color: #d1d1d1;
-    z-index: 1;
-}
 
 .boxOfAddingNewContact{
     height: 100vh;
@@ -386,4 +380,15 @@ body{
     right: 0;
     margin: 16px;
     cursor: pointer;
+}
+
+.backgoundBox{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(219, 219, 219, 0.8);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
