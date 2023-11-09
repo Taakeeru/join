@@ -56,6 +56,32 @@ function loadHelp() {
 
 
 async function logout() {
-    await removeItem('loggedInUser');
-    window.location.href = '/html/login.html';
+    try {
+        // Leeren des loggedInUser-Werts
+        await updateLoggedInUser({});  // Hier wird die POST-Methode verwendet
+        
+        // Weiterleitung zur Login-Seite oder einer anderen gewünschten Seite
+        window.location.href = '/html/login.html';
+    } catch (error) {
+        console.error('Error during logout:', error);
+    }
+}
+
+async function updateLoggedInUser(newValues) {
+    const url = `${STORAGE_URL}?key=loggedInUser&token=${STORAGE_TOKEN}`;
+    try {
+        const response = await fetch(url, { method: 'POST', body: JSON.stringify(newValues) });
+        const responseData = await response.json();
+
+        console.log('Server Response:', responseData);
+
+        if (response.ok) {
+            console.log('loggedInUser updated successfully.');
+        } else {
+            throw 'Error updating loggedInUser.';
+        }
+    } catch (error) {
+        console.error('Error during updateLoggedInUser:', error);
+        throw error;
+    }
 }
