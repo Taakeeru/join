@@ -6,6 +6,7 @@ async function init() {
     greetUser(loggedInUser);
     showProfileInitials(loggedInUser);
     updateCurrentDate();
+    loadUsers();
 }
 
 

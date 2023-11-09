@@ -94,9 +94,6 @@ async function login() {
 }
 
 
-
-
-
 function showContentDuringAnimation() {
     setTimeout(function() {
         let elementsToDisplay = [

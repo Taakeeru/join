@@ -35,6 +35,7 @@ async function init() {
   updateHTML();
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
+  loadUsers();
 }
 
 let currentDraggedElement;

@@ -7,6 +7,7 @@ async function init(){
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
     await generateContactInSmall();
+    loadUsers();
 }
 
 

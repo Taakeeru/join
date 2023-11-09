@@ -34,3 +34,8 @@ function showProfileInitials(loggedInUser) {
         initials.textContent = '';
     }
 }
+
+
+function logout() {
+    
+}
