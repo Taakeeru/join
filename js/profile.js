@@ -1,9 +1,9 @@
 let loggedInUser;
 
-// async function init() {
-//     loggedInUser = await getLoggedInUser();
-//     showProfileInitials(loggedInUser);
-// }
+async function initProfile() {
+    loggedInUser = await getLoggedInUser();
+    showProfileInitials(loggedInUser);
+}
 
 async function getLoggedInUser() {
     const userData = await getItem('loggedInUser');
@@ -55,6 +55,7 @@ function loadHelp() {
 }
 
 
-function logout() {
-    
+async function logout() {
+    await removeItem('loggedInUser');
+    window.location.href = '/html/login.html';
 }

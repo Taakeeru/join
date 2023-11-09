@@ -18,3 +18,23 @@ async function getItem(key) {
         } throw `Could not find data with key "${key}".`;
     });
 }
+
+
+async function removeItem(key) {
+    const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+    const existingData = await fetch(url).then(res => res.json());
+
+    if (existingData.success) {
+        return fetch(url, { method: 'DELETE' })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    console.log(`Item with key "${key}" removed successfully.`);
+                } else {
+                    throw `Failed to remove item with key "${key}".`;
+                }
+            });
+    } else {
+        console.log(`Item with key "${key}" not found.`);
+    }
+}
