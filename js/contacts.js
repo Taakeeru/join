@@ -57,7 +57,7 @@ async function createNewContact() {
     const phone = document.getElementById('phoneAddContact');
 
     const existingDataResponse = await getItem('newContactData');
-    const existingData = existingDataResponse.data.value ? JSON.parse(existingDataResponse.data.value) : {};
+    const existingData = existingDataResponse ? JSON.parse(existingDataResponse) : {};
     const newContact = {
         fullName: fullName.value.trim(),
         email: email.value.trim(),
@@ -77,7 +77,7 @@ async function createNewContact() {
         existingData[newContact.fullName] = newContact;
     }
 
-    await setItem('newContactData', JSON.stringify(existingData));
+    await setItem('newContactData', JSON.stringify(existingData)); // v Seckin hier statt in diesen Key in loggedInUser.contacts rein un das selbe dann mit delöete und edit auch
     generateContactInSmall(existingData);
 
     fullName.value = '';
