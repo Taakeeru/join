@@ -215,8 +215,8 @@ function closeEditContactBox(){
 
 
 async function deleteContact(newName, newEmail, newPhone) {
-    const response = await getItem('newContactData');
-    const storedContacts = JSON.parse(response.data.value);
+    let response = await getItem('newContactData');
+    let storedContacts = JSON.parse(response);
 
     for (const key in storedContacts) {
         if (storedContacts[key].fullName === newName &&
