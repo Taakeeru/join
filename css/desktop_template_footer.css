@@ -31,7 +31,10 @@
     display: flex;
     justify-items: center;
     transition: all .2s ease-in-out; 
-    padding: 8px;
+    padding: 8px 30px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .positionTaskIcons:hover {
@@ -44,16 +47,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 66px;
 }
 
 .footerBox{
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    gap: 16px;
 }
 
 .linksFooter{
     margin-top: 0;
-    margin-bottom: 24px;
+    margin-bottom: 0;
+    padding: 8px;
     cursor: pointer;
+}
+
+.linksFooter:hover {
+    color: #2756ff;
 }
