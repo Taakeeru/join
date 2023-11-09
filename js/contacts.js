@@ -257,10 +257,6 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
 }
 
 
-// async function clearStorage() {
-//     sessionStorage.clear('newContactData');
-//     await generateContactInSmall();
-// }
 
 async function clearStorage() {
     const key = "newContactData";
