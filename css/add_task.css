@@ -141,7 +141,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 79px;
-  padding-top: 24px;
+  padding-top: 24px!important;
 }
 .assignedTitleContainer {
   display: flex;
@@ -209,7 +209,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 79px;
-  padding-top: 24px;
+  padding-top: 24px!important;
 }
 .subtaskInput{
   display: flex;

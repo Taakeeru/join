@@ -237,4 +237,62 @@ padding: 0px 16px 0px 16px;
   padding-bottom: 12px;
   flex-direction: column;
 }}
+/* SideMenuClass*/
+.sideMenuStyle{
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 518px;
+  height: 100vh;
+  z-index: 2;
+  transform:translate(518px);
+  transition: all 225ms ease-in-out;
+}
+.showmenu{
+  transform:translate(0) ;
+}
+.menuContainer{
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.display-none{
+  display: none;
+}
+.assignedContent-sideMenu{
+  height: 106px!important;
+}
+.contentContainer-sideMenu {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  /* overflow: hidden; */
+  height: 786px;
+  width: 518px;
+}
+.addTask-sideMenu {
+  width: 518px!important;
+  overflow-x: hidden;
+}
+.topSektion-sideMenu {
+  
+  width: 470px!important;
+ 
+}
+.inputFieldTitle-sideMenu {
+  
+  width: 470px!important;
+ 
+}
+.description-sideMenu {
+  padding-top: 8px!important;
+  width: 470px!important;
+
+}
 

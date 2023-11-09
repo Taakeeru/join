@@ -121,6 +121,16 @@ function removeHighlight(id) {
     }, 100); 
 }
 
+function showAddTaskMenu() {
+  document.getElementById('menuContainerBox').classList.add('menuContainer');
+  document.getElementById('sideMenu').classList.add('showmenu');
+}
+
+function closeAddTaskMenu() {
+  document.getElementById('menuContainerBox').classList.remove('menuContainer');
+  document.getElementById('sideMenu').classList.remove('showmenu');
+}
+
 
 
 
