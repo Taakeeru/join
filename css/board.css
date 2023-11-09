@@ -8,7 +8,7 @@ body {
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
-.mainContent{
+.mainContent {
   width: 100%;
 }
 .boardTopSektion {
@@ -39,12 +39,12 @@ body {
   border: 1px solid #4589ff;
 }
 .boardInputfield {
-  border:0px;
+  border: 0px;
   font-size: 16px;
   font-family: inter;
 }
-.boardInputfield:focus{
-    outline: none;
+.boardInputfield:focus {
+  outline: none;
 }
 .boardButton {
   background: #4589ff;
@@ -59,23 +59,21 @@ body {
   justify-content: space-around;
   padding: 0px 64px 0px 64px;
   font-weight: 700;
-  color: #42526E;
+  color: #42526e;
   font-size: 23px;
 }
-.boardCategorysSektionContainer{   
-display: flex;
-gap: 0px;
-width: 252px;
-justify-content: space-between;
-padding: 0px 16px 0px 16px;
-
+.boardCategorysSektionContainer {
+  display: flex;
+  gap: 0px;
+  width: 252px;
+  justify-content: space-between;
+  padding: 0px 16px 0px 16px;
 }
-.boardCategorysSektionIcons{
+.boardCategorysSektionIcons {
   width: 24px;
   height: 34px;
-
 }
-.scrollContainer{
+.scrollContainer {
   height: 72vh;
   overflow: scroll;
 }
@@ -90,7 +88,7 @@ padding: 0px 16px 0px 16px;
 }
 
 .boardtoDoSektion {
-  width: 252px;   
+  width: 252px;
   gap: 16px;
   display: flex;
   flex-direction: column;
@@ -101,21 +99,21 @@ padding: 0px 16px 0px 16px;
   background-color: rgba(195, 189, 189, 0.1);
 }
 .boardProgressSektion {
-  width: 252px;  
+  width: 252px;
   gap: 16px;
   display: flex;
   flex-direction: column;
   padding-top: 10px;
 }
 .boardFeedbackSektion {
-  width: 252px;  
+  width: 252px;
   gap: 16px;
   display: flex;
   flex-direction: column;
   padding-top: 10px;
 }
 .boardDoneSektion {
-  width: 252px;  
+  width: 252px;
   gap: 16px;
   display: flex;
   flex-direction: column;
@@ -181,23 +179,23 @@ padding: 0px 16px 0px 16px;
   margin-block-end: 0;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  color: #A8A8A8;
-  font-family: 'Inter';
+  color: #a8a8a8;
+  font-family: "Inter";
 }
 
 .cardSub {
-    Width:220px;
-    Height:16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  width: 220px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.progress{
+.progress {
   width: 128px;
 }
 .cardSubNumber {
   font-size: 13px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 400;
   margin-block-start: 0em;
   margin-block-end: 0em;
@@ -205,40 +203,40 @@ padding: 0px 16px 0px 16px;
   margin-inline-end: 0px;
 }
 .cardAddUser {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 17px;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 17px;
+  align-items: center;
 }
-.cardUserSymbole{
-    display: inline-block;
-    width: 30px; 
-    height: 30px; 
-    border-radius: 50%; 
-    background-color: #ff5733; 
-    color: #fff; 
-    text-align: center;
-    line-height: 30px; 
+.cardUserSymbole {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ff5733;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
 }
 @media (max-height: 667px) {
-
   .boardCategorysSektion {
     flex-direction: column;
     padding: 0px 64px 0px 64px;
     font-weight: 700;
-    color: #42526E;
+    color: #42526e;
     font-size: 23px;
     display: flex;
+  }
+  .boardBotSektion {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 64px 0px 64px;
+    padding-bottom: 12px;
+    flex-direction: column;
+  }
 }
-.boardBotSektion {
-  display: flex;
-  justify-content: space-around;
-  padding: 0px 64px 0px 64px;
-  padding-bottom: 12px;
-  flex-direction: column;
-}}
 /* SideMenuClass*/
-.sideMenuStyle{
+.sideMenuStyle {
   background-color: #fff;
   position: absolute;
   right: 0;
@@ -246,13 +244,13 @@ padding: 0px 16px 0px 16px;
   width: 518px;
   height: 100vh;
   z-index: 2;
-  transform:translate(518px);
+  transform: translate(518px);
   transition: all 225ms ease-in-out;
 }
-.showmenu{
-  transform:translate(0) ;
+.showmenu {
+  transform: translate(0);
 }
-.menuContainer{
+.menuContainer {
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 999;
   position: fixed;
@@ -262,11 +260,11 @@ padding: 0px 16px 0px 16px;
   height: 100vh;
   width: 100vw;
 }
-.display-none{
+.display-none {
   display: none;
 }
-.assignedContent-sideMenu{
-  height: 106px!important;
+.assignedContent-sideMenu {
+  height: 106px !important;
 }
 .contentContainer-sideMenu {
   display: flex;
@@ -277,22 +275,16 @@ padding: 0px 16px 0px 16px;
   width: 518px;
 }
 .addTask-sideMenu {
-  width: 518px!important;
+  width: 518px !important;
   overflow-x: hidden;
 }
 .topSektion-sideMenu {
-  
-  width: 470px!important;
- 
+  width: 470px !important;
 }
 .inputFieldTitle-sideMenu {
-  
-  width: 470px!important;
- 
+  width: 470px !important;
 }
 .description-sideMenu {
-  padding-top: 8px!important;
-  width: 470px!important;
-
+  padding-top: 8px !important;
+  width: 470px !important;
 }
-
