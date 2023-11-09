@@ -4,6 +4,8 @@ let newContactData = [];
 async function init(){
     includeHTML();
     generateLatter();
+    loggedInUser = await getLoggedInUser();
+    showProfileInitials(loggedInUser);
     await generateContactInSmall();
 }
 
@@ -29,7 +31,7 @@ async function generateContactInSmall() {
     contact.innerHTML = '';
 
     let response = await getItem('newContactData');
-    let storedContacts = JSON.parse(response.data.value);
+    let storedContacts = JSON.parse(response);
     // contact.innerHTML = `<p class="styleMail">${storedContacts}</p>`;
     for (const key in storedContacts) {
         let newName = storedContacts[key].fullName;
