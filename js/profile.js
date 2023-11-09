@@ -69,8 +69,10 @@ async function logout() {
 
 async function updateLoggedInUser(newValues) {
     const url = `${STORAGE_URL}?key=loggedInUser&token=${STORAGE_TOKEN}`;
+    const payload = { key: 'loggedInUser', token: STORAGE_TOKEN, value: newValues };
+    
     try {
-        const response = await fetch(url, { method: 'POST', body: JSON.stringify(newValues) });
+        const response = await fetch(url, { method: 'POST', body: JSON.stringify(payload) });
         const responseData = await response.json();
 
         console.log('Server Response:', responseData);

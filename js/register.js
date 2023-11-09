@@ -1,4 +1,4 @@
-let users = [{id: 'demo', username: 'demo', email: 'demo@demo.com', password: 'demo123'}];
+let users = [];
 
 
 function generateUniqueId() {
