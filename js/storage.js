@@ -9,7 +9,21 @@ async function setItem(key, value){
 }
 
 
-async function getItem(key){
+// async function getItem(key){
+//     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+//     return fetch(url).then(res => res.json());
+// }
+
+async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    return fetch(url).then(res => res.json());
+    return fetch(url)
+        .then(res => res.text()) // or res.json() if you expect a JSON response
+        .then(text => {
+            try {
+                return JSON.parse(text);
+            } catch (error) {
+                console.error("Invalid JSON:", text, "\nError:", error);
+                return null; // or handle the error as needed
+            }
+        });
 }

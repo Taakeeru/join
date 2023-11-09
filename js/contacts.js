@@ -30,7 +30,7 @@ async function generateContactInSmall() {
 
     const response = await getItem(`newContactData`);
     const storedContacts = JSON.parse(response.data.value);
-
+    
     for (const key in storedContacts) {
         let newName = storedContacts[key].fullName;
         let newEmail = storedContacts[key].email;
@@ -84,8 +84,7 @@ async function createNewContact() {
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
 }
 
-
-  
+ 
 function showDetailsOfContact(newPhone, newEmail, newName){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
     detailsContact.classList.toggle('d-none');
@@ -252,4 +251,10 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
     await setItem('newContactData', JSON.stringify(storedContacts));
     await generateContactInSmall();
     document.getElementById('boxOfEdingContact').classList.add('d-none');
+}
+
+
+async function clearStorage() {
+    sessionStorage.clear("newContactData");
+    await generateContactInSmall();
 }
