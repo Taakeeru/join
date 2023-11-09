@@ -28,9 +28,9 @@ async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
     contact.innerHTML = '';
 
-    const response = await getItem(`newContactData`);
-    const storedContacts = JSON.parse(response.data.value);
-    
+    let response = await getItem('newContactData');
+    let storedContacts = JSON.parse(response.data.value);
+    // contact.innerHTML = `<p class="styleMail">${storedContacts}</p>`;
     for (const key in storedContacts) {
         let newName = storedContacts[key].fullName;
         let newEmail = storedContacts[key].email;
@@ -75,7 +75,7 @@ async function createNewContact() {
         existingData[newContact.fullName] = newContact;
     }
 
-    await setItem('newContactData', existingData);
+    await setItem('newContactData', JSON.stringify(existingData));
     generateContactInSmall(existingData);
 
     fullName.value = '';
@@ -254,7 +254,32 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
 }
 
 
+// async function clearStorage() {
+//     sessionStorage.clear('newContactData');
+//     await generateContactInSmall();
+// }
+
 async function clearStorage() {
-    sessionStorage.clear("newContactData");
+    const key = "newContactData";
+    try {
+        // Fetch the current data from the server
+        const response = await getItem(key);
+        const { data } = response;
+
+        // Check if the response is successful and the value exists
+        if (response.status === "success" && data && data.value) {
+            // Delete the value
+            delete data.value;
+
+            // Upload the updated data to the server
+            const updatedResponse = await setItem(key, data);
+            console.log(updatedResponse); // Optionally, handle the response
+        } else {
+            console.log("Value not found or server response unsuccessful");
+        }
+    } catch (error) {
+        console.error("Error occurred: ", error);
+    }
     await generateContactInSmall();
 }
+
