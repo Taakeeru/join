@@ -59,13 +59,13 @@ body{
 .showGreed{
     color: #2A3647;
     font-size: 48px;
-    font-weight: 100;
+    font-weight: 500;
 }
 
 .showName{
     color: #4589FF;
     font-size: 54px;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .showDate{

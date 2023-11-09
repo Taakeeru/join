@@ -23,9 +23,11 @@ let todos = [{
     'title': 'Alle',
     'category': 'done'
 }];
-function init() {
+async function init() {
     includeHTML();
     updateHTML();
+    loggedInUser = await getLoggedInUser();
+    showProfileInitials(loggedInUser);
 }
 
 let currentDraggedElement;
