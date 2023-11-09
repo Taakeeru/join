@@ -36,6 +36,25 @@ function showProfileInitials(loggedInUser) {
 }
 
 
+function toggleSettings() {
+    let settings = document.getElementById('profile-settings');
+    let profile = document.getElementById('initials-div')
+
+    if (settings.classList.contains('d-none')) {
+        settings.classList.remove('d-none');
+        profile.classList.add('bg-colorchange');
+    } else {
+        settings.classList.add('d-none');
+        profile.classList.remove('bg-colorchange');
+    }
+}
+
+
+function loadHelp() {
+
+}
+
+
 function logout() {
     
 }

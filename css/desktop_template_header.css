@@ -58,3 +58,39 @@
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
+
+.profile-settings {
+    position: absolute;
+    right: 4px;
+    top: 96px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    text-align: end;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.20);
+}
+
+.profile-settings a {
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(66, 82, 110, 1);
+    text-decoration: none;
+    padding: 4px 20px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.profile-settings a:hover {
+    background-color: rgba(200, 222, 255, 0.315)
+}
+
+.d-none {
+    display: none;
+}
+
+.bg-colorchange {
+    background-color: rgba(200, 222, 255, 0.404) !important;
+}
