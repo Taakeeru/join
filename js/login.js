@@ -81,7 +81,6 @@ async function login() {
     let user = users.find(u => u.email == email.value && u.password == password.value);
     console.log(user);
     if(user) {
-        console.log('User gefunden!');
         await setItem('loggedInUser', JSON.stringify(user));
         window.location.href = '/html/summary.html';
     } else {

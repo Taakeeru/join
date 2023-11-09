@@ -21,20 +21,44 @@ async function getItem(key) {
 
 
 async function removeItem(key) {
-    const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    const existingData = await fetch(url).then(res => res.json());
+    // const key = key;
+    try {
+        // Fetch the current data from the server
+        const response = await getItem(key);
+        const { data } = response;
 
-    if (existingData.success) {
-        return fetch(url, { method: 'DELETE' })
-            .then(res => res.json())
-            .then(res => {
-                if (res.success) {
-                    console.log(`Item with key "${key}" removed successfully.`);
-                } else {
-                    throw `Failed to remove item with key "${key}".`;
-                }
-            });
-    } else {
-        console.log(`Item with key "${key}" not found.`);
+        // Check if the response is successful and the value exists
+        if (response.status === "success" && data && data.value) {
+            // Delete the value
+            delete data.value;
+
+            // Upload the updated data to the server
+            const updatedResponse = await setItem(key, data);
+            console.log(updatedResponse); // Optionally, handle the response
+        } else {
+            console.log("Value not found or server response unsuccessful");
+        }
+    } catch (error) {
+        console.error("Error occurred: ", error);
     }
 }
+
+
+// async function removeItem(key) {
+//     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+//     const existingData = await fetch(url).then(res => res.json());
+
+//     if (existingData.success) {
+//         return fetch(url, { method: 'DELETE' })
+//             .then(res => res.json())
+//             .then(res => {
+//                 if (res.success) {
+//                     console.log(`Item with key "${key}" removed successfully.`);
+//                 } else {
+//                     throw `Failed to remove item with key "${key}".`;
+//                 }
+//             });
+//     } else {
+//         console.log(`Item with key "${key}" not found.`);
+//     }
+// }
