@@ -1,4 +1,4 @@
-let todos = [
+let allTask = [
   {
     id: 0,
     title: "Ich",
@@ -41,7 +41,7 @@ async function init() {
 let currentDraggedElement;
 
 function updateHTML() {
-  let toDolist = todos.filter((t) => t["category"] == "toDo");
+  let toDolist = allTask.filter((t) => t["category"] == "toDo");
 
   document.getElementById("toDo").innerHTML = "";
 
@@ -50,7 +50,7 @@ function updateHTML() {
     document.getElementById("toDo").innerHTML += generateTodoHTML(element);
   }
 
-  let progressList = todos.filter((t) => t["category"] == "progress");
+  let progressList = allTask.filter((t) => t["category"] == "progress");
 
   document.getElementById("progress").innerHTML = "";
 
@@ -59,7 +59,7 @@ function updateHTML() {
     document.getElementById("progress").innerHTML += generateTodoHTML(element);
   }
 
-  let feedbackList = todos.filter((t) => t["category"] == "feedBack");
+  let feedbackList = allTask.filter((t) => t["category"] == "feedBack");
 
   document.getElementById("feedBack").innerHTML = "";
 
@@ -68,7 +68,7 @@ function updateHTML() {
     document.getElementById("feedBack").innerHTML += generateTodoHTML(element);
   }
 
-  let doneList = todos.filter((t) => t["category"] == "done");
+  let doneList = allTask.filter((t) => t["category"] == "done");
 
   document.getElementById("done").innerHTML = "";
 
@@ -114,7 +114,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-  todos[currentDraggedElement]["category"] = category;
+  allTask[currentDraggedElement]["category"] = category;
   updateHTML();
 }
 
