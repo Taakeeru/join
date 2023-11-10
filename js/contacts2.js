@@ -5,7 +5,7 @@ let newContactData = [];
 
 async function init() {
     includeHTML();
-    generateLatter();
+    // generateLatter();
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
     generateContactInSmall();
@@ -61,20 +61,38 @@ function resetForm(name, email, phone) {
 }
 
 
-function generateLatter(){
-    let letter = document.getElementById('generateLatter');
-    letter.innerHTML = '';
-    for (let i = 0; i < firstLetter.length; i++) {
-        const letters = firstLetter[i];
-        letter.innerHTML += `
-            <div class="positionLetterContact">
-                <p class="letterContact" id="letterContact">${letters}</p>
-            </div>
-            <div class="positionLineContact">
-                <p class="lineContact"></p>
-            </div>`;
-    } 
-}
+// function generateLatter(sortedContacts){
+//     let seeContacts = sortedContacts;
+//     for (let i = 0; i < seeContacts.length; i++) {
+//         let getName = seeContacts[i].name.charAt(0).toUpperCase();
+//         firstLetter.push(getName);   
+//     }
+//     generateLatterWithLine();
+// }
+
+
+// function generateLatterWithLine() {
+//     let letter = document.getElementById('generateLatter');
+//     letter.innerHTML = '';
+
+//     let uniqueLetters = new Set(firstLetter);
+
+//     // Array aus dem Set erstellen, um es sortieren zu können
+//     let uniqueLettersArray = Array.from(uniqueLetters);
+//     uniqueLettersArray.sort();
+
+//     for (let i = 0; i < uniqueLettersArray.length; i++) {
+//         let getLatter = uniqueLettersArray[i]; // Nur den aktuellen Buchstaben bekommen
+//         letter.innerHTML += `
+//             <div class="positionLetterContact">
+//                 <p class="letterContact" id="letterContact">${getLatter}</p>
+//             </div>
+//             <div class="positionLineContact">
+//                 <p class="lineContact"></p>
+//             </div>`;
+//     } 
+// }
+
 
 
 async function generateContactInSmall() {
@@ -82,10 +100,28 @@ async function generateContactInSmall() {
     contact.innerHTML = '';
 
     let loggedInUser = await getLoggedInUser() || { contacts: [] };
+    let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
+    
+    let currentLetter = null;
 
-    for (let i = 0; i < loggedInUser.contacts.length; i++) {
-        let contactData = loggedInUser.contacts[i];
+    for (let i = 0; i < sortedContacts.length; i++) {
+        let contactData = sortedContacts[i];
+        let firstLetter = contactData.name.charAt(0).toUpperCase();
 
+        if (firstLetter !== currentLetter) {
+            // Buchstabe und Linie hinzufügen
+            contact.innerHTML += /*html*/`
+                <div class="positionLetterContact">
+                    <p class="letterContact" id="letterContact">${firstLetter}</p>
+                </div>
+                <div class="positionLineContact">
+                    <p class="lineContact"></p>
+                </div>`;
+            
+            currentLetter = firstLetter;
+        }
+
+        // Kontakt hinzufügen
         contact.innerHTML += /*html*/`
             <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}')">
                 <div>
@@ -97,6 +133,15 @@ async function generateContactInSmall() {
                 </div>
             </div>`;
     }
+}
+
+
+function sortByFirstLetter(contacts) {
+    return contacts.sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        return nameA.localeCompare(nameB);
+    });
 }
 
  
@@ -250,20 +295,23 @@ async function deleteContact(newName, newEmail, newPhone) {
 
 async function saveEditContactWindow(newName, newEmail, newPhone) {
     const userIndex = users.findIndex(user => user.id === loggedInUser.id);
-    users[userIndex].contacts = loggedInUser.contacts;
+    const contactIndex = loggedInUser.contacts.findIndex(contact =>
+        contact.name === newName && contact.email === newEmail && contact.phone === newPhone
+    );
 
-    loggedInUser.contacts.name = newName;
-    loggedInUser.contacts.email = newEmail;
-    loggedInUser.contacts.phone = newPhone;
-    // loggedInUser.contacts.newName = document.getElementById('nameEditContact').value;
-    // loggedInUser.contacts.newEmail = document.getElementById('emailEditContact').value;
-    // loggedInUser.contacts.newPhone = document.getElementById('phoneEditContact').value;
+    if (contactIndex !== -1) {
+        loggedInUser.contacts[contactIndex].name = document.getElementById('nameEditContact').value.trim();
+        loggedInUser.contacts[contactIndex].email = document.getElementById('emailEditContact').value.trim();
+        loggedInUser.contacts[contactIndex].phone = document.getElementById('phoneEditContact').value.trim();
+        users[userIndex].contacts = loggedInUser.contacts;
 
-    
-
-    await setItem('newContactData', JSON.stringify(loggedInUser.contacts));
-    await generateContactInSmall();
-    document.getElementById('boxOfEdingContact').classList.add('d-none');
+        await setItem('loggedInUser', JSON.stringify(loggedInUser));
+        await generateContactInSmall();
+        document.getElementById('boxOfEdingContact').classList.add('d-none');
+        document.getElementById('boxOfDetailsContacts').classList.add('d-none');
+    } else {
+        console.error('Kontakt nicht gefunden im loggedInUser.contacts Array');
+    }
 }
 
 

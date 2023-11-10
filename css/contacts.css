@@ -79,24 +79,23 @@ body{
 }
 
 .positionLetterContact{
-    display: flex;
-    justify-content: flex-start;
+    display: flex !important;
+    justify-content: flex-start !important;
     margin-left: 56px;
 }
 
 .letterContact{
     font-size: 24px;
-    margin-top: 0;
 }
 
 .positionLineContact{
-    display: flex;
-    justify-content: center;
+    display: flex ;
+    justify-content: flex-start ;
 }
 
 .lineContact{
     width: 384px;
-    height: 1px;
+    height: 2px;
     background-color: gray;
     margin-top: 0;
 }
@@ -104,7 +103,7 @@ body{
 .positionNewContact{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
 }
 
