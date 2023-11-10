@@ -40,6 +40,7 @@ async function createNewContact() {
 
     await addContactToUserContacts(loggedInUser, name.value, email.value, phone.value);
     resetForm(name, email, phone);
+    generateContactInSmall();
 }
 
 
@@ -99,9 +100,9 @@ async function generateContactInSmall() {
 }
 
  
-function showDetailsOfContact(newPhone, newEmail, newName){  
+function showDetailsOfContact(newName, newEmail, newPhone){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
-    detailsContact.classList.toggle('d-none');
+    detailsContact.classList.remove('d-none');
     detailsContact.innerHTML ='';
     detailsContact.innerHTML =  /*html*/`
         <div class="positionHeaderContactDetails">
@@ -209,7 +210,7 @@ async function editContact(newName, newEmail, newPhone){
                 </div>
             </div>
         </div>`;
-    setValueInIput(newPhone, newEmail, newName);
+    setValueInIput(newName, newEmail, newPhone);
 }
 
 
@@ -226,43 +227,41 @@ function closeEditContactBox(){
 
 
 async function deleteContact(newName, newEmail, newPhone) {
-    let response = await getItem('newContactData');
-    let storedContacts = JSON.parse(response);
+    // Push the contact info to the loggedInUser.contacts array.  die zeile soll verantworlich fürs löschen sein
+    loggedInUser.contacts = loggedInUser.contacts.filter((contact) => {
+        return contact.name !== newName || contact.email !== newEmail || contact.phone !== newPhone;
+    });
 
-    for (const key in storedContacts) {
-        if (storedContacts[key].fullName === newName &&
-            storedContacts[key].email === newEmail &&
-            storedContacts[key].phone === newPhone) {
-            delete storedContacts[key];
-            break;
-        }
-    }
+    // Update the loggedInUser in the users array.
+    const userIndex = users.findIndex(user => user.id === loggedInUser.id);
+    users[userIndex].contacts = loggedInUser.contacts;
 
-    await setItem('newContactData', JSON.stringify(storedContacts));
+    // Save the updated loggedInUser to the local storage.
+    await setItem('loggedInUser', JSON.stringify(loggedInUser));
+
+    // Get the updated loggedInUser from the local storage.
     await generateContactInSmall();
-    document.getElementById('boxOfDetailsContacts').classList.toggle('d-none');
-    document.getElementById('boxOfEdingContact').classList.add('d-none');
+
+    // // Hide the contact details box and show the contact editing box.
+    document.getElementById('boxOfDetailsContacts').classList.add('d-none');
 }
 
 
+
 async function saveEditContactWindow(newName, newEmail, newPhone) {
-    const response = await getItem('newContactData');
-    const storedContacts = JSON.parse(response.data.value);
+    const userIndex = users.findIndex(user => user.id === loggedInUser.id);
+    users[userIndex].contacts = loggedInUser.contacts;
 
-    for (const key in storedContacts) {
-        if (
-            storedContacts[key].fullName === newName &&
-            storedContacts[key].email === newEmail &&
-            storedContacts[key].phone === newPhone
-        ) {
-            storedContacts[key].fullName = document.getElementById('nameEditContact').value.trim();
-            storedContacts[key].email = document.getElementById('emailEditContact').value.trim();
-            storedContacts[key].phone = document.getElementById('phoneEditContact').value.trim();
-            break;
-        }
-    }
+    loggedInUser.contacts.name = newName;
+    loggedInUser.contacts.email = newEmail;
+    loggedInUser.contacts.phone = newPhone;
+    // loggedInUser.contacts.newName = document.getElementById('nameEditContact').value;
+    // loggedInUser.contacts.newEmail = document.getElementById('emailEditContact').value;
+    // loggedInUser.contacts.newPhone = document.getElementById('phoneEditContact').value;
 
-    await setItem('newContactData', JSON.stringify(storedContacts));
+    
+
+    await setItem('newContactData', JSON.stringify(loggedInUser.contacts));
     await generateContactInSmall();
     document.getElementById('boxOfEdingContact').classList.add('d-none');
 }
