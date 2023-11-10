@@ -81,7 +81,7 @@ body{
 .positionLetterContact{
     display: flex !important;
     justify-content: flex-start !important;
-    margin-left: 56px;
+    margin-right: 266px;
 }
 
 .letterContact{
@@ -94,8 +94,8 @@ body{
 }
 
 .lineContact{
-    width: 384px;
-    height: 2px;
+    width: 362px;
+    height: 1px;
     background-color: gray;
     margin-top: 0;
 }
