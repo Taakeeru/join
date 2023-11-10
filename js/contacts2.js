@@ -22,14 +22,31 @@ async function init() {
 }
 
 
+async function addContactToUserContacts(loggedInUser, name, email, phone) {
+
+    pushContactInfo(loggedInUser.contacts, name, email, phone);
+    
+    const userIndex = users.findIndex(user => user.id === loggedInUser.id);
+
+    if (userIndex !== -1) {
+        pushContactInfo(users[userIndex].contacts, name, email, phone);
+
+        await setItem('users', JSON.stringify(users));
+    } else {
+        console.error('User not found in users array');
+    }
+
+    await setItem('loggedInUser', JSON.stringify(loggedInUser));
+}
+
+
 async function createNewContact() {
     let name = document.getElementById('nameAddContact');
     let email = document.getElementById('emailAddContact');
     let phone = document.getElementById('phoneAddContact');
     let loggedInUser = await getLoggedInUser() || { contacts: [] };
 
-    pushContactInfo(loggedInUser.contacts, name.value, email.value, phone.value);
-    await setItem('loggedInUser', JSON.stringify(loggedInUser));
+    await addContactToUserContacts(loggedInUser, name.value, email.value, phone.value);
     resetForm(name, email, phone);
 }
 
