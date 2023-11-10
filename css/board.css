@@ -306,7 +306,7 @@ body {
 
 /*openCards*/
 
-.cardContainer{
+.openCardContainer{
 background-color: rgba(0, 0, 0, 0.2);
 z-index: 999;
 position: fixed;
@@ -319,11 +319,130 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
-.cardsDetails{
-    background-color: #b31111;
+.openCardsDetails{
+    background-color: #f5f5f5;
     width: 528px;
-    height: 73vh;
+    height: 92vh;
     z-index: 2;
     border-radius: 30px 30px 30px 30px;
     transition: all 225ms ease-in-out;
+    padding: 48px 40px 48px 40px;
+}
+
+.openCardIcons {
+  height: 24px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.openCardIconsImg{
+  height: 18px;
+}
+.openCardIconsText{
+  font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(42, 54, 71, 1);
+}
+.openCardCheckbox {
+  height: 68px;
+  margin-top: 4px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  padding: 6px;
+
+}
+.openCardCheckbox::-webkit-scrollbar {
+  display: none;
+}
+.subtaskText{
+  font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 16px;
+    height: 19px;
+}
+.openCardSubtask {
+  margin-top: 20px;
+  height: 25px;
+}
+.openCardAssigned {
+  height: 209px;
+  margin-top: 25px;
+}
+.openCardAssignedAddUser{
+  display: flex;
+  flex-direction: column;
+  height: 178px;
+  overflow: scroll;
+}
+.openCardAssignedAddUser::-webkit-scrollbar {
+  display: none;
+}
+
+.openCardPrio {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  height: 31px;
+  margin-top: 25px;
+
+}
+.openCardPrioImg{
+  height: 20px;
+  width: 20px;
+  padding-left: 3px;
+}
+.cardsCategoryText{
+  font-size: 21px;
+  font-weight: 700;
+  font-family: 'Inter';
+  color: rgba(66, 82, 110, 1);
+}
+.openCardSecondText{
+  font-size: 19px;
+  font-weight: 400;
+  font-family: 'Open Sans';
+  padding-left: 25px;
+}
+.openCardDate {
+  height: 25px;
+  margin-top: 25px;
+}
+.openCardText{
+  height: 23px;
+  margin-top: 25px;
+}
+.openCardSpanText{
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 19px;
+  
+}
+.openCardDescriptionText {
+  font-family: 'Open Sans';
+  font-weight: 700;
+  font-size: 61px;
+  line-height: 73px;
+
+}
+.openCardTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.userDetailsTitle{
+  width: 160px;
+  background: rgba(255, 122, 0, 1);
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0px 24px 0px 24px;
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 23px;
 }

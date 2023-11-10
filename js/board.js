@@ -138,26 +138,5 @@ function closeAddTaskMenu() {
   document.getElementById("sideMenu").classList.remove("showmenu");
 }
 
-/*<div class="cards">
-              <div class="cardContent">
-                <div class="cardHeader">
-                  <p class="userStory">User Story</p>
-                </div>
-                <div class="cardDescription">
-                  <p class="cardDescriptionHeader">Contact Form & Imprint</p>
-                  <p class="cardDescriptionInfo">
-                    Create a contact from and imprint page..
-                  </p>
-                </div>
-                <div class="cardSub">
-                  <div class="progress"role="progressbar"aria-label="Basic example"aria-valuenow="75"aria-valuemin="0"aria-valuemax="100">
-                    <div class="progress-bar w-75"></div>
-                  </div>
-                  <p class="cardSubNumber">1/2 Subtasks</p>
-                </div>
-                <div class="cardAddUser">
-                  <div class="cardUserSymbole">AS</div>
-                  <img src="../assets/img/priority_symbols.svg" alt="" />
-                </div>
-              </div>
-            </div>*/
+
+
