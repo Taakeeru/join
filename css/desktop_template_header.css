@@ -84,7 +84,25 @@
 }
 
 .profile-settings a:hover {
-    background-color: rgba(200, 222, 255, 0.315)
+    background-color: rgba(200, 222, 255, 0.315);
+}
+
+.profile-settings button {
+    border: none;
+    background-color: white;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(66, 82, 110, 1);
+    text-decoration: none;
+    padding: 4px 20px;
+    width: auto;
+    border-radius: 8px;
+    text-align: end;
+}
+
+.profile-settings button:hover {
+    background-color: rgba(200, 222, 255, 0.315);
+    cursor: pointer;
 }
 
 .d-none {
