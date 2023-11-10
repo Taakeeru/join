@@ -57,15 +57,13 @@ function loadHelp() {
 
 async function logout() {
     try {
-        // Leeren des loggedInUser-Werts
-        await updateLoggedInUser({});  // Hier wird die POST-Methode verwendet
-        
-        // Weiterleitung zur Login-Seite oder einer anderen gewünschten Seite
+        await updateLoggedInUser({});
         window.location.href = '/html/login.html';
     } catch (error) {
         console.error('Error during logout:', error);
     }
 }
+
 
 async function updateLoggedInUser(newValues) {
     const url = `${STORAGE_URL}?key=loggedInUser&token=${STORAGE_TOKEN}`;
