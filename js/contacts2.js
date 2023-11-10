@@ -17,7 +17,7 @@ async function init() {
     generateLatter();
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
-    // await generateContactInSmall();
+    await generateContactInSmall();
     loadUsers();
 }
 
@@ -85,23 +85,27 @@ function generateLatter(){
 }
 
 
-// async function generateContactInSmall() {
-//     let contact = document.getElementById('contactInSmall');
-//     contact.innerHTML = '';
+async function generateContactInSmall() {
+    let contact = document.getElementById('contactInSmall');
+    contact.innerHTML = '';
 
-//         //for schleife
-//         contact.innerHTML += /*html*/`
-//             <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${}', '${}', '${}')">
-//             <div>
-//                     <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
-//                 </div>
-//                 <div>
-//                     <p style="margin: 6px;">${newName}</p>
-//                     <p class="styleMail">${newEmail}</p>
-//                 </div>
-//             </div>`;
-//     }
-// }
+    let loggedInUser = await getLoggedInUser() || { contacts: [] };
+
+    for (let i = 0; i < loggedInUser.contacts.length; i++) {
+        let contactData = loggedInUser.contacts[i];
+
+        contact.innerHTML += /*html*/`
+            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}')">
+                <div>
+                    <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
+                </div>
+                <div>
+                    <p style="margin: 6px;">${contactData.name}</p>
+                    <p class="styleMail">${contactData.email}</p>
+                </div>
+            </div>`;
+    }
+}
 
  
 function showDetailsOfContact(newPhone, newEmail, newName){  
