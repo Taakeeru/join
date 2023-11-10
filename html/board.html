@@ -1,187 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Board</title>
-    <link rel="stylesheet" href="../css/board.css" />
-    <link rel="stylesheet" href="../css/desktop_template_header.css" />
-    <link rel="stylesheet" href="../css/desktop_template_footer.css" />
-    <link rel="stylesheet" href="../css/fonts.css" />
-    <script src="../js/board.js"></script>
-    <script src="../js/include.js" defer></script>
-    <script src="../js/storage2.js"></script>
-    <script src="../js/profile.js"></script>
-    <script src="../js/register.js"></script>
-    <link rel="stylesheet" href="../css/add_task.css">
-    <!--bootstrap-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body onload="init()">
-    <div
-      w3-include-html="../assets/templates/desktop_template_header.html"
-    ></div>
-    <div class="contentContainer">
-      <div class="mainContent">
-        <div class="boardTopSektion">
-          <div class="inputSektion">
-            <div class="inputfieldIconsContainer">
-              <input
-                class="boardInputfield"
-                type="text"
-                placeholder="Find Task"
-              />
-              <img src="../assets/img/vector3.svg" alt="" />
-              <img src="../assets/img/search.svg" alt="" />
-            </div>
-            <button onclick="showAddTaskMenu()" class="boardButton"> <span> Add task </span>
-                <img src="../assets/img/plus.svg" /></button>
-              </div>
-          <div class="boardCategorysSektion">
-            <div class="boardCategorysSektionContainer">
-              <p>To do</p>
-              <img onclick ="showAddTaskMenu()"
-                class="boardCategorysSektionIcons"
-                src="../assets/img/plus_button.svg"
-                alt=""
-              />
-            </div>
-            <div class="boardCategorysSektionContainer">
-              <p>In progress</p>
-              <img onclick ="showAddTaskMenu()"
-                class="boardCategorysSektionIcons"
-                src="../assets/img/plus_button.svg"
-                alt=""
-              />
-            </div>
-            <div class="boardCategorysSektionContainer">
-              <p>Await feedback</p>
-              <img onclick ="showAddTaskMenu()"
-                class="boardCategorysSektionIcons"
-                src="../assets/img/plus_button.svg"
-                alt=""
-              />
-            </div>
-            <div class="boardCategorysSektionContainer"><p>Done</p></div>
-          </div>
-        </div>
-        <div class="scrollContainer">
-          <div class="boardBotSektion">
-            <div
-              class="boardtoDoSektion"
-              id="toDo"
-              ondragleave="removeHighlight('toDo')"
-              ondragover="allowDrop(event); highlight('toDo')"
-              ondrop="moveTo('toDo'); removeHighlight('toDo')">
-            </div>
-
-            <div
-              class="boardProgressSektion"
-              id="progress"
-              ondragleave="removeHighlight('progress')"
-              ondragover="allowDrop(event); highlight('progress')"
-              ondrop="moveTo('progress'); removeHighlight('progress')"
-            ></div>
-
-            <div
-              class="boardFeedbackSektion"
-              id="feedBack"
-              ondragleave="removeHighlight('feedBack')"
-              ondragover="allowDrop(event); highlight('feedBack')"
-              ondrop="moveTo('feedBack'); removeHighlight('feedBack')"
-            ></div>
-            <div
-              class="boardDoneSektion"
-              id="done"
-              ondragleave="removeHighlight('done')"
-              ondragover="allowDrop(event); highlight('done')"
-              ondrop="moveTo('done'); removeHighlight('done')"
-            ></div>
-          </div>
-        </div>
-      </div>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Board</title>
+      <link rel="stylesheet" href="../css/board.css" />
+      <link rel="stylesheet" href="../css/desktop_template_header.css" />
+      <link rel="stylesheet" href="../css/desktop_template_footer.css" />
+      <link rel="stylesheet" href="../css/fonts.css" />
+      <script src="../js/board.js"></script>
+      <script src="../js/include.js" defer></script>
+      <script src="../js/storage2.js"></script>
+      <script src="../js/profile.js"></script>
+      <script src="../js/register.js"></script>
+      <link rel="stylesheet" href="../css/add_task.css">
+      <!--bootstrap-->
+      <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+         crossorigin="anonymous"
+         />
+      <script
+         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+         crossorigin="anonymous"
+         ></script>
+   </head>
+   <body onload="init()">
       <div
-        w3-include-html="../assets/templates/desktop_template_footer.html"
-      ></div>
-      
-      <div onclick ="closeAddTaskMenu()" class="" id="menuContainerBox"><div onclick="event.stopPropagation()" id="sideMenu" class="sideMenuStyle">
-        <div class="header-sideMenu"><span>Add Task</span>
-          <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="/assets/img/close.svg" alt="">
-
-        </div>
-        <div class="contentContainer-sideMenu" >
-          <div class="addTask addTask-sideMenu">
-              <form action="">
-                  <div class="topSektion topSektion-sideMenu">
-                      <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
-                      <div class="description description-sideMenu">
-                          <div class="descriptionContent">
-                              <p class="descriptionText">Description
-                              <p class="descriptionText small">(optional)</p>
-                              </p>
-                          </div>
-                          <textarea class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
-                              rows="10"></textarea>
-                      </div>
-      
-                      <div class="dateContent">
-                          <p class="dateTitle">Due date</p>
-                          <div class="inputfieldDateContainer"><input class="inputfieldDate" type="text"
-                                  placeholder="dd/mm/yyyy">
-                              <img class="dateImg" src="../assets/img/event.svg" alt="">
-                          </div>
-                      </div>
+         w3-include-html="../assets/templates/desktop_template_header.html"
+         ></div>
+      <div class="contentContainer">
+         <div class="mainContent">
+            <div class="boardTopSektion">
+               <div class="inputSektion">
+                  <div class="inputfieldIconsContainer">
+                     <input
+                        class="boardInputfield"
+                        type="text"
+                        placeholder="Find Task"
+                        />
+                     <img src="../assets/img/vector3.svg" alt="" />
+                     <img src="../assets/img/search.svg" alt="" />
                   </div>
-                  <div class="assignedContent assignedContent-sideMenu" > 
-                      <div class="assignedTitleContainer"> <p class="assignedTitle">Priority<p class="assignedTitle small" >(optional)</p></p></div>
-                       <div class="buttonContainer"> 
-                       <button class="prioButton">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
-                       <button class="prioButton">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                       <button class="prioButton">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button></div>
-                    
-                       </div>
-      
-                  <div class="assignedContent assignedContent-sideMenu" > 
-                     <div class="assignedTitleContainer"> <p class="assignedTitle">Assignet to<p class="assignedTitle small" >(optional)</p></p></div>
-                      
-                     <select class="assignedSelect">
-                        <option>Select contacts to assign</option>
-                        <option value="User1">User1</option>
-                        <option value="User2">User2</option>
-                        <option value="User3">User3</option>
-                        </select>
-                      </div>
-                      <div class="assignedContent assignedContent-sideMenu" > 
-                          <div class="assignedTitleContainer"> <p class="assignedTitle">Category</p></div>
-                           
-                          <select class="assignedSelect">
-                             <option>Select task catergory</option>
-                             <option value="User1">User1</option>
-                             <option value="User2">User2</option>
-                             <option value="User3">User3</option>
-                             </select>
+                  <button onclick="showAddTaskMenu()" class="boardButton"> <span> Add task </span>
+                  <img src="../assets/img/plus.svg" /></button>
+               </div>
+               <div class="boardCategorysSektion">
+                  <div class="boardCategorysSektionContainer">
+                     <p>To do</p>
+                     <img onclick ="showAddTaskMenu()"
+                        class="boardCategorysSektionIcons"
+                        src="../assets/img/plus_button.svg"
+                        alt=""
+                        />
+                  </div>
+                  <div class="boardCategorysSektionContainer">
+                     <p>In progress</p>
+                     <img onclick ="showAddTaskMenu()"
+                        class="boardCategorysSektionIcons"
+                        src="../assets/img/plus_button.svg"
+                        alt=""
+                        />
+                  </div>
+                  <div class="boardCategorysSektionContainer">
+                     <p>Await feedback</p>
+                     <img onclick ="showAddTaskMenu()"
+                        class="boardCategorysSektionIcons"
+                        src="../assets/img/plus_button.svg"
+                        alt=""
+                        />
+                  </div>
+                  <div class="boardCategorysSektionContainer">
+                     <p>Done</p>
+                  </div>
+               </div>
+            </div>
+            <div class="scrollContainer">
+               <div class="boardBotSektion">
+                  <div
+                     class="boardtoDoSektion"
+                     id="toDo"
+                     ondragleave="removeHighlight('toDo')"
+                     ondragover="allowDrop(event); highlight('toDo')"
+                     ondrop="moveTo('toDo'); removeHighlight('toDo')">
+                  </div>
+                  <div
+                     class="boardProgressSektion"
+                     id="progress"
+                     ondragleave="removeHighlight('progress')"
+                     ondragover="allowDrop(event); highlight('progress')"
+                     ondrop="moveTo('progress'); removeHighlight('progress')"
+                     ></div>
+                  <div
+                     class="boardFeedbackSektion"
+                     id="feedBack"
+                     ondragleave="removeHighlight('feedBack')"
+                     ondragover="allowDrop(event); highlight('feedBack')"
+                     ondrop="moveTo('feedBack'); removeHighlight('feedBack')"
+                     ></div>
+                  <div
+                     class="boardDoneSektion"
+                     id="done"
+                     ondragleave="removeHighlight('done')"
+                     ondragover="allowDrop(event); highlight('done')"
+                     ondrop="moveTo('done'); removeHighlight('done')"
+                     ></div>
+               </div>
+            </div>
+         </div>
+         <div
+            w3-include-html="../assets/templates/desktop_template_footer.html"
+            ></div>
+         <div onclick ="closeAddTaskMenu()" class="" id="menuContainerBox">
+            <div onclick="event.stopPropagation()" id="sideMenu" class="sideMenuStyle">
+               <div class="header-sideMenu"><span>Add Task</span>
+                  <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="/assets/img/close.svg" alt="">
+               </div>
+               <div class="contentContainer-sideMenu" >
+                  <div class="addTask addTask-sideMenu">
+                     <form action="">
+                        <div class="topSektion topSektion-sideMenu">
+                           <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
+                           <div class="description description-sideMenu">
+                              <div class="descriptionContent">
+                                 <p class="descriptionText">Description
+                                 <p class="descriptionText small">(optional)</p>
+                                 </p>
+                              </div>
+                              <textarea class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
+                                 rows="10"></textarea>
                            </div>
-                           
-                           <div class="SubtaskContent" > 
-                              <div class="assignedTitleContainer"> <p class="assignedTitle">Subtask<p class="assignedTitle small" >(optional)</p></p></div>
-                               
-                              <input placeholder="Add new subtask" class="subtaskInput">
-                                
-                               </div>
-              </form>
-              
-          </div>
-          </div></div></div>
-    </div>
-  </body>
+                           <div class="dateContent">
+                              <p class="dateTitle">Due date</p>
+                              <div class="inputfieldDateContainer"><input class="inputfieldDate" type="text"
+                                 placeholder="dd/mm/yyyy">
+                                 <img class="dateImg" src="../assets/img/event.svg" alt="">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="assignedContent assignedContent-sideMenu" >
+                           <div class="assignedTitleContainer">
+                              <p class="assignedTitle">Priority
+                              <p class="assignedTitle small" >(optional)</p>
+                              </p>
+                           </div>
+                           <div class="buttonContainer"> 
+                              <button class="prioButton">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                              <button class="prioButton">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                              <button class="prioButton">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                           </div>
+                        </div>
+                        <div class="assignedContent assignedContent-sideMenu" >
+                           <div class="assignedTitleContainer">
+                              <p class="assignedTitle">Assignet to
+                              <p class="assignedTitle small" >(optional)</p>
+                              </p>
+                           </div>
+                           <select class="assignedSelect">
+                              <option>Select contacts to assign</option>
+                              <option value="User1">User1</option>
+                              <option value="User2">User2</option>
+                              <option value="User3">User3</option>
+                           </select>
+                        </div>
+                        <div class="assignedContent assignedContent-sideMenu" >
+                           <div class="assignedTitleContainer">
+                              <p class="assignedTitle">Category</p>
+                           </div>
+                           <select class="assignedSelect">
+                              <option>Select task catergory</option>
+                              <option value="User1">User1</option>
+                              <option value="User2">User2</option>
+                              <option value="User3">User3</option>
+                           </select>
+                        </div>
+                        <div class="SubtaskContent" >
+                           <div class="assignedTitleContainer">
+                              <p class="assignedTitle">Subtask
+                              <p class="assignedTitle small" >(optional)</p>
+                              </p>
+                           </div>
+                           <input placeholder="Add new subtask" class="subtaskInput">
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>
