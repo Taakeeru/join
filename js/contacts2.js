@@ -37,6 +37,7 @@ async function addContactToUserContacts(loggedInUser, name, email, phone) {
     }
 
     await setItem('loggedInUser', JSON.stringify(loggedInUser));
+    getLoggedInUser();
 }
 
 
@@ -88,15 +89,9 @@ function generateLatter(){
 //     let contact = document.getElementById('contactInSmall');
 //     contact.innerHTML = '';
 
-//     let response = await getItem('newContactData');
-//     let storedContacts = JSON.parse(response);
-//     // contact.innerHTML = `<p class="styleMail">${storedContacts}</p>`;
-//     for (const key in storedContacts) {
-//         let newName = storedContacts[key].fullName;
-//         let newEmail = storedContacts[key].email;
-//         let newPhone = storedContacts[key].phone;
+//         //for schleife
 //         contact.innerHTML += /*html*/`
-//             <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${newPhone}', '${newEmail}', '${newName}')">
+//             <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${}', '${}', '${}')">
 //             <div>
 //                     <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
 //                 </div>
