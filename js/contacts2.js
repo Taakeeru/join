@@ -8,16 +8,7 @@ async function init() {
     generateLatter();
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
-    loadUsers();
-}
-
-
-async function init() {
-    includeHTML();
-    generateLatter();
-    loggedInUser = await getLoggedInUser();
-    showProfileInitials(loggedInUser);
-    await generateContactInSmall();
+    generateContactInSmall();
     loadUsers();
 }
 
