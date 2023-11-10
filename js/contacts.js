@@ -1,24 +1,46 @@
 let firstLetter = ['A'];
-let newContactData = [];
+let contactName = [];
+let newContactDatas = [];
+
 
 async function init(){
     includeHTML();
-    generateLatter();
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
-    await generateContactInSmall();
+    generateContactInSmall();
+    // await generateLatter();
     loadUsers();
+    await loadSavedThingFromStorage();
+}
+
+async function loadSavedThingFromStorage(){
+    let test = await loadContacts();
+    generateContactInSmall(test);
 }
 
 
-function generateLatter(){
+async function loadContacts(){
+    try {
+        let currentContacts = JSON.parse(await getItem('newContactData'));
+        return currentContacts;
+    } catch(e) {
+        console.error('Loading error:', e);
+    }
+}
+
+
+async function generateLatter(){
     let letter = document.getElementById('generateLatter');
     letter.innerHTML = '';
-    for (let i = 0; i < firstLetter.length; i++) {
-        const letters = firstLetter[i];
+    let response = await getItem('newContactData');
+    let storedContacts = JSON.parse(response);
+    for (const key in storedContacts) {
+        let newName = storedContacts[key].fullName;
+        let splitName = newName.split(' ');
+        let sortedNames = splitName.sort();
         letter.innerHTML += `
             <div class="positionLetterContact">
-                <p class="letterContact" id="letterContact">${letters}</p>
+                <p class="letterContact" id="letterContact">${sortedNames}</p>
             </div>
             <div class="positionLineContact">
                 <p class="lineContact"></p>
@@ -27,20 +49,21 @@ function generateLatter(){
 }
 
 
-async function generateContactInSmall() {
+function generateContactInSmall(test) {
     let contact = document.getElementById('contactInSmall');
     contact.innerHTML = '';
 
-    let response = await getItem('newContactData');
-    let storedContacts = JSON.parse(response);
+    // let response = await getItem('newContactData');
+    // let storedContacts = JSON.parse(response);
     // contact.innerHTML = `<p class="styleMail">${storedContacts}</p>`;
-    for (const key in storedContacts) {
-        let newName = storedContacts[key].fullName;
-        let newEmail = storedContacts[key].email;
-        let newPhone = storedContacts[key].phone;
+    for (let i = 0; i < test.length; i++) {
+        let newName = test[i].fullName;
+        // let sortedNames = newName.split(' ').sort((a, b) => a.charAt(0).toLowerCase().localeCompare(b.charAt(0).toLowerCase()));
+        let newEmail = test[i].email;
+        let newPhone = test[i].phone;
         contact.innerHTML += /*html*/`
             <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${newPhone}', '${newEmail}', '${newName}')">
-            <div>
+                <div>
                     <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
                 </div>
                 <div>
@@ -48,8 +71,11 @@ async function generateContactInSmall() {
                     <p class="styleMail">${newEmail}</p>
                 </div>
             </div>`;
+        contactName.push(newName);
     }
 }
+
+
 
 
 async function createNewContact() {
@@ -57,35 +83,30 @@ async function createNewContact() {
     const email = document.getElementById('emailAddContact');
     const phone = document.getElementById('phoneAddContact');
 
-    const existingDataResponse = await getItem('newContactData');
-    const existingData = existingDataResponse ? JSON.parse(existingDataResponse) : {};
     const newContact = {
-        fullName: fullName.value.trim(),
-        email: email.value.trim(),
-        phone: phone.value.trim()
+        fullName: fullName.value,
+        email: email.value,
+        phone: phone.value
     };
 
-    // Überprüfen Sie, ob der Schlüssel bereits vorhanden ist, und fügen Sie ggf. den neuen Kontakt hinzu
-    if (existingData) {
-        // Überprüfen Sie, ob der neue Schlüssel bereits vorhanden ist
-        if (existingData.hasOwnProperty(newContact.fullName)) {
-            // Hier können Sie eine entsprechende Logik für den Fall implementieren, dass der Schlüssel bereits vorhanden ist
-            // Zum Beispiel könnten Sie eine Warnung ausgeben oder eine andere Vorgehensweise wählen
-        } else {
-            existingData[newContact.fullName] = newContact;
-        }
-    } else {
-        existingData[newContact.fullName] = newContact;
-    }
+    let contactExists = newContactDatas.some(c =>
+        c.fullName === fullName.value || c.email === email.value || c.phone === phone.value
+    );
 
-    await setItem('newContactData', JSON.stringify(existingData)); // v Seckin hier statt in diesen Key in loggedInUser.contacts rein un das selbe dann mit delöete und edit auch
-    generateContactInSmall(existingData);
+    if (!contactExists) {
+        newContactDatas.push(newContact);
+        await setItem('newContactData', JSON.stringify(newContactDatas));
+        generateContactInSmall();
+    }else{
+        alert('This contact is allready exist!');
+    }
 
     fullName.value = '';
     email.value = '';
     phone.value = '';
     document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
 }
+
 
  
 function showDetailsOfContact(newPhone, newEmail, newName){  
@@ -235,8 +256,8 @@ async function deleteContact(newName, newEmail, newPhone) {
 
 
 async function saveEditContactWindow(newName, newEmail, newPhone) {
-    const response = await getItem('newContactData');
-    const storedContacts = JSON.parse(response.data.value);
+    let response = await getItem('newContactData');
+    let storedContacts = JSON.parse(response);
 
     for (const key in storedContacts) {
         if (
@@ -257,28 +278,24 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
 }
 
 
-
-async function clearStorage() {
-    const key = "newContactData";
-    try {
-        // Fetch the current data from the server
-        const response = await getItem(key);
-        const { data } = response;
-
-        // Check if the response is successful and the value exists
-        if (response.status === "success" && data && data.value) {
-            // Delete the value
-            delete data.value;
-
-            // Upload the updated data to the server
-            const updatedResponse = await setItem(key, data);
-            console.log(updatedResponse); // Optionally, handle the response
-        } else {
-            console.log("Value not found or server response unsuccessful");
+    async function clearStorage() {
+        
+        try {
+            let key = "newContactData";
+            let token = "QPHAFGT1Q3UF7KK0TZX16MUQNR784P9PTG8ZWE09";
+            // Remove the key from local storage
+            localStorage.removeItem(key);
+    
+            // Delete the token
+            delete localStorage.token;
+    
+            // Generate a new contact
+            await generateContactInSmall();
+        } catch (error) {
+            console.error("Error occurred: ", error);
         }
-    } catch (error) {
-        console.error("Error occurred: ", error);
     }
-    await generateContactInSmall();
-}
+    
+
+
 
