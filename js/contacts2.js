@@ -102,7 +102,7 @@ async function generateContactInSmall() {
  
 function showDetailsOfContact(newName, newEmail, newPhone){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
-    detailsContact.classList.remove('d-none');
+    // detailsContact.classList.toggle('d-none');
     detailsContact.innerHTML ='';
     detailsContact.innerHTML =  /*html*/`
         <div class="positionHeaderContactDetails">
