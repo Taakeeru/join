@@ -8,3 +8,36 @@ body {
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
+
+.content-container {
+    padding: 72px 0 0 88px;
+}
+
+.content-container h1 {
+    font-size: 61px;
+    margin-top: 0;
+}
+
+.content-container h2 {
+    font-size: 33px;
+    margin: 20px 16px 0 0;
+    color: rgba(0, 93, 255, 1);
+}
+
+.content-container h3 {
+    margin: 28px 0 0 0;
+    color: rgba(0, 93, 255, 1);
+}
+
+.content-container h4 {
+    margin: 24px 0 0 0;
+    color: rgba(0, 93, 255, 1);
+}
+
+.content-container p {
+    margin: 0;
+}
+
+.content-container a {
+    color: rgba(69, 137, 255, 1);
+}
