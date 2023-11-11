@@ -9,19 +9,18 @@ async function init() {
     // generateLatter();
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
-    generateContactInSmall();
     loadUsers();
+    generateContactInSmall();
 }
 
 
-async function addContactToUserContacts(loggedInUser, name, email, phone) {
-
-    pushContactInfo(loggedInUser.contacts, name, email, phone);
+async function addContactToUserContacts(loggedInUser, name, email, phone, intial, getColor) {
+    pushContactInfo(loggedInUser.contacts, name, email, phone, intial, getColor);
     
     const userIndex = users.findIndex(user => user.id === loggedInUser.id);
 
     if (userIndex !== -1) {
-        pushContactInfo(users[userIndex].contacts, name, email, phone);
+        pushContactInfo(users[userIndex].contacts, name, email, phone, intial, getColor);
 
         await setItem('users', JSON.stringify(users));
     } else {
@@ -37,19 +36,28 @@ async function createNewContact() {
     let name = document.getElementById('nameAddContact');
     let email = document.getElementById('emailAddContact');
     let phone = document.getElementById('phoneAddContact');
-    let loggedInUser = await getLoggedInUser() || { contacts: [] };
 
-    await addContactToUserContacts(loggedInUser, name.value, email.value, phone.value);
+    let loggedInUser = await getLoggedInUser() || { contacts: [] };
+    let test = generateRandomColor();
+    let storedColor = localStorage.getItem(test);
+    let getColor = storedColor || generateRandomColor();
+    
+    let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
+    let intial = getInitialContacts(sortedContacts);
+
+    await addContactToUserContacts(loggedInUser, name.value, email.value, phone.value, intial, getColor);
     resetForm(name, email, phone);
     generateContactInSmall();
 }
 
 
-function pushContactInfo(contacts, name, email, phone) {
+function pushContactInfo(contacts, name, email, phone, intial, getColor) {
     contacts.push({
         name: name,
         email: email,
-        phone: phone
+        phone: phone,
+        initial: intial,
+        color: getColor
     });
 }
 
@@ -62,43 +70,10 @@ function resetForm(name, email, phone) {
 }
 
 
-// function generateLatter(sortedContacts){
-//     let seeContacts = sortedContacts;
-//     for (let i = 0; i < seeContacts.length; i++) {
-//         let getName = seeContacts[i].name.charAt(0).toUpperCase();
-//         firstLetter.push(getName);   
-//     }
-//     generateLatterWithLine();
-// }
-
-
-// function generateLatterWithLine() {
-//     let letter = document.getElementById('generateLatter');
-//     letter.innerHTML = '';
-
-//     let uniqueLetters = new Set(firstLetter);
-
-//     // Array aus dem Set erstellen, um es sortieren zu können
-//     let uniqueLettersArray = Array.from(uniqueLetters);
-//     uniqueLettersArray.sort();
-
-//     for (let i = 0; i < uniqueLettersArray.length; i++) {
-//         let getLatter = uniqueLettersArray[i]; // Nur den aktuellen Buchstaben bekommen
-//         letter.innerHTML += `
-//             <div class="positionLetterContact">
-//                 <p class="letterContact" id="letterContact">${getLatter}</p>
-//             </div>
-//             <div class="positionLineContact">
-//                 <p class="lineContact"></p>
-//             </div>`;
-//     } 
-// }
-function getFirstLetterContacts(sortedContacts){
+function getInitialContacts(sortedContacts){
     for (let i = 0; i < sortedContacts.length; i++) {
         const username = sortedContacts[i].name;
         const words = username.split(' ');
-        
-
         let initialString = '';
 
         for (const word of words) {
@@ -106,7 +81,8 @@ function getFirstLetterContacts(sortedContacts){
                 initialString += word[0].toUpperCase();
             }
         }
-        firstLetterOfContatcs.push(initialString);
+        return initialString;
+        // firstLetterOfContatcs.push(initialString);
     }
 } 
 
@@ -115,16 +91,25 @@ function getFirstLetterContacts(sortedContacts){
 async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
     contact.innerHTML = '';
-    
-    let loggedInUser = await getLoggedInUser() || { contacts: [] };
-    let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
-    getFirstLetterContacts(sortedContacts);
+
+    // let loggedInUser = await getLoggedInUser() || { contacts: [] };
+    // let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
+    // getFirstLetterContacts(sortedContacts);
     let currentLetter = null;
 
-    for (let i = 0; i < sortedContacts.length; i++) {
-        let getLetter = firstLetterOfContatcs[i];
-        let contactData = sortedContacts[i];
-        let firstLetter = contactData.name.charAt(0).toUpperCase();
+    for (let i = 0; i < loggedInUser.length; i++) {
+        let initial = loggedInUser.contacts[i].initial;
+        let contactData = loggedInUser.contacts[i];
+        let firstLetter = loggedInUser.contacts[i].name.charAt(0).toUpperCase();
+        let color = loggedInUser.contacts[i].color;
+        // // Farbe pro Element generieren oder aus dem localStorage abrufen
+        // let storedColor = localStorage.getItem(`${getLetter}_color`);
+        // let getColor = storedColor || generateRandomColor();
+
+        // if (!storedColor) {
+        //     // Farbe im localStorage speichern, wenn sie neu generiert wurde
+        //     localStorage.setItem(`${getLetter}_color`, getColor);
+        // }
 
         if (firstLetter !== currentLetter) {
             // Buchstabe und Linie hinzufügen
@@ -141,9 +126,9 @@ async function generateContactInSmall() {
 
         // Kontakt hinzufügen
         contact.innerHTML += /*html*/`
-            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}', '${getLetter}')">
-                <div id="renderFirstLetter">
-                    <p class="imgOfContackt">${getLetter}</p>
+            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}', '${initial}', '${color}')">
+                <div id="renderFirstLetter" style="background-color: ${color};">
+                    <p class="imgOfContackt">${initial}</p>
                 </div>
                 <div>
                     <p style="margin: 6px;">${contactData.name}</p>
@@ -162,26 +147,32 @@ function sortByFirstLetter(contacts) {
     });
 }
 
-function generateRandomColor(){
 
+function generateRandomColor(){
+    let hexArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+    let code = "";
+    for(let i=0; i<6; i++){
+     code += hexArray[Math.floor(Math.random()*16)];
+    }
+    return `#${code}`    
 }
 
  
-function showDetailsOfContact(newName, newEmail, newPhone, getLetter){  
+function showDetailsOfContact(newName, newEmail, newPhone, getLetter, getColor){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
     // detailsContact.classList.toggle('d-none');
     detailsContact.innerHTML ='';
     detailsContact.innerHTML =  /*html*/`
         <div class="positionHeaderContactDetails">
-            <div id="randomBackgroundColor" class="bigImgContacts">
+            <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${getColor};">
                 <p class="sizeOfLetterDetails">${getLetter}</p>
             </div>
             <div>
                 <p class="nameHeaderContactDetails">${newName}</p>
                 <div class="positionEditAndDelete">
-                    <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${getLetter}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
+                    <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${getLetter}', '${getColor}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
                             style="margin-right: 8px;">Edit</button>
-                    <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${getLetter}')" class="displayFlex clearBtn"><img
+                    <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${getLetter}', '${getColor}')" class="displayFlex clearBtn"><img
                             src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
                 </div>
             </div>
@@ -245,7 +236,7 @@ function closeAddContactBoxWithX(){
 }
 
 
-async function editContact(newName, newEmail, newPhone, getLetter){
+async function editContact(newName, newEmail, newPhone, getLetter, getColor){
     document.getElementById('boxOfEdingContact').classList.toggle('d-none');
     let valueBox = document.getElementById('boxOfEdingContact');
     valueBox.innerHTML = '';
@@ -258,7 +249,7 @@ async function editContact(newName, newEmail, newPhone, getLetter){
             <img src="../assets/img/close.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
             <div class="witheBoxAddContact">
                 <div class="detailsOFAddContact">
-                    <div class="witheBoxAddContactImg">
+                    <div class="witheBoxAddContactImg" style="background-color: ${getColor};">
                         <p class="sizeOfLetterDetails">${getLetter}</p>
                     </div>
                     <div class="displayFlex">
@@ -300,22 +291,22 @@ function closeEditContactBox(){
 async function deleteContact(newName, newEmail, newPhone) {
     // Push the contact info to the loggedInUser.contacts array.  die zeile soll verantworlich fürs löschen sein
     loggedInUser.contacts = loggedInUser.contacts.filter((contact) => {
-        return contact.name !== newName || contact.email !== newEmail || contact.phone !== newPhone;
+        return (
+            contact.name !== newName ||
+            contact.email !== newEmail ||
+            contact.phone !== newPhone 
+        );
     });
 
     // Update the loggedInUser in the users array.
     const userIndex = users.findIndex(user => user.id === loggedInUser.id);
     users[userIndex].contacts = loggedInUser.contacts;
 
-    // Save the updated loggedInUser to the local storage.
     await setItem('loggedInUser', JSON.stringify(loggedInUser));
-
-    // Get the updated loggedInUser from the local storage.
     await generateContactInSmall();
-
-    // // Hide the contact details box and show the contact editing box.
     document.getElementById('boxOfDetailsContacts').classList.add('d-none');
 }
+
 
 
 
