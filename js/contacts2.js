@@ -1,5 +1,6 @@
-let firstLetter = ['A'];
+let firstLetter = [];
 let newContactData = [];
+let firstLetterOfContatcs = [];
 
 
 
@@ -92,19 +93,36 @@ function resetForm(name, email, phone) {
 //             </div>`;
 //     } 
 // }
+function getFirstLetterContacts(sortedContacts){
+    for (let i = 0; i < sortedContacts.length; i++) {
+        const username = sortedContacts[i].name;
+        const words = username.split(' ');
+        
+
+        let initialString = '';
+
+        for (const word of words) {
+            if (word.length > 0) {
+                initialString += word[0].toUpperCase();
+            }
+        }
+        firstLetterOfContatcs.push(initialString);
+    }
+} 
 
 
 
 async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
     contact.innerHTML = '';
-
+    
     let loggedInUser = await getLoggedInUser() || { contacts: [] };
     let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
-    
+    getFirstLetterContacts(sortedContacts);
     let currentLetter = null;
 
     for (let i = 0; i < sortedContacts.length; i++) {
+        let getLetter = firstLetterOfContatcs[i];
         let contactData = sortedContacts[i];
         let firstLetter = contactData.name.charAt(0).toUpperCase();
 
@@ -123,9 +141,9 @@ async function generateContactInSmall() {
 
         // Kontakt hinzufügen
         contact.innerHTML += /*html*/`
-            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}')">
-                <div>
-                    <img src="../assets/img/head-663997_640.jpg" class="imgOfContackt">
+            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}', '${getLetter}')">
+                <div id="renderFirstLetter">
+                    <p class="imgOfContackt">${getLetter}</p>
                 </div>
                 <div>
                     <p style="margin: 6px;">${contactData.name}</p>
@@ -144,20 +162,26 @@ function sortByFirstLetter(contacts) {
     });
 }
 
+function generateRandomColor(){
+
+}
+
  
-function showDetailsOfContact(newName, newEmail, newPhone){  
+function showDetailsOfContact(newName, newEmail, newPhone, getLetter){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
     // detailsContact.classList.toggle('d-none');
     detailsContact.innerHTML ='';
     detailsContact.innerHTML =  /*html*/`
         <div class="positionHeaderContactDetails">
-            <img src="../assets/img/ellipse5.svg" class="bigImgContacts">
+            <div id="randomBackgroundColor" class="bigImgContacts">
+                <p class="sizeOfLetterDetails">${getLetter}</p>
+            </div>
             <div>
                 <p class="nameHeaderContactDetails">${newName}</p>
                 <div class="positionEditAndDelete">
-                    <button onclick="editContact('${newName}','${newEmail}','${newPhone}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
+                    <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${getLetter}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
                             style="margin-right: 8px;">Edit</button>
-                    <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}')" class="displayFlex clearBtn"><img
+                    <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${getLetter}')" class="displayFlex clearBtn"><img
                             src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
                 </div>
             </div>
@@ -221,7 +245,7 @@ function closeAddContactBoxWithX(){
 }
 
 
-async function editContact(newName, newEmail, newPhone){
+async function editContact(newName, newEmail, newPhone, getLetter){
     document.getElementById('boxOfEdingContact').classList.toggle('d-none');
     let valueBox = document.getElementById('boxOfEdingContact');
     valueBox.innerHTML = '';
@@ -234,7 +258,9 @@ async function editContact(newName, newEmail, newPhone){
             <img src="../assets/img/close.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
             <div class="witheBoxAddContact">
                 <div class="detailsOFAddContact">
-                    <img src="../assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
+                    <div class="witheBoxAddContactImg">
+                        <p class="sizeOfLetterDetails">${getLetter}</p>
+                    </div>
                     <div class="displayFlex">
                         <input type="text" class="inputField" placeholder="Name" id="nameEditContact">
                         <img src="../assets/img/person.svg" class="imgInInput">
