@@ -41,3 +41,7 @@ body {
 .content-container a {
     color: rgba(69, 137, 255, 1);
 }
+
+.d-none {
+    display: none;
+}

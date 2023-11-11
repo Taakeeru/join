@@ -35,6 +35,7 @@
     <script src="../js/storage2.js"></script>
     <script src="../js/register.js"></script>
     <script src="../js/login.js" ></script>
+    <!-- <script src="../js/legal.js" ></script> -->
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
@@ -73,8 +74,8 @@
     </div>
 
     <div id="login-footer" class="login-footer d-none-js">
-        <a id="privacy" href="privacy.html" target="_blank">Privacy Policy</a>
-        <a id="legal" href="legal_notice.html" target="_blank">Legal Notice</a>
+        <a onclick="removePrivateElements()" id="privacy" href="privacy.html" target="_blank">Privacy Policy</a>
+        <a onclick="removePrivateElements()" id="legal" href="legal_notice.html" target="_blank">Legal Notice</a>
     </div>
 </body>
 </html>
