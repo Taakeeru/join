@@ -8,3 +8,32 @@ body {
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
+
+.content-container {
+    padding: 72px 0 0 88px;
+}
+
+p {
+    display: inline;
+    color: rgba(69, 137, 255, 1);
+}
+
+h1 {
+    font-size: 61px;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 33px;
+    margin: 20px 16px 0 0;
+    color: rgba(0, 93, 255, 1);
+}
+
+h3 {
+    margin: 24px 0 0 0;
+    color: rgba(0, 93, 255, 1);
+}
+
+a {
+    color: rgba(69, 137, 255, 1);
+}
