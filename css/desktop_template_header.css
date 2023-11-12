@@ -12,8 +12,16 @@
 }
 
 .helpImg{
-    margin-left: 16px;
     cursor: pointer;
+}
+
+.helpImg:hover {
+    transform: scale(1.2);
+}
+
+#header-title {
+    cursor: pointer;
+    margin-right: 39px;
 }
 
 .profile-div{
@@ -103,6 +111,10 @@
 .profile-settings button:hover {
     background-color: rgba(200, 222, 255, 0.315);
     cursor: pointer;
+}
+
+.initials-div:hover {
+    background-color: rgba(200, 222, 255, 0.404) !important;
 }
 
 .d-none {
