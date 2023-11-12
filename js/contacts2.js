@@ -6,7 +6,6 @@ let firstLetterOfContatcs = [];
 
 async function init() {
     includeHTML();
-    // generateLatter();
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
     loadUsers();
@@ -82,34 +81,23 @@ function getInitialContacts(sortedContacts){
             }
         }
         return initialString;
-        // firstLetterOfContatcs.push(initialString);
     }
 } 
-
 
 
 async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
     contact.innerHTML = '';
 
-    // let loggedInUser = await getLoggedInUser() || { contacts: [] };
-    // let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
-    // getFirstLetterContacts(sortedContacts);
+    let loggedInUser = await getLoggedInUser() || { contacts: [] };
+    let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
     let currentLetter = null;
 
-    for (let i = 0; i < loggedInUser.length; i++) {
-        let initial = loggedInUser.contacts[i].initial;
-        let contactData = loggedInUser.contacts[i];
-        let firstLetter = loggedInUser.contacts[i].name.charAt(0).toUpperCase();
-        let color = loggedInUser.contacts[i].color;
-        // // Farbe pro Element generieren oder aus dem localStorage abrufen
-        // let storedColor = localStorage.getItem(`${getLetter}_color`);
-        // let getColor = storedColor || generateRandomColor();
-
-        // if (!storedColor) {
-        //     // Farbe im localStorage speichern, wenn sie neu generiert wurde
-        //     localStorage.setItem(`${getLetter}_color`, getColor);
-        // }
+    for (let i = 0; i < sortedContacts.length; i++) {
+        let initial = sortedContacts[i].initial;
+        let contactData = sortedContacts[i];
+        let firstLetter = sortedContacts[i].name.charAt(0).toUpperCase();
+        let color = sortedContacts[i].color;
 
         if (firstLetter !== currentLetter) {
             // Buchstabe und Linie hinzufügen
@@ -120,7 +108,6 @@ async function generateContactInSmall() {
                 <div class="positionLineContact">
                     <p class="lineContact"></p>
                 </div>`;
-            
             currentLetter = firstLetter;
         }
 
@@ -158,21 +145,21 @@ function generateRandomColor(){
 }
 
  
-function showDetailsOfContact(newName, newEmail, newPhone, getLetter, getColor){  
+function showDetailsOfContact(newName, newEmail, newPhone, initial, color){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
     // detailsContact.classList.toggle('d-none');
     detailsContact.innerHTML ='';
     detailsContact.innerHTML =  /*html*/`
         <div class="positionHeaderContactDetails">
-            <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${getColor};">
-                <p class="sizeOfLetterDetails">${getLetter}</p>
+            <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
+                <p class="sizeOfLetterDetails">${initial}</p>
             </div>
             <div>
                 <p class="nameHeaderContactDetails">${newName}</p>
                 <div class="positionEditAndDelete">
-                    <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${getLetter}', '${getColor}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
+                    <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
                             style="margin-right: 8px;">Edit</button>
-                    <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${getLetter}', '${getColor}')" class="displayFlex clearBtn"><img
+                    <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img
                             src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
                 </div>
             </div>
@@ -236,7 +223,7 @@ function closeAddContactBoxWithX(){
 }
 
 
-async function editContact(newName, newEmail, newPhone, getLetter, getColor){
+async function editContact(newName, newEmail, newPhone, initial, color){
     document.getElementById('boxOfEdingContact').classList.toggle('d-none');
     let valueBox = document.getElementById('boxOfEdingContact');
     valueBox.innerHTML = '';
@@ -249,8 +236,8 @@ async function editContact(newName, newEmail, newPhone, getLetter, getColor){
             <img src="../assets/img/close.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
             <div class="witheBoxAddContact">
                 <div class="detailsOFAddContact">
-                    <div class="witheBoxAddContactImg" style="background-color: ${getColor};">
-                        <p class="sizeOfLetterDetails">${getLetter}</p>
+                    <div class="witheBoxAddContactImg" style="background-color: ${color};">
+                        <p class="sizeOfLetterDetails">${initial}</p>
                     </div>
                     <div class="displayFlex">
                         <input type="text" class="inputField" placeholder="Name" id="nameEditContact">
@@ -265,8 +252,8 @@ async function editContact(newName, newEmail, newPhone, getLetter, getColor){
                         <img src="../assets/img/call.svg" class="imgInInput">
                     </div>
                     <div class="btnsAddContact">
-                        <button class="displayFlex btnCloseContact" onclick="deleteContact('${newName}','${newEmail}','${newPhone}')">Delete</button>
-                        <button class="displayFlex btnCreateContact" onclick="saveEditContactWindow('${newName}','${newEmail}','${newPhone}')">Save <img
+                        <button class="displayFlex btnCloseContact" onclick="deleteContact('${newName}','${newEmail}','${newPhone}','${initial}')">Delete</button>
+                        <button class="displayFlex btnCreateContact" onclick="saveEditContactWindow('${newName}','${newEmail}','${newPhone}','${color}')">Save <img
                                 src="../assets/img/check.svg" class="samllIconsContactOK"></button>
                     </div>
                 </div>
@@ -288,13 +275,15 @@ function closeEditContactBox(){
 }
 
 
-async function deleteContact(newName, newEmail, newPhone) {
+async function deleteContact(newName, newEmail, newPhone, initial, color) {
     // Push the contact info to the loggedInUser.contacts array.  die zeile soll verantworlich fürs löschen sein
     loggedInUser.contacts = loggedInUser.contacts.filter((contact) => {
         return (
             contact.name !== newName ||
             contact.email !== newEmail ||
-            contact.phone !== newPhone 
+            contact.phone !== newPhone ||
+            contact.initial !== initial ||
+            contact.color !== color 
         );
     });
 
@@ -306,8 +295,6 @@ async function deleteContact(newName, newEmail, newPhone) {
     await generateContactInSmall();
     document.getElementById('boxOfDetailsContacts').classList.add('d-none');
 }
-
-
 
 
 async function saveEditContactWindow(newName, newEmail, newPhone) {
@@ -323,14 +310,13 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
         users[userIndex].contacts = loggedInUser.contacts;
 
         await setItem('loggedInUser', JSON.stringify(loggedInUser));
-        await generateContactInSmall();
+        await generateContactInSmall(); // Wait for generateContactInSmall to complete
         document.getElementById('boxOfEdingContact').classList.add('d-none');
         document.getElementById('boxOfDetailsContacts').classList.add('d-none');
     } else {
         console.error('Kontakt nicht gefunden im loggedInUser.contacts Array');
     }
 }
-
 
 
 async function clearStorage() {

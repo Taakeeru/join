@@ -403,6 +403,11 @@ body{
     cursor: pointer;
 }
 
+.closeEditContactBox:hover{
+    background-color: #4589FF;
+    border-radius: 50%;
+}
+
 .backgoundBox{
     width: 100vw;
     height: 100vh;
