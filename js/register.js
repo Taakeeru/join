@@ -13,7 +13,9 @@ function generateUniqueId() {
 
 
 async function initRegister() {
-    register();
+    // register();
+    await signUpSuccessAnimation();
+    renderLogInContent();
 }
 
 
@@ -59,4 +61,13 @@ function resetForm(signUpButton, username, email, password, confirmPassword) {
     password.value = '';
     confirmPassword.value = '';
     signUpButton.disabled = false;
+}
+
+
+async function signUpSuccessAnimation() {
+    const successMessage = document.getElementById('successMessage');
+
+    successMessage.classList.remove('d-none');
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    successMessage.classList.add('d-none');
 }
