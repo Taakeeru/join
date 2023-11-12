@@ -51,7 +51,7 @@ function toggleSettings() {
 
 
 function loadHelp() {
-
+    window.location.href = '/html/help.html';
 }
 
 
