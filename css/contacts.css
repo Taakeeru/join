@@ -419,7 +419,7 @@ body{
     bottom: 0;
 }
 
-.overlay {
+/* .overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -456,4 +456,4 @@ body{
     to {
       top: 45vh;
     }
-  }
+  } */
