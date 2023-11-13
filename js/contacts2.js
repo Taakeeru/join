@@ -342,3 +342,15 @@ async function clearStorage() {
     }
     await generateContactInSmall();
 }
+
+
+// async function addContactAnimation() {
+//     const successMessage = document.getElementById('successMessage');
+//     const overlay = document.getElementById('overlay');
+
+//     successMessage.classList.remove('d-none');
+//     overlay.classList.remove('d-none');
+//     await new Promise(resolve => setTimeout(resolve, 2000));
+//     successMessage.classList.add('d-none');
+//     overlay.classList.add('d-none');
+// }
