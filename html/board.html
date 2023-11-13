@@ -244,6 +244,81 @@
                </div>
             </div>
          </div>
+          <!--edit task menu -->
+          <div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer" >
+            <div onclick="event.stopPropagation()" class="openCardsDetailsEdit">
+               <div class="header-EditMenu"><span>Add Task</span>
+                  <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="/assets/img/close.svg" alt="">
+               </div>
+               <div class="contentContainer-sideMenu" >
+                  <div class="addTask addTask-sideMenu">
+                     <form action="">
+                        <div class="topSektion topSektion-sideMenu">
+                           <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
+                           <div class="description description-sideMenu">
+                              <div class="descriptionContent">
+                                 <p class="descriptionText">Description
+                                 <p class="descriptionText small">(optional)</p>
+                                 </p>
+                              </div>
+                              <textarea class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
+                                 rows="10"></textarea>
+                           </div>
+                           <div class="dateContent">
+                              <p class="dateTitle">Due date</p>
+                              <div class="inputfieldDateContainer"><input class="inputfieldDate" type="text"
+                                 placeholder="dd/mm/yyyy">
+                                 <img class="dateImg" src="../assets/img/event.svg" alt="">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="assignedContent assignedContent-sideMenu" >
+                           <div class="assignedTitleContainer">
+                              <p class="assignedTitle">Priority
+                              <p class="assignedTitle small" >(optional)</p>
+                              </p>
+                           </div>
+                           <div class="buttonContainer"> 
+                              <button class="prioButton">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                              <button class="prioButton">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                              <button class="prioButton">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                           </div>
+                        </div>
+                        <div class="assignedContent assignedContent-sideMenu" >
+                           <div class="assignedTitleContainer">
+                              <p class="assignedTitle">Assignet to
+                              <p class="assignedTitle small" >(optional)</p>
+                              </p>
+                           </div>
+                           <select class="assignedSelect">
+                              <option>Select contacts to assign</option>
+                              <option value="User1">User1</option>
+                              <option value="User2">User2</option>
+                              <option value="User3">User3</option>
+                           </select>
+                        </div>
+                     
+                        <div class="SubtaskContentEdit" >
+                           <div class="assignedTitleContainer">
+                              <p class="assignedTitle">Subtask
+                              <p class="assignedTitle small" >(optional)</p>
+                              </p>
+                           </div>
+                           <input placeholder="Add new subtask" class="subtaskInput">
+                           <div class="openCardCheckbox">
+                              <div class="subtaskText">Implement Recipe Recommendation</div >
+                              <div class="subtaskText">Implement Recipe Recommendation</div >
+                              <div class="subtaskText">Implement Recipe Recommendation</div >
+                            </div>
+                        </div>
+                        
+                     </form>
+                  </div>
+               </div>
+            </div>
+
+            </div>
+          </div>
       </div>
    </body>
 </html>
