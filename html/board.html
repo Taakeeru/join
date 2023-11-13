@@ -13,6 +13,7 @@
       <script src="../js/storage2.js"></script>
       <script src="../js/profile.js"></script>
       <script src="../js/register.js"></script>
+      <link rel="stylesheet" href="../css/contacts.css" />
       <link rel="stylesheet" href="../css/add_task.css">
       <!--bootstrap-->
       <link
@@ -245,13 +246,13 @@
             </div>
          </div>
           <!--edit task menu -->
-          <div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer d-none" >
+          <div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer " >
             <div onclick="event.stopPropagation()" class="openCardsDetailsEdit">
-               <div class="header-EditMenu"><span>Add Task</span>
-                  <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="/assets/img/close.svg" alt="">
+               <div class="header-EditMenu">
+                  <img onclick ="closeAddTaskMenu()" class="header-editMenuImg" src="/assets/img/close.svg" alt="">
                </div>
                <div class="contentContainer-sideMenu" >
-                  <div class="addTask addTask-sideMenu">
+                  <div class="addTask addTask-sideMenu editMenu">
                      <form action="">
                         <div class="topSektion topSektion-sideMenu">
                            <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
@@ -316,7 +317,8 @@
                   </div>
                   
                </div>
-               <div><button>OK</button></div>
+               <div class="buttonContainerEdit" > <button class="displayFlex btnCreateContact">Ok<img
+                  src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
             </div>
 
             </div>
