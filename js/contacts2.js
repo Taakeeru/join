@@ -318,8 +318,9 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
 
 
 async function addContactAnimation() {
-    const successMessage = document.getElementById('successCreatedContact');
-    successMessage.style ='d-none';
+    const successMessage = document.getElementById('successMessage');
+
+    successMessage.classList.remove('d-none');
     await new Promise(resolve => setTimeout(resolve, 2000));
-    successMessage.style ='d-none';
+    successMessage.classList.add('d-none');
 }

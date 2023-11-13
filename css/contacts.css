@@ -11,7 +11,7 @@ body{
 }
 
 .d-none{
-    display: none;
+    display: none !important;
 }
 
 .displayFlex{
@@ -433,7 +433,7 @@ body{
     border-radius: 50%;
 }
   
-  #successCreatedContact {
+  #successMessage {
     position: absolute;
     top: 100vh;
     left: 50%;
@@ -451,7 +451,6 @@ body{
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    display: none;
   }
   
   @keyframes slideUp {
