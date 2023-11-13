@@ -295,7 +295,7 @@ body{
 }
 
 .witheBoxAddContact{
-    z-index: 1;
+    z-index: 3;
     height: 65%;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;

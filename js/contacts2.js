@@ -186,8 +186,6 @@ function addNewContactBtn(){
     document.getElementById('removeD-none').classList.toggle('d-none');
     document.getElementById('boxOfAddingNewContact').classList.add('showSideWindow');
     document.getElementById('boxOfAddingNewContact').innerHTML = /*html*/`
-        <div >
-            <div>
                 <div class="blueBoxAddContact">
                 <img src="../assets/img/capa1.svg" class="imgBlueBox">
                     <h1 class="h1AddContact">Add Contact</h1>
@@ -216,19 +214,20 @@ function addNewContactBtn(){
                                 <img src="../assets/img/check.svg" class="samllIconsContactOK"></button>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>`;
+                </div>`;
 }
 
 
 function closeAddContactWindow(){
     document.getElementById('removeD-none').classList.toggle('d-none');
+    document.getElementById('boxOfAddingNewContact').classList.remove('showSideWindow');
+
 }
 
 
 function closeAddContactBoxWithX(){
-    document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
+    document.getElementById('removeD-none').classList.toggle('d-none');
+    document.getElementById('boxOfAddingNewContact').classList.remove('showSideWindow');
 }
 
 
