@@ -182,7 +182,7 @@ function addNewContactBtn(){
             <img src="../assets/img/close.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
             <div class="witheBoxAddContact">
                 <div class="detailsOFAddContact">
-                    <img src="../assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
+                    <img src="../assets/img/frame79.svg" class="witheBoxAddContactImg">
                     <div class="displayFlex">
                         <input type="text" class="inputField" placeholder="Name" id="nameAddContact">
                         <img src="../assets/img/person.svg" class="imgInInput">
