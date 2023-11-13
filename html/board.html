@@ -118,7 +118,7 @@
               <div onclick="event.stopPropagation()" class="openCardsDetails">
                 <div class="openCardTitle"> 
                   <span class="userDetailsTitle">Users</span>
-                  <img onclick="closeCardContainer()" src="/assets/img/close.svg" alt="">
+                  <img class="userDetailsImg" onclick="closeCardContainer()" src="/assets/img/close.svg" alt="">
                 </div>
                 <div class="openCardDescription">
                   <span class="openCardDescriptionText">Kochwelt Page & Recipe Recommender</span>
@@ -155,10 +155,14 @@
                   <div class="subtaskText">Implement Recipe Recommendation</div >
                 </div>
                 <div class="openCardIcons">
-                  <img class="openCardIconsImg" src="/assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
-                  <img class="openCardIconsImg" src="/assets/img/vector3.svg" alt="">
-                  <img class="openCardIconsImg" src="/assets/img/edit.svg" alt=""> <span class="openCardIconsText">Edit</span>
-                </div>
+                  <div class="openCardIconsImgContainer" >
+                     <img class="openCardIconsImg" src="/assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
+                  </div>
+                   <img class="openCardIconsImg" src="/assets/img/vector3.svg" alt="">
+                  <div class="openCardIconsImgContainer" >
+                   <img class="openCardIconsImg" src="/assets/img/edit.svg" alt=""> <span class="openCardIconsText">Edit</span>
+                  </div>
+               </div>
               </div>
 
               </div>

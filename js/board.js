@@ -84,7 +84,7 @@ function startDragging(id) {
 
 function generateTodoHTML(element) {
   return `
-    <div class="cards" onclick="openCardContainer()" draggable="true" ondragstart="startDragging(${element["id"]})">
+    <div class="taskCards" onclick="openCardContainer()" draggable="true" ondragstart="startDragging(${element["id"]})">
               <div class="cardContent">
                 <div class="cardHeader">
                   <p class="userStory">${element["title"]}</p>
