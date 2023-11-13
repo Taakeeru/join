@@ -15,7 +15,6 @@ async function init() {
 
 async function addContactToUserContacts(loggedInUser, name, email, phone, intial, getColor) {
     pushContactInfo(loggedInUser.contacts, name, email, phone, intial, getColor);
-    
     const userIndex = users.findIndex(user => user.id === loggedInUser.id);
 
     if (userIndex !== -1) {
@@ -41,13 +40,14 @@ async function createNewContact() {
     let storedColor = localStorage.getItem(test);
     let getColor = storedColor || generateRandomColor();
     
-    // let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
     let sortedContacts = document.getElementById('nameAddContact').value;
     let intial = getInitialContacts(sortedContacts);
 
     await addContactToUserContacts(loggedInUser, name.value, email.value, phone.value, intial, getColor);
     resetForm(name, email, phone);
     generateContactInSmall();
+    document.getElementById('addBox').classList.remove('backgoundBox');
+    document.getElementById('boxOfAddingNewContact').classList.remove('showSideWindow');
 }
 
 
@@ -66,7 +66,6 @@ function resetForm(name, email, phone) {
     name.value = '';
     email.value = '';
     phone.value = '';
-    document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
 }
 
 
@@ -77,18 +76,6 @@ function getInitialContacts(sortedContacts){
         initialString += name.charAt(0).toUpperCase();
     }
     return initialString;
-    // for (let i = 0; i < sortedContacts.length; i++) {
-    //     const username = sortedContacts[i].name;
-    //     const words = username.split(' ');
-    //     let initialString = '';
-
-    //     for (const word of words) {
-    //         if (word.length > 0) {
-    //             initialString += word[0].toUpperCase();
-    //         }
-    //     }
-    //     return initialString;
-    // }
 } 
 
 
@@ -154,7 +141,7 @@ function generateRandomColor(){
  
 function showDetailsOfContact(newName, newEmail, newPhone, initial, color){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
-    detailsContact.classList.toggle('d-none');
+    document.getElementById('boxOfDetailsContacts').classList.remove('addOpacity');
     detailsContact.innerHTML ='';
     detailsContact.innerHTML =  /*html*/`
         <div class="positionHeaderContactDetails">
@@ -181,62 +168,60 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color){
 }
 
 
-function addNewContactBtn(){
-    
-    document.getElementById('removeD-none').classList.toggle('d-none');
+function addNewContactBtn(){   
+    document.getElementById('addBox').classList.add('backgoundBox');
     document.getElementById('boxOfAddingNewContact').classList.add('showSideWindow');
     document.getElementById('boxOfAddingNewContact').innerHTML = /*html*/`
-                <div class="blueBoxAddContact">
-                <img src="../assets/img/capa1.svg" class="imgBlueBox">
-                    <h1 class="h1AddContact">Add Contact</h1>
-                    <p class="pAddContact">Tasks are better with a team!</p>
-                </div>
-                <img src="../assets/img/close.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
-                <div class="witheBoxAddContact">
-                    <div class="detailsOFAddContact">
-                        <img src="../assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
-                        <div class="displayFlex">
-                            <input type="text" class="inputField" placeholder="Name" id="nameAddContact">
-                            <img src="../assets/img/person.svg" class="imgInInput">
-                        </div>
-                        <div class="displayFlex">
-                            <input type="text" class="inputField" placeholder="Email" id="emailAddContact">
-                            <img src="../assets/img/mail.svg" class="imgInInput">
-                        </div>
-                        <div class="displayFlex">
-                            <input type="text" class="inputField" placeholder="Phone" id="phoneAddContact">
-                            <img src="../assets/img/call.svg" class="imgInInput">
-                        </div>
-                        <div class="btnsAddContact">
-                            <button class="displayFlex btnCloseContact" onclick="closeAddContactWindow()">Close <img
-                                    src="../assets/img/vector.svg" class="samllIconsContactX"></button>
-                            <button class="displayFlex btnCreateContact" onclick="createNewContact()">Create contact
-                                <img src="../assets/img/check.svg" class="samllIconsContactOK"></button>
-                        </div>
+            <div class="blueBoxAddContact">
+            <img src="../assets/img/capa1.svg" class="imgBlueBox">
+                <h1 class="h1AddContact">Add Contact</h1>
+                <p class="pAddContact">Tasks are better with a team!</p>
+            </div>
+            <img src="../assets/img/close.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
+            <div class="witheBoxAddContact">
+                <div class="detailsOFAddContact">
+                    <img src="../assets/img/head-663997_640.jpg" class="witheBoxAddContactImg">
+                    <div class="displayFlex">
+                        <input type="text" class="inputField" placeholder="Name" id="nameAddContact">
+                        <img src="../assets/img/person.svg" class="imgInInput">
                     </div>
-                </div>`;
+                    <div class="displayFlex">
+                        <input type="text" class="inputField" placeholder="Email" id="emailAddContact">
+                        <img src="../assets/img/mail.svg" class="imgInInput">
+                    </div>
+                    <div class="displayFlex">
+                        <input type="text" class="inputField" placeholder="Phone" id="phoneAddContact">
+                        <img src="../assets/img/call.svg" class="imgInInput">
+                    </div>
+                    <div class="btnsAddContact">
+                        <button class="displayFlex btnCloseContact" onclick="closeAddContactWindow()">Close <img
+                                src="../assets/img/vector.svg" class="samllIconsContactX"></button>
+                        <button class="displayFlex btnCreateContact" onclick="createNewContact()">Create contact
+                            <img src="../assets/img/check.svg" class="samllIconsContactOK"></button>
+                    </div>
+                </div>
+            </div>`;
 }
 
 
 function closeAddContactWindow(){
-    document.getElementById('removeD-none').classList.toggle('d-none');
+    document.getElementById('addBox').classList.remove('backgoundBox');
     document.getElementById('boxOfAddingNewContact').classList.remove('showSideWindow');
-
 }
 
 
 function closeAddContactBoxWithX(){
-    document.getElementById('removeD-none').classList.toggle('d-none');
+    document.getElementById('addBox').classList.remove('backgoundBox');
     document.getElementById('boxOfAddingNewContact').classList.remove('showSideWindow');
 }
 
 
 async function editContact(newName, newEmail, newPhone, initial, color){
-    document.getElementById('boxOfEdingContact').classList.toggle('d-none');
+    document.getElementById('addBox').classList.add('backgoundBox');
+    document.getElementById('boxOfEdingContact').classList.add('showSideWindow');
     let valueBox = document.getElementById('boxOfEdingContact');
     valueBox.innerHTML = '';
     valueBox.innerHTML = /*html*/`
-        <div class="boxOfEdingContact">
             <div class="blueBoxEditContact">
                 <img src="../assets/img/capa1.svg" class="imgBlueBox">
                 <h1 class="h1EditContact">Edit Contact</h1>
@@ -265,8 +250,7 @@ async function editContact(newName, newEmail, newPhone, initial, color){
                                 src="../assets/img/check.svg" class="samllIconsContactOK"></button>
                     </div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
     setValueInIput(newName, newEmail, newPhone);
 }
 
@@ -279,21 +263,22 @@ function setValueInIput(newName, newEmail, newPhone){
 
 
 function closeEditContactBox(){
-    document.getElementById('boxOfEdingContact').classList.toggle('d-none');
+    document.getElementById('addBox').classList.remove('backgoundBox');
+    document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
 }
 
 
 async function deleteContact(newName, newEmail, newPhone, initial, color) {
-    // Push the contact info to the loggedInUser.contacts array.  die zeile soll verantworlich fürs löschen sein
     loggedInUser.contacts = loggedInUser.contacts.filter((contact) => {
         return (
-            contact.name !== newName ||
-            contact.email !== newEmail ||
-            contact.phone !== newPhone ||
-            contact.initial !== initial ||
+            contact.name !== newName &&
+            contact.email !== newEmail &&
+            contact.phone !== newPhone &&
+            contact.initial !== initial &&
             contact.color !== color 
         );
     });
+    
 
     // Update the loggedInUser in the users array.
     const userIndex = users.findIndex(user => user.id === loggedInUser.id);
@@ -301,7 +286,9 @@ async function deleteContact(newName, newEmail, newPhone, initial, color) {
 
     await setItem('loggedInUser', JSON.stringify(loggedInUser));
     await generateContactInSmall();
-    document.getElementById('boxOfDetailsContacts').classList.add('d-none');
+    document.getElementById('boxOfDetailsContacts').innerHTML ='';
+    document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
+    document.getElementById('addBox').classList.remove('backgoundBox');
 }
 
 
@@ -318,9 +305,10 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
         users[userIndex].contacts = loggedInUser.contacts;
 
         await setItem('loggedInUser', JSON.stringify(loggedInUser));
-        await generateContactInSmall(); // Wait for generateContactInSmall to complete
-        document.getElementById('boxOfEdingContact').classList.add('d-none');
-        document.getElementById('boxOfDetailsContacts').classList.add('d-none');
+        await generateContactInSmall();
+        document.getElementById('boxOfDetailsContacts').innerHTML ='';
+        document.getElementById('addBox').classList.remove('backgoundBox');
+        document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
     } else {
         console.error('Kontakt nicht gefunden im loggedInUser.contacts Array');
     }

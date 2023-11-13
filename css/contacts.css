@@ -143,6 +143,11 @@ body{
     font-size: small;
 }
 
+.addOpacity{
+    height: 0;
+    overflow: hidden;
+}
+
 .boxOfDetailsContacts{
     width: auto;
     height: 318px;
@@ -211,7 +216,7 @@ body{
 }
 
 
-.boxOfAddingNewContact{
+.boxOfAddingNewContact {
     height: 100vh;
     width: 548px;
     position: absolute;
@@ -219,7 +224,7 @@ body{
     right: 0;
     z-index: 3;
     transform: translateX(549px);
-    transition: all 500ms ease-in-out;
+    transition: all 0.5s ease-in-out; /* Änderung der Transition-Eigenschaft */
 }
 
 .backgoundBox{
@@ -231,24 +236,11 @@ body{
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 2;
-    /* transform: translateX(100vw);
-    transition: all 500ms ease-in-out; */
+    z-index: 3;
 }
 
-/* #showAddWindow{
-    height: 100vh;
-    width: 548px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    transform: translateX(542px);
-    transition: all 500ms ease-in-out;
-} */
-
 .showSideWindow{
-    transform: translateX(0);
+    transform: translateX(0) !important;
 }
 
 .blueBoxAddContact{
@@ -404,7 +396,9 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 3;
+    transform: translateX(-549px);
+    transition: all 0.5s ease-in-out;
 }
 
 .blueBoxEditContact{
