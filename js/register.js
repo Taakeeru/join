@@ -13,7 +13,7 @@ function generateUniqueId() {
 
 
 async function initRegister() {
-    // register();
+    register();
     await signUpSuccessAnimation();
     renderLogInContent();
 }
