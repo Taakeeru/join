@@ -48,6 +48,8 @@ async function createNewContact() {
     generateContactInSmall();
     document.getElementById('addBox').classList.remove('backgoundBox');
     document.getElementById('boxOfAddingNewContact').classList.remove('showSideWindow');
+    document.getElementById('boxOfDetailsContacts').innerHTML ='';
+    addContactAnimation();
 }
 
 
@@ -315,38 +317,9 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
 }
 
 
-async function clearStorage() {
-    const key = "newContactData";
-    try {
-        // Fetch the current data from the server
-        const response = await getItem(key);
-        const { data } = response;
-
-        // Check if the response is successful and the value exists
-        if (response.status === "success" && data && data.value) {
-            // Delete the value
-            delete data.value;
-
-            // Upload the updated data to the server
-            const updatedResponse = await setItem(key, data);
-            console.log(updatedResponse); // Optionally, handle the response
-        } else {
-            console.log("Value not found or server response unsuccessful");
-        }
-    } catch (error) {
-        console.error("Error occurred: ", error);
-    }
-    await generateContactInSmall();
+async function addContactAnimation() {
+    const successMessage = document.getElementById('successCreatedContact');
+    successMessage.style ='d-none';
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    successMessage.style ='d-none';
 }
-
-
-// async function addContactAnimation() {
-//     const successMessage = document.getElementById('successMessage');
-//     const overlay = document.getElementById('overlay');
-
-//     successMessage.classList.remove('d-none');
-//     overlay.classList.remove('d-none');
-//     await new Promise(resolve => setTimeout(resolve, 2000));
-//     successMessage.classList.add('d-none');
-//     overlay.classList.add('d-none');
-// }
