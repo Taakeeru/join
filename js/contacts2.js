@@ -41,7 +41,8 @@ async function createNewContact() {
     let storedColor = localStorage.getItem(test);
     let getColor = storedColor || generateRandomColor();
     
-    let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
+    // let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
+    let sortedContacts = document.getElementById('nameAddContact').value;
     let intial = getInitialContacts(sortedContacts);
 
     await addContactToUserContacts(loggedInUser, name.value, email.value, phone.value, intial, getColor);
@@ -70,18 +71,24 @@ function resetForm(name, email, phone) {
 
 
 function getInitialContacts(sortedContacts){
-    for (let i = 0; i < sortedContacts.length; i++) {
-        const username = sortedContacts[i].name;
-        const words = username.split(' ');
-        let initialString = '';
-
-        for (const word of words) {
-            if (word.length > 0) {
-                initialString += word[0].toUpperCase();
-            }
-        }
-        return initialString;
+    const username = sortedContacts.split(' ');
+    let initialString = '';
+    for (const name of username) {
+        initialString += name.charAt(0).toUpperCase();
     }
+    return initialString;
+    // for (let i = 0; i < sortedContacts.length; i++) {
+    //     const username = sortedContacts[i].name;
+    //     const words = username.split(' ');
+    //     let initialString = '';
+
+    //     for (const word of words) {
+    //         if (word.length > 0) {
+    //             initialString += word[0].toUpperCase();
+    //         }
+    //     }
+    //     return initialString;
+    // }
 } 
 
 
@@ -147,7 +154,7 @@ function generateRandomColor(){
  
 function showDetailsOfContact(newName, newEmail, newPhone, initial, color){  
     let detailsContact = document.getElementById('boxOfDetailsContacts');
-    // detailsContact.classList.toggle('d-none');
+    detailsContact.classList.toggle('d-none');
     detailsContact.innerHTML ='';
     detailsContact.innerHTML =  /*html*/`
         <div class="positionHeaderContactDetails">
@@ -175,10 +182,12 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color){
 
 
 function addNewContactBtn(){
-    document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
+    
+    document.getElementById('removeD-none').classList.toggle('d-none');
+    document.getElementById('boxOfAddingNewContact').classList.add('showSideWindow');
     document.getElementById('boxOfAddingNewContact').innerHTML = /*html*/`
-        <div>
-            <div class="boxOfAddingNewContact">
+        <div >
+            <div>
                 <div class="blueBoxAddContact">
                 <img src="../assets/img/capa1.svg" class="imgBlueBox">
                     <h1 class="h1AddContact">Add Contact</h1>
@@ -214,7 +223,7 @@ function addNewContactBtn(){
 
 
 function closeAddContactWindow(){
-    document.getElementById('boxOfAddingNewContact').classList.toggle('d-none');
+    document.getElementById('removeD-none').classList.toggle('d-none');
 }
 
 
