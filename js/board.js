@@ -84,7 +84,7 @@ function startDragging(id) {
 
 function generateTodoHTML(element) {
   return `
-    <div class="cards" draggable="true" ondragstart="startDragging(${element["id"]})">
+    <div class="cards" onclick="openCardContainer()" draggable="true" ondragstart="startDragging(${element["id"]})">
               <div class="cardContent">
                 <div class="cardHeader">
                   <p class="userStory">${element["title"]}</p>
@@ -136,6 +136,16 @@ function showAddTaskMenu() {
 function closeAddTaskMenu() {
   document.getElementById("menuContainerBox").classList.remove("menuContainer");
   document.getElementById("sideMenu").classList.remove("showmenu");
+}
+
+function openCardContainer() { // noch später auf die karten übergeben
+  document.getElementById("openCardContainer").classList.remove("d-none");
+
+}
+
+function closeCardContainer() {
+  document.getElementById("openCardContainer").classList.add("d-none");
+  
 }
 
 

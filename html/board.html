@@ -114,11 +114,11 @@
             w3-include-html="../assets/templates/desktop_template_footer.html"
             ></div>
             <!-- open Cards -->
-            <div class="openCardContainer" >
-              <div class="openCardsDetails">
+            <div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer d-none" >
+              <div onclick="event.stopPropagation()" class="openCardsDetails">
                 <div class="openCardTitle"> 
                   <span class="userDetailsTitle">Users</span>
-                  <img src="/assets/img/close.svg" alt="">
+                  <img onclick="closeCardContainer()" src="/assets/img/close.svg" alt="">
                 </div>
                 <div class="openCardDescription">
                   <span class="openCardDescriptionText">Kochwelt Page & Recipe Recommender</span>
