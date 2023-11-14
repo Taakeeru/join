@@ -33,7 +33,7 @@ function signUpFormTemplate() {
             <div class="col d-flex">
                 <!-- Checkbox -->
                 <div class="form-check">
-                <input required class="form-check-input " type="checkbox" value="" id="form2Example31" unchecked />
+                <input required class="form-check-input b-color" type="checkbox" value="" id="form2Example31" unchecked />
                 <label class="form-check-label" for="form2Example31"> <span id="label-text">I accept the <a href="privacy.html">Privacy Policy</a></span></label>
                 </div>
             </div>
@@ -69,7 +69,7 @@ function logInFormTemplate() {
             <div class="col d-flex">
                 <!-- Checkbox -->
                 <div class="form-check">
-                    <input class="form-check-input " type="checkbox" value="" id="form2Example31" checked />
+                    <input class="form-check-input b-color" type="checkbox" value="" id="form2Example31" checked />
                     <label class="form-check-label" for="form2Example31"> <span id="label-text"> Remember me </span></label>
                 </div>
             </div>

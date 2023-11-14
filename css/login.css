@@ -189,6 +189,11 @@ body {
   cursor: pointer;
 }
 
+.b-color {
+  border: 2px solid rgb(13,110,253) !important;
+  cursor: pointer;
+}
+
 body {
   position: relative;
   margin: 0;
