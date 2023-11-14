@@ -51,6 +51,18 @@ function getThePriority(){
   
 }
 
+function pushTasktInfo(getTitel, getTextArea, dueDateValue, getPriority, currentDate,) {
+  contacts.push({
+      title:getTitel ,
+      description:getTextArea ,
+      date: dueDateValue,
+      priority: getPriority,
+      assignetTo:test,
+      category_:test,
+      subtask:test
+  });
+}
+
 // ------------------------ tastBereich------------------
 
 function updateHTML() {
