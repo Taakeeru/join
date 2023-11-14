@@ -96,3 +96,27 @@ async function signUpSuccessAnimation() {
     successMessage.classList.add('d-none');
     overlay.classList.add('d-none');
 }
+
+
+function changeImage() {
+    let passwordInput = document.getElementById('password');
+    let passwordImage = document.getElementById('pw-img');
+
+    if (passwordInput.value.length >= 1) {
+        passwordImage.src = '../assets/img/eye_closed.png';
+    } else {
+        passwordImage.src = '../assets/img/lock.svg';
+    }
+}
+
+
+function changeImage2() {
+    let passwordInput = document.getElementById('confirm-password');
+    let passwordImage = document.getElementById('cpw-img');
+
+    if (passwordInput.value.length >= 1) {
+        passwordImage.src = '../assets/img/eye_closed.png';
+    } else {
+        passwordImage.src = '../assets/img/lock.svg';
+    }
+}
