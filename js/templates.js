@@ -6,7 +6,8 @@ function signUpFormTemplate() {
             <input required type="text" id="user-name" class="form-control name" placeholder="Name" /> 
 
             <!-- Email input -->
-            <input required type="email" id="email" class="form-control email" placeholder="Email" /> 
+            <input required type="email" id="email" class="form-control email" placeholder="Email" />
+            <div class="email-fail" id="email-fail"></div> 
 
             <!-- Password input -->
             <input required type="password" id="password" class="form-control password" placeholder="Password"/>

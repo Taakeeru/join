@@ -34,22 +34,32 @@ async function register() {
     let password = document.getElementById('password');
     let confirmPassword = document.getElementById('confirm-password');
     let wrongPwMessage = document.getElementById('pw-fail');
+    let emailMessage = document.getElementById('email-fail');
 
-    if (password.value == confirmPassword.value) {
-        signUpButton.disabled = true;
-        pushUserInfo(username, email, password);
-        await setItem('users', JSON.stringify(users));
-        resetForm(signUpButton, username, email, password, confirmPassword);
-        wrongPwMessage.innerHTML = '';
-        password.classList.remove('red-bg');
-        confirmPassword.classList.remove('red-bg');
-        await signUpSuccessAnimation();
-        renderLogInContent();
-    }   else {
-        wrongPwMessage.innerHTML = /* html */ `<span>* Check passwords again</span>`;
-        password.classList.add('red-bg');
-        confirmPassword.classList.add('red-bg');
-        
+    const emailExists = users.some(user => user.email === email.value);
+
+    if (!emailExists) {
+        if (password.value == confirmPassword.value) {
+            signUpButton.disabled = true;
+            pushUserInfo(username, email, password);
+            await setItem('users', JSON.stringify(users));
+            resetForm(signUpButton, username, email, password, confirmPassword);
+            wrongPwMessage.innerHTML = '';
+            password.classList.remove('red-bg');
+            confirmPassword.classList.remove('red-bg');
+            
+            await signUpSuccessAnimation();
+            renderLogInContent();
+        }   else {
+            emailMessage.innerHTML = '';
+            email.classList.remove('red-bg');
+            wrongPwMessage.innerHTML = /* html */ `<span>* Check passwords again!</span>`;
+            password.classList.add('red-bg');
+            confirmPassword.classList.add('red-bg');
+        }
+    } else {
+        emailMessage.innerHTML = /* html */ `<span>* Email already exists!</span>`;
+        email.classList.add('red-bg');
     }
 }
 
