@@ -14,8 +14,7 @@ function generateUniqueId() {
 
 async function initRegister() {
     register();
-    await signUpSuccessAnimation();
-    renderLogInContent();
+    
 }
 
 
@@ -34,11 +33,24 @@ async function register() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let confirmPassword = document.getElementById('confirm-password');
+    let wrongPwMessage = document.getElementById('pw-fail');
 
-    signUpButton.disabled = true;
-    pushUserInfo(username, email, password);
-    await setItem('users', JSON.stringify(users));
-    resetForm(signUpButton, username, email, password, confirmPassword);
+    if (password.value == confirmPassword.value) {
+        signUpButton.disabled = true;
+        pushUserInfo(username, email, password);
+        await setItem('users', JSON.stringify(users));
+        resetForm(signUpButton, username, email, password, confirmPassword);
+        wrongPwMessage.innerHTML = '';
+        password.classList.remove('red-bg');
+        confirmPassword.classList.remove('red-bg');
+        await signUpSuccessAnimation();
+        renderLogInContent();
+    }   else {
+        wrongPwMessage.innerHTML = /* html */ `<span>* Check passwords again</span>`;
+        password.classList.add('red-bg');
+        confirmPassword.classList.add('red-bg');
+        
+    }
 }
 
 

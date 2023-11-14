@@ -13,6 +13,7 @@ function signUpFormTemplate() {
 
             <!-- Confirm Password input -->
             <input required type="password" id="confirm-password" class="form-control password" placeholder="Confirm Password"/>
+            <div class="pw-fail" id="pw-fail"></div>
         </div>        
             <!-- 2 column grid layout for inline styling -->
         <div class="row mb-4 mg-40">
@@ -41,6 +42,7 @@ function logInFormTemplate() {
 
             <!-- Password input -->
             <input required type="password" id="password" class="form-control password" placeholder="Password"/>
+            <div class="login-fail" id="login-fail"></div>
         </div>        
             <!-- 2 column grid layout for inline styling -->
         <div class="row mb-4 mg-40">
