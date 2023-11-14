@@ -271,27 +271,38 @@ function closeEditContactBox(){
 
 
 async function deleteContact(newName, newEmail, newPhone, initial, color) {
-    loggedInUser.contacts = loggedInUser.contacts.filter((contact) => {
-        return (
-            contact.name !== newName &&
-            contact.email !== newEmail &&
-            contact.phone !== newPhone &&
-            contact.initial !== initial &&
-            contact.color !== color 
+    // Identify the contact to delete based on the name
+    const contactToDelete = loggedInUser.contacts.find(contact =>
+        contact.name === newName && 
+        contact.email === newEmail && 
+        contact.phone === newPhone && 
+        contact.initial === initial && 
+        contact.color === color
+    );
+
+    if (contactToDelete) {
+        // Remove the identified contact from the loggedInUser's contacts
+        loggedInUser.contacts = loggedInUser.contacts.filter(contact =>
+            contact !== contactToDelete
         );
-    });
-    
 
-    // Update the loggedInUser in the users array.
-    const userIndex = users.findIndex(user => user.id === loggedInUser.id);
-    users[userIndex].contacts = loggedInUser.contacts;
+        // Update the loggedInUser in the users array
+        const userIndex = users.findIndex(user => user.id === loggedInUser.id);
+        users[userIndex].contacts = loggedInUser.contacts;
 
-    await setItem('loggedInUser', JSON.stringify(loggedInUser));
-    await generateContactInSmall();
-    document.getElementById('boxOfDetailsContacts').innerHTML ='';
-    document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
-    document.getElementById('addBox').classList.remove('backgoundBox');
+        // Save the changes
+        await setItem('loggedInUser', JSON.stringify(loggedInUser));
+        await generateContactInSmall();
+        document.getElementById('boxOfDetailsContacts').innerHTML = '';
+        document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
+        document.getElementById('addBox').classList.remove('backgoundBox');
+    } else {
+        console.error('Contact not found in loggedInUser.contacts array');
+    }
 }
+
+
+
 
 
 async function saveEditContactWindow(newName, newEmail, newPhone) {
@@ -321,6 +332,11 @@ async function addContactAnimation() {
     const successMessage = document.getElementById('successMessage');
 
     successMessage.classList.remove('d-none');
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 2500));
+    successMessage.classList.add('slideUpDown');
+    await new Promise(resolve => setTimeout(resolve, 300));
+    successMessage.classList.remove('slideUpDown');
     successMessage.classList.add('d-none');
 }
+
+
