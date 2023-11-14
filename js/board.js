@@ -1,4 +1,5 @@
 let currentDraggedElement;
+let allTasks =[];
 let allTask = [
   {
     id: 0,
@@ -39,37 +40,47 @@ async function init() {
   loadUsers();
 }
 
-async function createNewTask(){
+function createNewTask(){
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
-  let dueDateValue = document.getElementById('dueDateValue').value.Date(); // date muss vermutlich überarbeitet werden
-  let currentDate = new Date();
-  let getPriority = getThePriority();
-  let assignetTo = await getItem(loggedInUser.contacts);
-  let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
-  let getSubtask = document.getElementById('addSubtaskContent').value;
-
-
+  let dueDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
+  // let date = new Date();
+  // let getPriority = getThePriority();
+  // let seeContacts = await getItem('users', loggedInUser.contacts);
+  // let assignetTo = JSON.parse(seeContacts);
+  // let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
+  // let getSubtask = document.getElementById('addSubtaskContent').value;
+  pushTaskInfo(getTitel, getTextArea, dueDateValue);
 }
 
 function getThePriority(){
-    let hight = document.getElementById('urgentPriority').innerHTML;
-    let medium = document.getElementById('mediumPriority').innerHTML;
-    let low = document.getElementById('lowPriority').innerHTML;
+    let hight = document.getElementById('urgentPriority').src;
+    let medium = document.getElementById('mediumPriority').src;
+    let low = document.getElementById('lowPriority').src;
     return hight, medium, low;
 }
 
-function pushTasktInfo(getTitel, getTextArea, dueDateValue, currentDate, getPriority,assignetTo,getCategory,getSubtask) {
-  contacts.push({
-      title:getTitel ,
-      description:getTextArea ,
-      date: dueDateValue,
-      date2:currentDate,
-      priority: getPriority,
-      assignetTo:assignetTo,
-      category_:getCategory,
-      subtask:getSubtask
-  });
+async function pushTaskInfo(getTitle, getDescription, dueDateValue) {
+  // Prüfen, ob bereits ein Task mit dem gleichen Titel existiert
+  const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
+
+  if (existingTaskIndex !== -1) {
+      // Falls der Task bereits existiert, Werte zu diesem Task hinzufügen
+      const existingTask = allTasks[existingTaskIndex];
+      existingTask.description += `\n${getDescription}`;
+      // Du kannst hier weitere Werte nach Bedarf hinzufügen und aktualisieren
+      existingTask.date = dueDateValue; // Hier wird das Datum aktualisiert
+  } else {
+      // Falls der Task nicht existiert, neuen Task hinzufügen
+      const newTask = {
+          title: getTitle,
+          description: getDescription,
+          date: dueDateValue,
+          // Weitere Werte nach Bedarf hinzufügen
+      };
+      allTasks.push(newTask);
+      await setItem('newTask', JSON.stringify(allTasks));
+  }
 }
 
 // ------------------------ tastBereich------------------
