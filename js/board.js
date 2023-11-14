@@ -147,6 +147,10 @@ function closeCardContainer() {
   document.getElementById("openCardContainer").classList.add("d-none");
   
 }
+function closeEditContainer() {
+  document.getElementById("openEditContainer").classList.add("d-none");
+}
+
 
 
 

@@ -236,19 +236,19 @@ body {
   }
 }
 /* SideMenuClass*/
-.header-sideMenu{
+.header-sideMenu {
   display: flex;
   padding: 72px 40px 0px 40px;
   font-size: 48px;
   font-weight: 700;
 }
-.header-sideMenuImg{
+.header-sideMenuImg {
   width: 32px;
-    height: 32px;
-    position: absolute;
-    top: 24px;
-    left: 462px;
-    cursor: pointer;
+  height: 32px;
+  position: absolute;
+  top: 24px;
+  left: 462px;
+  cursor: pointer;
 }
 .sideMenuStyle {
   background-color: #fff;
@@ -305,27 +305,27 @@ body {
 
 /*openCards*/
 
-.openCardContainer{
-background-color: rgba(0, 0, 0, 0.2);
-z-index: 999;
-position: fixed;
-left: 0;
-right: 0;
-bottom: 0;
-height: 100vh;
-width: 100vw;
-display: flex;
-justify-content: center;
-align-items: center;
+.openCardContainer {
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.openCardsDetails{
-    background-color: #f5f5f5;
-    width: 528px;
-    height: 92vh;
-    z-index: 2;
-    border-radius: 30px 30px 30px 30px;
-    transition: all 225ms ease-in-out;
-    padding: 48px 40px 48px 40px;
+.openCardsDetails {
+  background-color: #f5f5f5;
+  width: 528px;
+  height: 92vh;
+  z-index: 2;
+  border-radius: 30px 30px 30px 30px;
+  transition: all 225ms ease-in-out;
+  padding: 48px 40px 48px 40px;
 }
 
 .openCardIcons {
@@ -335,21 +335,21 @@ align-items: center;
   align-items: center;
   justify-content: flex-end;
 }
-.openCardIconsImg{
+.openCardIconsImg {
   height: 18px;
 }
-.openCardIconsImgContainer{
+.openCardIconsImgContainer {
   display: flex;
   align-items: center;
   align-content: center;
   cursor: pointer;
   gap: 8px;
 }
-.openCardIconsText{
-  font-family: 'Open Sans';
-    font-size: 16px;
-    font-weight: 400;
-    color: rgba(42, 54, 71, 1);
+.openCardIconsText {
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(42, 54, 71, 1);
 }
 .openCardCheckbox {
   height: 68px;
@@ -359,16 +359,15 @@ align-items: center;
   flex-direction: column;
   overflow: scroll;
   padding: 6px;
-
 }
 .openCardCheckbox::-webkit-scrollbar {
   display: none;
 }
-.subtaskText{
-  font-family: 'Open Sans';
-    font-weight: 400;
-    font-size: 16px;
-    height: 19px;
+.subtaskText {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 16px;
+  height: 19px;
 }
 .openCardSubtask {
   margin-top: 20px;
@@ -378,7 +377,7 @@ align-items: center;
   height: 209px;
   margin-top: 25px;
 }
-.openCardAssignedAddUser{
+.openCardAssignedAddUser {
   display: flex;
   flex-direction: column;
   height: 178px;
@@ -394,45 +393,42 @@ align-items: center;
   align-items: center;
   height: 31px;
   margin-top: 25px;
-
 }
-.openCardPrioImg{
+.openCardPrioImg {
   height: 20px;
   width: 20px;
   padding-left: 3px;
 }
-.cardsCategoryText{
+.cardsCategoryText {
   font-size: 21px;
   font-weight: 700;
-  font-family: 'Inter';
+  font-family: "Inter";
   color: rgba(66, 82, 110, 1);
 }
-.openCardSecondText{
+.openCardSecondText {
   font-size: 19px;
   font-weight: 400;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   padding-left: 25px;
 }
 .openCardDate {
   height: 25px;
   margin-top: 25px;
 }
-.openCardText{
+.openCardText {
   height: 23px;
   margin-top: 25px;
 }
-.openCardSpanText{
-  font-family: 'Open Sans';
+.openCardSpanText {
+  font-family: "Open Sans";
   font-weight: 400;
   font-size: 19px;
-  
 }
 .openCardDescriptionText {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-weight: 700;
   font-size: 61px;
   line-height: 73px;
-
 }
 .openCardTitle {
   display: flex;
@@ -441,53 +437,51 @@ align-items: center;
   height: 56px;
 }
 
-.userDetailsTitle{
+.userDetailsTitle {
   width: 160px;
   background: rgba(255, 122, 0, 1);
   color: white;
   text-align: center;
   border-radius: 8px;
   padding: 0px 24px 0px 24px;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-weight: 400;
   font-size: 23px;
 }
-.userDetailsImg{
-cursor: pointer;
+.userDetailsImg {
+  cursor: pointer;
 }
 /*edit task menu*/
 
-.header-EditMenu{
-  
-    display: flex;
-    height: 71px;
-    width: 92%;
-    justify-content: flex-end;
-    z-index: 28;
-    align-items: end;
+.header-EditMenu {
+  display: flex;
+  height: 71px;
+  width: 92%;
+  justify-content: flex-end;
+  z-index: 28;
+  align-items: end;
 }
-.header-editMenuImg{
-cursor: pointer;
+.header-editMenuImg {
+  cursor: pointer;
 }
-.editMenu{
-  padding: 32px 24px 0px 24px!important;
+.editMenu {
+  padding: 32px 24px 0px 24px !important;
 }
 
-
-.openCardsDetailsEdit{
-  background-color: #f5f5f5;
-    width: 528px;
-    height: 92vh;
-    z-index: 2;
-    border-radius: 30px 30px 30px 30px;
-    transition: all 225ms ease-in-out;
+.openCardsDetailsEdit {
+  background: #ffff;
+  width: 528px;
+  height: 92vh;
+  z-index: 2;
+  border-radius: 30px 30px 30px 30px;
+  transition: all 225ms ease-in-out;
 }
-.SubtaskContentEdit{
-    display: flex;
-    flex-direction: column;
-    padding-top: 24px!important;
+.SubtaskContentEdit {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px !important;
 }
-.buttonContainerEdit{
+.buttonContainerEdit {
   display: flex;
   justify-content: flex-end;
   margin-right: 46px;
