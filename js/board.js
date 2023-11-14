@@ -43,8 +43,7 @@ let currentDraggedElement;
 function updateHTML() {
   let toDolist = allTask.filter((t) => t["category"] == "toDo");
   let toDoContainer = document.getElementById("toDo");
-
-  document.getElementById("toDo").innerHTML = "";
+  toDoContainer.innerHTML = "";
 
   if (toDolist.length === 0) {
     toDoContainer.innerHTML = generatePlaceholderTasks("toDo");
@@ -55,34 +54,46 @@ function updateHTML() {
     }
   }
 
-
   let progressList = allTask.filter((t) => t["category"] == "progress");
+  let progressContainer = document.getElementById("progress");
+  progressContainer.innerHTML = ""; 
 
-  document.getElementById("progress").innerHTML = "";
-
-  for (let index = 0; index < progressList.length; index++) {
-    const element = progressList[index];
-    document.getElementById("progress").innerHTML += generateTodoHTML(element);
+  if (progressList.length === 0) { 
+    progressContainer.innerHTML = generatePlaceholderTasks("progress");
+  } else {
+    for (let index = 0; index < progressList.length; index++) {
+      const element = progressList[index];
+      progressContainer.innerHTML += generateTodoHTML(element); 
+    }
   }
 
   let feedbackList = allTask.filter((t) => t["category"] == "feedBack");
+  let feedbackContainer = document.getElementById("feedBack");
+  feedbackContainer.innerHTML = "";
 
-  document.getElementById("feedBack").innerHTML = "";
+  if (feedbackList.length === 0) { 
+    feedbackContainer.innerHTML = generatePlaceholderTasks("progress");
+  } else {
 
   for (let index = 0; index < feedbackList.length; index++) {
     const element = feedbackList[index];
-    document.getElementById("feedBack").innerHTML += generateTodoHTML(element);
-  }
+    feedbackContainer.innerHTML += generateTodoHTML(element);
+  }}
 
   let doneList = allTask.filter((t) => t["category"] == "done");
+  let doneListContainer = document.getElementById("done");
+  doneListContainer.innerHTML = "";
 
-  document.getElementById("done").innerHTML = "";
+  if (doneList.length === 0) { 
+    doneListContainer.innerHTML = generatePlaceholderTasks("done");
+  } else {
 
   for (let index = 0; index < doneList.length; index++) {
     const element = doneList[index];
     document.getElementById("done").innerHTML += generateTodoHTML(element);
   }
-}
+}}
+
 
 function startDragging(id) {
   currentDraggedElement = id;
@@ -158,7 +169,7 @@ function closeEditContainer() {
 }
 
 function generatePlaceholderTasks(category) {
-  return`<div class="placeholderTaskContainer" ><span>No tasks ${category}</span></div>`;
+  return`<div class="placeholderTaskContainer" ><span>No tasks in ${category}</span></div>`;
   
 }
 
