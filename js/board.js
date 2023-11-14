@@ -1,3 +1,4 @@
+let currentDraggedElement;
 let allTask = [
   {
     id: 0,
@@ -38,7 +39,19 @@ async function init() {
   loadUsers();
 }
 
-let currentDraggedElement;
+function createNewTask(){
+  let getTitel = document.getElementById('addTastTitel').value;
+  let getTextArea = document.getElementById('addTastTextArea').value;
+  let dueDateValue = document.getElementById('dueDateValue').value.Date(); // date muss vermutlich überarbeitet werden
+  let getPriority = getThePriority();
+  let currentDate = new Date();
+}
+
+function getThePriority(){
+  
+}
+
+// ------------------------ tastBereich------------------
 
 function updateHTML() {
   let toDolist = allTask.filter((t) => t["category"] == "toDo");
@@ -148,18 +161,6 @@ function removeHighlight(id) {
 function showAddTaskMenu() {
   document.getElementById("menuContainerBox").classList.add("menuContainer");
   document.getElementById("sideMenu").classList.add("showmenu");
-}
-
-function createNewTask(){
-  let getTitel = document.getElementById('addTastTitel').value;
-  let getTextArea = document.getElementById('addTastTextArea').value;
-  let dueDateValue = document.getElementById('dueDateValue').value.Date(); // date muss vermutlich überarbeitet werden
-  let getPriority = getThePriority();
-  let currentDate = new Date();
-}
-
-function getThePriority(){
-  
 }
 
 function closeAddTaskMenu() {
