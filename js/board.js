@@ -59,15 +59,16 @@ function getThePriority(){
     return hight, medium, low;
 }
 
-function pushTasktInfo(getTitel, getTextArea, dueDateValue, getPriority, currentDate,) {
+function pushTasktInfo(getTitel, getTextArea, dueDateValue, currentDate, getPriority,assignetTo,getCategory,getSubtask) {
   contacts.push({
       title:getTitel ,
       description:getTextArea ,
       date: dueDateValue,
+      date2:currentDate,
       priority: getPriority,
-      assignetTo:test,
-      category_:test,
-      subtask:test
+      assignetTo:assignetTo,
+      category_:getCategory,
+      subtask:getSubtask
   });
 }
 
