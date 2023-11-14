@@ -2,18 +2,30 @@ function signUpFormTemplate() {
     return /* html */ `
     <form required id="form" onsubmit="initRegister(); return false;">
         <div class="form-div">
-            <!-- Name input -->
-            <input required type="text" id="user-name" class="form-control name" placeholder="Name" /> 
 
-            <!-- Email input -->
-            <input required type="email" id="email" class="form-control email" placeholder="Email" />
+            <div class="form-style">
+                <!-- Name input -->
+                <input required type="text" id="user-name" class="form-control name" placeholder="Name" /> 
+                <img src="../assets/img/person.svg" alt="">
+            </div>
+            <div class="form-style">
+                <!-- Email input -->
+                <input required type="email" id="email" class="form-control email" placeholder="Email" />
+                <img id="test" src="../assets/img/mail.svg" alt="Email Bild">
+            </div>
             <div class="email-fail" id="email-fail"></div> 
 
-            <!-- Password input -->
-            <input required type="password" id="password" class="form-control password" placeholder="Password"/>
+            <div class="form-style">
+                <!-- Password input -->
+                <input required type="password" id="password" class="form-control password" placeholder="Password"/>
+                <img onclick="" src="../assets/img/lock.svg" alt="Passwort Bild">
+            </div>
 
-            <!-- Confirm Password input -->
-            <input required type="password" id="confirm-password" class="form-control password" placeholder="Confirm Password"/>
+            <div class="form-style">
+                <!-- Confirm Password input -->
+                <input required type="password" id="confirm-password" class="form-control password" placeholder="Confirm Password"/>
+                <img onclick="" src="../assets/img/lock.svg" alt="Passwort Bild">
+            </div>
             <div class="pw-fail" id="pw-fail"></div>
         </div>        
             <!-- 2 column grid layout for inline styling -->
@@ -38,11 +50,18 @@ function logInFormTemplate() {
     return /* html */ `
     <form required id="form" onsubmit="login(); return false;">
         <div class="form-div">
-            <!-- Email input -->
-            <input required type="email" id="email" class="form-control email" placeholder="Email" /> 
 
-            <!-- Password input -->
-            <input required type="password" id="password" class="form-control password" placeholder="Password"/>
+            <div class="form-style">
+                <!-- Email input -->
+                <input required type="email" id="email" class="form-control email" placeholder="Email" />
+                <img id="test" src="../assets/img/mail.svg" alt="Email Bild">
+            </div>
+
+            <div class="form-style">
+                <!-- Password input -->
+                <input required type="password" id="password" class="form-control password" placeholder="Password"/>
+                <img onclick="" src="../assets/img/lock.svg" alt="">
+            </div>
             <div class="login-fail" id="login-fail"></div>
         </div>        
             <!-- 2 column grid layout for inline styling -->
