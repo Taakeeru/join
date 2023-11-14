@@ -178,20 +178,20 @@
                   <div class="addTask addTask-sideMenu">
                      <form action="">
                         <div class="topSektion topSektion-sideMenu">
-                           <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
+                           <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
                            <div class="description description-sideMenu">
                               <div class="descriptionContent">
                                  <p class="descriptionText">Description
                                  <p class="descriptionText small">(optional)</p>
                                  </p>
                               </div>
-                              <textarea class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
+                              <textarea  id="addTastTextArea" class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
                                  rows="10"></textarea>
                            </div>
                            <div class="dateContent">
                               <p class="dateTitle">Due date</p>
-                              <div class="inputfieldDateContainer"><input class="inputfieldDate" type="text"
-                                 placeholder="dd/mm/yyyy">
+                              <div class="inputfieldDateContainer">
+                                 <input id="dueDateValue" class="inputfieldDate" type="text" placeholder="dd/mm/yyyy">
                                  <img class="dateImg" src="../assets/img/event.svg" alt="">
                               </div>
                            </div>
@@ -203,9 +203,9 @@
                               </p>
                            </div>
                            <div class="buttonContainer"> 
-                              <button class="prioButton">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
-                              <button class="prioButton">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                              <button class="prioButton">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                              <button id="urgentPriority" class="prioButton">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                              <button id="mediumPriority" class="prioButton">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                              <button id="lowPriority" class="prioButton">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
                            </div>
                         </div>
                         <div class="assignedContent assignedContent-sideMenu" >
@@ -239,6 +239,7 @@
                               </p>
                            </div>
                            <input placeholder="Add new subtask" class="subtaskInput">
+                           <button onclick="createNewTask()">createTask</button>
                         </div>
                      </form>
                   </div>

@@ -150,6 +150,18 @@ function showAddTaskMenu() {
   document.getElementById("sideMenu").classList.add("showmenu");
 }
 
+function createNewTask(){
+  let getTitel = document.getElementById('addTastTitel').value;
+  let getTextArea = document.getElementById('addTastTextArea').value;
+  let dueDateValue = document.getElementById('dueDateValue').value.Date(); // date muss vermutlich überarbeitet werden
+  let getPriority = getThePriority();
+  let currentDate = new Date();
+}
+
+function getThePriority(){
+  
+}
+
 function closeAddTaskMenu() {
   document.getElementById("menuContainerBox").classList.remove("menuContainer");
   document.getElementById("sideMenu").classList.remove("showmenu");
