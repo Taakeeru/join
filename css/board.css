@@ -486,3 +486,15 @@ body {
   justify-content: flex-end;
   margin-right: 46px;
 }
+/*placeholderTaskContainer*/
+.placeholderTaskContainer{
+  width: 252px;
+  height: 48px;
+  background-color: rgba(168, 168, 168, 1);
+  border: 2px dashed  rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  justify-content: center;
+   
+    display: flex;
+    align-items: center;
+}

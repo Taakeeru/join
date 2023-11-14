@@ -42,13 +42,19 @@ let currentDraggedElement;
 
 function updateHTML() {
   let toDolist = allTask.filter((t) => t["category"] == "toDo");
+  let toDoContainer = document.getElementById("toDo");
 
   document.getElementById("toDo").innerHTML = "";
 
-  for (let index = 0; index < toDolist.length; index++) {
-    const element = toDolist[index];
-    document.getElementById("toDo").innerHTML += generateTodoHTML(element);
+  if (toDolist.length === 0) {
+    toDoContainer.innerHTML = generatePlaceholderTasks("toDo");
+  } else {
+    for (let index = 0; index < toDolist.length; index++) {
+      const element = toDolist[index];
+      toDoContainer.innerHTML += generateTodoHTML(element);
+    }
   }
+
 
   let progressList = allTask.filter((t) => t["category"] == "progress");
 
@@ -149,6 +155,11 @@ function closeCardContainer() {
 }
 function closeEditContainer() {
   document.getElementById("openEditContainer").classList.add("d-none");
+}
+
+function generatePlaceholderTasks(category) {
+  return`<div class="placeholderTaskContainer" ><span>No tasks ${category}</span></div>`;
+  
 }
 
 
