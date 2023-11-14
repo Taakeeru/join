@@ -18,13 +18,13 @@ function signUpFormTemplate() {
             <div class="form-style">
                 <!-- Password input -->
                 <input required oninput="changeImage()" type="password" id="password" class="form-control password" placeholder="Password"/>
-                <img id="pw-img" onclick="" src="../assets/img/lock.svg" alt="Passwort Bild">
+                <img id="pw-img" onclick="toggleVisibility()" src="../assets/img/lock.svg" alt="Passwort Bild">
             </div>
 
             <div class="form-style">
                 <!-- Confirm Password input -->
                 <input required oninput="changeImage2()" type="password" id="confirm-password" class="form-control password" placeholder="Confirm Password"/>
-                <img id="cpw-img" onclick="" src="../assets/img/lock.svg" alt="Passwort Bild">
+                <img id="cpw-img" onclick="toggleVisibility2()" src="../assets/img/lock.svg" alt="Passwort Bild">
             </div>
             <div class="pw-fail" id="pw-fail"></div>
         </div>        
@@ -60,7 +60,7 @@ function logInFormTemplate() {
             <div class="form-style">
                 <!-- Password input -->
                 <input required oninput="changeImage()" type="password" id="password" class="form-control password" placeholder="Password"/>
-                <img onclick="" id="pw-img" src="../assets/img/lock.svg" alt="">
+                <img onclick="toggleVisibility()" id="pw-img" src="../assets/img/lock.svg" alt="">
             </div>
             <div class="login-fail" id="login-fail"></div>
         </div>        

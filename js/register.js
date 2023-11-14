@@ -53,12 +53,12 @@ async function register() {
         }   else {
             emailMessage.innerHTML = '';
             email.classList.remove('red-bg');
-            wrongPwMessage.innerHTML = /* html */ `<span>* Check passwords again!</span>`;
+            wrongPwMessage.innerHTML = /* html */ `<span>*Ups! your passowrd don't match</span>`;
             password.classList.add('red-bg');
             confirmPassword.classList.add('red-bg');
         }
     } else {
-        emailMessage.innerHTML = /* html */ `<span>* Email already exists!</span>`;
+        emailMessage.innerHTML = /* html */ `<span>*Ups! email already exists</span>`;
         email.classList.add('red-bg');
     }
 }
@@ -103,9 +103,11 @@ function changeImage() {
     let passwordImage = document.getElementById('pw-img');
 
     if (passwordInput.value.length >= 1) {
-        passwordImage.src = '../assets/img/eye_closed.png';
+        passwordImage.src = '/assets/img/eye_closed.png';
+        passwordImage.classList.add('cursor-pointer');
     } else {
-        passwordImage.src = '../assets/img/lock.svg';
+        passwordImage.src = '/assets/img/lock.svg';
+        passwordImage.classList.remove('cursor-pointer');
     }
 }
 
@@ -115,8 +117,42 @@ function changeImage2() {
     let passwordImage = document.getElementById('cpw-img');
 
     if (passwordInput.value.length >= 1) {
-        passwordImage.src = '../assets/img/eye_closed.png';
+        passwordImage.src = '/assets/img/eye_closed.png';
+        passwordImage.classList.add('cursor-pointer');  
     } else {
-        passwordImage.src = '../assets/img/lock.svg';
+        passwordImage.src = '/assets/img/lock.svg';
+        passwordImage.classList.remove('cursor-pointer');
+    }
+}
+
+
+function toggleVisibility() {
+    let passwordInput = document.getElementById('password');
+    let passwordImage = document.getElementById('pw-img');
+
+    if (passwordInput.value.length >= 1) {
+        if (passwordInput.type == 'password') {
+            passwordInput.type = 'text';
+            passwordImage.src = '/assets/img/eye_open.png';
+        } else {
+            passwordInput.type = 'password';
+            passwordImage.src = '/assets/img/eye_closed.png';
+        }
+    }
+}
+
+
+function toggleVisibility2() {
+    let passwordInput = document.getElementById('confirm-password');
+    let passwordImage = document.getElementById('cpw-img');
+
+    if (passwordInput.value.length >= 1) {
+        if (passwordInput.type == 'password') {
+            passwordInput.type = 'text';
+            passwordImage.src = '/assets/img/eye_open.png';
+        } else {
+            passwordInput.type = 'password';
+            passwordImage.src = '/assets/img/eye_closed.png';
+        }
     }
 }
