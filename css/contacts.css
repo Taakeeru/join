@@ -434,7 +434,7 @@ body{
     border-radius: 50%;
 }
   
-  #successMessage {
+#successMessage {
     position: absolute;
     top: 100vh;
     left: 50%;
@@ -442,23 +442,36 @@ body{
     background-color: rgba(69, 137, 255, 1);
     color: white;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 10px;
     animation: slideUp 0.3s ease-in forwards;
     font-size: 23px;
-    height: 74px;
-    width: 326px;
+    height: 60px;
+    width: 334px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-  }
+}
   
-  @keyframes slideUp {
+.slideUpDown {
+    animation: slideUpDown 0.5s ease-out forwards !important;
+}
+
+@keyframes slideUp {
     from {
-      top: 100vh;
+        top: 100%;
     }
     to {
-      top: 45vh;
+        top: 50%;
     }
-  }
+}
+
+@keyframes slideUpDown {
+    0% {
+        top: 50%;
+    }
+    100% {
+        top: 100%;
+    }
+}
