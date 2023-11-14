@@ -39,16 +39,24 @@ async function init() {
   loadUsers();
 }
 
-function createNewTask(){
+async function createNewTask(){
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
   let dueDateValue = document.getElementById('dueDateValue').value.Date(); // date muss vermutlich überarbeitet werden
-  let getPriority = getThePriority();
   let currentDate = new Date();
+  let getPriority = getThePriority();
+  let assignetTo = await getItem(loggedInUser.contacts);
+  let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
+  let getSubtask = document.getElementById('addSubtaskContent').value;
+
+
 }
 
 function getThePriority(){
-  
+    let hight = document.getElementById('urgentPriority').innerHTML;
+    let medium = document.getElementById('mediumPriority').innerHTML;
+    let low = document.getElementById('lowPriority').innerHTML;
+    return hight, medium, low;
 }
 
 function pushTasktInfo(getTitel, getTextArea, dueDateValue, getPriority, currentDate,) {
