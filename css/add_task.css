@@ -3,6 +3,9 @@ body {
   margin: 0;
   overflow: hidden;
 }
+.d-none{
+  display: none!important;
+}
 .contentContainer {
   display: flex;
   flex-direction: row-reverse;
@@ -230,4 +233,13 @@ body {
   color: red;
   font-size: 12px;
   padding-left: 12px;
+}
+.selectContainer{
+  display: flex;
+  flex-direction: column;
+  background: aliceblue;
+  height: 201px;
+  overflow: auto;
+  position: fixed;
+  width: auto;
 }

@@ -31,4 +31,19 @@ function checkInputFields() {
       dateFail.innerHTML = '<span>Due date is required</span>';
     }
   }
-  
+
+  function showAssignetContacts() {
+    document.getElementById("selectContainer").classList.toggle("d-none");
+    
+  }
+  function closeSelectContainer(event) {
+  let selectContainer = document.getElementById("selectContainer");
+  let assignedSelect = document.getElementById("assignedSelect");
+
+  if (!assignedSelect.contains(event.target) && !selectContainer.contains(event.target)) {
+    
+    selectContainer.classList.add("d-none");
+  }
+}
+
+ 
