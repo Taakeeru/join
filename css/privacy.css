@@ -1,6 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
+    overflow-y: hidden;
 }
 
 .main-container {
@@ -11,6 +12,12 @@ body {
 
 .content-container {
     padding: 72px 88px 0 88px;
+    overflow: scroll;
+    height: 1150px;
+}
+
+.content-container::-webkit-scrollbar {
+    display: none;
 }
 
 .content-container h1 {

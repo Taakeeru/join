@@ -14,7 +14,6 @@ function generateUniqueId() {
 
 async function initRegister() {
     register();
-    
 }
 
 
