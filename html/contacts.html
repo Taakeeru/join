@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts</title>
     <link rel="shortcut icon" href="../assets/img/join_logo.svg" type="image/x-icon">
     <!-- <script src="../js/login.js"></script>
@@ -14,36 +13,43 @@
     <script src="../js/storage.js"></script>
     <script src="../js/profile.js"></script>
     <script src="../js/register.js"></script>
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/desktop_template_header.css">
-    <link rel="stylesheet" href="../css/desktop_template_footer.css">
-    <link rel="stylesheet" href="../css/contacts.css">
-    
-</head>
+    <script src="../js/login.js"></script>
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="stylesheet" href="../css/desktop_template_header.css" />
+    <link rel="stylesheet" href="../css/desktop_template_footer.css" />
+    <link rel="stylesheet" href="../css/contacts.css" />
+  </head>
 
-<body onload="init()">
-    <div w3-include-html="../assets/templates/desktop_template_header.html"></div>
+  <body onload="init()">
+    <div
+      w3-include-html="../assets/templates/desktop_template_header.html"
+    ></div>
     <div class="dislayRowBody">
-        <div class="allContacts" id="generateContact">
-            <div class="boxOfAllContacts">
-                <div class="positionBtnAddContact">
-                    <button onclick="clearStorage()">clearStorage</button>
-                    <button class="btnAddContact" onclick="addNewContactBtn()">
-                        <p class="lettersInBtn">Add new contact</p>
-                        <img src="../assets/img/person_add.svg">
-                    </button>
-                </div>
-                <div id="generateLatter"></div>
-                <div class="positionNewContact" id="contactInSmall"></div>
-            </div>
-            <div class="boxOfDetailsContacts" id="boxOfDetailsContacts"></div><!--d-none rausgenommen-->
+      <div class="allContacts" id="generateContact">
+        <div class="boxOfAllContacts">
+          <div class="positionBtnAddContact">
+            <button class="btnAddContact" onclick="addNewContactBtn()">
+              <p class="lettersInBtn">Add new contact</p>
+              <img src="../assets/img/person_add.svg" />
+            </button>
+          </div>
+          <div id="generateLatter"></div>
+          <div class="positionNewContact" id="contactInSmall"></div>
         </div>
-    <!--ab hier die add contact bereich-->
-        <div class="backgoundBox d-none" id="boxOfAddingNewContact"></div>
-    <!--ab hier die edit contact bereich-->
-        <div class="backgoundBox d-none" id="boxOfEdingContact"></div>
-        <div w3-include-html="../assets/templates/desktop_template_footer.html"></div>
-    </div>
-</body>
+        <div
+          class="boxOfDetailsContacts" id="boxOfDetailsContacts"></div>
+      </div>
+      <!--ab hier die add contact bereich-->
+        <div  id="addBox">
+          <div id="boxOfAddingNewContact" class="boxOfAddingNewContact"></div>
+        </div>
 
+      <!--ab hier die edit contact bereich-->
+      <div id="addBox">
+        <div class="boxOfEdingContact" id="boxOfEdingContact"></div>
+      </div>
+      <div id="successMessage" class="d-none"><span>Contact succesfully created</span></div>
+      <div w3-include-html="../assets/templates/desktop_template_footer.html"></div>
+    </div>
+  </body>
 </html>
