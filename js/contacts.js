@@ -1,6 +1,7 @@
 let firstLetter = [];
 let newContactData = [];
 let firstLetterOfContatcs = [];
+let currentCotact = false;
 
 
 
@@ -54,7 +55,7 @@ async function createNewContact() {
 
 
 function pushContactInfo(contacts, name, email, phone, intial, getColor) {
-    contacts.push = ({
+    contacts.push({
         name: name,
         email: email,
         phone: phone,
@@ -141,11 +142,11 @@ function generateRandomColor(){
 }
 
  
-function showDetailsOfContact(newName, newEmail, newPhone, initial, color){  
+function showDetailsOfContact(newName, newEmail, newPhone, initial, color) {
     let detailsContact = document.getElementById('boxOfDetailsContacts');
-    document.getElementById('boxOfDetailsContacts').classList.remove('addOpacity');
-    detailsContact.innerHTML ='';
-    detailsContact.innerHTML =  /*html*/`
+    detailsContact.classList.remove('addOpacity');
+    detailsContact.innerHTML = '';
+    detailsContact.innerHTML = /*html*/ `
         <div class="positionHeaderContactDetails">
             <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
                 <p class="sizeOfLetterDetails">${initial}</p>
@@ -161,12 +162,13 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color){
             </div>
         </div>
         <div>
-            <p class="contantInformation">Contant Information</p>
+            <p class="contantInformation">Contact Information</p>
             <p style="font-weight: 600;">Email</p>
             <a href="#" class="mailContact">${newEmail}</a>
             <p style="font-weight: 600;">Phone</p>
             <p>${newPhone}</p>
         </div>`;
+    startAnimation();
 }
 
 
@@ -181,14 +183,14 @@ function addNewContactBtn(){
             </div>
             <img src="../assets/img/close.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
             <div class="witheBoxAddContact">
-                <div class="detailsOFAddContact">
+                <form class="detailsOFAddContact" onsubmit="createNewContact(); return false;">
                     <img src="../assets/img/frame79.svg" class="witheBoxAddContactImg">
                     <div class="displayFlex">
-                        <input type="text" class="inputField" placeholder="Name" id="nameAddContact">
+                        <input type="text" class="inputField" placeholder="Name" minlength="2" id="nameAddContact" required>
                         <img src="../assets/img/person.svg" class="imgInInput">
                     </div>
                     <div class="displayFlex">
-                        <input type="text" class="inputField" placeholder="Email" id="emailAddContact">
+                        <input type="email" class="inputField" placeholder="Email" id="emailAddContact" required>
                         <img src="../assets/img/mail.svg" class="imgInInput">
                     </div>
                     <div class="displayFlex">
@@ -196,12 +198,12 @@ function addNewContactBtn(){
                         <img src="../assets/img/call.svg" class="imgInInput">
                     </div>
                     <div class="btnsAddContact">
-                        <button class="displayFlex btnCloseContact" onclick="closeAddContactWindow()">Close <img
-                                src="../assets/img/vector.svg" class="samllIconsContactX"></button>
-                        <button class="displayFlex btnCreateContact" onclick="createNewContact()">Create contact
-                            <img src="../assets/img/check.svg" class="samllIconsContactOK"></button>
+                    <button class="displayFlex btnCloseContact" onclick="closeAddContactWindow()" type="button">Close <img
+                            src="../assets/img/vector.svg" class="samllIconsContactX"></button>
+                    <button class="displayFlex btnCreateContact" type="submit">Create contact
+                        <img src="../assets/img/check.svg" class="samllIconsContactOK"></button>
                     </div>
-                </div>
+                </form>  
             </div>`;
 }
 
@@ -302,9 +304,6 @@ async function deleteContact(newName, newEmail, newPhone, initial, color) {
 }
 
 
-
-
-
 async function saveEditContactWindow(newName, newEmail, newPhone) {
     const userIndex = users.findIndex(user => user.id === loggedInUser.id);
     const contactIndex = loggedInUser.contacts.findIndex(contact =>
@@ -338,5 +337,14 @@ async function addContactAnimation() {
     successMessage.classList.remove('slideUpDown');
     successMessage.classList.add('d-none');
 }
+
+
+function startAnimation() {
+    let box = document.getElementById('boxOfDetailsContacts');
+    box.classList.add('slideIn');
+}
+
+
+
 
 

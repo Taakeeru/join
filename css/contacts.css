@@ -1,7 +1,7 @@
 body{
     margin: 0;
     font-family: "Open Sans", sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .dislayRowBody{
@@ -31,6 +31,9 @@ body{
     box-shadow: rgba(99, 99, 99, 0.2) 2px 0px 8px 0px;
     overflow:scroll;
     overflow-x:hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .boxOfAllContacts::-webkit-scrollbar-track{
@@ -51,13 +54,21 @@ body{
 }
 
 .positionBtnAddContact{
+    background-color: white;
+    position: fixed;
+    height: 100px;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+#generateLatter{
+    margin-top: 100px;
 }
 
 .btnAddContact{
     margin: 40px;
-    width: 357px;
+    width: 300px;
     height: 56px;
     background-color: #4589FF;
     border: 1px;
@@ -104,8 +115,8 @@ body{
 .positionNewContact{
     display: flex;
     flex-direction: column;
-
     align-items: center;
+    height: calc(100vh - 100px);
 }
 
 .sizeOfContactBox{
@@ -153,6 +164,12 @@ body{
     width: auto;
     height: 318px;
     margin: 64px;
+    position: absolute;
+    left: 100%; /* Start off-screen to the right */
+    transition: left 0.3s ease-out; /* Add a smooth transition effect */
+}
+#boxOfDetailsContacts.slideIn {
+    left: 50%; /* Move to 50% from the right */
 }
 
 .bigImgContacts{
@@ -203,7 +220,6 @@ body{
 
 .clearBtn:hover{
     color: #176cff;
-    font-weight: bolder;
 }
 
 .contantInformation{
@@ -295,13 +311,13 @@ body{
     box-shadow: inset rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     background-color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .detailsOFAddContact{
     width: 422px;
-    height: 438px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -475,3 +491,7 @@ body{
         top: 100%;
     }
 }
+
+
+
+
