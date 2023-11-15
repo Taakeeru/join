@@ -54,7 +54,7 @@ async function createNewContact() {
 
 
 function pushContactInfo(contacts, name, email, phone, intial, getColor) {
-    contacts.push({
+    contacts.push = ({
         name: name,
         email: email,
         phone: phone,

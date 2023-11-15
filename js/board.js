@@ -56,10 +56,10 @@ async function createNewTask() {
       date: getDateValue,
     };
 
-    existingTasks.push(newTask);
+    allTasks.push(newTask);
   }
   // Update the local storage with the modified array
-  await setItem('newTask', JSON.stringify(existingTasks));
+  await setItem('newTask', JSON.stringify(allTasks));
 }
 
 
