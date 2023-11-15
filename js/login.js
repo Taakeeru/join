@@ -1,8 +1,8 @@
 
 
 function init() {
-    getRememberedUser();
     renderLogInCard();
+    getRememberedUser();
     showContentDuringAnimation();
     loadUsers();
 }
@@ -124,8 +124,20 @@ async function guestLogin() {
 async function getRememberedUser() {
     try {
         rememberedUser = JSON.parse(await getItem('rememberMe'));
+        fillInputs(rememberedUser);
     } catch(e) {
         console.error('Loading error:', e);
+    }
+}
+
+
+function fillInputs(rememberedUser) {
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+
+    if (rememberedUser !== null) {
+        email.value = rememberedUser.email;
+        password.value = rememberedUser.password;
     }
 }
 
