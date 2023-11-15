@@ -117,7 +117,7 @@
             ></div>
             <!-- open Cards -->
             <div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer d-none" >
-              <div class="openCardsDetails"> <!-- onclick="event.stopPropagation()" rausgenommen-->
+              <div class="openCardsDetails" onclick="event.stopPropagation()">  
                 <div class="openCardTitle"> 
                   <span class="userDetailsTitle">Users</span>
                   <img class="userDetailsImg" onclick="closeCardContainer()" src="../assets/img/close.svg" alt="">
@@ -170,8 +170,8 @@
               </div>
             </div>
             <!--add Task Sidemenu -->
-         <div class="" id="menuContainerBox"><!-- onclick="createNewTask()" rausgenommen-->
-            <div id="sideMenu" class="sideMenuStyle"> <!-- onclick="event.stopPropagation()" rausgenommen-->
+         <div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" > 
+            <div id="sideMenu" class="sideMenuStyle" onclick="event.stopPropagation()" >  
                <div class="header-sideMenu"><span>Add Task</span>
                   <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="../assets/img/close.svg" alt="">
                </div>
