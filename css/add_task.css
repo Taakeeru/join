@@ -33,7 +33,7 @@ body {
 .topSektion {
   gap: 12px;
   width: 440px;
-  height: 361px;
+  
   display: flex;
   flex-direction: column;
 }
@@ -225,4 +225,9 @@ body {
 }
 .subtaskInput:focus {
   outline: none;
+}
+.textfield-fail{
+  color: red;
+  font-size: 12px;
+  padding-left: 12px;
 }
