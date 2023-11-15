@@ -93,6 +93,23 @@ async function login() {
 }
 
 
+async function guestLogin() {
+    let user = users[26];
+    
+    console.log(user);
+    if(user) {
+        await setItem('loggedInUser', JSON.stringify(user));
+        window.location.href = '/html/summary.html';
+    } else {
+        if (user === undefined) {
+            document.getElementById('emailError').textContent = 'Worng E-Mail';
+        } else {
+            document.getElementById('passwordError').textContent = 'Worng Password';
+        }
+    }
+}
+
+
 function showContentDuringAnimation() {
     setTimeout(function() {
         let elementsToDisplay = [

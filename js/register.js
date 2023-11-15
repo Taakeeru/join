@@ -58,7 +58,7 @@ async function register() {
             confirmPassword.classList.add('red-bg');
         }
     } else {
-        emailMessage.innerHTML = /* html */ `<span>*Ups! email already exists</span>`;
+        emailMessage.innerHTML = /* html */ `<span>*Ups! your email already exists</span>`;
         email.classList.add('red-bg');
     }
 }
