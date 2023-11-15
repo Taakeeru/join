@@ -238,8 +238,10 @@ body {
   display: flex;
   flex-direction: column;
   background: aliceblue;
-  height: 201px;
+  height: 72px;
   overflow: auto;
-  position: fixed;
   width: auto;
+}
+.selectOverContainer{
+  display: flex;
 }

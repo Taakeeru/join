@@ -34,8 +34,10 @@ function checkInputFields() {
 
   function showAssignetContacts() {
     document.getElementById("selectContainer").classList.toggle("d-none");
-    
+  
   }
+
+  
   function closeSelectContainer(event) {
   let selectContainer = document.getElementById("selectContainer");
   let assignedSelect = document.getElementById("assignedSelect");
