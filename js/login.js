@@ -1,6 +1,7 @@
 
 
 function init() {
+    getRememberedUser();
     renderLogInCard();
     showContentDuringAnimation();
     loadUsers();
@@ -80,12 +81,20 @@ async function login() {
     let password = document.getElementById('password');
     let emailMessage = document.getElementById('email-fail');
     let passwordMessage = document.getElementById('login-fail');
+    let checkbox = document.getElementById('form2Example31');
     let user = users.find(u => u.email == email.value);
 
     if (user) {
         if (user.password == password.value) {
-            await setItem('loggedInUser', JSON.stringify(user));
-            window.location.href = '/html/summary.html';
+            if (checkbox.checked) {
+                await setItem('rememberMe', JSON.stringify(user));
+                await setItem('loggedInUser', JSON.stringify(user));
+                window.location.href = '/html/summary.html';
+            } else {
+                await setItem('rememberMe', JSON.stringify(null));
+                await setItem('loggedInUser', JSON.stringify(user));
+                window.location.href = '/html/summary.html';
+                }
         } else {
             emailMessage.innerHTML = '';
             email.classList.remove('red-bg');
@@ -109,6 +118,15 @@ async function guestLogin() {
         await setItem('loggedInUser', JSON.stringify(user));
         window.location.href = '/html/summary.html';
     } 
+}
+
+
+async function getRememberedUser() {
+    try {
+        rememberedUser = JSON.parse(await getItem('rememberMe'));
+    } catch(e) {
+        console.error('Loading error:', e);
+    }
 }
 
 
