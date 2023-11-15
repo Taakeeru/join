@@ -117,10 +117,10 @@
             ></div>
             <!-- open Cards -->
             <div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer d-none" >
-              <div onclick="event.stopPropagation()" class="openCardsDetails">
+              <div class="openCardsDetails"> <!-- onclick="event.stopPropagation()" rausgenommen-->
                 <div class="openCardTitle"> 
                   <span class="userDetailsTitle">Users</span>
-                  <img class="userDetailsImg" onclick="closeCardContainer()" src="/assets/img/close.svg" alt="">
+                  <img class="userDetailsImg" onclick="closeCardContainer()" src="../assets/img/close.svg" alt="">
                 </div>
                 <div class="openCardDescription">
                   <span class="openCardDescriptionText">Kochwelt Page & Recipe Recommender</span>
@@ -134,7 +134,7 @@
                </div>
                 <div class="openCardPrio">
                   <span class="cardsCategoryText">Priority:</span>
-                  <span class="openCardSecondText" >Medium <img class="openCardPrioImg" src="/assets/img/prio_media.svg" alt=""> </span> 
+                  <span class="openCardSecondText" >Medium <img class="openCardPrioImg" src="../assets/img/prio_media.svg" alt=""> </span> 
                 </div>
                 <div class="openCardAssigned">
                   <span class="cardsCategoryText">Assignet To:</span>
@@ -158,11 +158,11 @@
                 </div>
                 <div class="openCardIcons">
                   <div class="openCardIconsImgContainer" >
-                     <img class="openCardIconsImg" src="/assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
+                     <img class="openCardIconsImg" src="../assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
                   </div>
-                   <img class="openCardIconsImg" src="/assets/img/vector3.svg" alt="">
+                   <img class="openCardIconsImg" src="../assets/img/vector3.svg" alt="">
                   <div class="openCardIconsImgContainer" >
-                   <img class="openCardIconsImg" src="/assets/img/edit.svg" alt=""> <span class="openCardIconsText">Edit</span>
+                   <img class="openCardIconsImg" src="../assets/img/edit.svg" alt=""> <span class="openCardIconsText">Edit</span>
                   </div>
                </div>
               </div>
@@ -170,14 +170,14 @@
               </div>
             </div>
             <!--add Task Sidemenu -->
-         <div onclick ="closeAddTaskMenu()" class="" id="menuContainerBox">
-            <div onclick="event.stopPropagation()" id="sideMenu" class="sideMenuStyle">
+         <div class="" id="menuContainerBox"><!-- onclick="createNewTask()" rausgenommen-->
+            <div id="sideMenu" class="sideMenuStyle"> <!-- onclick="event.stopPropagation()" rausgenommen-->
                <div class="header-sideMenu"><span>Add Task</span>
-                  <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="/assets/img/close.svg" alt="">
+                  <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="../assets/img/close.svg" alt="">
                </div>
                <div class="contentContainer-sideMenu" >
                   <div class="addTask addTask-sideMenu">
-                     <form action="">
+                     <div action="">
                         <div class="topSektion topSektion-sideMenu">
                            <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
                            <div class="description description-sideMenu">
@@ -242,20 +242,20 @@
                            <input placeholder="Add new subtask" class="subtaskInput">
                            <button onclick="createNewTask()">createTask</button>
                         </div>
-                     </form>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
           <!--edit task menu -->
           <div id="openEditContainer" onclick="closeEditContainer()"  class="openCardContainer d-none" >
-            <div onclick="event.stopPropagation()" class="openCardsDetailsEdit">
+            <div class="openCardsDetailsEdit"> <!-- onclick="event.stopPropagation()" rausgenommen-->
                <div class="header-EditMenu">
-                  <img onclick ="closeEditContainer()" class="header-editMenuImg" src="/assets/img/close.svg" alt="">
+                  <img onclick ="closeEditContainer()" class="header-editMenuImg" src="../assets/img/close.svg" alt="">
                </div>
                <div class="contentContainer-sideMenu" >
                   <div class="addTask addTask-sideMenu editMenu">
-                     <form action="">
+                     <div action="">
                         <div class="topSektion topSektion-sideMenu">
                            <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
                            <div class="description description-sideMenu">
@@ -315,7 +315,7 @@
                             </div>
                         </div>
                         
-                     </form>
+                     </div>
                   </div>
                   
                </div>
