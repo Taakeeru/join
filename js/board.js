@@ -1,6 +1,4 @@
 let currentDraggedElement;
-let existingTasks = [];
-let currentTasks = [];
 let allTasks =[];
 let allTask = [
   {
@@ -34,52 +32,64 @@ let allTask = [
     category: "done",
   },
 ];
+
+
 async function init() {
   includeHTML();
+  getAllTasks();
   updateHTML();
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
   loadUsers();
 }
 
-async function createNewTask() {
-  let getTitle = document.getElementById('addTastTitel').value;
-  let getDescription = document.getElementById('addTastTextArea').value;
-  let getDateValue = document.getElementById('dueDateValue').value;
 
-  const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
-
-  if (existingTaskIndex === -1) {
-    const newTask = {
-      title: getTitle,
-      description: getDescription,
-      date: getDateValue,
-    };
-
-    allTasks.push(newTask);
+async function getAllTasks() {
+  try {
+      allTasks = JSON.parse(await getItem('newTask'));
+  } catch(e) {
+      console.error('Loading error:', e);
   }
-  // Update the local storage with the modified array
-  await setItem('newTask', JSON.stringify(allTasks));
 }
 
+// async function createNewTask() {
+//   let getTitle = document.getElementById('addTastTitel').value;
+//   let getDescription = document.getElementById('addTastTextArea').value;
+//   let getDateValue = document.getElementById('dueDateValue').value;
 
+//   getTitle = getTitle.trim(); // Ensure title is not empty
 
+//   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
-// async function createNewTask(){
-//   let getTitel = document.getElementById('addTastTitel').value;
-//   let getTextArea = document.getElementById('addTastTextArea').value;
-//   let dueDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
-//   // let date = new Date();
-//   // let getPriority = getThePriority();
-//   // let seeContacts = await getItem('users', loggedInUser.contacts);
-//   // let assignetTo = JSON.parse(seeContacts);
-//   // let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
-//   // let getSubtask = document.getElementById('addSubtaskContent').value;
-//   pushTaskInfo(getTitel, getTextArea, dueDateValue);
-//   allTasks.push(currentTasks);
+//   if (existingTaskIndex === -1) {
+//     let newTask = ({
+//       title: getTitle,
+//       description: getDescription,
+//       date: getDateValue,
+//     });
+//     allTasks.push(newTask);
+//     console.log(allTasks);
+//   } else {
+//     alert('Task bereits vorhanden');
+//   }
+//   // Update the local storage with the modified array
 //   await setItem('newTask', JSON.stringify(allTasks));
-
 // }
+
+
+async function createNewTask(){
+  let getTitel = document.getElementById('addTastTitel').value;
+  let getTextArea = document.getElementById('addTastTextArea').value;
+  let getDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
+  // let date = new Date();
+  // let getPriority = getThePriority();
+  // let seeContacts = await getItem('users', loggedInUser.contacts);
+  // let assignetTo = JSON.parse(seeContacts);
+  // let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
+  // let getSubtask = document.getElementById('addSubtaskContent').value;
+  await pushTaskInfo(getTitel, getTextArea, getDateValue);
+}
+
 
 function getThePriority(){
     let hight = document.getElementById('urgentPriority').src;
@@ -88,48 +98,27 @@ function getThePriority(){
     return hight, medium, low;
 }
 
-function pushTaskInfo(getTitle, getDescription, dueDateValue) {
+
+async function pushTaskInfo(getTitle, getDescription, getDateValue) {
+  getTitle = getTitle.trim(); // Ensure title is not empty
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
   if (existingTaskIndex === -1) {
-    const newTask = {
+    let newTask = ({
       title: getTitle,
       description: getDescription,
-      date: dueDateValue,
-    };
-    currentTasks.push(newTask);
+      date: getDateValue,
+    });
+    allTasks.push(newTask);
+    console.log(allTasks);
+    alert('Task angelegt');
   } else {
-    // Wenn der Titel bereits existiert, füge den neuen Wert zum vorhandenen Wert hinzu
-    allTasks[existingTaskIndex].title += ` ${getTitle}`;
+    alert('Task bereits vorhanden');
   }
+  // Update the local storage with the modified array
+  await setItem('newTask', JSON.stringify(allTasks));
 }
 
-
-
-
-
-// async function pushTaskInfo(getTitle, getDescription, dueDateValue) {
-//   // Prüfen, ob bereits ein Task mit dem gleichen Titel existiert
-//   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
-
-//   if (existingTaskIndex !== -1) {
-//       // Falls der Task bereits existiert, Werte zu diesem Task hinzufügen
-//       const existingTask = allTasks[existingTaskIndex];
-//       existingTask.description += `\n${getDescription}`;
-//       // Du kannst hier weitere Werte nach Bedarf hinzufügen und aktualisieren
-//       existingTask.date = dueDateValue; // Hier wird das Datum aktualisiert
-//   } else {
-//       // Falls der Task nicht existiert, neuen Task hinzufügen
-//       const newTask = {
-//           title: getTitle,
-//           description: getDescription,
-//           date: dueDateValue,
-//           // Weitere Werte nach Bedarf hinzufügen
-//       };
-//       allTasks.push(newTask);
-//       await setItem('newTask', JSON.stringify(allTasks));
-//   }
-// }
 
 // ------------------------ tastBereich------------------
 
@@ -257,6 +246,7 @@ function closeCardContainer() {
   document.getElementById("openCardContainer").classList.add("d-none");
   
 }
+
 function closeEditContainer() {
   document.getElementById("openEditContainer").classList.add("d-none");
 }
