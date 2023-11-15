@@ -56,6 +56,7 @@ function logInFormTemplate() {
                 <input required type="email" id="email" class="form-control email" placeholder="Email" />
                 <img id="test" src="../assets/img/mail.svg" alt="Email Bild">
             </div>
+            <div class="email-fail" id="email-fail"></div> 
 
             <div class="form-style">
                 <!-- Password input -->

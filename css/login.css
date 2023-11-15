@@ -158,7 +158,8 @@ body {
 }
 
 #pw-fail,
-#email-fail {
+#email-fail,
+#login-fail {
   color: red;
   width: 100%;
   margin-top: -30px;

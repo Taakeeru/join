@@ -78,35 +78,37 @@ function renderLogInCard() {
 async function login() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    let user = users.find(u => u.email == email.value && u.password == password.value);
-    console.log(user);
-    if(user) {
-        await setItem('loggedInUser', JSON.stringify(user));
-        window.location.href = '/html/summary.html';
-    } else {
-        if (user === undefined) {
-            document.getElementById('emailError').textContent = 'Worng E-Mail';
+    let emailMessage = document.getElementById('email-fail');
+    let passwordMessage = document.getElementById('login-fail');
+    let user = users.find(u => u.email == email.value);
+
+    if (user) {
+        if (user.password == password.value) {
+            await setItem('loggedInUser', JSON.stringify(user));
+            window.location.href = '/html/summary.html';
         } else {
-            document.getElementById('passwordError').textContent = 'Worng Password';
+            emailMessage.innerHTML = '';
+            email.classList.remove('red-bg');
+            password.classList.add('red-bg');
+            passwordMessage.innerHTML = /*html*/ `<span>*Ups! wrong password</span>`;
         }
+    } else {
+        passwordMessage.innerHTML = '';
+        password.classList.remove('red-bg');
+        email.classList.add('red-bg');
+        emailMessage.innerHTML = /*html*/ `<span>*Ups! e-mail doesn't exist</span>`;
     }
 }
 
 
 async function guestLogin() {
     let user = users[26];
-    
+
     console.log(user);
     if(user) {
         await setItem('loggedInUser', JSON.stringify(user));
         window.location.href = '/html/summary.html';
-    } else {
-        if (user === undefined) {
-            document.getElementById('emailError').textContent = 'Worng E-Mail';
-        } else {
-            document.getElementById('passwordError').textContent = 'Worng Password';
-        }
-    }
+    } 
 }
 
 
