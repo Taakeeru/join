@@ -1,7 +1,7 @@
 let firstLetter = [];
 let newContactData = [];
 let firstLetterOfContatcs = [];
-let currentCotact = false;
+let currentContact = null;
 
 
 
@@ -110,13 +110,13 @@ async function generateContactInSmall() {
 
         // Kontakt hinzufügen
         contact.innerHTML += /*html*/`
-            <div class="sizeOfContactBox displayFlex" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}', '${initial}', '${color}')">
+            <div class="sizeOfContactBox displayFlex" id="addBackgroung${i}" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}', '${initial}', '${color}', '${i}')">
                 <div id="renderFirstLetter" style="background-color: ${color};">
                     <p class="imgOfContackt">${initial}</p>
                 </div>
                 <div>
                     <p style="margin: 6px;">${contactData.name}</p>
-                    <p class="styleMail">${contactData.email}</p>
+                    <p class="styleMail" id="changeStyleEMail${i}">${contactData.email}</p>
                 </div>
             </div>`;
     }
@@ -141,12 +141,28 @@ function generateRandomColor(){
     return `#${code}`    
 }
 
- 
-function showDetailsOfContact(newName, newEmail, newPhone, initial, color) {
+
+function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
     let detailsContact = document.getElementById('boxOfDetailsContacts');
     detailsContact.classList.remove('addOpacity');
-    detailsContact.innerHTML = '';
-    detailsContact.innerHTML = /*html*/ `
+  
+    if (currentContact === newName) {
+      // If the current element is already shown, hide it
+      detailsContact.innerHTML = '';
+      document.getElementById(`addBackgroung${i}`).classList.remove('sizeOfContactBoxOnclick');
+      document.getElementById(`changeStyleEMail${i}`).classList.remove('changeStyleMail');
+      currentContact = null;
+    } else {
+      // Remove highlighted class from previous contact, if any
+        if (currentContact) {
+          const previousContactElement = document.getElementById(`addBackgroung${currentContactIndex}`);
+          previousContactElement.classList.remove('sizeOfContactBoxOnclick');
+          document.getElementById(`changeStyleEMail${currentContactIndex}`).classList.remove('changeStyleMail');
+        }
+      
+        // Display the new element and add highlighted class
+        document.getElementById(`addBackgroung${i}`).classList.add('sizeOfContactBoxOnclick');
+        detailsContact.innerHTML = /*html*/ `
         <div class="positionHeaderContactDetails">
             <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
                 <p class="sizeOfLetterDetails">${initial}</p>
@@ -168,8 +184,45 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color) {
             <p style="font-weight: 600;">Phone</p>
             <p>${newPhone}</p>
         </div>`;
-    startAnimation();
+    
+        document.getElementById(`changeStyleEMail${i}`).classList.add('changeStyleMail');
+      
+        startAnimation();
+        currentContact = newName;
+        currentContactIndex = i; // Update current contact index
+    }
 }
+  
+
+
+// function showDetailsOfContact(newName, newEmail, newPhone, initial, color) {
+//     let detailsContact = document.getElementById('boxOfDetailsContacts');
+//     detailsContact.classList.remove('addOpacity');
+//     detailsContact.innerHTML = '';
+//     detailsContact.innerHTML = /*html*/ `
+//         <div class="positionHeaderContactDetails">
+//             <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
+//                 <p class="sizeOfLetterDetails">${initial}</p>
+//             </div>
+//             <div>
+//                 <p class="nameHeaderContactDetails">${newName}</p>
+//                 <div class="positionEditAndDelete">
+//                     <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
+//                             style="margin-right: 8px;">Edit</button>
+//                     <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img
+//                             src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
+//                 </div>
+//             </div>
+//         </div>
+//         <div>
+//             <p class="contantInformation">Contact Information</p>
+//             <p style="font-weight: 600;">Email</p>
+//             <a href="#" class="mailContact">${newEmail}</a>
+//             <p style="font-weight: 600;">Phone</p>
+//             <p>${newPhone}</p>
+//         </div>`;
+//     startAnimation();
+// }
 
 
 function addNewContactBtn(){   
