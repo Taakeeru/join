@@ -141,8 +141,9 @@ body{
 }
 
 .sizeOfContactBox:hover{
-    background-color: #D2E3FF;
+    background-color: #4589FF;
     border-radius: 10px;
+    /* color: white; */
 }
 
 .imgOfContackt{
@@ -178,14 +179,10 @@ body{
 
 .boxOfDetailsContacts{
     width: auto;
-    height: 318px;
+    /* width: calc(100vw - 688px); */
+    /* height: calc(100vw - 96px); */
+    height: auto;
     margin: 64px;
-
-    left: 100%; /* Start off-screen to the right */
-    transition: left 0.3s ease-out; /* Add a smooth transition effect */
-}
-#boxOfDetailsContacts.slideIn {
-    left: 60%; /* Move to 50% from the right */
 }
 
 .bigImgContacts{
@@ -508,6 +505,19 @@ body{
     }
 }
 
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 
+.slideIn {
+    animation: slideFromRight 0.5s ease-in-out; /* Passe die Dauer und Timing-Funktion nach Bedarf an */
+}
 
 
