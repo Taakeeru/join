@@ -139,6 +139,7 @@ body {
 .dateImg {
   height: 24px;
   width: 24px;
+  cursor: pointer;
 }
 .assignedContent {
   display: flex;
