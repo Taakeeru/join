@@ -1,5 +1,3 @@
-
-
 async function initAddTask() {
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
@@ -21,7 +19,7 @@ function checkInputFields() {
   
     if (titleInput.value.trim() === '') {
       titleFail.innerHTML = '<span>Title is required</span>';
-    }
+  }
   
     if (descriptionInput.value.trim() === '') {
       descriptionFail.innerHTML = '<span>Description is required</span>';
@@ -41,6 +39,21 @@ function checkInputFields() {
   function closeSelectContainer(event) {
   let selectContainer = document.getElementById("selectContainer");
   let assignedSelect = document.getElementById("assignedSelect");
+
+  if (!assignedSelect.contains(event.target) && !selectContainer.contains(event.target)) {
+    
+    selectContainer.classList.add("d-none");
+  }
+}
+
+function showCategoryContacts() {
+  document.getElementById("categoryContainer").classList.toggle("d-none");
+
+}
+
+function closeCategoryContainer(event) {
+  let selectContainer = document.getElementById("categoryContainer");
+  let assignedSelect = document.getElementById("categorySelect");
 
   if (!assignedSelect.contains(event.target) && !selectContainer.contains(event.target)) {
     
