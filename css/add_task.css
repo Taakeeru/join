@@ -237,11 +237,23 @@ body {
 .selectContainer{
   display: flex;
   flex-direction: column;
-  background: aliceblue;
   height: 72px;
   overflow: auto;
   width: auto;
 }
 .selectOverContainer{
   display: flex;
+}
+.userPosition{
+width: 90%;
+}
+.userBoxContainer{
+  display: flex;
+}
+.categoryContainer{
+  display: flex;
+  flex-direction: column; 
+  height: 72px;
+  overflow: auto;
+  width: auto;
 }

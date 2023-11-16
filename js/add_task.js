@@ -48,4 +48,19 @@ function checkInputFields() {
   }
 }
 
+function showCategoryContacts() {
+  document.getElementById("categoryContainer").classList.toggle("d-none");
+
+}
+
+function closeCategoryContainer(event) {
+  let selectContainer = document.getElementById("categoryContainer");
+  let assignedSelect = document.getElementById("categorySelect");
+
+  if (!assignedSelect.contains(event.target) && !selectContainer.contains(event.target)) {
+    
+    selectContainer.classList.add("d-none");
+  }
+}
+
  
