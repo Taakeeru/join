@@ -258,7 +258,7 @@ function generatePlaceholderTasks(category) {
 }
 
 function shwoCurrentDate(){
-  document.getElementById('autoJsCalendar').classList.add('toggle');
+  document.getElementById('autoJsCalendar').classList.toggle('d-none');
 }
 
 

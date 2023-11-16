@@ -9,12 +9,14 @@
       <link rel="stylesheet" href="../css/desktop_template_footer.css">
       <link rel="stylesheet" href="../css/fonts.css">
       <link rel="stylesheet" href="../css/add_task.css">
+      <link rel="stylesheet" type="text/css" href="../assets/calender/source/jsCalendar.css">
       <script src="../js/board.js"></script>
       <script src="../js/add_task.js"></script>
       <script src="../js/include.js" defer></script>
       <script src="../js/storage.js"></script>
       <script src="../js/profile.js"></script>
       <script src="../js/register.js"></script>
+      <script type="text/javascript" src="../assets/calender/source/jsCalendar.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
    </head>
@@ -38,9 +40,10 @@
                   <div class="textfield-fail" id="description-fail-message"></div>
                   <div class="dateContent">
                      <p class="dateTitle">Due date</p>
-                     <div class="inputfieldDateContainer"><input id="date-fail" class="inputfieldDate" type="text"
-                        placeholder="dd/mm/yyyy">
-                        <img class="dateImg" src="../assets/img/event.svg" alt="">
+                     <div class="inputfieldDateContainer modal-body">
+                        <input id="dueDateValue" class="inputfieldDate" type="text" placeholder="dd/mm/yyyy">
+                        <img class="dateImg " src="../assets/img/event.svg" onclick="shwoCurrentDate()">
+                        <div class="auto-jsCalendar d-none" id="autoJsCalendar"></div>
                      </div>
                      <div class="textfield-fail" id="date-fail-message"></div>
                   </div>
