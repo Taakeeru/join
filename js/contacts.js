@@ -186,7 +186,6 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
         </div>`;
     
         document.getElementById(`changeStyleEMail${i}`).classList.add('changeStyleMail');
-      
         startAnimation();
         currentContact = newName;
         currentContactIndex = i; // Update current contact index
@@ -392,12 +391,14 @@ async function addContactAnimation() {
 }
 
 
+/**
+ * The line void box.offsetWidth; is a trick 
+ * that ensures that the browser has applied the previous change before the class is added again. 
+ * This is sometimes referred to as the "reflow trick".
+ */
 function startAnimation() {
     let box = document.getElementById('boxOfDetailsContacts');
+    box.classList.remove('slideIn');
+    void box.offsetWidth; 
     box.classList.add('slideIn');
 }
-
-
-
-
-
