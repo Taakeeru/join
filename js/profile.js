@@ -65,6 +65,11 @@ async function logout() {
 }
 
 
+function returnBack() {
+    return window.history.back();
+}
+
+
 async function updateLoggedInUser(newValues) {
     const url = `${STORAGE_URL}?key=loggedInUser&token=${STORAGE_TOKEN}`;
     const payload = { key: 'loggedInUser', token: STORAGE_TOKEN, value: newValues };

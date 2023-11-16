@@ -27,6 +27,7 @@ body {
 .content-container h1 {
     font-size: 61px;
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .content-container h2 {
@@ -46,4 +47,22 @@ body {
 
 .d-none {
     display: none;
+}
+
+.legal-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.backspace img {
+    height: 50px;
+    width: 50px;
+}
+
+.backspace img:hover {
+    background-color: rgba(200, 222, 255, 0.226);
+    border-radius: 25px;
+    cursor: pointer;
 }
