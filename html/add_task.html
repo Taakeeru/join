@@ -106,8 +106,9 @@
                      <p class="assignedTitle small" >(optional)</p>
                      </p>
                   </div>
-                  <input placeholder="Add new subtask" class="subtaskInput">
+                  <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
                </div>
+               <div id="subtaskContainer"></div>
                <button onclick="checkInputFields()" >OK</button>
                <button onclick="createNewTask()">createTask</button>
             </div>

@@ -199,6 +199,7 @@ body {
   background: url("/assets/img/arrow_drop_down.svg") 97% / 5% no-repeat #ffff;
   border-bottom: 1px solid rgba(209, 209, 209, 1);
   line-height: 39px;
+  cursor: pointer;
 }
 
 .assignedSelect:focus {
@@ -226,6 +227,7 @@ body {
   background: url("/assets/img/subtask_icons.svg") 97% / 5% no-repeat #ffff;
   border-bottom: 1px solid rgba(209, 209, 209, 1);
   line-height: 39px;
+  cursor: pointer;
 }
 .subtaskInput:focus {
   outline: none;

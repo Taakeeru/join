@@ -136,4 +136,16 @@ function closeCategoryContainer(event) {
   }
 }
 
+function addSubTask() {
+  let subtaskInput = document.getElementById('subtaskInput');
+  let addTask =  document.getElementById('subtaskContainer');
+  let subtaskValue = subtaskInput.value;
+
+  if (subtaskValue.trim() !== '') {
+    
+    addTask.innerHTML += `<ul><li>${subtaskValue}</li></ul>`;
+    subtaskInput.value = '';
+  }
+}
+
  
