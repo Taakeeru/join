@@ -106,10 +106,22 @@ function checkInputFields() {
     }
   }
 
-  function showAssignetContacts() {
-    document.getElementById("selectContainer").classList.toggle("d-none");
-  
+async function showAssignetContacts() {
+  let box = document.getElementById("selectContainer");
+  box.classList.toggle("d-none");
+  let getUser = await getItem('loggedInUser', JSON.parse(loggedInUser.contacts));
+    for (let i = 0; i < getUser.length; i++) {
+    let userName = getUser[i].name;
+    let getInitial = getUser[i].initial;
+    let getColor = getUser[i].color;
+    box.innerHTML += /*html*/`
+      <div class="userBoxContainer">
+        <div class="${getColor}">${getInitial}</div>
+        <span class="userPosition">${userName}</span>
+        <input type="checkbox" id="clicktedSchenBox"> 
+      </div>`;
   }
+}
 
   
   function closeSelectContainer(event) {
@@ -144,7 +156,13 @@ function addSubTask() {
 
   if (subtaskValue.trim() !== '') {
     
-    addTask.innerHTML += `<ul><li>${subtaskValue}</li></ul>`;
+    addTask.innerHTML += /*html*/`
+    <ul class="lsitSubtask">
+      <li class="subtaskList">${subtaskValue} 
+      <div class="displayFlex"><img src="../assets/img/edit.svg" onclick="editSubtask()" class="subtaskEditImg">|
+      <img src="../assets/img/delete.svg" onclick="deleteSubtask()" class="subtaskDeleteImg">
+      </div></li>
+    </ul>`;
     subtaskInput.value = '';
   }
 }
