@@ -9,12 +9,14 @@
       <link rel="stylesheet" href="../css/desktop_template_footer.css">
       <link rel="stylesheet" href="../css/fonts.css">
       <link rel="stylesheet" href="../css/add_task.css">
+      <link rel="stylesheet" type="text/css" href="../assets/calender/source/jsCalendar.css">
       <script src="../js/board.js"></script>
       <script src="../js/add_task.js"></script>
       <script src="../js/include.js" defer></script>
       <script src="../js/storage.js"></script>
       <script src="../js/profile.js"></script>
       <script src="../js/register.js"></script>
+      <script type="text/javascript" src="../assets/calender/source/jsCalendar.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
    </head>
@@ -24,7 +26,7 @@
          <div class="addTask">
             <div action="">
                <div class="topSektion">
-                  <div class="titleContainer"><input id="title-fail" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
+                  <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
                   <div class="textfield-fail" id="tile-fail-message"></div>
                   <div class="description">
                      <div class="descriptionContent">
@@ -32,15 +34,16 @@
                         <p class="descriptionText small">(optional)</p>
                         </p>
                      </div>
-                     <textarea class="textArea" placeholder="Enter a Description" name="" id="description-fail" cols="30"
+                     <textarea class="textArea" placeholder="Enter a Description" name="" id="addTastTextArea" cols="30"
                         rows="10"></textarea>
                   </div>
                   <div class="textfield-fail" id="description-fail-message"></div>
                   <div class="dateContent">
                      <p class="dateTitle">Due date</p>
-                     <div class="inputfieldDateContainer"><input id="date-fail" class="inputfieldDate" type="text"
-                        placeholder="dd/mm/yyyy">
-                        <img class="dateImg" src="../assets/img/event.svg" alt="">
+                     <div class="inputfieldDateContainer modal-body">
+                        <input id="dueDateValue" class="inputfieldDate" type="text" placeholder="dd/mm/yyyy">
+                        <img class="dateImg " src="../assets/img/event.svg" onclick="shwoCurrentDate()">
+                        <div class="auto-jsCalendar d-none" id="autoJsCalendar"></div>
                      </div>
                      <div class="textfield-fail" id="date-fail-message"></div>
                   </div>
@@ -52,10 +55,10 @@
                      </p>
                   </div>
                   <div class="buttonContainer"> 
-                     <button class="prioButton">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
-                     <button class="prioButton">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                     <button class="prioButton">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
-                  </div>
+                     <button onclick="getThePriority('high')" class="prioButton">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                     <button onclick="getThePriority('medium')" class="prioButton">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                     <button onclick="getThePriority('low')" class="prioButton">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                   </div>
                </div>
                <div class="assignedContent" >
                   <div class="assignedTitleContainer">
@@ -94,6 +97,7 @@
                   <input placeholder="Add new subtask" class="subtaskInput">
                </div>
                <button onclick="checkInputFields()" >OK</button>
+               <button onclick="createNewTask()">createTask</button>
             </div>
          </div>
          <div w3-include-html="../assets/templates/desktop_template_footer.html"></div>

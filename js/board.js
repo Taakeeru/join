@@ -1,5 +1,5 @@
 let currentDraggedElement;
-let allTasks =[];
+
 let allTask = [
   {
     id: 0,
@@ -33,6 +33,16 @@ let allTask = [
   },
 ];
 
+function addTask(title, category) {
+  const newTask = {
+    id: allTask.length, 
+    title: title,
+    category: category,
+  };
+
+  allTask.push(newTask); 
+}
+// das wäre mein aktueller ansatz für eine automatische id
 
 async function init() {
   includeHTML();
@@ -44,80 +54,19 @@ async function init() {
 }
 
 
-async function getAllTasks() {
-  try {
-      allTasks = JSON.parse(await getItem('newTask'));
-  } catch(e) {
-      console.error('Loading error:', e);
-  }
-}
-
-// async function createNewTask() {
-//   let getTitle = document.getElementById('addTastTitel').value;
-//   let getDescription = document.getElementById('addTastTextArea').value;
-//   let getDateValue = document.getElementById('dueDateValue').value;
-
-//   getTitle = getTitle.trim(); // Ensure title is not empty
-
-//   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
-
-//   if (existingTaskIndex === -1) {
-//     let newTask = ({
-//       title: getTitle,
-//       description: getDescription,
-//       date: getDateValue,
-//     });
-//     allTasks.push(newTask);
-//     console.log(allTasks);
-//   } else {
-//     alert('Task bereits vorhanden');
-//   }
-//   // Update the local storage with the modified array
-//   await setItem('newTask', JSON.stringify(allTasks));
-// }
 
 
-async function createNewTask(){
-  let getTitel = document.getElementById('addTastTitel').value;
-  let getTextArea = document.getElementById('addTastTextArea').value;
-  let getDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
-  // let date = new Date();
-  // let getPriority = getThePriority();
-  // let seeContacts = await getItem('users', loggedInUser.contacts);
-  // let assignetTo = JSON.parse(seeContacts);
-  // let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
-  // let getSubtask = document.getElementById('addSubtaskContent').value;
-  await pushTaskInfo(getTitel, getTextArea, getDateValue);
-}
 
 
-function getThePriority(){
-    let hight = document.getElementById('urgentPriority').src;
-    let medium = document.getElementById('mediumPriority').src;
-    let low = document.getElementById('lowPriority').src;
-    return hight, medium, low;
-}
 
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue) {
-  getTitle = getTitle.trim(); // Ensure title is not empty
-  const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
-  if (existingTaskIndex === -1) {
-    let newTask = ({
-      title: getTitle,
-      description: getDescription,
-      date: getDateValue,
-    });
-    allTasks.push(newTask);
-    console.log(allTasks);
-    alert('Task angelegt');
-  } else {
-    alert('Task bereits vorhanden');
-  }
-  // Update the local storage with the modified array
-  await setItem('newTask', JSON.stringify(allTasks));
-}
+
+
+
+
+
+
 
 
 // ------------------------ tastBereich------------------
@@ -256,6 +205,8 @@ function generatePlaceholderTasks(category) {
   
 }
 
-
+function shwoCurrentDate(){
+  document.getElementById('autoJsCalendar').classList.toggle('d-none');
+}
 
 
