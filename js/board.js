@@ -92,7 +92,7 @@ async function createNewTask(){
 }
 
 
-let selectedPriority = ""; // Variable, um die ausgewählte Priorität zu speichern
+
 
 function getThePriority(priority) {
   selectedPriority = priority;
