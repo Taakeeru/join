@@ -1,5 +1,5 @@
 let currentDraggedElement;
-let allTasks =[];
+
 let allTask = [
   {
     id: 0,
@@ -44,81 +44,19 @@ async function init() {
 }
 
 
-async function getAllTasks() {
-  try {
-      allTasks = JSON.parse(await getItem('newTask'));
-  } catch(e) {
-      console.error('Loading error:', e);
-  }
-}
-
-// async function createNewTask() {
-//   let getTitle = document.getElementById('addTastTitel').value;
-//   let getDescription = document.getElementById('addTastTextArea').value;
-//   let getDateValue = document.getElementById('dueDateValue').value;
-
-//   getTitle = getTitle.trim(); // Ensure title is not empty
-
-//   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
-
-//   if (existingTaskIndex === -1) {
-//     let newTask = ({
-//       title: getTitle,
-//       description: getDescription,
-//       date: getDateValue,
-//     });
-//     allTasks.push(newTask);
-//     console.log(allTasks);
-//   } else {
-//     alert('Task bereits vorhanden');
-//   }
-//   // Update the local storage with the modified array
-//   await setItem('newTask', JSON.stringify(allTasks));
-// }
-
-
-async function createNewTask(){
-  let getTitel = document.getElementById('addTastTitel').value;
-  let getTextArea = document.getElementById('addTastTextArea').value;
-  let getDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
-  // let date = new Date();
-  // let getPriority = getThePriority();
-  // let seeContacts = await getItem('users', loggedInUser.contacts);
-  // let assignetTo = JSON.parse(seeContacts);
-  // let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
-  // let getSubtask = document.getElementById('addSubtaskContent').value;
-  await pushTaskInfo(getTitel, getTextArea, getDateValue);
-  console.log("Selected Priority:", selectedPriority);
-}
 
 
 
 
-function getThePriority(priority) {
-  selectedPriority = priority;
-}
 
 
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue) {
-  getTitle = getTitle.trim(); // Ensure title is not empty
-  const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
-  if (existingTaskIndex === -1) {
-    let newTask = ({
-      title: getTitle,
-      description: getDescription,
-      date: getDateValue,
-    });
-    allTasks.push(newTask);
-    console.log(allTasks);
-    alert('Task angelegt');
-  } else {
-    alert('Task bereits vorhanden');
-  }
-  // Update the local storage with the modified array
-  await setItem('newTask', JSON.stringify(allTasks));
-}
+
+
+
+
+
 
 
 // ------------------------ tastBereich------------------

@@ -26,7 +26,7 @@
          <div class="addTask">
             <div action="">
                <div class="topSektion">
-                  <div class="titleContainer"><input id="title-fail" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
+                  <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
                   <div class="textfield-fail" id="tile-fail-message"></div>
                   <div class="description">
                      <div class="descriptionContent">
@@ -34,7 +34,7 @@
                         <p class="descriptionText small">(optional)</p>
                         </p>
                      </div>
-                     <textarea class="textArea" placeholder="Enter a Description" name="" id="description-fail" cols="30"
+                     <textarea class="textArea" placeholder="Enter a Description" name="" id="addTastTextArea" cols="30"
                         rows="10"></textarea>
                   </div>
                   <div class="textfield-fail" id="description-fail-message"></div>
@@ -97,6 +97,7 @@
                   <input placeholder="Add new subtask" class="subtaskInput">
                </div>
                <button onclick="checkInputFields()" >OK</button>
+               <button onclick="createNewTask()">createTask</button>
             </div>
          </div>
          <div w3-include-html="../assets/templates/desktop_template_footer.html"></div>
