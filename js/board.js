@@ -88,15 +88,16 @@ async function createNewTask(){
   // let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
   // let getSubtask = document.getElementById('addSubtaskContent').value;
   await pushTaskInfo(getTitel, getTextArea, getDateValue);
+  console.log("Selected Priority:", selectedPriority);
 }
 
 
-function getThePriority(){
-    let hight = document.getElementById('urgentPriority').src;
-    let medium = document.getElementById('mediumPriority').src;
-    let low = document.getElementById('lowPriority').src;
-    return hight, medium, low;
+let selectedPriority = ""; // Variable, um die ausgewählte Priorität zu speichern
+
+function getThePriority(priority) {
+  selectedPriority = priority;
 }
+
 
 
 async function pushTaskInfo(getTitle, getDescription, getDateValue) {

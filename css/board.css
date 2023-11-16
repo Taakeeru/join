@@ -494,7 +494,6 @@ body {
   border: 2px dashed rgba(0, 0, 0, 0.16);
   border-radius: 10px;
   justify-content: center;
-
   display: flex;
   align-items: center;
 }
