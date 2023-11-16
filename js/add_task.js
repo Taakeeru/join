@@ -61,6 +61,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue) {
 
   if (existingTaskIndex === -1) {
     let newTask = ({
+      id: allTasks.length, 
       title: getTitle,
       description: getDescription,
       date: getDateValue,
