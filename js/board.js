@@ -33,6 +33,16 @@ let allTask = [
   },
 ];
 
+function addTask(title, category) {
+  const newTask = {
+    id: allTask.length, 
+    title: title,
+    category: category,
+  };
+
+  allTask.push(newTask); 
+}
+// das wäre mein aktueller ansatz für eine automatische id
 
 async function init() {
   includeHTML();
