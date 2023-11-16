@@ -1,36 +1,36 @@
 let currentDraggedElement;
 
 let allTask = [
-  {
-    id: 0,
-    title: "Ich",
-    category: "toDo",
-  },
-  {
-    id: 1,
-    title: "Du",
-    category: "toDo",
-  },
-  {
-    id: 2,
-    title: "Sie",
-    category: "progress",
-  },
-  {
-    id: 3,
-    title: "Er",
-    category: "feedBack",
-  },
-  {
-    id: 4,
-    title: "Wir",
-    category: "done",
-  },
-  {
-    id: 5,
-    title: "Alle",
-    category: "done",
-  },
+  // {
+  //   id: 0,
+  //   title: "Ich",
+  //   category: "toDo",
+  // },
+  // {
+  //   id: 1,
+  //   title: "Du",
+  //   category: "toDo",
+  // },
+  // {
+  //   id: 2,
+  //   title: "Sie",
+  //   category: "progress",
+  // },
+  // {
+  //   id: 3,
+  //   title: "Er",
+  //   category: "feedBack",
+  // },
+  // {
+  //   id: 4,
+  //   title: "Wir",
+  //   category: "done",
+  // },
+  // {
+  //   id: 5,
+  //   title: "Alle",
+  //   category: "done",
+  // },
 ];
 
 function addTask(title, category) {
@@ -46,25 +46,12 @@ function addTask(title, category) {
 
 async function init() {
   includeHTML();
-  getAllTasks();
+  
   updateHTML();
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
   loadUsers();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
