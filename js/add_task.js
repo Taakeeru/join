@@ -1,5 +1,3 @@
-
-
 async function initAddTask() {
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
@@ -21,7 +19,7 @@ function checkInputFields() {
   
     if (titleInput.value.trim() === '') {
       titleFail.innerHTML = '<span>Title is required</span>';
-    }
+  }
   
     if (descriptionInput.value.trim() === '') {
       descriptionFail.innerHTML = '<span>Description is required</span>';
