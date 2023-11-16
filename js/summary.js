@@ -7,6 +7,7 @@ async function init() {
     showProfileInitials(loggedInUser);
     updateCurrentDate();
     loadUsers();
+    highlightTitle('summary');
 }
 
 

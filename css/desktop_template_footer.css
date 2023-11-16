@@ -67,3 +67,9 @@
 .linksFooter:hover {
     color: #2756ff;
 }
+
+.highlighted {
+    background-color: #D2E3FF;
+    border-radius: 8px;
+    transform: scale(1.1); 
+}

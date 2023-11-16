@@ -1,19 +1,19 @@
 <div class="leftWhiteBox">
     <div class="positionCategory">
         <div class="BoxOfCategory" id="aside">
-            <div class="positionTaskIcons" onclick="loadSummary()">
+            <div class="positionTaskIcons" id="summary">
                 <img  src="../assets/img/menu_icons.svg">
-                <a  href="../html/summary.html" class="category">Summary</a>
+                <a href="../html/summary.html" class="category">Summary</a>
             </div>
-            <div class="positionTaskIcons" onclick="loadAddTask()">
+            <div class="positionTaskIcons" id="add-task">
                 <img src="../assets/img/menu_icons2.svg">
                 <a href="../html/add_task.html" class="category">Add Task</a>
             </div>
-            <div class="positionTaskIcons" onclick="loadBoard()">
+            <div class="positionTaskIcons" id="board">
                 <img src="../assets/img/menu_icons1.svg">
                 <a href="../html/board.html" class="category">Board</a>
             </div>
-            <div class="positionTaskIcons" onclick="loadContacts()">
+            <div class="positionTaskIcons" id="contacts">
                 <img src="../assets/img/menu_icons3.svg">
                 <a href="../html/contacts.html" class="category">Contacts</a>
             </div>
@@ -22,8 +22,8 @@
 
     <div class="positionFooterBox">
         <div class="footerBox">
-            <p class="linksFooter" onclick="loadPrivacyPolicy()">Privacy Policy</p>
-            <p class="linksFooter" onclick="loadLegalNotice()">Legal Notice</p>
+            <a class="linksFooter" id="pp" onclick=" highlightTitle('pp')" href="/html/privacy.html">Privacy Policy</a>
+            <a class="linksFooter" id="ln" onclick=" highlightTitle('ln')" href="/html/legal_notice.html">Legal Notice</a>
         </div>
     </div>
 </div>

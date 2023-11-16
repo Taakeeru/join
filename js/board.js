@@ -46,11 +46,11 @@ function addTask(title, category) {
 
 async function init() {
   includeHTML();
-  
   updateHTML();
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
   loadUsers();
+  highlightTitle('board');
 }
 
 

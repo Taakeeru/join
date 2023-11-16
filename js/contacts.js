@@ -11,6 +11,7 @@ async function init() {
     showProfileInitials(loggedInUser);
     loadUsers();
     generateContactInSmall();
+    highlightTitle('contacts');
 }
 
 

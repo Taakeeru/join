@@ -5,6 +5,7 @@ async function initAddTask() {
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
     loadUsers();
+    highlightTitle('add-task');
 }
 async function getAllTasks() {
   try {
