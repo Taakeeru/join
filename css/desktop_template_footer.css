@@ -25,6 +25,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
+    box-sizing: content-box !important;
 }
 
 .positionTaskIcons a {
@@ -36,6 +37,7 @@
     padding: 8px 30px;
     gap: 15px;
     width: 108px;
+    box-sizing: content-box !important;
 }
 
 .positionTaskIcons:hover {
