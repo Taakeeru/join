@@ -1,13 +1,14 @@
 
 
 async function init() {
+    await includeHTML();
+    highlightTitle('summary');
     loggedInUser = await getLoggedInUser();
     updateGreeting();
     greetUser(loggedInUser);
     showProfileInitials(loggedInUser);
     updateCurrentDate();
     loadUsers();
-    highlightTitle('summary');
 }
 
 

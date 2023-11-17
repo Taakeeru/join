@@ -67,14 +67,3 @@ body {
     cursor: pointer;
 }
 
-.footerBox a {
-    text-decoration: none;
-    color: rgba(66, 82, 110, 1);
-    border-radius: 10px;
-}
-
-.footerBox a:hover {
-    cursor: pointer;
-    color: rgb(13,110,253) !important;
-}
-

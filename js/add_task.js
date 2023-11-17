@@ -1,12 +1,13 @@
 let allTasks =[];
 
 async function initAddTask() {
-    getAllTasks();
-    loggedInUser = await getLoggedInUser();
-    showProfileInitials(loggedInUser);
-    loadUsers();
-    highlightTitle('add-task');
-    showAssignetContacts(loggedInUser);
+  await includeHTML();
+  highlightTitle('add-task');
+  getAllTasks();
+  loggedInUser = await getLoggedInUser();
+  showProfileInitials(loggedInUser);
+  loadUsers();
+  showAssignetContacts(loggedInUser);
 }
 
 

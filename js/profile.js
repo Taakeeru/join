@@ -69,10 +69,6 @@ function returnBack() {
     window.history.back();
 }
 
-// window.onpopstate = function (event) {
-//     location.reload();
-// };
-
 
 function highlightTitle(pageId) {
     let page = document.getElementById(pageId);
@@ -80,10 +76,12 @@ function highlightTitle(pageId) {
     page.classList.add('highlighted');
 }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Hier können Sie Ihre Funktionen aufrufen
-//     highlightTitle();
-// });
+
+function highlightTitle2(pageId) {
+    let page = document.getElementById(pageId);
+
+    page.classList.add('highlighted2');
+}
 
 
 async function updateLoggedInUser(newValues) {

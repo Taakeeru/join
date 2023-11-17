@@ -45,12 +45,12 @@ function addTask(title, category) {
 // das wäre mein aktueller ansatz für eine automatische id
 
 async function init() {
-  includeHTML();
+  await includeHTML();
+  highlightTitle('board');
   updateHTML();
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
   loadUsers();
-  highlightTitle('board');
 }
 
 

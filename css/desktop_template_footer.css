@@ -71,8 +71,32 @@
     color: #2756ff;
 }
 
+.footerBox a {
+    text-decoration: none;
+    color: rgba(66, 82, 110, 1);
+    border-radius: 10px;
+}
+
+.footerBox a:hover {
+    cursor: pointer;
+    color: rgb(13,110,253);
+}
+
 .highlighted {
     background-color: #D2E3FF;
     border-radius: 8px;
     transform: scale(1.1); 
+}
+
+
+.highlighted2 {
+    background-color: #2756ff;
+    border-radius: 8px;
+    transform: scale(1.1); 
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.highlighted2 a:hover {
+    color: white !important;
 }

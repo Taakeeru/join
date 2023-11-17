@@ -6,12 +6,12 @@ let currentContact = null;
 
 
 async function init() {
-    includeHTML();
+    await includeHTML();
+    highlightTitle('contacts');
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
     loadUsers();
     generateContactInSmall();
-    highlightTitle('contacts');
 }
 
 
