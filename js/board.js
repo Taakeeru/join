@@ -1,6 +1,7 @@
 let currentDraggedElement;
 let allTask = [];
-
+// let info = await getItem('newTask');
+// let getTaskInfo = JSON.parse(info);
 
 async function init() {
   await includeHTML();
@@ -107,9 +108,11 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function moveTo(category) {
-  allTask[currentDraggedElement]["category"] = category;
-  updateHTML();
+async function moveTo(category) {
+  let info = await getItem('newTask');
+  let getTaskInfo = JSON.parse(info);
+  getTaskInfo[currentDraggedElement]["category"] = category;
+  updateHTML(getTaskInfo);
 }
 
 function highlight(id) {
