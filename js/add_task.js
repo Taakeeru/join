@@ -45,20 +45,21 @@ async function createNewTask(){
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
   let getDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
-  // let getPriority = getThePriority();
+  let getPriority = getThePriority();
   // let seeContacts = await getItem('users', loggedInUser.contacts);
   // let assignetTo = JSON.parse(seeContacts);
   let getCategory = loadCategory(); 
   let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory, getSubtask);
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, getPriority, getCategory, getCategory, getSubtask);
   
 }
 
-// function getThePriority(priority) {
-//   selectedPriority = priority;
-// }
+function getThePriority(priority) {
+  selectedPriority = priority;
+  return selectedPriority;
+}
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory, getSubtask) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, getPriority, getCategory, getCategory, getSubtask) {
   getTitle = getTitle.trim(); // Ensure title is not empty
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -67,10 +68,11 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory,
       id: allTasks.length, 
       title: getTitle,
       description: getDescription,
+      priority: getPriority,
       date: getDateValue,
       workCategory: getCategory,
       subtask: getSubtask,
-      category: "ToDo"
+      category: "toDo"
     });
     allTasks.push(newTask);
     console.log(allTasks);
@@ -140,14 +142,13 @@ function handleCheckboxClick(i, userName, getInitial, getColor) {
   let addUser = document.getElementById("addContactstoassign");
   let userId = `user_${i}`;
 
-
   if (checkbox.checked) {
-   
-    addUser.innerHTML += `<div id="${userId}" class="userBoxContainer displayFlex">
-      <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-    </div>`;
+    addUser.innerHTML += `
+      <div id="${userId}" class="userBoxContainer displayFlex">
+        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+      </div>`;
+    updateHTML(i, userName, getInitial, getColor); //-----
   } else {
-    
     let userToRemove = document.getElementById(userId);
     if (userToRemove) {
       userToRemove.remove();

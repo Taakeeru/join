@@ -1,52 +1,13 @@
 let currentDraggedElement;
+let allTask = [];
 
-let allTask = [
-  // {
-  //   id: 0,
-  //   title: "Ich",
-  //   category: "toDo",
-  // },
-  // {
-  //   id: 1,
-  //   title: "Du",
-  //   category: "toDo",
-  // },
-  // {
-  //   id: 2,
-  //   title: "Sie",
-  //   category: "progress",
-  // },
-  // {
-  //   id: 3,
-  //   title: "Er",
-  //   category: "feedBack",
-  // },
-  // {
-  //   id: 4,
-  //   title: "Wir",
-  //   category: "done",
-  // },
-  // {
-  //   id: 5,
-  //   title: "Alle",
-  //   category: "done",
-  // },
-];
-
-function addTask(title, category) {
-  const newTask = {
-    id: allTask.length, 
-    title: title,
-    category: category,
-  };
-
-  allTask.push(newTask); 
-}
-// das wäre mein aktueller ansatz für eine automatische id
 
 async function init() {
   includeHTML();
-  updateHTML();
+  let info = await getItem('newTask');
+  let getTaskInfo = JSON.parse(info);
+  allTask.push(getTaskInfo);
+  updateHTML(getTaskInfo);
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
   loadUsers();
@@ -54,17 +15,15 @@ async function init() {
 }
 
 
-
-
 // ------------------------ tastBereich------------------
 
-function updateHTML() {
-  let toDolist = allTask.filter((t) => t["category"] == "toDo");
+function updateHTML(getTaskInfo) {
+  let toDolist = getTaskInfo.filter((t) => t["category"] == "ToDo");
   let toDoContainer = document.getElementById("toDo");
   toDoContainer.innerHTML = "";
 
   if (toDolist.length === 0) {
-    toDoContainer.innerHTML = generatePlaceholderTasks("toDo");
+    toDoContainer.innerHTML = generatePlaceholderTasks("ToDo");
   } else {
     for (let index = 0; index < toDolist.length; index++) {
       const element = toDolist[index];
@@ -72,7 +31,7 @@ function updateHTML() {
     }
   }
 
-  let progressList = allTask.filter((t) => t["category"] == "progress");
+  let progressList = getTaskInfo.filter((t) => t["category"] == "progress");
   let progressContainer = document.getElementById("progress");
   progressContainer.innerHTML = ""; 
 
@@ -85,7 +44,7 @@ function updateHTML() {
     }
   }
 
-  let feedbackList = allTask.filter((t) => t["category"] == "feedBack");
+  let feedbackList = getTaskInfo.filter((t) => t["category"] == "feedBack");
   let feedbackContainer = document.getElementById("feedBack");
   feedbackContainer.innerHTML = "";
 
@@ -98,7 +57,7 @@ function updateHTML() {
     feedbackContainer.innerHTML += generateTodoHTML(element);
   }}
 
-  let doneList = allTask.filter((t) => t["category"] == "done");
+  let doneList = getTaskInfo.filter((t) => t["category"] == "done");
   let doneListContainer = document.getElementById("done");
   doneListContainer.innerHTML = "";
 
@@ -122,19 +81,19 @@ function generateTodoHTML(element) {
     <div class="taskCards" onclick="openCardContainer()" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
-          <p class="userStory">${element["title"]}</p>
+          <p class="userStory">${element["workCategory"]}</p>
         </div>
         <div class="cardDescription">
-          <p class="cardDescriptionHeader">Contact Form & Imprint</p>
+          <p class="cardDescriptionHeader">${element["title"]}</p>
           <p class="cardDescriptionInfo">
-            Create a contact from and imprint page..
+            ${element["description"]}
           </p>
         </div>
         <div class="cardSub">
           <div class="progress"role="progressbar"aria-label="Basic example"aria-valuenow="75"aria-valuemin="0"aria-valuemax="100">
             <div class="progress-bar w-75"></div>
           </div>
-          <p class="cardSubNumber">1/2 Subtasks</p>
+          <p class="cardSubNumber">1/2</p>
         </div>
         <div class="cardAddUser">
           <div class="cardUserSymbole">AS</div>
