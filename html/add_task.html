@@ -86,13 +86,16 @@
                      <p class="assignedTitle">Category</p>
                   </div>
                   <div id="categorySelect" onclick="showCategoryContacts()" class="assignedSelect">
-                     <div>Select task catergory</div>
+                     <div id="SelectTaskCatergory">Select task catergory</div>
                   </div>
                </div>
                <div id="categoryContainer" class="categoryContainer d-none">
-                  <div class="userBoxContainer" ><span class="userPosition" >User 1000 </span> </div>
-                  <div class="userBoxContainer" ><span class="userPosition" >Use </span> </div>
-                  <div class="userBoxContainer" ><span class="userPosition" >User100 </span> </div>
+                  <div class="userBoxContainer">
+                     <span class="userPosition" id="technicalTaskID" onclick="loadTechnicalTask()">Technical Task</span>
+                  </div>
+                  <div class="userBoxContainer">
+                     <span class="userPosition" id="userStoryID" onclick="loadUserStory()">User Story</span>
+                  </div>
                </div>
                <div class="SubtaskContent" >
                   <div class="assignedTitleContainer">

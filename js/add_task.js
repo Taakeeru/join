@@ -48,7 +48,7 @@ async function createNewTask(){
   // let assignetTo = JSON.parse(seeContacts);
   let getCategory = loadCategory(); 
   // let getSubtask = document.getElementById('addSubtaskContent').value;
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory);
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory);
   
 }
 
@@ -56,7 +56,7 @@ function getThePriority(priority) {
   selectedPriority = priority;
 }
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory) {
   getTitle = getTitle.trim(); // Ensure title is not empty
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 

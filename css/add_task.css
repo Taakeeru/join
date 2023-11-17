@@ -334,9 +334,18 @@ body {
 }
 
 .userPosition {
-  width: 72%;
-  font-size: 22px;
+  width: 90%;
+  font-size: 19px;
   color: black;
+  padding: 6px;
+  margin: 4px;
+  margin-left: 12px;
+  margin-bottom: 0;
+}
+
+.userPosition:hover{
+  background-color: #D2E3FF;
+  border-radius: 10px;
 }
 
 .userBoxContainer {
@@ -346,8 +355,7 @@ body {
 .categoryContainer {
   display: flex;
   flex-direction: column;
-  height: 72px;
-  overflow: auto;
+  height: 80px;
   width: auto;
 }
 
