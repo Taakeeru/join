@@ -47,8 +47,8 @@ async function createNewTask(){
   // let seeContacts = await getItem('users', loggedInUser.contacts);
   // let assignetTo = JSON.parse(seeContacts);
   let getCategory = loadCategory(); 
-  // let getSubtask = document.getElementById('addSubtaskContent').value;
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory);
+  let getSubtask = addedSubtask();
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory, getSubtask);
   
 }
 
@@ -56,7 +56,7 @@ async function createNewTask(){
 //   selectedPriority = priority;
 // }
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory, getSubtask) {
   getTitle = getTitle.trim(); // Ensure title is not empty
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -66,7 +66,8 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory,
       title: getTitle,
       description: getDescription,
       date: getDateValue,
-      category: getCategory
+      category: getCategory,
+      subtask: Subtask
     });
     allTasks.push(newTask);
     console.log(allTasks);
@@ -180,15 +181,16 @@ function addSubTask() {
   let subtaskInput = document.getElementById('subtaskInput');
   let addTask =  document.getElementById('subtaskContainer');
   let subtaskValue = subtaskInput.value;
-
-  if (subtaskValue.trim() !== '') {
-    
+  let subtaskId = 'subtask' + Date.now();
+  
+  if (subtaskValue.trim() !== '') { 
     addTask.innerHTML += /*html*/`
     <ul class="lsitSubtask">
-      <li class="subtaskList">${subtaskValue} 
-      <div class="displayFlex"><img src="../assets/img/edit.svg" onclick="editSubtask()" class="subtaskEditImg">|
-      <img src="../assets/img/delete.svg" onclick="deleteSubtask()" class="subtaskDeleteImg">
-      </div></li>
+      <li class="subtaskList" id="subtaskValue">${subtaskValue} 
+        <div class="displayFlex"><img src="../assets/img/edit.svg" onclick="editSubtask()" class="subtaskEditImg">|
+        <img src="../assets/img/delete.svg" onclick="deleteSubtask()" class="subtaskDeleteImg">
+        </div>
+      </li>
     </ul>`;
     subtaskInput.value = '';
   }
@@ -218,4 +220,24 @@ function loadUserStory(){
 function loadCategory(){
   let getValue = document.getElementById('categorySelect').textContent.trim();
   return getValue;
+}
+
+
+// function getSubtaskValue(){
+//   let currenValue = document.getElementById("subtaskInput").value;
+//   let box = document.getElementById("subtaskInput");
+//   box.innerHTML = '';
+//   if (box === "click") {
+//     box.innerHTML = /*html*/`
+//       <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
+//       <div class="displayFlex"><img src="../assets/img/check.svg">|<img src="../assets/img/check.svg"></div>
+//       `;
+//   }
+  
+//   Subtask.push(currenValue);
+// }
+
+
+function editSubtask(){
+  let currenValue = document.getElementById("categorySelect").value;
 }

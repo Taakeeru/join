@@ -452,17 +452,11 @@ body {
   für container bilder übereinander
   display: flex;
   height: auto;
-  width: 416px;
-  overflow-y: hidden;
-  margin-left: 0px;
-  padding-left: 31px;
+  width: 82%;
+  overflow: scroll;
 }
-.displayFlex {
-  die bild div
-  margin-left: -19px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: grey;
-  width: 51px;
-} */
+
+.subtaskList{
+  margin-top: 0;
+  margin-bottom: 16px;
+}
