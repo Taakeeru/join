@@ -108,7 +108,7 @@ function checkInputFields() {
 
 function showAssignetContacts(loggedInUser) {
   let box = document.getElementById("selectContainer");
-  box.classList.toggle("d-none");
+  box.classList.toggle("d-none");   // noch anpassen weil sonst immer offen 
   // let getUser = await getItem('loggedInUser', JSON.parse(loggedInUser.contacts));
     for (let i = 0; i < loggedInUser.contacts.length; i++) {
     let userName = loggedInUser.contacts[i].name;
