@@ -66,8 +66,12 @@ async function logout() {
 
 
 function returnBack() {
-    return window.history.back();
+    window.history.back();
 }
+
+// window.onpopstate = function (event) {
+//     location.reload();
+// };
 
 
 function highlightTitle(pageId) {
@@ -75,6 +79,11 @@ function highlightTitle(pageId) {
 
     page.classList.add('highlighted');
 }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Hier können Sie Ihre Funktionen aufrufen
+//     highlightTitle();
+// });
 
 
 async function updateLoggedInUser(newValues) {

@@ -8,6 +8,8 @@ async function initAddTask() {
     highlightTitle('add-task');
     showAssignetContacts(loggedInUser);
 }
+
+
 async function getAllTasks() {
   try {
       allTasks = JSON.parse(await getItem('newTask'));
