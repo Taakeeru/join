@@ -42,20 +42,19 @@ async function getAllTasks() {
 async function createNewTask(){
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
-  let getDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
-  // let date = new Date();
-  // let getPriority = getThePriority();
+  let getDateValue = document.getElementById('dueDateValue').value; 
+  let getPriority = getThePriority(priority);
   // let seeContacts = await getItem('users', loggedInUser.contacts);
   // let assignetTo = JSON.parse(seeContacts);
   // let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
   // let getSubtask = document.getElementById('addSubtaskContent').value;
-  await pushTaskInfo(getTitel, getTextArea, getDateValue);
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, getPriority);
   
 }
 
-function getThePriority(priority) {
-  selectedPriority = priority;
-}
+// function getThePriority(priority) { // erstmal einfach behalten danach kanns raus
+//   selectedPriority = priority;
+// }
 
 async function pushTaskInfo(getTitle, getDescription, getDateValue) {
   getTitle = getTitle.trim(); // Ensure title is not empty
