@@ -6,6 +6,7 @@ async function initAddTask() {
     showProfileInitials(loggedInUser);
     loadUsers();
     highlightTitle('add-task');
+    showAssignetContacts(loggedInUser);
 }
 async function getAllTasks() {
   try {
@@ -106,14 +107,14 @@ function checkInputFields() {
     }
   }
 
-async function showAssignetContacts() {
+function showAssignetContacts(loggedInUser) {
   let box = document.getElementById("selectContainer");
   box.classList.toggle("d-none");
-  let getUser = await getItem('loggedInUser', JSON.parse(loggedInUser.contacts));
-    for (let i = 0; i < getUser.length; i++) {
-    let userName = getUser[i].name;
-    let getInitial = getUser[i].initial;
-    let getColor = getUser[i].color;
+  // let getUser = await getItem('loggedInUser', JSON.parse(loggedInUser.contacts));
+    for (let i = 0; i < loggedInUser.contacts.length; i++) {
+    let userName = loggedInUser.contacts[i].name;
+    let getInitial = loggedInUser.contacts[i].initial;
+    let getColor = loggedInUser.contacts[i].color;
     box.innerHTML += /*html*/`
       <div class="userBoxContainer">
         <div class="${getColor}">${getInitial}</div>
