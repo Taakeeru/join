@@ -3,17 +3,12 @@ let allTask = [];
 
 
 async function init() {
-<<<<<<< HEAD
   await includeHTML();
   highlightTitle('board');
-  updateHTML();
-=======
-  includeHTML();
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
   allTask.push(getTaskInfo);
   updateHTML(getTaskInfo);
->>>>>>> f8c5419036aa653cd8cd57b5156a89005dddf1bc
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
   loadUsers();
