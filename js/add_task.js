@@ -48,8 +48,8 @@ async function createNewTask(){
   // let seeContacts = await getItem('users', loggedInUser.contacts);
   // let assignetTo = JSON.parse(seeContacts);
   let getCategory = loadCategory(); 
-  // let getSubtask = getSubtaskValue();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory);
+  let getSubtask = addedSubtask();
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory, getSubtask);
   
 }
 
@@ -57,7 +57,7 @@ function getThePriority(priority) {
   selectedPriority = priority;
 }
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory, getSubtask) {
   getTitle = getTitle.trim(); // Ensure title is not empty
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -67,8 +67,9 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory,
       title: getTitle,
       description: getDescription,
       date: getDateValue,
-      category: getCategory,
-      subtask: Subtask
+      workCategory: getCategory,
+      subtask: getSubtask,
+      category: "ToDo"
     });
     allTasks.push(newTask);
     console.log(allTasks);
@@ -163,17 +164,25 @@ function addSubTask() {
   let subtaskInput = document.getElementById('subtaskInput');
   let addTask =  document.getElementById('subtaskContainer');
   let subtaskValue = subtaskInput.value;
-
-  if (subtaskValue.trim() !== '') {
-    
+  let subtaskId = 'subtask' + Date.now();
+  
+  if (subtaskValue.trim() !== '') { 
     addTask.innerHTML += /*html*/`
-    <ul class="lsitSubtask">
-      <li class="subtaskList" id="subtaskValue">${subtaskValue} 
-        <div class="displayFlex"><img src="../assets/img/edit.svg" onclick="editSubtask()" class="subtaskEditImg">|
-        <img src="../assets/img/delete.svg" onclick="deleteSubtask()" class="subtaskDeleteImg">
-        </div>
-      </li>
-    </ul>`;
+      <ul>
+        <li class="subtaskList">
+          <span id="${subtaskId}">${subtaskValue} </span>
+          <div class="displayFlex">
+            <img src="../assets/img/edit.svg" onclick="editSubtask('${subtaskId}')" class="subtaskEditImg">|
+            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
+          </div>
+          <div class="d-none">
+            <input type="text" class="editSubtask">
+            <div class="displayFlex">
+              <img src="../assets/img/check.svg" alt="">|
+            </div>
+          </div>
+        </li>
+      </ul>`;
     subtaskInput.value = '';
   }
 }
@@ -205,21 +214,19 @@ function loadCategory(){
 }
 
 
-// function getSubtaskValue(){
-//   let currenValue = document.getElementById("subtaskInput").value;
-//   let box = document.getElementById("subtaskInput");
-//   box.innerHTML = '';
-//   if (box === "click") {
-//     box.innerHTML = /*html*/`
-//       <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
-//       <div class="displayFlex"><img src="../assets/img/check.svg">|<img src="../assets/img/check.svg"></div>
-//       `;
-//   }
-  
-//   Subtask.push(currenValue);
-// }
+function addedSubtask(){
+  let box = document.getElementById("subtaskValue").value;
+  return box.textContent;
+}
 
 
-function editSubtask(){
-  let currenValue = document.getElementById("categorySelect").value;
+function editSubtask(subtaskId) {
+  let editedValue = document.getElementById(subtaskId).textContent;
+  console.log('Edit Subtask:', editedValue);
+  // Füge hier den Code für die Bearbeitung des Subtasks hinzu
+}
+
+
+function deleteSubtask(subtaskId) {
+  document.getElementById(subtaskId).parentNode.parentNode.remove();
 }
