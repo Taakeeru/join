@@ -1,5 +1,4 @@
 let allTasks =[];
-let Subtask = [];
 
 async function initAddTask() {
     getAllTasks();
@@ -53,9 +52,9 @@ async function createNewTask(){
   
 }
 
-function getThePriority(priority) {
-  selectedPriority = priority;
-}
+// function getThePriority(priority) {
+//   selectedPriority = priority;
+// }
 
 async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory, getSubtask) {
   getTitle = getTitle.trim(); // Ensure title is not empty
@@ -67,9 +66,8 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory,
       title: getTitle,
       description: getDescription,
       date: getDateValue,
-      workCategory: getCategory,
-      subtask: getSubtask,
-      category: "ToDo"
+      category: getCategory,
+      subtask: Subtask
     });
     allTasks.push(newTask);
     console.log(allTasks);
@@ -129,12 +127,26 @@ function showAssignetContacts(loggedInUser) {
 }
 
 function handleCheckboxClick(i, userName, getInitial, getColor) {
-  let addUser = document.getElementById("testt");
 
-  addUser.innerHTML += `<div class="userBoxContainer displayFlex">
-  <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>`;
+  let checkbox = document.getElementById(`inputId${i}`);
+  let addUser = document.getElementById("addContactstoassign");
+  let userId = `user_${i}`;
+
+
+  if (checkbox.checked) {
+   
+    addUser.innerHTML += `<div id="${userId}" class="userBoxContainer displayFlex">
+      <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+    </div>`;
+  } else {
+    
+    let userToRemove = document.getElementById(userId);
+    if (userToRemove) {
+      userToRemove.remove();
+    }
+  }
 }
-  
+
   function closeSelectContainer(event) {
   let selectContainer = document.getElementById("selectContainer");
   let assignedSelect = document.getElementById("assignedSelect");
@@ -168,21 +180,13 @@ function addSubTask() {
   
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML += /*html*/`
-      <ul>
-        <li class="subtaskList">
-          <span id="${subtaskId}">${subtaskValue} </span>
-          <div class="displayFlex">
-            <img src="../assets/img/edit.svg" onclick="editSubtask('${subtaskId}')" class="subtaskEditImg">|
-            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-          </div>
-          <div class="d-none">
-            <input type="text" class="editSubtask">
-            <div class="displayFlex">
-              <img src="../assets/img/check.svg" alt="">|
-            </div>
-          </div>
-        </li>
-      </ul>`;
+    <ul class="lsitSubtask">
+      <li class="subtaskList" id="subtaskValue">${subtaskValue} 
+        <div class="displayFlex"><img src="../assets/img/edit.svg" onclick="editSubtask()" class="subtaskEditImg">|
+        <img src="../assets/img/delete.svg" onclick="deleteSubtask()" class="subtaskDeleteImg">
+        </div>
+      </li>
+    </ul>`;
     subtaskInput.value = '';
   }
 }
@@ -214,19 +218,21 @@ function loadCategory(){
 }
 
 
-function addedSubtask(){
-  let box = document.getElementById("subtaskValue").value;
-  return box.textContent;
-}
+// function getSubtaskValue(){
+//   let currenValue = document.getElementById("subtaskInput").value;
+//   let box = document.getElementById("subtaskInput");
+//   box.innerHTML = '';
+//   if (box === "click") {
+//     box.innerHTML = /*html*/`
+//       <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
+//       <div class="displayFlex"><img src="../assets/img/check.svg">|<img src="../assets/img/check.svg"></div>
+//       `;
+//   }
+  
+//   Subtask.push(currenValue);
+// }
 
 
-function editSubtask(subtaskId) {
-  let editedValue = document.getElementById(subtaskId).textContent;
-  console.log('Edit Subtask:', editedValue);
-  // Füge hier den Code für die Bearbeitung des Subtasks hinzu
-}
-
-
-function deleteSubtask(subtaskId) {
-  document.getElementById(subtaskId).parentNode.parentNode.remove();
+function editSubtask(){
+  let currenValue = document.getElementById("categorySelect").value;
 }
