@@ -13,7 +13,7 @@ body {
 .content-container {
     padding: 72px 88px 0 88px;
     overflow: scroll;
-    height: 1150px;
+    height: calc(100vh - 175px);
 }
 
 .content-container::-webkit-scrollbar {
