@@ -109,21 +109,28 @@ function checkInputFields() {
 
 function showAssignetContacts(loggedInUser) {
   let box = document.getElementById("selectContainer");
-  box.classList.toggle("d-none");   // noch anpassen weil sonst immer offen 
+   box.classList.toggle("d-none");   // noch anpassen weil sonst immer offen 
   // let getUser = await getItem('loggedInUser', JSON.parse(loggedInUser.contacts));
-    for (let i = 0; i < loggedInUser.contacts.length; i++) {
+  for (let i = 0; i < loggedInUser.contacts.length; i++) {
     let userName = loggedInUser.contacts[i].name;
     let getInitial = loggedInUser.contacts[i].initial;
     let getColor = loggedInUser.contacts[i].color;
+
     box.innerHTML += /*html*/`
       <div class="userBoxContainer displayFlex">
         <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
         <span class="userPosition">${userName}</span>
-        <input type="checkbox" id="clicktedSchenBox${i}"> 
+        <input type="checkbox" id="inputId${i}" onclick="handleCheckboxClick('${i}', '${userName}', '${getInitial}', '${getColor}')">
       </div>`;
   }
 }
 
+function handleCheckboxClick(i, userName, getInitial, getColor) {
+  let addUser = document.getElementById("testt");
+
+  addUser.innerHTML += `<div class="userBoxContainer displayFlex">
+  <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>`;
+}
   
   function closeSelectContainer(event) {
   let selectContainer = document.getElementById("selectContainer");

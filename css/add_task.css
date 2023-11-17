@@ -334,7 +334,7 @@ body {
 }
 
 .userPosition {
-  width: 90%;
+  width: 76%;
   font-size: 19px;
   color: black;
   padding: 6px;
@@ -441,4 +441,9 @@ body {
   color: white;
   margin-right: 8px;
   margin-top: 8px;
+}
+#testt{
+  display: flex;
+  height: auto;
+
 }
