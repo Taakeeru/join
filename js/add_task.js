@@ -46,20 +46,21 @@ async function createNewTask(){
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
   let getDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
-  // let getPriority = getThePriority();
+  let getPriority = getThePriority();
   // let seeContacts = await getItem('users', loggedInUser.contacts);
   // let assignetTo = JSON.parse(seeContacts);
   let getCategory = loadCategory(); 
   let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory, getSubtask);
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, getPriority, getCategory, getCategory, getSubtask);
   
 }
 
-// function getThePriority(priority) {
-//   selectedPriority = priority;
-// }
+function getThePriority(priority) {
+  selectedPriority = priority;
+  return selectedPriority;
+}
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory, getSubtask) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, getPriority, getCategory, getCategory, getSubtask) {
   getTitle = getTitle.trim(); // Ensure title is not empty
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -68,9 +69,11 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory,
       id: allTasks.length, 
       title: getTitle,
       description: getDescription,
+      priority: getPriority,
       date: getDateValue,
-      category: getCategory,
-      subtask: Subtask
+      workCategory: getCategory,
+      subtask: getSubtask,
+      category: "toDo"
     });
     allTasks.push(newTask);
     console.log(allTasks);
@@ -140,14 +143,13 @@ function handleCheckboxClick(i, userName, getInitial, getColor) {
   let addUser = document.getElementById("addContactstoassign");
   let userId = `user_${i}`;
 
-
   if (checkbox.checked) {
-   
-    addUser.innerHTML += `<div id="${userId}" class="userBoxContainer displayFlex">
-      <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-    </div>`;
+    addUser.innerHTML += `
+      <div id="${userId}" class="userBoxContainer displayFlex">
+        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+      </div>`;
+    updateHTML(i, userName, getInitial, getColor); //-----
   } else {
-    
     let userToRemove = document.getElementById(userId);
     if (userToRemove) {
       userToRemove.remove();
@@ -188,13 +190,22 @@ function addSubTask() {
   
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML += /*html*/`
-    <ul class="lsitSubtask">
-      <li class="subtaskList" id="subtaskValue">${subtaskValue} 
-        <div class="displayFlex"><img src="../assets/img/edit.svg" onclick="editSubtask()" class="subtaskEditImg">|
-        <img src="../assets/img/delete.svg" onclick="deleteSubtask()" class="subtaskDeleteImg">
-        </div>
-      </li>
-    </ul>`;
+      <ul>
+        <li class="subtaskList">
+          <span id="${subtaskId}">${subtaskValue} </span>
+          <div class="displayFlex">
+            <img src="../assets/img/edit.svg" onclick="editSubtask('${subtaskId}')" class="subtaskEditImg">|
+            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
+          </div>
+          <div class="d-none">
+            <input type="text" class="editSubtask">
+            <div class="displayFlex">
+              <img src="../assets/img/close.svg" alt="">|
+              <img src="../assets/img/checkImg.png" alt="">
+            </div>
+          </div>
+        </li>
+      </ul>`;
     subtaskInput.value = '';
   }
 }
@@ -226,21 +237,19 @@ function loadCategory(){
 }
 
 
-// function getSubtaskValue(){
-//   let currenValue = document.getElementById("subtaskInput").value;
-//   let box = document.getElementById("subtaskInput");
-//   box.innerHTML = '';
-//   if (box === "click") {
-//     box.innerHTML = /*html*/`
-//       <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
-//       <div class="displayFlex"><img src="../assets/img/check.svg">|<img src="../assets/img/check.svg"></div>
-//       `;
-//   }
-  
-//   Subtask.push(currenValue);
-// }
+function addedSubtask(){
+  let box = document.getElementById("subtaskValue").value;
+  return box.textContent;
+}
 
 
-function editSubtask(){
-  let currenValue = document.getElementById("categorySelect").value;
+function editSubtask(subtaskId) {
+  let editedValue = document.getElementById(subtaskId).textContent;
+  console.log('Edit Subtask:', editedValue);
+  // Füge hier den Code für die Bearbeitung des Subtasks hinzu
+}
+
+
+function deleteSubtask(subtaskId) {
+  document.getElementById(subtaskId).parentNode.parentNode.remove();
 }
