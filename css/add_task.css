@@ -442,9 +442,27 @@ body {
   margin-right: 8px;
   margin-top: 8px;
 }
-#testt{
+.addContactstoassign{
   display: flex;
   height: auto;
-  width: 82%;
-  overflow: scroll;
+  width: 416px;
+  overflow-y: hidden;
 }
+/* .addContactstoassign  {
+  für container bilder übereinander
+  display: flex;
+  height: auto;
+  width: 416px;
+  overflow-y: hidden;
+  margin-left: 0px;
+  padding-left: 31px;
+}
+.displayFlex {
+  die bild div
+  margin-left: -19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+  width: 51px;
+} */
