@@ -324,7 +324,7 @@ body {
 .selectContainer {
   display: flex;
   flex-direction: column;
-  height: 72px;
+  height: 152px;
   overflow: auto;
   width: auto;
 }
@@ -334,7 +334,9 @@ body {
 }
 
 .userPosition {
-  width: 90%;
+  width: 72%;
+  font-size: 22px;
+  color: black;
 }
 
 .userBoxContainer {
@@ -422,4 +424,13 @@ body {
 
 #subtaskContainer{
   margin-bottom: 24px;
+}
+
+.imgPerson{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: white;
+  margin-right: 8px;
+  margin-top: 8px;
 }

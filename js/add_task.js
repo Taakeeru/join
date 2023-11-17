@@ -116,10 +116,10 @@ function showAssignetContacts(loggedInUser) {
     let getInitial = loggedInUser.contacts[i].initial;
     let getColor = loggedInUser.contacts[i].color;
     box.innerHTML += /*html*/`
-      <div class="userBoxContainer">
-        <div class="${getColor}">${getInitial}</div>
+      <div class="userBoxContainer displayFlex">
+        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
         <span class="userPosition">${userName}</span>
-        <input type="checkbox" id="clicktedSchenBox"> 
+        <input type="checkbox" id="clicktedSchenBox${i}"> 
       </div>`;
   }
 }
