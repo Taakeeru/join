@@ -42,21 +42,21 @@ async function getAllTasks() {
 async function createNewTask(){
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
-  let getDateValue = document.getElementById('dueDateValue').value; 
-  let getPriority = getThePriority(priority);
+  let getDateValue = document.getElementById('dueDateValue').value; // date muss vermutlich überarbeitet werden
+  // let getPriority = getThePriority();
   // let seeContacts = await getItem('users', loggedInUser.contacts);
   // let assignetTo = JSON.parse(seeContacts);
-  // let getCategory = document.getElementById('chooseTheCategory').innerHTML; // evl muss da value hin
+  let getCategory = loadCategory(); 
   // let getSubtask = document.getElementById('addSubtaskContent').value;
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, getPriority);
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory);
   
 }
 
-// function getThePriority(priority) { // erstmal einfach behalten danach kanns raus
-//   selectedPriority = priority;
-// }
+function getThePriority(priority) {
+  selectedPriority = priority;
+}
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory) {
   getTitle = getTitle.trim(); // Ensure title is not empty
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -66,6 +66,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue) {
       title: getTitle,
       description: getDescription,
       date: getDateValue,
+      category: getCategory
     });
     allTasks.push(newTask);
     console.log(allTasks);
@@ -167,4 +168,28 @@ function addSubTask() {
   }
 }
 
- 
+
+function loadTechnicalTask() {
+  let Box = document.getElementById('technicalTaskID');
+  let currentValue = Box.innerHTML;
+
+  if (currentValue === "Technical Task") {
+    document.getElementById('SelectTaskCatergory').innerHTML = currentValue;
+  }
+}
+
+
+function loadUserStory(){
+  let Box = document.getElementById('userStoryID');
+  let currentValue = Box.innerHTML;
+
+  if (currentValue === "User Story") {
+    document.getElementById('SelectTaskCatergory').innerHTML = currentValue;
+  }
+}
+
+
+function loadCategory(){
+  let getValue = document.getElementById('categorySelect').textContent.trim();
+  return getValue;
+}
