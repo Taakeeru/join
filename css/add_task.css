@@ -442,9 +442,21 @@ body {
   margin-right: 8px;
   margin-top: 8px;
 }
-#testt{
+.addContactstoassign{
+  display: flex;
+  height: auto;
+  width: 416px;
+  overflow-y: hidden;
+}
+/* .addContactstoassign  {
+  für container bilder übereinander
   display: flex;
   height: auto;
   width: 82%;
   overflow: scroll;
+}
+
+.subtaskList{
+  margin-top: 0;
+  margin-bottom: 16px;
 }

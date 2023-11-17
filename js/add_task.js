@@ -1,5 +1,4 @@
 let allTasks =[];
-let Subtask = [];
 
 async function initAddTask() {
     getAllTasks();
@@ -48,16 +47,16 @@ async function createNewTask(){
   // let seeContacts = await getItem('users', loggedInUser.contacts);
   // let assignetTo = JSON.parse(seeContacts);
   let getCategory = loadCategory(); 
-  // let getSubtask = getSubtaskValue();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory);
+  let getSubtask = addedSubtask();
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, getCategory, getCategory, getSubtask);
   
 }
 
-function getThePriority(priority) {
-  selectedPriority = priority;
-}
+// function getThePriority(priority) {
+//   selectedPriority = priority;
+// }
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, getCategory, getCategory, getSubtask) {
   getTitle = getTitle.trim(); // Ensure title is not empty
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -128,12 +127,26 @@ function showAssignetContacts(loggedInUser) {
 }
 
 function handleCheckboxClick(i, userName, getInitial, getColor) {
-  let addUser = document.getElementById("testt");
 
-  addUser.innerHTML += `<div class="userBoxContainer displayFlex">
-  <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>`;
+  let checkbox = document.getElementById(`inputId${i}`);
+  let addUser = document.getElementById("addContactstoassign");
+  let userId = `user_${i}`;
+
+
+  if (checkbox.checked) {
+   
+    addUser.innerHTML += `<div id="${userId}" class="userBoxContainer displayFlex">
+      <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+    </div>`;
+  } else {
+    
+    let userToRemove = document.getElementById(userId);
+    if (userToRemove) {
+      userToRemove.remove();
+    }
+  }
 }
-  
+
   function closeSelectContainer(event) {
   let selectContainer = document.getElementById("selectContainer");
   let assignedSelect = document.getElementById("assignedSelect");
@@ -163,9 +176,9 @@ function addSubTask() {
   let subtaskInput = document.getElementById('subtaskInput');
   let addTask =  document.getElementById('subtaskContainer');
   let subtaskValue = subtaskInput.value;
-
-  if (subtaskValue.trim() !== '') {
-    
+  let subtaskId = 'subtask' + Date.now();
+  
+  if (subtaskValue.trim() !== '') { 
     addTask.innerHTML += /*html*/`
     <ul class="lsitSubtask">
       <li class="subtaskList" id="subtaskValue">${subtaskValue} 
