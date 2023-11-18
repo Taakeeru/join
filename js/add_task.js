@@ -59,7 +59,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
   } else {
     alert('Task bereits vorhanden');
   }
-  // await setItem('newTask', JSON.stringify(allTasks));
+  await setItem('newTask', JSON.stringify(allTasks));
 }
 
 
