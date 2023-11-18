@@ -1,16 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mobile Template</title>
 
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="../css/mobile_template.css">
-</head>
-<body>
-    <div class="mobile-header"></div>
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="../css/mobile_template.css" />
+  </head>
+  <body>
+    <div class="mobile-header">
+      <div>
+        <img src="../assets/img/capa1.svg" alt="Icon" class="icon" />
+      </div>
+      <div class="positionRightHeader">
+        <p onclick="toggleSettings()" id="header-title">
+          Kanban Project Managment Tool
+        </p>
+        <img
+          src="../assets/img/help.svg"
+          alt="helpImg"
+          class="helpImg"
+          id="helpImg"
+          onclick="loadHelp()"
+        />
+        <div id="profile-div" class="profile-div" onclick="toggleSettings()">
+          <div class="initials-div" id="initials-div">
+            <span id="profile-initials"></span>
+          </div>
+        </div>
+      </div>
+      <div class="profile-settings d-none" id="profile-settings">
+        <a href="/html/legal_notice.html">Legal Notice</a>
+        <a href="/html/privacy.html">Privacy Policy</a>
+        <button onclick="logout()">Log out</button>
+      </div>
+    </div>
+    
     <div class="test-content"></div>
-    <div class="mobile-navbar"></div>
-</body>
+
+    <div class="mobile-navbar">
+      <div class="BoxOfCategory" id="aside">
+        <div class="positionTaskIcons" id="summary">
+          <a href="../html/summary.html" class="category"
+            ><img src="../assets/img/menu_icons.svg" />Summary</a
+          >
+        </div>
+        <div class="positionTaskIcons" id="add-task">
+          <a href="../html/add_task.html" class="category"
+            ><img src="../assets/img/menu_icons2.svg" />Add Task</a
+          >
+        </div>
+        <div class="positionTaskIcons" id="board">
+          <a href="../html/board.html" class="category"
+            ><img src="../assets/img/menu_icons1.svg" />Board</a
+          >
+        </div>
+        <div class="positionTaskIcons" id="contacts">
+          <a href="../html/contacts.html" class="category"
+            ><img src="../assets/img/menu_icons3.svg" />Contacts</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
