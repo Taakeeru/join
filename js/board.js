@@ -19,12 +19,12 @@ async function init() {
 // ------------------------ tastBereich------------------
 
 function updateHTML(getTaskInfo) {
-  let toDolist = getTaskInfo.filter((t) => t["category"] == "ToDo");
+  let toDolist = getTaskInfo.filter((t) => t["category"] == "toDo");
   let toDoContainer = document.getElementById("toDo");
   toDoContainer.innerHTML = "";
 
   if (toDolist.length === 0) {
-    toDoContainer.innerHTML = generatePlaceholderTasks("ToDo");
+    toDoContainer.innerHTML = generatePlaceholderTasks("toDo");
   } else {
     for (let index = 0; index < toDolist.length; index++) {
       const element = toDolist[index];
@@ -78,6 +78,16 @@ function startDragging(id) {
 }
 
 function generateTodoHTML(element) {
+  let contactsHTML = "";
+
+  for (let i = 0; i < element["contacts"].length; i++) {
+    const contact = element["contacts"][i];
+    contactsHTML += `
+      <div class="cardUserSymbole" style="background-color: ${contact["color"]} !important;">
+        ${contact["initial"]}
+      </div>`;
+  }
+
   return `
     <div class="taskCards" onclick="openCardContainer()" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
@@ -91,13 +101,13 @@ function generateTodoHTML(element) {
           </p>
         </div>
         <div class="cardSub">
-          <div class="progress"role="progressbar"aria-label="Basic example"aria-valuenow="75"aria-valuemin="0"aria-valuemax="100">
+          <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar w-75"></div>
           </div>
           <p class="cardSubNumber">1/2</p>
         </div>
         <div class="cardAddUser">
-          <div class="cardUserSymbole">AS</div>
+          ${contactsHTML}
           <img src="../assets/img/priority_symbols.svg" alt="" />
         </div>
       </div>
