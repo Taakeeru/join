@@ -98,7 +98,6 @@ async function generateContactInSmall() {
         let color = sortedContacts[i].color;
 
         if (firstLetter !== currentLetter) {
-            // Buchstabe und Linie hinzufügen
             contact.innerHTML += /*html*/`
                 <div class="positionLetterContact">
                     <p class="letterContact" id="letterContact">${firstLetter}</p>
@@ -109,11 +108,14 @@ async function generateContactInSmall() {
             currentLetter = firstLetter;
         }
 
-        // Kontakt hinzufügen
         contact.innerHTML += /*html*/`
             <div class="sizeOfContactBox displayFlex" id="addBackgroung${i}" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}', '${initial}', '${color}', '${i}')">
-                <div id="renderFirstLetter" style="background-color: ${color};">
-                    <p class="imgOfContackt">${initial}</p>
+                <div class="whiteBackground displayFlex" >
+                    <div>
+                        <div id="renderFirstLetter" style="background-color: ${color};">
+                        <p class="imgOfContackt">${initial}</p>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <p style="margin: 6px;">${contactData.name}</p>
@@ -192,37 +194,6 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
         currentContactIndex = i; // Update current contact index
     }
 }
-  
-
-
-// function showDetailsOfContact(newName, newEmail, newPhone, initial, color) {
-//     let detailsContact = document.getElementById('boxOfDetailsContacts');
-//     detailsContact.classList.remove('addOpacity');
-//     detailsContact.innerHTML = '';
-//     detailsContact.innerHTML = /*html*/ `
-//         <div class="positionHeaderContactDetails">
-//             <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
-//                 <p class="sizeOfLetterDetails">${initial}</p>
-//             </div>
-//             <div>
-//                 <p class="nameHeaderContactDetails">${newName}</p>
-//                 <div class="positionEditAndDelete">
-//                     <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
-//                             style="margin-right: 8px;">Edit</button>
-//                     <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img
-//                             src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
-//                 </div>
-//             </div>
-//         </div>
-//         <div>
-//             <p class="contantInformation">Contact Information</p>
-//             <p style="font-weight: 600;">Email</p>
-//             <a href="#" class="mailContact">${newEmail}</a>
-//             <p style="font-weight: 600;">Phone</p>
-//             <p>${newPhone}</p>
-//         </div>`;
-//     startAnimation();
-// }
 
 
 function addNewContactBtn(){   
