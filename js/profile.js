@@ -1,6 +1,7 @@
 let loggedInUser;
 
 async function initProfile() {
+    await includeHTML();
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
 }

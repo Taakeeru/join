@@ -86,3 +86,17 @@ body {
     border-radius: 25px;
     cursor: pointer;
 }
+
+@media(max-width: 1000px) {
+    .main-container {
+        display: flex;
+        flex-direction: unset;
+        padding-top: 96px;
+    }
+
+    .content-container {
+        padding: 40px 16px 96px 16px;
+        overflow: unset;
+        height: unset;
+    }
+}
