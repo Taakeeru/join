@@ -122,6 +122,7 @@ async function moveTo(category) {
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
   getTaskInfo[currentDraggedElement]["category"] = category;
+  await setItem('newTask', JSON.stringify(getTaskInfo));
   updateHTML(getTaskInfo);
 }
 
