@@ -9,6 +9,7 @@
       <link rel="stylesheet" href="../css/desktop_template_footer.css">
       <link rel="stylesheet" href="../css/fonts.css">
       <link rel="stylesheet" href="../css/add_task.css">
+      <link rel="stylesheet" href="../css/mobile_template.css" />
       <script src="../js/board.js"></script>
       <script src="../js/add_task.js"></script>
       <script src="../js/include.js" defer></script>
@@ -20,6 +21,7 @@
    </head>
    <body onclick="closeSelectContainer(event); closeCategoryContainer(event)"  onload="initAddTask();">
       <div w3-include-html="../assets/templates/desktop_template_header.html"></div>
+      <div w3-include-html="../assets/templates/mobile_template.html" class="d-none"></div>
       <div class="contentContainer" >
          <button onclick="clearArray()" style="height: 40px;">clear Array</button>
          <div class="addTask">
