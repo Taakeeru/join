@@ -4,36 +4,36 @@ let allTask = [
 
 ];
 let TEST = [
-  {
-    id: 0,
-    title: "Ich",
-    category: "toDo",
-  },
-  {
-    id: 1,
-    title: "Du",
-    category: "toDo",
-  },
-  {
-    id: 2,
-    title: "Sie",
-    category: "progress",
-  },
-  {
-    id: 3,
-    title: "Er",
-    category: "feedBack",
-  },
-  {
-    id: 4,
-    title: "Wir",
-    category: "done",
-  },
-  {
-    id: 5,
-    title: "Alle",
-    category: "done",
-  },
+  // {
+  //   id: 0,
+  //   title: "Ich",
+  //   category: "toDo",
+  // },
+  // {
+  //   id: 1,
+  //   title: "Du",
+  //   category: "toDo",
+  // },
+  // {
+  //   id: 2,
+  //   title: "Sie",
+  //   category: "progress",
+  // },
+  // {
+  //   id: 3,
+  //   title: "Er",
+  //   category: "feedBack",
+  // },
+  // {
+  //   id: 4,
+  //   title: "Wir",
+  //   category: "done",
+  // },
+  // {
+  //   id: 5,
+  //   title: "Alle",
+  //   category: "done",
+  // },
 ];
 
 async function init() {
@@ -52,7 +52,7 @@ async function init() {
 // ------------------------ tastBereich------------------
 
 function updateHTML() {
-  let toDolist = TEST.filter((t) => t["category"] == "toDo");
+  let toDolist = allTask[0].filter((t) => t["category"] == "toDo");
   let toDoContainer = document.getElementById("toDo");
   toDoContainer.innerHTML = "";
 
@@ -65,7 +65,7 @@ function updateHTML() {
     }
   }
 
-  let progressList = TEST.filter((t) => t["category"] == "progress");
+  let progressList = allTask[0].filter((t) => t["category"] == "progress");
   let progressContainer = document.getElementById("progress");
   progressContainer.innerHTML = ""; 
 
@@ -78,7 +78,7 @@ function updateHTML() {
     }
   }
 
-  let feedbackList = TEST.filter((t) => t["category"] == "feedBack");
+  let feedbackList = allTask[0].filter((t) => t["category"] == "feedBack");
   let feedbackContainer = document.getElementById("feedBack");
   feedbackContainer.innerHTML = "";
 
@@ -91,7 +91,7 @@ function updateHTML() {
     feedbackContainer.innerHTML += generateTodoHTML(element);
   }}
 
-  let doneList = TEST.filter((t) => t["category"] == "done");
+  let doneList = allTask[0].filter((t) => t["category"] == "done");
   let doneListContainer = document.getElementById("done");
   doneListContainer.innerHTML = "";
 
@@ -142,7 +142,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-  allTask[currentDraggedElement]["category"] = category;
+  allTask[0][currentDraggedElement]["category"] = category;
   updateHTML();
 }
 
