@@ -38,7 +38,7 @@ function clearArray(){
 }
 
 
-async function pushTaskInfo(getTitle, getDescription,priority, getDateValue, contactData, getCategory) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory) {
   getTitle = getTitle.trim(); 
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -47,7 +47,7 @@ async function pushTaskInfo(getTitle, getDescription,priority, getDateValue, con
       id: allTasks.length, 
       title: getTitle,
       description: getDescription,
-      priority: getThePriority(priority),
+      // priority: getPriority,
       date: getDateValue,
       contacts: contactData,
       workCategory: getCategory,
@@ -87,8 +87,8 @@ function checkInputFields() {
     }
   }
   function getThePriority(priority) {
-   return priority
-  }
+  selectedPriority = priority;
+}
 
   function test() {
     let box = document.getElementById("selectContainer");

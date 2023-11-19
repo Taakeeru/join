@@ -89,7 +89,7 @@ function generateTodoHTML(element) {
   }
 
   return `
-    <div class="taskCards" onclick="openCardContainer()" draggable="true" ondragstart="startDragging(${element["id"]})">
+    <div class="taskCards" onclick="openCardContainer('${element["id"]}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
           <p class="userStory">${element["workCategory"]}</p>
@@ -146,15 +146,163 @@ function closeAddTaskMenu() {
   document.getElementById("sideMenu").classList.remove("showmenu");
 }
 
-function openCardContainer() { // noch später auf die karten übergeben
-  document.getElementById("openCardContainer").classList.remove("d-none");
-
+function openCardContainer(element) { // noch später auf die karten übergeben
+ 
+  document.getElementById("FirstCardRenderContainer").classList.remove("d-none");
+  document.getElementById("FirstCardRenderContainer").innerHTML=
+  
+   `<div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer" >
+  <div class="openCardsDetails" onclick="event.stopPropagation()">
+     <div class="openCardTitle"> 
+      <div><span class="userDetailsTitle">${allTask[0][element]["workCategory"]}</span></div>
+        <img class="userDetailsImg" onclick="closeCardContainer()" src="../assets/img/close.svg" alt="">
+     </div>
+     <div class="openCardDescription">
+        <span class="openCardDescriptionText">${allTask[0][element]["title"]}</span>
+     </div>
+     <div class="openCardText"> 
+        <span class="openCardSpanText">${allTask[0][element]["description"]}</span>
+     </div>
+     <div class="openCardDate">
+        <span class="cardsCategoryText">Due date:</span>
+        <span class="openCardSecondText" >${allTask[0][element]["date"]}</span>
+     </div>
+     <div class="openCardPrio">
+        <span class="cardsCategoryText">Priority:</span>
+        <span class="openCardSecondText" >Medium <img class="openCardPrioImg" src="../assets/img/prio_media.svg" alt=""> </span> 
+     </div>
+     <div class="openCardAssigned">
+        <span class="cardsCategoryText">Assignet To:</span>
+        <div id="hier" class="openCardAssignedAddUser" >
+          
+        </div>
+     </div>
+     <div class="openCardSubtask">
+        <span class="cardsCategoryText" >Subtask</span>
+     </div>
+     <div class="openCardCheckbox">
+        <div class="subtaskText">Implement Recipe Recommendation</div >
+        <div class="subtaskText">Implement Recipe Recommendation</div >
+        <div class="subtaskText">Implement Recipe Recommendation</div >
+     </div>
+     <div class="openCardIcons">
+        <div  class="openCardIconsImgContainer" >
+           <img class="openCardIconsImg" src="../assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
+        </div>
+        <img class="openCardIconsImg" src="../assets/img/vector3.svg" alt="">
+        <div onclick="openEditContainer()" class="openCardIconsImgContainer" >
+           <img   class="openCardIconsImg" src="../assets/img/edit.svg" alt=""> <span class="openCardIconsText">Edit</span>
+        </div>
+     </div>
+  </div>
+</div>
+</div>`
+usersDate(element)
 }
+
+function usersDate(element) {
+  let test =document.getElementById('hier');
+  for (let i = 0; i < allTask[0][element]["contacts"].length; i++) {
+    const contact = allTask[0][element]["contacts"][i];
+    test.innerHTML += `
+    <div class="detaicardsUserContainer">
+      <div class="cardUserSymbole detailVersion" style="background-color: ${contact["color"]} !important;">
+        ${contact["initial"]}
+      </div>
+      <div>
+      <span class="cardUserDetailVersion" > ${contact["name"]}</span> 
+      </div>
+    <div>`;
+  }
+}
+
+
+
+
 
 function closeCardContainer() {
   document.getElementById("openCardContainer").classList.add("d-none");
   
 }
+// Edit secondCard 
+function openEditContainer() {
+  document.getElementById("secondCardRenderContainer").classList.remove("d-none");
+  document.getElementById("openCardContainer").classList.add("d-none");
+
+  document.getElementById("secondCardRenderContainer").innerHTML=`
+  <div id="openEditContainer" onclick="closeEditContainer()"  class="openCardContainer" >
+         <div onclick="event.stopPropagation()"  class="openCardsDetailsEdit">
+            <div class="header-EditMenu">
+               <img onclick ="closeEditContainer()" class="header-editMenuImg" src="../assets/img/close.svg" alt="">
+            </div>
+            <div class="contentContainer-sideMenu" >
+               <div class="addTask addTask-sideMenu editMenu">
+                  <div action="">
+                     <div class="topSektion topSektion-sideMenu">
+                        <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
+                        <div class="description description-sideMenu">
+                           <div class="descriptionContent">
+                              <p class="descriptionText">Description
+                              <p class="descriptionText small">(optional)</p>
+                              </p>
+                           </div>
+                           <textarea class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
+                              rows="10"></textarea>
+                        </div>
+                        <div class="dateContent">
+                           <p class="dateTitle">Due date</p>
+                           <div class="inputfieldDateContainer"><input class="inputfieldDate" type="text"
+                              placeholder="dd/mm/yyyy">
+                              <img class="dateImg" src="../assets/img/event.svg" alt="">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="assignedContent assignedContent-sideMenu" >
+                        <div class="assignedTitleContainer">
+                           <p class="assignedTitle">Priority
+                           <p class="assignedTitle small" >(optional)</p>
+                           </p>
+                        </div>
+                        <div class="buttonContainer"> 
+                           <button class="prioButton">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                           <button class="prioButton">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                           <button class="prioButton">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                        </div>
+                     </div>
+                     <div class="assignedContent assignedContent-sideMenu" >
+                        <div class="assignedTitleContainer">
+                           <p class="assignedTitle">Assignet to
+                           <p class="assignedTitle small" >(optional)</p>
+                           </p>
+                        </div>
+                        <select class="assignedSelect">
+                           <option>Select contacts to assign</option>
+                           <option value="User1">User1</option>
+                           <option value="User2">User2</option>
+                           <option value="User3">User3</option>
+                        </select>
+                     </div>
+                     <div class="SubtaskContentEdit" >
+                        <div class="assignedTitleContainer">
+                           <p class="assignedTitle">Subtask
+                           <p class="assignedTitle small" >(optional)</p>
+                           </p>
+                        </div>
+                        <input placeholder="Add new subtask" class="subtaskInput">
+                        <div class="openCardCheckbox">
+                           <div class="subtaskText">Implement Recipe Recommendation</div >
+                           <div class="subtaskText">Implement Recipe Recommendation</div >
+                           <div class="subtaskText">Implement Recipe Recommendation</div >
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="buttonContainerEdit" > <button onclick ="closeEditContainer()" class="displayFlex btnCreateContact">Ok<img
+               src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
+         </div>
+      </div>
+  `}
 
 function closeEditContainer() {
   document.getElementById("openEditContainer").classList.add("d-none");
@@ -168,5 +316,3 @@ function generatePlaceholderTasks(category) {
 function shwoCurrentDate(){
   document.getElementById('autoJsCalendar').classList.toggle('d-none');
 }
-
-
