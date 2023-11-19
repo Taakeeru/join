@@ -9,6 +9,7 @@ body {
 
 .mobile-header {
     position: absolute;
+    z-index: 999;
     top: 0;
     left: 0;
     display: flex;
@@ -109,6 +110,7 @@ body {
 
 .mobile-navbar {
     position: absolute;
+    z-index: 999;
     bottom: 0;
     left: 0;
     display: flex;
@@ -116,6 +118,7 @@ body {
     align-items: center;
     height: 96px;
     width: 100%;
+    background-color: white;
 }
 
 .link-box a {
@@ -130,4 +133,14 @@ body {
     height: 24px;
     width: 24px;
     margin-bottom: 6px;
+}
+
+.mobile_template {
+    display: none;
+}
+
+@media(max-width: 1000px) {
+    .mobile_template {
+        display: flex;
+    }
 }

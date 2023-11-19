@@ -234,3 +234,12 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+@media(max-width: 1000px) {
+    .dislayRowBody {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: unset;
+        justify-content: flex-end;
+    }
+}

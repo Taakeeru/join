@@ -124,3 +124,9 @@
 .bg-colorchange {
     background-color: rgba(200, 222, 255, 0.404) !important;
 }
+
+@media(max-width: 1000px) {
+    .headerBlue {
+        display: none;
+    }
+}
