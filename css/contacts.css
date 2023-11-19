@@ -183,7 +183,7 @@ body{
 }
 
 .boxOfDetailsContacts{
-    width: auto;
+    width: 706px;
     /* width: calc(100vw - 688px); */
     /* height: calc(100vw - 96px); */
     height: auto;
@@ -532,6 +532,43 @@ body{
 
 .slideIn {
     animation: slideFromRight 0.5s ease-in-out; /* Passe die Dauer und Timing-Funktion nach Bedarf an */
+}
+
+@media(max-width: 1250px) {
+    .boxOfDetailsContacts{
+        margin-left: 8px;
+    } 
+}
+
+@media (max-width: 1150px) {
+    .boxOfDetailsContacts {
+        display: none;
+        height: calc(100vh - 96px);
+        width: 100vw;
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: white;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .positionHeaderContactDetails {
+        margin-top: 56px;
+    }
+    .arrow-left {
+        display: block !important;
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        cursor: pointer;
+    }
+    .arrow-left:hover{
+        border-radius: 50%;
+        background-color: #73A6FF;
+    }
 }
 
 
