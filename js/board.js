@@ -173,7 +173,7 @@ function openCardContainer(element) { // noch später auf die karten übergeben
      </div>
      <div class="openCardAssigned">
         <span class="cardsCategoryText">Assignet To:</span>
-        <div id="hier" class="openCardAssignedAddUser" >
+        <div id="usersDateContent" class="openCardAssignedAddUser" >
           
         </div>
      </div>
@@ -201,10 +201,10 @@ usersDate(element)
 }
 
 function usersDate(element) {
-  let test =document.getElementById('hier');
+  let userDateRender =document.getElementById('usersDateContent');
   for (let i = 0; i < allTask[0][element]["contacts"].length; i++) {
     const contact = allTask[0][element]["contacts"][i];
-    test.innerHTML += `
+    userDateRender.innerHTML += `
     <div class="detaicardsUserContainer">
       <div class="cardUserSymbole detailVersion" style="background-color: ${contact["color"]} !important;">
         ${contact["initial"]}

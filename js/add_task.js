@@ -86,11 +86,12 @@ function checkInputFields() {
       dateFail.innerHTML = '<span>Due date is required</span>';
     }
   }
+
   function getThePriority(priority) {
   selectedPriority = priority;
 }
 
-  function test() {
+  function addContacts() {
     let box = document.getElementById("selectContainer");
     box.classList.toggle("d-none");
   }
