@@ -18,6 +18,7 @@ function greetUser(loggedInUser) {
 
 function showProfileInitials(loggedInUser) {
     let initials = document.getElementById('profile-initials');
+    let initialsMobile = document.getElementById('profile-initials-mobile');
     
     if (loggedInUser && loggedInUser.username) {
         const username = loggedInUser.username;
@@ -30,8 +31,10 @@ function showProfileInitials(loggedInUser) {
             }
         }
         initials.textContent = initialsString;
+        initialsMobile.textContent = initialsString;
     } else {
         initials.textContent = '';
+        initialsMobile.textContent = '';
     }
 }
 
@@ -46,6 +49,20 @@ function toggleSettings() {
     } else {
         settings.classList.add('d-none');
         profile.classList.remove('bg-colorchange');
+    }
+}
+
+
+function toggleSettingsMobile() {
+    let settingsMobile = document.getElementById('profile-settings-mobile');
+    let profileMobile = document.getElementById('initials-div-mobile')
+
+    if (settingsMobile.classList.contains('d-none')) {
+        settingsMobile.classList.remove('d-none');
+        profileMobile.classList.add('bg-colorchange');
+    } else {
+        settingsMobile.classList.add('d-none');
+        profileMobile.classList.remove('bg-colorchange');
     }
 }
 
