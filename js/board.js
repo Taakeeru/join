@@ -190,7 +190,7 @@ function openCardContainer(element) { // noch später auf die karten übergeben
            <img class="openCardIconsImg" src="../assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
         </div>
         <img class="openCardIconsImg" src="../assets/img/vector3.svg" alt="">
-        <div onclick="openEditContainer()" class="openCardIconsImgContainer" >
+        <div onclick="openEditContainer(${allTask[0][element]["id"]})" class="openCardIconsImgContainer" >
            <img   class="openCardIconsImg" src="../assets/img/edit.svg" alt=""> <span class="openCardIconsText">Edit</span>
         </div>
      </div>
@@ -225,7 +225,7 @@ function closeCardContainer() {
   
 }
 // Edit secondCard 
-function openEditContainer() {
+function openEditContainer(element) {
   document.getElementById("secondCardRenderContainer").classList.remove("d-none");
   document.getElementById("openCardContainer").classList.add("d-none");
 
@@ -239,20 +239,20 @@ function openEditContainer() {
                <div class="addTask addTask-sideMenu editMenu">
                   <div action="">
                      <div class="topSektion topSektion-sideMenu">
-                        <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
+                        <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder=${allTask[0][element]["title"]}></div>
                         <div class="description description-sideMenu">
                            <div class="descriptionContent">
                               <p class="descriptionText">Description
                               <p class="descriptionText small">(optional)</p>
                               </p>
                            </div>
-                           <textarea class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
+                           <textarea class="textArea" placeholder=${allTask[0][element]["description"]} name="" id="" cols="30"
                               rows="10"></textarea>
                         </div>
                         <div class="dateContent">
                            <p class="dateTitle">Due date</p>
                            <div class="inputfieldDateContainer"><input class="inputfieldDate" type="text"
-                              placeholder="dd/mm/yyyy">
+                              placeholder=${allTask[0][element]["date"]}>
                               <img class="dateImg" src="../assets/img/event.svg" alt="">
                            </div>
                         </div>
