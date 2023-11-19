@@ -147,7 +147,7 @@ function generateRandomColor(){
 
 function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
     let detailsContact = document.getElementById('boxOfDetailsContacts');
-    detailsContact.classList.remove('addOpacity');
+    detailsContact.classList.remove('d-none');
   
     if (currentContact === newName) {
       // If the current element is already shown, hide it
@@ -166,26 +166,29 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
         // Display the new element and add highlighted class
         document.getElementById(`addBackgroung${i}`).classList.add('sizeOfContactBoxOnclick');
         detailsContact.innerHTML = /*html*/ `
-        <div class="positionHeaderContactDetails">
-            <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
-                <p class="sizeOfLetterDetails">${initial}</p>
-            </div>
-            <div>
-                <p class="nameHeaderContactDetails">${newName}</p>
-                <div class="positionEditAndDelete">
-                    <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
-                            style="margin-right: 8px;">Edit</button>
-                    <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img
-                            src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
+        <div>
+            <div class="positionHeaderContactDetails">
+                <img src="../assets/img/arrow-left-line.svg" class="arrow-left d-none" onclick="returnArrow()">
+                <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
+                    <p class="sizeOfLetterDetails">${initial}</p>
+                </div>
+                <div>
+                    <span class="nameHeaderContactDetails">${newName}</span>
+                    <div class="positionEditAndDelete">
+                        <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
+                                style="margin-right: 8px;">Edit</button>
+                        <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img
+                                src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <p class="contantInformation">Contact Information</p>
-            <p style="font-weight: 600;">Email</p>
-            <a href="#" class="mailContact">${newEmail}</a>
-            <p style="font-weight: 600;">Phone</p>
-            <p>${newPhone}</p>
+            <div>
+                <p class="contantInformation">Contact Information</p>
+                <p style="font-weight: 600;">Email</p>
+                <a href="#" class="mailContact">${newEmail}</a>
+                <p style="font-weight: 600;">Phone</p>
+                <p>${newPhone}</p>
+            </div>
         </div>`;
     
         document.getElementById(`changeStyleEMail${i}`).classList.add('changeStyleMail');
@@ -193,6 +196,11 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
         currentContact = newName;
         currentContactIndex = i; // Update current contact index
     }
+}
+
+
+function returnArrow() {
+    document.getElementById('boxOfDetailsContacts').classList.add('d-none');
 }
 
 
