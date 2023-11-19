@@ -500,7 +500,7 @@ body {
 .cardAddUsersIconsContain{
   display: flex;
  height: auto;
-  width: 416px;
+ width: 180px;
   overflow-y: hidden;
 }
 .cardAddUsersIcons{

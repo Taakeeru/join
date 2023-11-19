@@ -38,7 +38,7 @@ function clearArray(){
 }
 
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory) {
+async function pushTaskInfo(getTitle, getDescription,priority, getDateValue, contactData, getCategory) {
   getTitle = getTitle.trim(); 
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -47,7 +47,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       id: allTasks.length, 
       title: getTitle,
       description: getDescription,
-      // priority: getPriority,
+      priority: getThePriority(priority),
       date: getDateValue,
       contacts: contactData,
       workCategory: getCategory,
@@ -85,6 +85,9 @@ function checkInputFields() {
     if (dateInput.value.trim() === '') {
       dateFail.innerHTML = '<span>Due date is required</span>';
     }
+  }
+  function getThePriority(priority) {
+   return priority
   }
 
   function test() {
