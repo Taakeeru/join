@@ -497,3 +497,14 @@ body {
   display: flex;
   align-items: center;
 }
+.cardAddUsersIconsContain{
+  display: flex;
+ height: auto;
+  width: 416px;
+  overflow-y: hidden;
+}
+.cardAddUsersIcons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

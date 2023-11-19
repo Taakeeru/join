@@ -107,7 +107,7 @@ function generateTodoHTML(element) {
           <p class="cardSubNumber">1/2</p>
         </div>
         <div class="cardAddUser">
-          ${contactsHTML}
+        <div class="cardAddUsersIconsContain" ><div class="cardAddUsersIcons" > ${contactsHTML} </div></div>
           <img src="../assets/img/priority_symbols.svg" alt="" />
         </div>
       </div>
