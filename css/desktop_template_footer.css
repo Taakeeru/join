@@ -105,4 +105,14 @@
     .leftWhiteBox {
         display: none;
     }
+
+    .highlighted {
+        background-color: white;
+        border-radius: 0;
+        transform: none;
+    }
+
+    .highlighted a {
+        filter: invert(60%) sepia(55%) saturate(5707%) hue-rotate(201deg) brightness(101%) contrast(101%);
+    }
 }
