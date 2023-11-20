@@ -9,40 +9,21 @@
 
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/fonts.css">
-    <!-- <link rel="stylesheet" href="/css/add_task.css">
-    <link rel="stylesheet" href="/css/board.css">
-    <link rel="stylesheet" href="/css/contacts.css">
-    <link rel="stylesheet" href="/css/desktop_template.css">
-    <link rel="stylesheet" href="/css/legal_notice.css">
-    <link rel="stylesheet" href="/css/mobile_template.css">
-    <link rel="stylesheet" href="/css/privacy.css">
-    <link rel="stylesheet" href="/css/summary.css"> -->
 
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
-    <!-- <link rel="html" href="add_task.html">
-    <link rel="html" href="board.html">
-    <link rel="html" href="contacts.html">
-    <link rel="html" href="legal_notice.html">
-    <link rel="html" href="privacy.html">
-    <link rel="html" href="summary.html"> -->
+    <!-- <link rel="html" href="../assets/templates/desktop_template.html">
+    <link rel="html" href="../assets/templates/mobile_template.html"> -->
 
-    <link rel="html" href="../assets/templates/desktop_template.html">
-    <link rel="html" href="../assets/templates/mobile_template.html">
-
-    
     <script src="../js/templates.js"></script>
     <script src="../js/storage.js"></script>
     <script src="../js/register.js"></script>
     <script src="../js/login.js" ></script>
-    <!-- <script src="../js/legal.js" ></script> -->
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
 </head>
+
 <body id="body" onload="init()">
 
-    
-    
     <div class="login-content">  
         
         <div class="loader">
@@ -51,7 +32,7 @@
 
         <div id="login-header" class="login-header d-none-js" >
             <span>Not a Join user?</span>
-            <button onclick="renderSignUpContent()" type="button" class="btn btn-primary mg-l">Sign up</button>
+            <button onclick="renderSignUpContent()" type="button" class="btn btn-primary mg-l signup-button">Sign up</button>
         </div>
         
         <div class="card login-card-div d-none-js" id="login-card-div">
@@ -70,6 +51,10 @@
                 
                 
             </div>
+        </div>
+        <div id="login-header2" class="login-header2" >
+            <span>Not a Join user?</span>
+            <button onclick="renderSignUpContent()" type="button" class="btn btn-primary mg-l signup-button2">Sign up</button>
         </div>
     </div>
     <div id="overlay" class="overlay d-none"></div>

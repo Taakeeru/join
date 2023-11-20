@@ -288,8 +288,97 @@ body {
   }
 }
 
+.login-header2 {
+  display: none;
+}
+
+.signup-button {
+  height: 48px;
+  width: 112px;
+}
+
+@media (max-width: 685px) {
+  .login-content {
+    min-height: 95vh;
+    width: 100vw !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 160px 10px 0 10px !important;
+  }
+
+  .login-header2 {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  .login-card-div {
+    width: 96vw !important;
+    
+  }
+
+  .signup-button2 {
+    height: 48px;
+    width: 112px;
+  }
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; /* Start size */
+    height: 120px;
+    animation: logoAnimation 0.5s ease-in forwards 1s;
+    background: url('/assets/img/join-big.svg') no-repeat center top, url('/assets/img/join_logo.svg') no-repeat center top;
+    background-size: contain;
+    z-index: 999;
+  }
+
+  @keyframes logoAnimation {
+    0% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 120px;
+      background-position: 0 0, 0 0;
+      background-image: url('/assets/img/join-big.svg');
+    }
+    100% {
+      top: 74px;
+      left: 76px;
+      width: 64px;
+      height: 78px;
+      background-position: 0 0, 0 0;
+      background-image: url('/assets/img/join_logo.svg');
+    }
+  }
+
+  .logo {
+    width: 64px !important;
+    height: 78px !important;
+  }
+
+  .login-header {
+    display: none;
+}
+}
+
 @media (max-width: 500px) {
   .card-body {
     width: auto;
   }
+}
+
+@media (max-width: 485px) {
+  .mobile-width {
+    width: 199px !important;
+    justify-content: center;
+  }
+
+  
 }
