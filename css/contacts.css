@@ -196,11 +196,22 @@ body{
     object-fit: cover;
     border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-right: 56px;
     background-color: #647188;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.bigImgContactsBackground{
+    width: 132px;
+    height: 132px;
+    margin-right: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .sizeOfLetterDetails{
@@ -310,15 +321,9 @@ body{
 
 .closeAddContactBox{
     position: absolute;
-    top: 0;
-    right: 0;
-    margin: 16px;
+    top: 16px;
+    right: 16px;
     cursor: pointer;
-}
-
-.closeAddContactBox:hover{
-    background-color: #4589FF;
-    border-radius: 50%;
 }
 
 .witheBoxAddContact{
@@ -347,7 +352,6 @@ body{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     object-fit: cover;
     border-radius: 50%;
-    margin-bottom: 16px;
     display: flex;
     justify-content: center;
     align-self: center;
@@ -455,17 +459,23 @@ body{
     margin-top: 16px;
 }
 
-.closeEditContactBox{
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 16px;
-    cursor: pointer;
+.backgroundEditContactImg{
+    width: 132px;
+    height: 132px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.closeEditContactBox:hover{
-    background-color: #4589FF;
-    border-radius: 50%;
+.closeEditContactBox{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
 }
 
 .whiteBackground{
@@ -536,7 +546,7 @@ body{
 
 @media(max-width: 1250px) {
     .boxOfDetailsContacts{
-        margin-left: 8px;
+        margin-left: 24px;
     } 
 }
 
@@ -554,6 +564,15 @@ body{
         display: flex;
         justify-content: center;
         align-items: flex-start;
+    }
+    .moreVertImg{
+        width: 52px;
+        height: 52px;
+        position: absolute;
+        bottom: 12vh;
+        right: 4vw;
+        background-color: #4589FF;
+        border-radius: 10px;
     }
     .positionHeaderContactDetails {
         margin-top: 56px;
@@ -573,12 +592,16 @@ body{
 
 
 @media(max-width: 1000px) {
+    .dislayRowBody{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .allContacts{
         display: flex;
         justify-content: center;
     }
     .boxOfAllContacts {
-        width: calc(100vw - 232px);
         box-shadow: none;
     }
     .btnAddContact{
@@ -586,8 +609,9 @@ body{
     }
     .positionBtnAddContact{
         position: absolute;
-        bottom: 4vh;
-        right: 4vh;
+        background-color: none;
+        bottom: 10vh;
+        right: 4vw;
     }
     .lettersInBtn{
         display: none;
