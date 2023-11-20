@@ -13,6 +13,7 @@
       <link rel="stylesheet" type="text/css" href="../assets/calender/source/jsCalendar.css">
       <script src="../js/include.js"></script>
       <script src="../js/board.js"></script>
+      <script src="../js/add_task.js"></script>
       <script src="../js/storage.js"></script>
       <script src="../js/profile.js"></script>
       <script src="../js/register.js"></script>
@@ -131,23 +132,34 @@
                <div class="addTask addTask-sideMenu">
                   <div action="">
                      <div class="topSektion topSektion-sideMenu">
-                        <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
+                        <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
+                        <div class="textfield-fail" id="tile-fail-message"></div>
                         <div class="description description-sideMenu">
                            <div class="descriptionContent">
                               <p class="descriptionText">Description
                               <p class="descriptionText small">(optional)</p>
                               </p>
                            </div>
-                           <textarea  id="addTastTextArea" class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
+                           <textarea class="textArea" placeholder="Enter a Description" name="" id="addTastTextArea" cols="30"
                               rows="10"></textarea>
                         </div>
+                        <div class="textfield-fail" id="description-fail-message"></div>
                         <div class="dateContent">
                            <p class="dateTitle">Due date</p>
                            <div class="inputfieldDateContainer modal-body">
-                              <input id="dueDateValue" class="inputfieldDate" type="text" placeholder="dd/mm/yyyy">
-                              <img class="dateImg " src="../assets/img/event.svg" onclick="shwoCurrentDate()">
-                              <div class="auto-jsCalendar d-none" id="autoJsCalendaR"></div>
+                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                 <div class="modal-dialog curser">
+                                   <div class="modal-content curser">
+                                     <div class="modal-body curser">
+                                       <div>
+                                          <input required id="dueDateValue" class="inputfieldDate" type="date" placeholder="dd/mm/yyyy">
+                                       </div>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
                            </div>
+                           <div class="textfield-fail" id="date-fail-message"></div>
                         </div>
                      </div>
                      <div class="assignedContent assignedContent-sideMenu" >
@@ -157,11 +169,10 @@
                            </p>
                         </div>
                         <div class="buttonContainer"> 
-                           <button onclick="getThePriority('high')" class="prioButtonRed">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                           <button onclick="getThePriority('ssad')" class="prioButtonRed">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
                            <button onclick="getThePriority('medium')" class="prioButtonYellow">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
                            <button onclick="getThePriority('low')" class="prioButtonGreen">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
                          </div>
-                         
                      </div>
                      <div class="assignedContent assignedContent-sideMenu" >
                         <div class="assignedTitleContainer">
@@ -169,23 +180,31 @@
                            <p class="assignedTitle small" >(optional)</p>
                            </p>
                         </div>
-                        <select class="assignedSelect">
-                           <option>Select contacts to assign</option>
-                           <option value="User1">User1</option>
-                           <option value="User2">User2</option>
-                           <option value="User3">User3</option>
-                        </select>
+                        <div id="assignedSelect" onclick="addContacts()"class="assignedSelect">
+                           <div >Select contacts to assign</div>
+                        </div>
+                     </div>
+                     <div id="addContactstoassign" class="addContactstoassign"></div>
+                     <div id="selectContainer" class="selectContainer d-none">
+                        <!-- <div class="userBoxContainer" ><span class="userPosition" >User 1000 </span> <input type="checkbox"></div>
+                        <div class="userBoxContainer" ><span class="userPosition" >Use </span> <input type="checkbox"></div>
+                        <div class="userBoxContainer" ><span class="userPosition" >User100 </span> <input type="checkbox"></div> -->
                      </div>
                      <div class="assignedContent assignedContent-sideMenu" >
                         <div class="assignedTitleContainer">
                            <p class="assignedTitle">Category</p>
                         </div>
-                        <select class="assignedSelect">
-                           <option>Select task catergory</option>
-                           <option value="User1">User1</option>
-                           <option value="User2">User2</option>
-                           <option value="User3">User3</option>
-                        </select>
+                        <div id="categorySelect" onclick="showCategoryContacts()" class="assignedSelect">
+                           <div id="SelectTaskCatergory">Select task catergory</div>
+                        </div>
+                     </div>
+                     <div id="categoryContainer" class="categoryContainer d-none">
+                        <div class="userBoxContainer">
+                           <span class="userPosition" id="technicalTaskID" onclick="loadTechnicalTask()">Technical Task</span>
+                        </div>
+                        <div class="userBoxContainer">
+                           <span class="userPosition" id="userStoryID" onclick="loadUserStory()">User Story</span>
+                        </div>
                      </div>
                      <div class="SubtaskContent" >
                         <div class="assignedTitleContainer">
@@ -193,12 +212,15 @@
                            <p class="assignedTitle small" >(optional)</p>
                            </p>
                         </div>
-                        <input placeholder="Add new subtask" class="subtaskInput">
-                        <button onclick="createNewTask()">createTask</button>
+                        <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
+                        <div id="subtaskContainer"></div>
+                     </div>
+                     <div class="positionOfButtons">
+                        <button onclick="checkInputFields()" class="ClearBtn">Clear <img src="../assets/img/vector.svg"></button>
+                        <button onclick="createNewTask()" class="createTaskBtn">Create Task <img src="../assets/img/check.svg"></button>
                      </div>
                   </div>
                </div>
-            </div>
          </div>
       </div>
       <!--edit task menu -->

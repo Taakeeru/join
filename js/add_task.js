@@ -22,6 +22,7 @@ async function getAllTasks() {
 
 
 async function createNewTask(){
+  if (checkInputFields()) {
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
   let getDateValue = document.getElementById('dueDateValue').value;
@@ -31,6 +32,10 @@ async function createNewTask(){
   let getCategory = loadCategory(); 
   // let getSubtask = addedSubtask();
   await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory);
+} else {
+  console.log('Not all fields are filled out correctly');
+  // Oder zeige dem Benutzer eine entsprechende Fehlermeldung
+}
 }
 
 function clearArray(){
@@ -73,18 +78,24 @@ function checkInputFields() {
     titleFail.innerHTML = '';
     descriptionFail.innerHTML = '';
     dateFail.innerHTML = '';
+
+    let isValid=true;
   
     if (titleInput.value.trim() === '') {
       titleFail.innerHTML = '<span>Title is required</span>';
+      isValid = false;
   }
   
     if (descriptionInput.value.trim() === '') {
       descriptionFail.innerHTML = '<span>Description is required</span>';
+      isValid = false;
     }
   
     if (dateInput.value.trim() === '') {
       dateFail.innerHTML = '<span>Due date is required</span>';
+      isValid = false;
     }
+    return isValid;
   }
 
   function getThePriority(priority) {
