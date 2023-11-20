@@ -20,7 +20,7 @@ body {
   gap: 24px;
   display: flex;
   overflow-y: scroll;
-  height: calc(100vh - 144px);
+  height: calc(72vh - 144px);
 }
 
 .addTask::-webkit-scrollbar {
