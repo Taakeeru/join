@@ -27,7 +27,7 @@
          <div class="addTask">
             <div action="">
                <div class="topSektion">
-                  <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
+                  <div class="titleContainer"><input id="addTastTitel-1" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
                   <div class="textfield-fail" id="tile-fail-message"></div>
                   <div class="description">
                      <div class="descriptionContent">
@@ -35,7 +35,7 @@
                         <p class="descriptionText small">(optional)</p>
                         </p>
                      </div>
-                     <textarea class="textArea" placeholder="Enter a Description" name="" id="addTastTextArea" cols="30"
+                     <textarea class="textArea" placeholder="Enter a Description" name="" id="addTastTextArea-1" cols="30"
                         rows="10"></textarea>
                   </div>
                   <div class="textfield-fail" id="description-fail-message"></div>
@@ -112,7 +112,7 @@
                </div>
                <div class="positionOfButtons">
                   <button onclick="checkInputFields()" class="ClearBtn">Clear <img src="../assets/img/vector.svg"></button>
-                  <button onclick="createNewTask()" class="createTaskBtn">Create Task <img src="../assets/img/check.svg"></button>
+                  <button onclick="createNewTask('addTastTitel-1','addTastTextArea-1','dueDateValue')" class="createTaskBtn">Create Task <img src="../assets/img/check.svg"></button>
                </div>
             </div>
          </div>

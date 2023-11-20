@@ -350,9 +350,9 @@ function openEditContainer(element) {
                            </p>
                         </div>
                         <div class="buttonContainer"> 
-                           <button class="prioButton">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
-                           <button class="prioButton">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                           <button class="prioButton">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                           <button class="prioButtonRed">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                           <button class="prioButtonYellow">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                           <button class="prioButtonGreen">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
                         </div>
                      </div>
                      <div class="assignedContent assignedContent-sideMenu" >
