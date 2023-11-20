@@ -116,7 +116,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 96px;
+    height: 76px;
     width: 100%;
     background-color: white;
 }
@@ -132,7 +132,7 @@ body {
 .link-box a img {
     height: 24px;
     width: 24px;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
 }
 
 .mobile_template {

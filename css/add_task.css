@@ -448,6 +448,18 @@ body {
   width: 416px;
   overflow-y: hidden;
 }
+
+.cardAddUsersIcons {
+  margin-left: 6px;
+}
+
+.cardUserSymbole {
+  margin-left: -6px;
+  border: 1px solid white;
+  height: 32px;
+  width: 32px;
+}
+
 /* .addContactstoassign  {
   für container bilder übereinander
   display: flex;
