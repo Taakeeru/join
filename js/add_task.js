@@ -186,7 +186,7 @@ function addSubTask() {
   let subtaskValue = subtaskInput.value;
   let subtaskId = 'subtask' + Date.now();
   if (subtaskValue.trim() !== '') { 
-    addTask.innerHTML += /*html*/`
+    addTask.innerHTML +=`
       <ul>
         <li class="subtaskList">
           <span id="${subtaskId}">${subtaskValue} </span>
