@@ -318,75 +318,102 @@ function openEditContainer(element) {
   document.getElementById("openCardContainer").classList.add("d-none");
 
   document.getElementById("secondCardRenderContainer").innerHTML=`
-  <div id="openEditContainer" onclick="closeEditContainer()"  class="openCardContainer" >
+  <div id="openEditContainer2" onclick="closeEditContainer2()"  class="openCardContainer" >
          <div onclick="event.stopPropagation()"  class="openCardsDetailsEdit">
             <div class="header-EditMenu">
-               <img onclick ="closeEditContainer()" class="header-editMenuImg" src="../assets/img/close.svg" alt="">
+               <img onclick ="closeEditContainer2()" class="header-editMenuImg" src="../assets/img/close.svg" alt="">
             </div>
             <div class="contentContainer-sideMenu" >
-               <div class="addTask addTask-sideMenu editMenu">
-                  <div action="">
-                     <div class="topSektion topSektion-sideMenu">
-                        <div class="titleContainer"><input class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder=${allTask[0][element]["title"]}></div>
-                        <div class="description description-sideMenu">
-                           <div class="descriptionContent">
-                              <p class="descriptionText">Description
-                              <p class="descriptionText small">(optional)</p>
-                              </p>
+            <div class="addTask addTask-sideMenu editMenu">
+            <div action="">
+               <div class="topSektion topSektion-sideMenu">
+                  <div class="titleContainer"><input id="addTastTitel2" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
+                  <div class="textfield-fail" id="tile-fail-message2"></div>
+                  <div class="description description-sideMenu">
+                     <div class="descriptionContent">
+                        <p class="descriptionText">Description
+                        <p class="descriptionText small">(optional)</p>
+                        </p>
+                     </div>
+                     <textarea class="textArea" placeholder="${allTask[0][element]["description"]}" name="" id="addTastTextArea2" cols="30"
+                        rows="10"></textarea>
+                  </div>
+                  <div class="textfield-fail" id="description-fail-message2"></div>
+                  <div class="dateContent">
+                     <p class="dateTitle">Due date</p>
+                     <div class="inputfieldDateContainer modal-body">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog curser">
+                             <div class="modal-content curser">
+                               <div class="modal-body curser">
+                                 <div>
+                                    <input required id="dueDateValue2" class="inputfieldDate" type="date" placeholder="dd/mm/yyyy">
+                                 </div>
+                               </div>
+                             </div>
                            </div>
-                           <textarea class="textArea" placeholder=${allTask[0][element]["description"]} name="" id="" cols="30"
-                              rows="10"></textarea>
-                        </div>
-                        <div class="dateContent">
-                           <p class="dateTitle">Due date</p>
-                           <div class="inputfieldDateContainer"><input class="inputfieldDate" type="text"
-                              placeholder=${allTask[0][element]["date"]}>
-                              <img class="dateImg" src="../assets/img/event.svg" alt="">
-                           </div>
-                        </div>
+                         </div>
                      </div>
-                     <div class="assignedContent assignedContent-sideMenu" >
-                        <div class="assignedTitleContainer">
-                           <p class="assignedTitle">Priority
-                           <p class="assignedTitle small" >(optional)</p>
-                           </p>
-                        </div>
-                        <div class="buttonContainer"> 
-                           <button class="prioButtonRed">Urgent<img class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
-                           <button class="prioButtonYellow">Medium<img class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                           <button class="prioButtonGreen">Low<img class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
-                        </div>
-                     </div>
-                     <div class="assignedContent assignedContent-sideMenu" >
-                        <div class="assignedTitleContainer">
-                           <p class="assignedTitle">Assignet to
-                           <p class="assignedTitle small" >(optional)</p>
-                           </p>
-                        </div>
-                        <select class="assignedSelect">
-                           <option>Select contacts to assign</option>
-                           <option value="User1">User1</option>
-                           <option value="User2">User2</option>
-                           <option value="User3">User3</option>
-                        </select>
-                     </div>
-                     <div class="SubtaskContentEdit" >
-                        <div class="assignedTitleContainer">
-                           <p class="assignedTitle">Subtask
-                           <p class="assignedTitle small" >(optional)</p>
-                           </p>
-                        </div>
-                        <input placeholder="Add new subtask" class="subtaskInput">
-                        <div class="openCardCheckbox">
-                           <div class="subtaskText">Implement Recipe Recommendation</div >
-                           <div class="subtaskText">Implement Recipe Recommendation</div >
-                           <div class="subtaskText">Implement Recipe Recommendation</div >
-                        </div>
-                     </div>
+                     <div class="textfield-fail" id="date-fail-message2"></div>
                   </div>
                </div>
+               <div class="assignedContent assignedContent-sideMenu" >
+                  <div class="assignedTitleContainer">
+                     <p class="assignedTitle">Priority
+                     <p class="assignedTitle small" >(optional)</p>
+                     </p>
+                  </div>
+                  <div class="buttonContainer"> 
+                     <button onclick="getThePriority('ssad')" class="prioButtonRed">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                     <button onclick="getThePriority('medium')" class="prioButtonYellow">Medium<img id="mediumPriority2" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                     <button onclick="getThePriority('low')" class="prioButtonGreen">Low<img id="lowPriority2" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                   </div>
+               </div>
+               <div class="assignedContent assignedContent-sideMenu" >
+                  <div class="assignedTitleContainer">
+                     <p class="assignedTitle">Assignet to
+                     <p class="assignedTitle small" >(optional)</p>
+                     </p>
+                  </div>
+                  <div id="assignedSelect2" onclick="addContacts2()"class="assignedSelect">
+                     <div >Select contacts to assign</div>
+                  </div>
+               </div>
+               <div id="addContactstoassign2" class="addContactstoassign"></div>
+               <div id="selectContainer2" class="selectContainer d-none">
+                  <!-- <div class="userBoxContainer" ><span class="userPosition" >User 1000 </span> <input type="checkbox"></div>
+                  <div class="userBoxContainer" ><span class="userPosition" >Use </span> <input type="checkbox"></div>
+                  <div class="userBoxContainer" ><span class="userPosition" >User100 </span> <input type="checkbox"></div> -->
+               </div>
+               <div class="assignedContent assignedContent-sideMenu" >
+                  <div class="assignedTitleContainer">
+                     <p class="assignedTitle">Category</p>
+                  </div>
+                  <div id="categorySelect2" onclick="showCategoryContacts2()" class="assignedSelect">
+                     <div id="SelectTaskCatergory">Select task catergory</div>
+                  </div>
+               </div>
+               <div id="categoryContainer2" class="categoryContainer d-none">
+                  <div class="userBoxContainer">
+                     <span class="userPosition" id="technicalTaskID2" onclick="loadTechnicalTask2()">Technical Task</span>
+                  </div>
+                  <div class="userBoxContainer">
+                     <span class="userPosition" id="userStoryID2" onclick="loadUserStory2()">User Story</span>
+                  </div>
+               </div>
+               <div class="SubtaskContent" >
+                  <div class="assignedTitleContainer">
+                     <p class="assignedTitle">Subtask
+                     <p class="assignedTitle small" >(optional)</p>
+                     </p>
+                  </div>
+                  <input id="subtaskInput2" onclick="addSubTask2()" placeholder="Add new subtask" class="subtaskInput">
+                  <div id="subtaskContainer2"></div>
+               </div>
             </div>
-            <div class="buttonContainerEdit" > <button onclick ="closeEditContainer()" class="displayFlex btnCreateContact">Ok<img
+         </div>
+            </div>
+            <div class="buttonContainerEdit" > <button onclick="createNewTask()" class="displayFlex btnCreateContact">Ok<img
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
       </div>
@@ -404,3 +431,80 @@ function generatePlaceholderTasks(category) {
 function shwoCurrentDate(){
   document.getElementById('autoJsCalendar').classList.toggle('d-none');
 }
+
+// second add Task functions
+
+function closeEditContainer2() {
+  document.getElementById("openEditContainer2").classList.add("d-none");
+
+}
+
+function addContacts2() {
+  let box = document.getElementById("selectContainer2");
+  box.classList.toggle("d-none");
+}
+
+function showCategoryContacts2() {
+  document.getElementById("categoryContainer2").classList.toggle("d-none");
+}
+
+function loadTechnicalTask2() {
+  let Box = document.getElementById('technicalTaskID2');
+  let currentValue = Box.innerHTML;
+  if (currentValue === "Technical Task") {
+    document.getElementById('SelectTaskCatergory2').innerHTML = currentValue;
+  }
+}
+
+function loadUserStory2(){
+  let Box = document.getElementById('userStoryID2');
+  let currentValue = Box.innerHTML;
+  if (currentValue === "User Story") {
+    document.getElementById('SelectTaskCatergory2').innerHTML = currentValue;
+  }
+}
+
+function addSubTask2() {
+  let subtaskInput = document.getElementById('subtaskInput2');
+  let addTask =  document.getElementById('subtaskContainer2');
+  let subtaskValue = subtaskInput.value;
+  let subtaskId = 'subtask' + Date.now();
+  if (subtaskValue.trim() !== '') { 
+    addTask.innerHTML +=`
+      <ul>
+        <li class="subtaskList">
+          <span id="${subtaskId}">${subtaskValue} </span>
+          <div class="displayFlex">
+            <img src="../assets/img/edit.svg" onclick="editSubtask('${subtaskId}')" class="subtaskEditImg">|
+            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
+          </div>
+          <div class="d-none">
+            <input type="text" class="editSubtask">
+            <div class="displayFlex">
+              <img src="../assets/img/close.svg" alt="">|
+              <img src="../assets/img/checkImg.png" alt="">
+            </div>
+          </div>
+        </li>
+      </ul>`;
+    subtaskInput.value = '';
+  }
+}
+
+async function createNewTask2(){
+  if (checkInputFields()) {
+  let getTitel = document.getElementById('addTastTitel2').value;
+  let getTextArea = document.getElementById('addTastTextArea2').value;
+  let getDateValue = document.getElementById('dueDateValue2').value;
+  // let getPriority = getThePriority(priority);
+  // let contactData = await showAssignetContacts(loggedInUser);
+  // let assignetTo = JSON.parse(seeContacts);
+  let getCategory = loadCategory(); 
+  // let getSubtask = addedSubtask();
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory);
+} else {
+  console.log('Not all fields are filled out correctly');
+  // Oder zeige dem Benutzer eine entsprechende Fehlermeldung
+}
+}
+
