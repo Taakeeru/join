@@ -13,8 +13,8 @@ async function init() {
   updateHTML(getTaskInfo);
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
+  
   loadUsers();
-  showAssignetContacts(loggedInUser)
   // generateAddTaskSideMenu()
 }
 
@@ -278,7 +278,7 @@ function openCardContainer(element) { // noch später auf die karten übergeben
            <img class="openCardIconsImg" src="../assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
         </div>
         <img class="openCardIconsImg" src="../assets/img/vector3.svg" alt="">
-        <div onclick="openEditContainer(${allTask[0][element]["id"]})" class="openCardIconsImgContainer" >
+        <div onclick="openEditContainer(${allTask[0][element]["id"]}),showAssignetContacts2(loggedInUser)" class="openCardIconsImgContainer" >
            <img   class="openCardIconsImg" src="../assets/img/edit.svg" alt=""> <span class="openCardIconsText">Edit</span>
         </div>
      </div>
@@ -380,10 +380,8 @@ function openEditContainer(element) {
                   </div>
                </div>
                <div id="addContactstoassign2" class="addContactstoassign"></div>
-               <div id="selectContainer2" class="selectContainer d-none">
-                  <!-- <div class="userBoxContainer" ><span class="userPosition" >User 1000 </span> <input type="checkbox"></div>
-                  <div class="userBoxContainer" ><span class="userPosition" >Use </span> <input type="checkbox"></div>
-                  <div class="userBoxContainer" ><span class="userPosition" >User100 </span> <input type="checkbox"></div> -->
+               <div  id="selectContainer2" class="selectContainer d-none">
+                  
                </div>
                <div class="assignedContent assignedContent-sideMenu" >
                   <div class="assignedTitleContainer">
@@ -506,5 +504,33 @@ async function createNewTask2(){
   console.log('Not all fields are filled out correctly');
   // Oder zeige dem Benutzer eine entsprechende Fehlermeldung
 }
+}
+
+async function showAssignetContacts2(loggedInUser) {
+  let box = document.getElementById("selectContainer2");
+
+  for (let i = 0; i < loggedInUser.contacts.length; i++) {
+    let userName = loggedInUser.contacts[i].name;
+    let getInitial = loggedInUser.contacts[i].initial;
+    let getColor = loggedInUser.contacts[i].color;
+    box.innerHTML += /*html*/`
+      <div class="userBoxContainer displayFlex">
+        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+        <span class="userPosition">${userName}</span>
+        <input type="checkbox" id="inputId${i}" onclick="handleCheckboxClick('${i}', '${userName}', '${getInitial}', '${getColor}')">
+      </div>`;
+
+    let userContactData = {
+      name: userName,
+      email: loggedInUser.contacts[i].email,
+      phone: loggedInUser.contacts[i].phone,
+      initial: getInitial,
+      color: getColor
+    };
+    
+    contactData.push(userContactData);
+  }
+
+  return contactData;
 }
 
