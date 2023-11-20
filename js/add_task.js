@@ -23,7 +23,7 @@ async function getAllTasks() {
 
 
 async function createNewTask(){
-  if (checkInputFields()) {
+  // if (checkInputFields()) {
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
   let getDateValue = document.getElementById('dueDateValue').value;
@@ -33,10 +33,10 @@ async function createNewTask(){
   let getCategory = loadCategory(); 
   // let getSubtask = addedSubtask();
   await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory);
-} else {
+// } else {
   console.log('Not all fields are filled out correctly');
-  // Oder zeige dem Benutzer eine entsprechende Fehlermeldung
-}
+ 
+// }
 }
 
 function clearArray(){
