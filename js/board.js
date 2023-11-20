@@ -412,7 +412,7 @@ function openEditContainer(element) {
             </div>
          </div>
             </div>
-            <div class="buttonContainerEdit" > <button onclick="createNewTask()" class="displayFlex btnCreateContact">Ok<img
+            <div class="buttonContainerEdit" > <button onclick="createNewTask2()" class="displayFlex btnCreateContact">Ok<img
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
       </div>
