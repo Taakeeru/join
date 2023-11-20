@@ -39,6 +39,7 @@ let TEST = [
 async function init() {
   await includeHTML();
   highlightTitle('board');
+  highlightTitleMobile('board-mobile');
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
   allTask.push(getTaskInfo);

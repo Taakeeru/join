@@ -4,6 +4,7 @@ let contactData = [];
 async function initAddTask() {
   await includeHTML();
   highlightTitle('add-task');
+  highlightTitleMobile('add-task-mobile');
   getAllTasks();
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);

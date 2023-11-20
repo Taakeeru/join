@@ -88,7 +88,6 @@
     transform: scale(1.1); 
 }
 
-
 .highlighted2 {
     background-color: #2756ff;
     border-radius: 8px;
@@ -106,13 +105,13 @@
         display: none;
     }
 
-    .highlighted {
+    .highlighted-mobile {
         background-color: white;
         border-radius: 0;
         transform: none;
     }
 
-    .highlighted a {
+    .highlighted-mobile a {
         filter: invert(60%) sepia(55%) saturate(5707%) hue-rotate(201deg) brightness(101%) contrast(101%);
     }
 }

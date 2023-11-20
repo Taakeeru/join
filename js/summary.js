@@ -3,6 +3,7 @@
 async function init() {
     await includeHTML();
     highlightTitle('summary');
+    highlightTitleMobile('summary-mobile');
     loggedInUser = await getLoggedInUser();
     updateGreeting();
     greetUser(loggedInUser);

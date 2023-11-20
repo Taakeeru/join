@@ -102,6 +102,13 @@ function highlightTitle2(pageId) {
 }
 
 
+function highlightTitleMobile(pageId) {
+    let page = document.getElementById(pageId);
+
+    page.classList.add('highlighted-mobile');
+}
+
+
 async function updateLoggedInUser(newValues) {
     const url = `${STORAGE_URL}?key=loggedInUser&token=${STORAGE_TOKEN}`;
     const payload = { key: 'loggedInUser', token: STORAGE_TOKEN, value: newValues };

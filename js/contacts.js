@@ -8,6 +8,7 @@ let currentContact = null;
 async function init() {
     await includeHTML();
     highlightTitle('contacts');
+    highlightTitleMobile('contacts-mobile');
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
     loadUsers();
