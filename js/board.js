@@ -14,6 +14,7 @@ async function init() {
   loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
   loadUsers();
+  showAssignetContacts(loggedInUser)
   // generateAddTaskSideMenu()
 }
 
