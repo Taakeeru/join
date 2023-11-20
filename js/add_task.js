@@ -21,10 +21,10 @@ async function getAllTasks() {
 }
 
 
-async function createNewTask(inputId,textAreaId,dateId){
-  let getTitel = document.getElementById(inputId).value;
-  let getTextArea = document.getElementById(textAreaId).value;
-  let getDateValue = document.getElementById(dateId).value;
+async function createNewTask(){
+  let getTitel = document.getElementById('addTastTitel').value;
+  let getTextArea = document.getElementById('addTastTextArea').value;
+  let getDateValue = document.getElementById('dueDateValue').value;
   // let getPriority = getThePriority(priority);
   // let contactData = await showAssignetContacts(loggedInUser);
   // let assignetTo = JSON.parse(seeContacts);
