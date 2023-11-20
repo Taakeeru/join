@@ -169,8 +169,10 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
         <div>
             <div class="positionHeaderContactDetails">
                 <img src="../assets/img/arrow-left-line.svg" class="arrow-left d-none" onclick="returnArrow()">
-                <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
-                    <p class="sizeOfLetterDetails">${initial}</p>
+                <div class="bigImgContactsBackground">
+                    <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
+                        <p class="sizeOfLetterDetails">${initial}</p>
+                    </div>
                 </div>
                 <div>
                     <span class="nameHeaderContactDetails">${newName}</span>
@@ -189,6 +191,7 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
                 <p style="font-weight: 600;">Phone</p>
                 <p>${newPhone}</p>
             </div>
+            <img src="../assets/img/more_vert.svg" class="moreVertImg" onclick="loadMoreVert()">
         </div>`;
     
         document.getElementById(`changeStyleEMail${i}`).classList.add('changeStyleMail');
@@ -213,7 +216,7 @@ function addNewContactBtn(){
                 <h1 class="h1AddContact">Add Contact</h1>
                 <p class="pAddContact">Tasks are better with a team!</p>
             </div>
-            <img src="../assets/img/close.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
+            <img src="../assets/img/closeInWhite.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
             <div class="witheBoxAddContact">
                 <form class="detailsOFAddContact" onsubmit="createNewContact(); return false;">
                     <img src="../assets/img/frame79.svg" class="witheBoxAddContactImg">
@@ -262,12 +265,14 @@ async function editContact(newName, newEmail, newPhone, initial, color){
                 <img src="../assets/img/capa1.svg" class="imgBlueBox">
                 <h1 class="h1EditContact">Edit Contact</h1>
             </div>
-            <img src="../assets/img/close.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
+            <img src="../assets/img/closeInWhite.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
             <div class="witheBoxAddContact">
                 <div class="detailsOFAddContact">
-                    <div class="witheBoxAddContactImg" style="background-color: ${color};">
-                        <p class="sizeOfLetterDetails">${initial}</p>
-                    </div>
+                    <div class="backgroundEditContactImg">
+                        <div class="witheBoxAddContactImg" style="background-color: ${color};">
+                            <p class="sizeOfLetterDetails">${initial}</p>
+                        </div>
+                    </div>    
                     <div class="displayFlex">
                         <input type="text" class="inputField" placeholder="Name" id="nameEditContact">
                         <img src="../assets/img/person.svg" class="imgInInput">
