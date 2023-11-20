@@ -2,6 +2,7 @@ let firstLetter = [];
 let newContactData = [];
 let firstLetterOfContatcs = [];
 let currentContact = null;
+let currentDetails = {};
 
 
 
@@ -168,6 +169,7 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
         document.getElementById(`addBackgroung${i}`).classList.add('sizeOfContactBoxOnclick');
         detailsContact.innerHTML = /*html*/ `
         <div>
+            <span class="contactInformationResponcive d-none">Contact Information</span>
             <div class="positionHeaderContactDetails">
                 <img src="../assets/img/arrow-left-line.svg" class="arrow-left d-none" onclick="returnArrow()">
                 <div class="bigImgContactsBackground">
@@ -177,7 +179,7 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
                 </div>
                 <div>
                     <span class="nameHeaderContactDetails">${newName}</span>
-                    <div class="positionEditAndDelete">
+                    <div class="positionEditAndDelete" id="toHideByResponsive">
                         <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
                                 style="margin-right: 8px;">Edit</button>
                         <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img
@@ -187,14 +189,22 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
             </div>
             <div>
                 <p class="contantInformation">Contact Information</p>
-                <p style="font-weight: 600;">Email</p>
-                <a href="#" class="mailContact">${newEmail}</a>
-                <p style="font-weight: 600;">Phone</p>
+                <p class="fontWeight">Email</p>
+                <a href="mailto:${newEmail}" target="_blank" class="mailContact">${newEmail}</a>
+                <p class="fontWeight">Phone</p>
                 <p>${newPhone}</p>
             </div>
             <img src="../assets/img/more_vert.svg" class="moreVertImg" onclick="loadMoreVert()">
         </div>`;
-    
+
+         currentDetails = {
+            newName: newName,
+            newEmail: newEmail,
+            newPhone: newPhone,
+            initial: initial,
+            color: color
+        };
+
         document.getElementById(`changeStyleEMail${i}`).classList.add('changeStyleMail');
         startAnimation();
         currentContact = newName;
@@ -205,6 +215,7 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
 
 function returnArrow() {
     document.getElementById('boxOfDetailsContacts').classList.add('d-none');
+    document.getElementById('boxOfAddingNewContact').style.backgroundColor = null;
 }
 
 
@@ -241,6 +252,19 @@ function addNewContactBtn(){
                     </div>
                 </form>  
             </div>`;
+}
+
+
+function loadMoreVert() {
+    let editBox = document.getElementById('responsiveEdit');
+    editBox.classList.remove('d-none');
+    editBox.innerHTML = /*html*/`
+        <div class="styleResponsiveEdit">
+            <button onclick="editContact('${currentDetails.newName}','${currentDetails.newEmail}','${currentDetails.newPhone}', '${currentDetails.initial}', '${currentDetails.color}')" class="flexSstart clearBtn marginLeft">
+            <img src="../assets/img/edit.svg" style="margin-right: 8px;">Edit</button>
+            <button onclick="deleteContact('${currentDetails.newName}','${currentDetails.newEmail}','${currentDetails.newPhone}', '${currentDetails.initial}', '${currentDetails.color}')" class="flexSstart clearBtn marginLeft">
+            <img src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
+        </div>`;
 }
 
 
@@ -336,6 +360,7 @@ async function deleteContact(newName, newEmail, newPhone, initial, color) {
         document.getElementById('boxOfDetailsContacts').innerHTML = '';
         document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
         document.getElementById('addBox').classList.remove('backgoundBox');
+        document.getElementById('boxOfAddingNewContact').style.backgroundColor = null;
     } else {
         console.error('Contact not found in loggedInUser.contacts array');
     }
@@ -358,7 +383,7 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
         await generateContactInSmall();
         document.getElementById('boxOfDetailsContacts').innerHTML ='';
         document.getElementById('addBox').classList.remove('backgoundBox');
-        document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
+        document.getElementById('boxOfAddingNewContact').style.backgroundColor = null;
     } else {
         console.error('Kontakt nicht gefunden im loggedInUser.contacts Array');
     }

@@ -20,6 +20,12 @@ body{
     align-items: center;
 }
 
+.flexSstart{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .allContacts{
     display: flex;
 }
@@ -246,15 +252,19 @@ body{
     margin: 0;
     padding: 0;
     margin-right: 24px;
+    transition: all .2s ease-in-out; 
+    width: 62px;
 }
 
 .clearBtn:hover{
     color: #176cff;
+    transform: scale(1.1);
+    font-weight: bolder;
 }
 
 .contantInformation{
     font-size: 24px;
-    font-weight: 600;
+    font-weight: bolder;
 }
 
 .mailContact{
@@ -508,7 +518,16 @@ body{
     justify-content: center;
     z-index: 52;
 }
-  
+
+.marginLeft{
+    margin-left: 16px;
+}
+
+.fontWeight{
+    font-size: 18px;
+    font-weight: bolder;
+}
+
 .slideUpDown {
     animation: slideUpDown 0.5s ease-out forwards !important;
 }
@@ -553,9 +572,16 @@ body{
 }
 
 @media (max-width: 1150px) {
+    .contactInformationResponcive{
+        display: block !important;
+        padding-bottom: 16px;
+    }
+    .nameHeaderContactDetails{
+        font-weight: normal;
+    }
     .boxOfDetailsContacts {
-        display: none;
-        height: calc(100vh - 96px);
+        padding-top: 48px;
+        height: calc(100vh - 144px);
         width: 100vw;
         position: absolute;
         right: 0;
@@ -575,6 +601,10 @@ body{
         right: 4vw;
         background-color: #4589FF;
         border-radius: 10px;
+        cursor: pointer;
+    }
+    .moreVertImg:hover{
+        background-color: #176cff;
     }
     .positionHeaderContactDetails {
         margin-top: 56px;
@@ -589,6 +619,38 @@ body{
     .arrow-left:hover{
         border-radius: 50%;
         background-color: #73A6FF;
+    }
+    .positionResponsiveEdit{
+        position: absolute;
+        bottom: 90px;
+        right: 0;
+    }
+    .styleResponsiveEdit{
+        width: 120px;
+        height: 80px;
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.20);
+        background-color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        z-index: 100;
+        display: flex;
+        justify-content: space-around !important;
+        align-items: flex-start !important;
+        flex-direction: column !important;
+        margin: 16px;
+        transition: all 0.5s ease-in-out;
+    }
+    .positionEditAndDelete{
+        display: none;
+    }
+    .contantInformation{
+        display: none;
+    }
+    .contactInformationResponcive{
+        font-size: 24px;
+        margin-bottom: -50px;
+        font-weight: bolder;
     }
 }
 
@@ -645,9 +707,7 @@ body{
         right: auto;
         transform: translate(101vw);
     }
-    .witheBoxAddContactImg{
-        margin-bottom: 8px;
-    }
+
     .closeAddContactBox{
         margin-top: 10vh;
         margin-right: 12vw;
