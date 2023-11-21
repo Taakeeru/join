@@ -366,7 +366,18 @@ body{
     display: flex;
     justify-content: center;
     align-self: center;
+    margin-bottom: 8px;
+}
 
+.witheBoxAddContactImgIn{
+    width: 120px;
+    height: 120px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
 }
 
 .inputField{
@@ -576,6 +587,9 @@ body{
         display: block !important;
         padding-bottom: 16px;
     }
+    .contactName{
+        width: 300px;
+    }
     .nameHeaderContactDetails{
         font-weight: normal;
     }
@@ -639,7 +653,7 @@ body{
         align-items: flex-start !important;
         flex-direction: column !important;
         margin: 16px;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
     .positionEditAndDelete{
         display: none;
@@ -651,6 +665,10 @@ body{
         font-size: 24px;
         margin-bottom: -50px;
         font-weight: bolder;
+    }
+    #successMessage {
+        font-size: 16px;
+        width: 240px;
     }
 }
 
@@ -702,12 +720,9 @@ body{
         flex-direction: column !important;
         align-items: center;
         height: 100vh;
-        width: 100vh;
-        /* top: auto; */
-        right: auto;
+        width: 100vw;
         transform: translate(101vw);
     }
-
     .closeAddContactBox{
         margin-top: 10vh;
         margin-right: 12vw;
@@ -726,6 +741,7 @@ body{
         height: 100vh;
         width: 100vw;
         right: auto;
+        transform: translateX(-100vw);
     }
     .blueBoxEditContact{
         margin-top: 10vh;
@@ -741,6 +757,12 @@ body{
         margin-right: 12vh;
         top: 0;
         right: 0;
+    }
+    .boxOfAllContacts{
+        width: 100vw;
+    }
+    .infosContact{
+        width: 800px;
     }
 }
 
@@ -769,6 +791,12 @@ body{
         top: 0;
         right: 0;
     }
+    .contactName{
+        width: 240px;
+    }
+    .nameHeaderContactDetails{
+        font-size: 28px;
+    }
 }
 
 @media(max-width: 500px) {
@@ -793,13 +821,40 @@ body{
 
 @media(max-width: 500px) {
     .inputField{
-        width: 200px;
+        width: 246px;
     }
     .closeEditContactBox {
         margin-top: 11vh;
         margin-right: 7vh;
         top: 0;
         right: 0;
+    }
+
+    .lineContact{
+        width: 320px;
+    }
+    .sizeOfContactBox{
+        width: 340px;
+    }
+    .contactName{
+        width: 180px;
+    }
+    .bigImgContacts{
+        width: 80px;
+        height: 80px;
+    }
+    .sizeOfLetterDetails{
+        font-size: 40px;
+    }
+    .bigImgContactsBackground{
+        width: 92px;
+        height: 92px;
+        margin: 0;
+    }
+    .positionHeaderContactDetails{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -810,4 +865,31 @@ body{
         top: 0;
         right: 0;
     }
+    .lineContact{
+        width: 260px;
+    }
+    .sizeOfContactBox{
+        width: 280px;
+    }
+    .letterContact{
+        margin-left: 62px;
+    }
+    .arrow-left{
+        right: 0;
+    }
+}
+
+@media(max-width: 310px) {
+    .h1EditContact{
+        font-size: 33px;
+    }
+    .inputField {
+        width: 208px;
+    }
+    .contactInformationResponcive{
+        margin-right: 16px;
+    }
+    .closeEditContactBox{
+        margin-right: 5vh;
+    } 
 }
