@@ -177,7 +177,7 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
                         <p class="sizeOfLetterDetails">${initial}</p>
                     </div>
                 </div>
-                <div>
+                <div class="contactName">
                     <span class="nameHeaderContactDetails">${newName}</span>
                     <div class="positionEditAndDelete" id="toHideByResponsive">
                         <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
@@ -194,7 +194,7 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
                 <p class="fontWeight">Phone</p>
                 <p>${newPhone}</p>
             </div>
-            <img src="../assets/img/more_vert.svg" class="moreVertImg" onclick="loadMoreVert()">
+            <img src="../assets/img/more_vert.svg" id="moreVertButtonId" class="moreVertImg" onclick="loadMoreVert()">
         </div>`;
 
          currentDetails = {
@@ -256,6 +256,7 @@ function addNewContactBtn(){
 
 
 function loadMoreVert() {
+
     let editBox = document.getElementById('responsiveEdit');
     editBox.classList.remove('d-none');
     editBox.innerHTML = /*html*/`
@@ -266,6 +267,21 @@ function loadMoreVert() {
             <img src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
         </div>`;
 }
+
+function closeInfoContainer(event) {
+    let box = document.getElementById('responsiveEdit');
+    let moreVertButton = document.getElementById('moreVertButtonId');
+
+    if (!box.contains(event.target) && event.target !== moreVertButton) { 
+        box.classList.add("d-none");
+    }
+}
+
+
+
+// function closeSideInfo(){
+//     document.getElementById('widthAndHeightBox').classList.add('d-none');
+// }
 
 
 function closeAddContactWindow(){
@@ -294,7 +310,7 @@ async function editContact(newName, newEmail, newPhone, initial, color){
             <div class="witheBoxAddContact">
                 <div class="detailsOFAddContact">
                     <div class="backgroundEditContactImg">
-                        <div class="witheBoxAddContactImg" style="background-color: ${color};">
+                        <div class="witheBoxAddContactImgIn" style="background-color: ${color};">
                             <p class="sizeOfLetterDetails">${initial}</p>
                         </div>
                     </div>    
@@ -360,7 +376,7 @@ async function deleteContact(newName, newEmail, newPhone, initial, color) {
         document.getElementById('boxOfDetailsContacts').innerHTML = '';
         document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
         document.getElementById('addBox').classList.remove('backgoundBox');
-        document.getElementById('boxOfAddingNewContact').style.backgroundColor = null;
+        document.getElementById('boxOfDetailsContacts').classList.add('d-none');
     } else {
         console.error('Contact not found in loggedInUser.contacts array');
     }
@@ -380,10 +396,10 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
         users[userIndex].contacts = loggedInUser.contacts;
 
         await setItem('loggedInUser', JSON.stringify(loggedInUser));
-        await generateContactInSmall();
-        document.getElementById('boxOfDetailsContacts').innerHTML ='';
+        document.getElementById('boxOfDetailsContacts').classList.add('d-none');
         document.getElementById('addBox').classList.remove('backgoundBox');
-        document.getElementById('boxOfAddingNewContact').style.backgroundColor = null;
+        document.getElementById('boxOfEdingContact').classList.add('d-none');
+        await generateContactInSmall();
     } else {
         console.error('Kontakt nicht gefunden im loggedInUser.contacts Array');
     }
