@@ -99,9 +99,11 @@ function checkInputFields() {
     return isValid;
   }
 
-  function getThePriority(priority) {
-  selectedPriority = priority;
-}
+  function getThePriority(selected) {
+  low = document.getElementById("low");
+  medium = document.getElementById("medium");
+  urgent = document.getElementById("urgent");
+  }
 
   function addContacts() {
     let box = document.getElementById("selectContainer");
