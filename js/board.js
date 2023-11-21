@@ -15,7 +15,7 @@ async function init() {
   showProfileInitials(loggedInUser);
   
   loadUsers();
-  await generateAddTaskSideMenu()
+  generateAddTaskSideMenu()
 }
 
 
@@ -139,7 +139,7 @@ function removeHighlight(id) {
   }, 100);
 }
 
-async function generateAddTaskSideMenu() {
+function generateAddTaskSideMenu() {
   document.getElementById('FirstCardRenderContainer').innerHTML=
    `<div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" >
   <div id="sideMenu" class="sideMenuStyle" onclick="event.stopPropagation()" >
@@ -161,8 +161,8 @@ async function generateAddTaskSideMenu() {
                        rows="10"></textarea>
                  </div>
                  <div class="dateContent">
-                    <p class="dateTitle">Due date</p>
-                    <div class="inputfieldDateContainer modal-body">
+                     <p class="dateTitle">Due date</p>
+                     <div class="inputfieldDateContainer modal-body">
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog curser">
                              <div class="modal-content curser">
@@ -173,7 +173,10 @@ async function generateAddTaskSideMenu() {
                                </div>
                              </div>
                            </div>
-                 </div>
+                         </div>
+                     </div>
+                     <div class="textfield-fail" id="date-fail-message"></div>
+                  </div>
               </div>
               <div class="assignedContent assignedContent-sideMenu" >
                  <div class="assignedTitleContainer">
@@ -237,7 +240,7 @@ async function generateAddTaskSideMenu() {
      </div>
   </div>
 </div>
-`
+`;
 }
 
 

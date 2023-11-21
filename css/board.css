@@ -8,6 +8,12 @@ body {
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
+.dateContent {
+  display: flex;
+  flex-direction: column;
+  height: 99px;
+  padding-top: 8px;
+}
 .mainContent {
   width: 100%;
 }
