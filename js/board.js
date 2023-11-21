@@ -189,35 +189,45 @@ async function generateAddTaskSideMenu() {
                   
               </div>
               <div class="assignedContent assignedContent-sideMenu" >
-                 <div class="assignedTitleContainer">
-                    <p class="assignedTitle">Assignet to
-                    <p class="assignedTitle small" >(optional)</p>
-                    </p>
-                 </div>
-                 <select class="assignedSelect">
-                    <option>Select contacts to assign</option>
-                    <option value="User1">User1</option>
-                    <option value="User2">User2</option>
-                    <option value="User3">User3</option>
-                 </select>
+              <div class="assignedTitleContainer">
+              <p class="assignedTitle">Assignet to
+              <p class="assignedTitle small" >(optional)</p>
+              </p>
+           </div>
+           <div id="assignedSelect" onclick="addContacts()"class="assignedSelect">
+              <div >Select contacts to assign</div>
+           </div>
+        </div>
+        <div id="addContactstoassign" class="addContactstoassign"></div>
+        <div  id="selectContainer" class="selectContainer d-none">
               </div>
               <div class="assignedContent assignedContent-sideMenu" >
-                 <div class="assignedTitleContainer">
-                    <p class="assignedTitle">Category</p>
-                 </div>
-                 <select class="assignedSelect">
-                    <option>Select task catergory</option>
-                    <option value="User1">User1</option>
-                    <option value="User2">User2</option>
-                    <option value="User3">User3</option>
-                 </select>
-              </div>
-              <div class="SubtaskContent" >
-                 <div class="assignedTitleContainer">
-                    <p class="assignedTitle">Subtask
-                    <p class="assignedTitle small" >(optional)</p>
-                    </p>
-                    </div>
+              <div class="assignedTitleContainer">
+              <p class="assignedTitle">Category</p>
+           </div>
+           <div id="categorySelect" onclick="showCategoryContacts()" class="assignedSelect">
+              <div id="SelectTaskCatergory">Select contacts to assign</div>
+           </div>
+        </div>
+        <div id="categoryContainer" class="categoryContainer d-none">
+           <div class="userBoxContainer">
+              <span class="userPosition" id="technicalTaskID" onclick="loadTechnicalTask()">Technical Task</span>
+           </div>
+           <div class="userBoxContainer">
+              <span class="userPosition" id="userStoryID" onclick="loadUserStory()">User Story</span>
+           </div>
+        </div>
+        <div class="SubtaskContent" >
+           <div class="assignedTitleContainer">
+              <p class="assignedTitle">Subtask
+              <p class="assignedTitle small" >(optional)</p>
+              </p>
+           </div>
+           <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
+           <div id="subtaskContainer"></div>
+        </div>
+     </div>
+  </div>
                     <div class="positionOfButtons">
                   <button  class="ClearBtn">Clear <img src="../assets/img/vector.svg"></button>
                   <button onclick="createNewTask()" class="createTaskBtn">Create Task <img src="../assets/img/check.svg"></button>
