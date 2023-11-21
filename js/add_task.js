@@ -1,5 +1,6 @@
 let allTasks =[];
 let contactData = [];
+let selectedPriority;
 
 async function initAddTask() {
   await includeHTML();
@@ -27,12 +28,11 @@ async function createNewTask(){
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
   let getDateValue = document.getElementById('dueDateValue').value;
-  // let getPriority = getThePriority(priority);
   // let contactData = await showAssignetContacts(loggedInUser);
   // let assignetTo = JSON.parse(seeContacts);
   let getCategory = loadCategory(); 
   // let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory);
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory,selectedPriority);
 // } else {
   console.log('Not all fields are filled out correctly');
  
@@ -44,7 +44,7 @@ function clearArray(){
 }
 
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory,selectedPriority) {
   getTitle = getTitle.trim(); 
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -53,7 +53,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       id: allTasks.length, 
       title: getTitle,
       description: getDescription,
-      // priority: getPriority,
+      priority: selectedPriority,
       date: getDateValue,
       contacts: contactData,
       workCategory: getCategory,
@@ -99,7 +99,8 @@ function checkInputFields() {
     return isValid;
   }
 
-  function getThePriority(selected) {
+  function getThePriority(priority) {
+    selectedPriority = priority;
   low = document.getElementById("low");
   medium = document.getElementById("medium");
   urgent = document.getElementById("urgent");
