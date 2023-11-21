@@ -1,5 +1,6 @@
 let currentDraggedElement;
 let allTask = [];
+let currentElement =[];
 // let info = await getItem('newTask');
 // let getTaskInfo = JSON.parse(info);
 
@@ -92,7 +93,7 @@ function generateTodoHTML(element) {
   }
 
   return `
-    <div class="taskCards" onclick="openCardContainer('${element["id"]}')" draggable="true" ondragstart="startDragging(${element["id"]})">
+    <div class="taskCards" id="contact${element["id"]}" onclick="openCardContainer('${element["id"]}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
           <p class="userStory">${element["workCategory"]}</p>
@@ -510,22 +511,41 @@ function addSubTask2() {
   }
 }
 
-async function createNewTask2(){
-  // if (checkInputFields()) {
-  let getTitel = document.getElementById('addTastTitel2').value;
-  let getTextArea = document.getElementById('addTastTextArea2').value;
-  let getDateValue = document.getElementById('dueDateValue2').value;
-  // let getPriority = getThePriority(priority);
-  // let contactData = await showAssignetContacts(loggedInUser);
-  // let assignetTo = JSON.parse(seeContacts);
-  let getCategory = loadCategory2(); 
-  // let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory);
-// } else {
-  // console.log('Not all fields are filled out correctly');
-  // Oder zeige dem Benutzer eine entsprechende Fehlermeldung
-// }
+async function createNewTask2() {
+  const titleInput = document.getElementById('addTastTitel2').value.trim();
+  const descriptionInput = document.getElementById('addTastTextArea2').value.trim();
+  const categoryInput = loadCategory2();
+
+  // Überprüfen, ob der Titel bereits vorhanden ist
+  const elementIndex = allTask[0].findIndex(task => task.title === titleInput);
+
+  if (elementIndex !== -1) {
+    // Task existiert bereits, aktualisiere die Werte
+    allTask[0][elementIndex].title = titleInput;
+    allTask[0][elementIndex].description = descriptionInput;
+    allTask[0][elementIndex].category = categoryInput;
+  } else {
+    console.log('task exestiert bereits')
+  }
+
+  // Speichern der aktualisierten Aufgabenliste
+  await setItem('newTask', JSON.stringify(allTasks));
+
+  // Schließe das Bearbeitungsfenster
+  closeEditContainer2();
+
+  // Aktualisiere die HTML-Ansicht mit den neuen Aufgaben
+  updateHTML(allTask[0]);
 }
+
+
+
+function generateUniqueId() {
+  return 'id_' + Date.now(); // Hier könnte eine bessere Methode zur Generierung einer eindeutigen ID verwendet werden
+}
+
+
+
 
 async function showAssignetContacts2(loggedInUser) {
   let box = document.getElementById("selectContainer2");
@@ -549,9 +569,8 @@ async function showAssignetContacts2(loggedInUser) {
       color: getColor
     };
     
-    contactData.push(userContactData);
+     contactData.push(userContactData);
   }
-
   return contactData;
 }
 
