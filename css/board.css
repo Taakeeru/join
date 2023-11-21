@@ -67,6 +67,7 @@ body {
   width: 252px;
   justify-content: space-between;
   padding: 0px 16px 0px 16px;
+  align-items: center;
 }
 .boardCategorysSektionIcons {
   width: 24px;
@@ -485,6 +486,7 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-right: 46px;
+  margin-top: 37px;
 }
 /*placeholderTaskContainer*/
 .placeholderTaskContainer {

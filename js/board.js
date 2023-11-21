@@ -15,7 +15,7 @@ async function init() {
   showProfileInitials(loggedInUser);
   
   loadUsers();
-  generateAddTaskSideMenu()
+  await generateAddTaskSideMenu()
 }
 
 
@@ -139,7 +139,7 @@ function removeHighlight(id) {
   }, 100);
 }
 
-function generateAddTaskSideMenu() {
+async function generateAddTaskSideMenu() {
   document.getElementById('FirstCardRenderContainer').innerHTML=
    `<div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" >
   <div id="sideMenu" class="sideMenuStyle" onclick="event.stopPropagation()" >
@@ -163,10 +163,16 @@ function generateAddTaskSideMenu() {
                  <div class="dateContent">
                     <p class="dateTitle">Due date</p>
                     <div class="inputfieldDateContainer modal-body">
-                       <input id="dueDateValue" class="inputfieldDate" type="text" placeholder="dd/mm/yyyy">
-                       <img class="dateImg " src="../assets/img/event.svg" onclick="shwoCurrentDate()">
-                       <div class="auto-jsCalendar d-none" id="autoJsCalendaR"></div>
-                    </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog curser">
+                             <div class="modal-content curser">
+                               <div class="modal-body curser">
+                                 <div>
+                                    <input required id="dueDateValue" class="inputfieldDate" type="date" placeholder="dd/mm/yyyy">
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
                  </div>
               </div>
               <div class="assignedContent assignedContent-sideMenu" >
@@ -220,7 +226,8 @@ function generateAddTaskSideMenu() {
         </div>
      </div>
   </div>
-</div>`
+</div>
+`
 }
 
 
@@ -237,8 +244,8 @@ function closeAddTaskMenu() {
 
 function openCardContainer(element) { // noch später auf die karten übergeben
  
-  document.getElementById("FirstCardRenderContainer").classList.remove("d-none");
-  document.getElementById("FirstCardRenderContainer").innerHTML=
+  document.getElementById("FirstCardRenderContainer2").classList.remove("d-none");
+  document.getElementById("FirstCardRenderContainer2").innerHTML=
   
    `<div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer" >
   <div class="openCardsDetails" onclick="event.stopPropagation()">
@@ -498,7 +505,7 @@ async function createNewTask2(){
   // let getPriority = getThePriority(priority);
   // let contactData = await showAssignetContacts(loggedInUser);
   // let assignetTo = JSON.parse(seeContacts);
-  let getCategory = loadCategory(); 
+  let getCategory = loadCategory2(); 
   // let getSubtask = addedSubtask();
   await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory);
 // } else {
@@ -518,7 +525,7 @@ async function showAssignetContacts2(loggedInUser) {
       <div class="userBoxContainer displayFlex">
         <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
         <span class="userPosition">${userName}</span>
-        <input type="checkbox" id="inputId${i}" onclick="handleCheckboxClick('${i}', '${userName}', '${getInitial}', '${getColor}')">
+        <input type="checkbox" id="inputId${i}" onclick="handleCheckboxClick2('${i}', '${userName}', '${getInitial}', '${getColor}')">
       </div>`;
 
     let userContactData = {
@@ -533,5 +540,39 @@ async function showAssignetContacts2(loggedInUser) {
   }
 
   return contactData;
+}
+
+function handleCheckboxClick2(i, userName, getInitial, getColor) {
+  let checkbox = document.getElementById(`inputId${i}`);
+  let addUser = document.getElementById("addContactstoassign2");
+  let userId = `user_${i}`;
+
+  if (checkbox.checked) {
+    addUser.innerHTML += `
+      <div id="${userId}" class="userBoxContainer displayFlex">
+        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+      </div>`;
+
+    let selectedUser = {
+      name: userName,
+      email: loggedInUser.contacts[i].email,
+      phone: loggedInUser.contacts[i].phone,
+      initial: getInitial,
+      color: getColor
+    };
+
+    selectedUsers.push(selectedUser);
+  } else {
+    let userToRemove = document.getElementById(userId);
+    if (userToRemove) {
+      userToRemove.remove();
+      selectedUsers = selectedUsers.filter(user => user.name !== userName);
+    }
+  }
+}
+
+function loadCategory2(){
+  let getValue = document.getElementById('categorySelect2').textContent.trim();
+  return getValue;
 }
 
