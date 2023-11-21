@@ -100,10 +100,33 @@ function checkInputFields() {
   }
 
   function getThePriority(priority) {
-    selectedPriority = priority;
-  low = document.getElementById("low");
-  medium = document.getElementById("medium");
-  urgent = document.getElementById("urgent");
+    // Holen Sie sich die Elemente
+    low = document.getElementById("low");
+    medium = document.getElementById("medium");
+    urgent = document.getElementById("high");
+  
+    // Entfernen Sie die Klasse "active" von allen Elementen
+    low.classList.remove("active3");
+    medium.classList.remove("active2");
+    urgent.classList.remove("active");
+  
+    // Überprüfen Sie, ob die ausgewählte Priorität bereits aktiv ist
+    if (selectedPriority === priority) {
+      // Wenn ja, setzen Sie die ausgewählte Priorität auf null
+      selectedPriority = null;
+    } else {
+      // Wenn nein, setzen Sie die ausgewählte Priorität auf die neue Priorität
+      selectedPriority = priority;
+  
+      // Fügen Sie die Klasse je nach ausgewählter Priorität hinzu
+      if (selectedPriority === 'low') {
+        low.classList.add("active3");
+      } else if (selectedPriority === 'medium') {
+        medium.classList.add("active2");
+      } else if (selectedPriority === 'high') {
+        urgent.classList.add("active");
+      }
+    }
   }
 
   function addContacts() {
