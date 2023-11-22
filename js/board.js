@@ -22,6 +22,23 @@ async function init() {
 
 // ------------------------ tastBereich------------------
 
+function getPriorityImagePath(priority) {
+ 
+  const priorityPaths = {
+    high: "../assets/img/prio_alta.svg",
+    medium: "../assets/img/prio_media.svg",
+    low: "../assets/img/prio_baja.svg",
+    
+  };
+  if (priority in priorityPaths) {
+    return priorityPaths[priority];
+  } else {
+  
+    return "no found"; 
+  }
+}
+
+
 function updateHTML(getTaskInfo) {
   let toDolist = getTaskInfo.filter((t) => t["category"] == "toDo");
   let toDoContainer = document.getElementById("toDo");
@@ -32,7 +49,7 @@ function updateHTML(getTaskInfo) {
   } else {
     for (let index = 0; index < toDolist.length; index++) {
       const element = toDolist[index];
-      toDoContainer.innerHTML += generateTodoHTML(element);
+      toDoContainer.innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
     }
   }
 
@@ -45,7 +62,7 @@ function updateHTML(getTaskInfo) {
   } else {
     for (let index = 0; index < progressList.length; index++) {
       const element = progressList[index];
-      progressContainer.innerHTML += generateTodoHTML(element); 
+      progressContainer.innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
     }
   }
 
@@ -59,7 +76,7 @@ function updateHTML(getTaskInfo) {
 
   for (let index = 0; index < feedbackList.length; index++) {
     const element = feedbackList[index];
-    feedbackContainer.innerHTML += generateTodoHTML(element);
+    feedbackContainer.innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
   }}
 
   let doneList = getTaskInfo.filter((t) => t["category"] == "done");
@@ -72,7 +89,7 @@ function updateHTML(getTaskInfo) {
 
   for (let index = 0; index < doneList.length; index++) {
     const element = doneList[index];
-    document.getElementById("done").innerHTML += generateTodoHTML(element);
+    document.getElementById("done").innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
   }
 }}
 
@@ -81,7 +98,7 @@ function startDragging(id) {
   currentDraggedElement = id;
 }
 
-function generateTodoHTML(element) {
+function generateTodoHTML(element,priorityImagePath) {
   let contactsHTML = "";
 
   for (let i = 0; i < element["contacts"].length; i++) {
@@ -93,7 +110,7 @@ function generateTodoHTML(element) {
   }
 
   return `
-    <div class="taskCards" id="contact${element["id"]}" onclick="openCardContainer('${element["id"]}')" draggable="true" ondragstart="startDragging(${element["id"]})">
+    <div class="taskCards" id="contact${element["id"]}" onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
           <p class="userStory">${element["workCategory"]}</p>
@@ -112,7 +129,7 @@ function generateTodoHTML(element) {
         </div>
         <div class="cardAddUser">
         <div class="cardAddUsersIconsContain" ><div class="cardAddUsersIcons" > ${contactsHTML} </div></div>
-          <img src="../assets/img/priority_symbols.svg" alt="" />
+        <img src=${priorityImagePath} alt="Priority Symbol" />
         </div>
       </div>
     </div>`;
@@ -256,7 +273,19 @@ function closeAddTaskMenu() {
   document.getElementById("sideMenu").classList.remove("showmenu");
 }
 
-function openCardContainer(element) { // noch später auf die karten übergeben
+function openCardContainer(element,priorityImagePath) { 
+  let priorityText;
+
+  // Setzen Sie den Text basierend auf der Priorität
+  if (allTask[0][element]["priority"] === 'high') {
+    priorityText = 'High';
+  } else if (allTask[0][element]["priority"] === 'medium') {
+    priorityText = 'Medium';
+  } else if (allTask[0][element]["priority"] === 'low') {
+    priorityText = 'Low';
+  } else {
+    priorityText = 'Unknown'; // Fügen Sie hier weitere Bedingungen hinzu, falls erforderlich
+  }
  
   document.getElementById("FirstCardRenderContainer2").classList.remove("d-none");
   document.getElementById("FirstCardRenderContainer2").innerHTML=
@@ -279,7 +308,7 @@ function openCardContainer(element) { // noch später auf die karten übergeben
      </div>
      <div class="openCardPrio">
         <span class="cardsCategoryText">Priority:</span>
-        <span class="openCardSecondText" >Medium <img class="openCardPrioImg" src="../assets/img/prio_media.svg" alt=""> </span> 
+        <span class="openCardSecondText" >${priorityText}  <img src=${priorityImagePath} alt="Priority Symbol" /> </span> 
      </div>
      <div class="openCardAssigned">
         <span class="cardsCategoryText">Assignet To:</span>
