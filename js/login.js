@@ -26,13 +26,15 @@ function renderSignUpBody() {
     let legal = document.getElementById('legal');
     let logo = document.getElementById('logo');
     let loginHeader = document.getElementById('login-header');
+    let loginHeader2 = document.getElementById('login-header2');
     
     body.classList.add('bg-color');
     privacy.classList.add('w-color');
     legal.classList.add('w-color');
-    logo.innerHTML = '';
+    // logo.innerHTML = '';
     logo.innerHTML = /* html */ `<img src="../assets/img/join-white.svg" alt="Logo Bild">`;
     loginHeader.classList.add('d-none');
+    loginHeader2.classList.add('d-none');
 }
 
 
@@ -54,13 +56,15 @@ function renderLogInBody() {
     let legal = document.getElementById('legal');
     let logo = document.getElementById('logo');
     let loginHeader = document.getElementById('login-header');
+    let loginHeader2 = document.getElementById('login-header2');
     
     body.classList.remove('bg-color');
     privacy.classList.remove('w-color');
     legal.classList.remove('w-color');
-    logo.innerHTML = '';
+    // logo.innerHTML = '';
     logo.innerHTML = /* html */ `<img src="../assets/img/join_logo.svg" alt="Logo Bild">`;
     loginHeader.classList.remove('d-none');
+    loginHeader2.classList.remove('d-none');
 }
 
 
@@ -146,6 +150,7 @@ function showContentDuringAnimation() {
     setTimeout(function() {
         let elementsToDisplay = [
             document.getElementById('login-header'),
+            document.getElementById('login-header2'),
             document.getElementById('login-card-div'),
             document.getElementById('login-footer')
         ];

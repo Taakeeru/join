@@ -200,7 +200,7 @@ body {
   margin: 0;
   padding: 0;
   background: rgb(69, 137, 255);
-  overflow: hidden;
+  /* overflow: hidden; */
   animation: bodyBackgroundAnimation 1.5s ease-in forwards;
 }
 
@@ -209,7 +209,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 265px; /* Start size */
+  width: 265px;
   height: 323px;
   animation: logoAnimation 0.5s ease-in forwards 1s;
   background: url('../assets/img/join-big.svg') no-repeat center top, url('../assets/img/join_logo.svg') no-repeat center top;
@@ -326,19 +326,24 @@ body {
   }
 
   .loader {
+    display: none;
+  }
+
+  .loader2 {
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100px; /* Start size */
+    width: 100px;
     height: 120px;
-    animation: logoAnimation 0.5s ease-in forwards 1s;
+    animation: logo2Animation 0.5s ease-in forwards 1s;
     background: url('../assets/img/join-big.svg') no-repeat center top, url('../assets/img/join_logo.svg') no-repeat center top;
     background-size: contain;
     z-index: 999;
   }
 
-  @keyframes logoAnimation {
+  @keyframes logo2Animation {
     0% {
       top: 50%;
       left: 50%;
@@ -358,10 +363,10 @@ body {
     }
   }
 
-  .logo {
+  /* .logo {
     width: 64px !important;
     height: 78px !important;
-  }
+  } */
 
   .login-header {
     display: none;
