@@ -15,5 +15,3 @@ async function initPrivacy() {
     loggedInUser = await getLoggedInUser();
     showProfileInitials(loggedInUser);
 }
-
-
