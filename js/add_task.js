@@ -1,6 +1,7 @@
 let allTasks =[];
 let contactData = [];
 let selectedPriority;
+let currentSubtasks = [];
 
 async function initAddTask() {
   await includeHTML();
@@ -32,7 +33,7 @@ async function createNewTask(){
   // let assignetTo = JSON.parse(seeContacts);
   let getCategory = loadCategory(); 
   // let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory,selectedPriority);
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory,selectedPriority,currentSubtasks);
 // } else {
   console.log('Not all fields are filled out correctly');
  
@@ -44,7 +45,7 @@ function clearArray(){
 }
 
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory,selectedPriority) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory,selectedPriority,currentSubtasks) {
   getTitle = getTitle.trim(); 
   const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
 
@@ -57,7 +58,8 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       date: getDateValue,
       contacts: contactData,
       workCategory: getCategory,
-      category: "toDo"
+      category: "toDo",
+      subtasks:currentSubtasks,
     };
     allTasks.push(newTask);
     console.log(allTasks);
@@ -100,25 +102,25 @@ function checkInputFields() {
   }
 
   function getThePriority(priority) {
-    // Holen Sie sich die Elemente
+   
     low = document.getElementById("low");
     medium = document.getElementById("medium");
     urgent = document.getElementById("high");
   
-    // Entfernen Sie die Klasse "active" von allen Elementen
+   
     low.classList.remove("active3");
     medium.classList.remove("active2");
     urgent.classList.remove("active");
   
-    // Überprüfen Sie, ob die ausgewählte Priorität bereits aktiv ist
+   
     if (selectedPriority === priority) {
-      // Wenn ja, setzen Sie die ausgewählte Priorität auf null
+     
       selectedPriority = null;
     } else {
-      // Wenn nein, setzen Sie die ausgewählte Priorität auf die neue Priorität
+      
       selectedPriority = priority;
   
-      // Fügen Sie die Klasse je nach ausgewählter Priorität hinzu
+      
       if (selectedPriority === 'low') {
         low.classList.add("active3");
       } else if (selectedPriority === 'medium') {
@@ -218,6 +220,7 @@ function closeCategoryContainer(event) {
   }
 }
 
+
 function addSubTask() {
   let subtaskInput = document.getElementById('subtaskInput');
   let addTask =  document.getElementById('subtaskContainer');
@@ -242,6 +245,8 @@ function addSubTask() {
         </li>
       </ul>`;
     subtaskInput.value = '';
+
+    currentSubtasks.push({id: subtaskId,value: subtaskValue,});
   }
 }
 

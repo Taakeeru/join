@@ -276,7 +276,6 @@ function closeAddTaskMenu() {
 function openCardContainer(element,priorityImagePath) { 
   let priorityText;
 
-  // Setzen Sie den Text basierend auf der Priorität
   if (allTask[0][element]["priority"] === 'high') {
     priorityText = 'High';
   } else if (allTask[0][element]["priority"] === 'medium') {
@@ -284,7 +283,7 @@ function openCardContainer(element,priorityImagePath) {
   } else if (allTask[0][element]["priority"] === 'low') {
     priorityText = 'Low';
   } else {
-    priorityText = 'Unknown'; // Fügen Sie hier weitere Bedingungen hinzu, falls erforderlich
+    priorityText = 'Unknown';
   }
  
   document.getElementById("FirstCardRenderContainer2").classList.remove("d-none");
