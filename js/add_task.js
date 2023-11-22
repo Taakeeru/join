@@ -58,7 +58,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       date: getDateValue,
       contacts: contactData,
       workCategory: getCategory,
-      category: "toDo",
+      category:"toDo",
       subtasks:currentSubtasks,
     };
     allTasks.push(newTask);

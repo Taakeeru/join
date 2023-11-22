@@ -6,17 +6,16 @@ let currentElement =[];
 
 async function init() {
   await includeHTML();
-  highlightTitle('board');
+  loggedInUser = await getLoggedInUser();
+ highlightTitle('board');
   highlightTitleMobile('board-mobile');
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
-  allTask.push(getTaskInfo);
-  updateHTML(getTaskInfo);
-  loggedInUser = await getLoggedInUser();
   showProfileInitials(loggedInUser);
-  
   loadUsers();
   generateAddTaskSideMenu()
+  allTask.push(getTaskInfo);
+  updateHTML(getTaskInfo);
 }
 
 
