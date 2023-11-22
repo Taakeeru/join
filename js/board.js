@@ -18,7 +18,7 @@ async function init() {
   updateHTML(getTaskInfo);
 }
 
-
+fix
 // ------------------------ tastBereich------------------
 
 function getPriorityImagePath(priority) {
