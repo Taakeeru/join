@@ -102,10 +102,10 @@ function changeImage() {
     let passwordImage = document.getElementById('pw-img');
 
     if (passwordInput.value.length >= 1) {
-        passwordImage.src = '/assets/img/eye_closed.png';
+        passwordImage.src = '../assets/img/eye_closed.png';
         passwordImage.classList.add('cursor-pointer');
     } else {
-        passwordImage.src = '/assets/img/lock.svg';
+        passwordImage.src = '../assets/img/lock.svg';
         passwordImage.classList.remove('cursor-pointer');
     }
 }
@@ -116,10 +116,10 @@ function changeImage2() {
     let passwordImage = document.getElementById('cpw-img');
 
     if (passwordInput.value.length >= 1) {
-        passwordImage.src = '/assets/img/eye_closed.png';
+        passwordImage.src = '../assets/img/eye_closed.png';
         passwordImage.classList.add('cursor-pointer');  
     } else {
-        passwordImage.src = '/assets/img/lock.svg';
+        passwordImage.src = '../assets/img/lock.svg';
         passwordImage.classList.remove('cursor-pointer');
     }
 }
@@ -132,10 +132,10 @@ function toggleVisibility() {
     if (passwordInput.value.length >= 1) {
         if (passwordInput.type == 'password') {
             passwordInput.type = 'text';
-            passwordImage.src = '/assets/img/eye_open.png';
+            passwordImage.src = '../assets/img/eye_open.png';
         } else {
             passwordInput.type = 'password';
-            passwordImage.src = '/assets/img/eye_closed.png';
+            passwordImage.src = '../assets/img/eye_closed.png';
         }
     }
 }
@@ -148,10 +148,10 @@ function toggleVisibility2() {
     if (passwordInput.value.length >= 1) {
         if (passwordInput.type == 'password') {
             passwordInput.type = 'text';
-            passwordImage.src = '/assets/img/eye_open.png';
+            passwordImage.src = '../assets/img/eye_open.png';
         } else {
             passwordInput.type = 'password';
-            passwordImage.src = '/assets/img/eye_closed.png';
+            passwordImage.src = '../assets/img/eye_closed.png';
         }
     }
 }

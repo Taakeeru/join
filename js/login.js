@@ -31,7 +31,7 @@ function renderSignUpBody() {
     privacy.classList.add('w-color');
     legal.classList.add('w-color');
     logo.innerHTML = '';
-    logo.innerHTML = /* html */ `<img src="/assets/img/join-white.svg" alt="Logo Bild">`;
+    logo.innerHTML = /* html */ `<img src="../assets/img/join-white.svg" alt="Logo Bild">`;
     loginHeader.classList.add('d-none');
 }
 
@@ -59,7 +59,7 @@ function renderLogInBody() {
     privacy.classList.remove('w-color');
     legal.classList.remove('w-color');
     logo.innerHTML = '';
-    logo.innerHTML = /* html */ `<img src="/assets/img/join_logo.svg" alt="Logo Bild">`;
+    logo.innerHTML = /* html */ `<img src="../assets/img/join_logo.svg" alt="Logo Bild">`;
     loginHeader.classList.remove('d-none');
 }
 
@@ -89,11 +89,11 @@ async function login() {
             if (checkbox.checked) {
                 await setItem('rememberMe', JSON.stringify(user));
                 await setItem('loggedInUser', JSON.stringify(user));
-                window.location.href = '/html/summary.html';
+                window.location.href = '../html/summary.html';
             } else {
                 await setItem('rememberMe', JSON.stringify(null));
                 await setItem('loggedInUser', JSON.stringify(user));
-                window.location.href = '/html/summary.html';
+                window.location.href = '../html/summary.html';
                 }
         } else {
             emailMessage.innerHTML = '';
@@ -111,12 +111,12 @@ async function login() {
 
 
 async function guestLogin() {
-    let user = users[26];
+    let user = users[2];
 
     console.log(user);
     if(user) {
         await setItem('loggedInUser', JSON.stringify(user));
-        window.location.href = '/html/summary.html';
+        window.location.href = '../html/summary.html';
     } 
 }
 

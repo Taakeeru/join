@@ -69,14 +69,14 @@ function toggleSettingsMobile() {
 
 
 function loadHelp() {
-    window.location.href = '/html/help.html';
+    window.location.href = '../html/help.html';
 }
 
 
 async function logout() {
     try {
         await updateLoggedInUser({});
-        window.location.href = '/html/login.html';
+        window.location.href = '../html/login.html';
     } catch (error) {
         console.error('Error during logout:', error);
     }
