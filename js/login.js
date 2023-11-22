@@ -24,15 +24,15 @@ function renderSignUpBody() {
     let body = document.getElementById('body');
     let privacy = document.getElementById('privacy');
     let legal = document.getElementById('legal');
-    let logo = document.getElementById('logo');
+    let loader = document.getElementById('loader');
     let loginHeader = document.getElementById('login-header');
     let loginHeader2 = document.getElementById('login-header2');
     
     body.classList.add('bg-color');
     privacy.classList.add('w-color');
     legal.classList.add('w-color');
-    // logo.innerHTML = '';
-    logo.innerHTML = /* html */ `<img src="../assets/img/join-white.svg" alt="Logo Bild">`;
+    loader.classList.add('bgimg1');
+    loader.classList.remove('bgimg2');
     loginHeader.classList.add('d-none');
     loginHeader2.classList.add('d-none');
 }
@@ -54,15 +54,15 @@ function renderLogInBody() {
     let body = document.getElementById('body');
     let privacy = document.getElementById('privacy');
     let legal = document.getElementById('legal');
-    let logo = document.getElementById('logo');
+    let loader = document.getElementById('loader');
     let loginHeader = document.getElementById('login-header');
     let loginHeader2 = document.getElementById('login-header2');
     
     body.classList.remove('bg-color');
     privacy.classList.remove('w-color');
     legal.classList.remove('w-color');
-    // logo.innerHTML = '';
-    logo.innerHTML = /* html */ `<img src="../assets/img/join_logo.svg" alt="Logo Bild">`;
+    loader.classList.add('bgimg2');
+    loader.classList.remove('bgimg1');
     loginHeader.classList.remove('d-none');
     loginHeader2.classList.remove('d-none');
 }

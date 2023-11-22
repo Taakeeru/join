@@ -249,6 +249,16 @@ body {
   }
 }
 
+.bgimg1 {
+  background-image: url('../assets/img/join-white.svg') !important;
+  z-index: 9999;
+}
+
+.bgimg2 {
+  background-image: url('../assets/img/join_logo.svg') !important;
+  z-index: 9999;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -326,10 +336,6 @@ body {
   }
 
   .loader {
-    display: none;
-  }
-
-  .loader2 {
     display: block;
     position: absolute;
     top: 50%;
@@ -337,13 +343,13 @@ body {
     transform: translate(-50%, -50%);
     width: 100px;
     height: 120px;
-    animation: logo2Animation 0.5s ease-in forwards 1s;
+    animation: logoAnimation 0.5s ease-in forwards 1s;
     background: url('../assets/img/join-big.svg') no-repeat center top, url('../assets/img/join_logo.svg') no-repeat center top;
     background-size: contain;
     z-index: 999;
   }
 
-  @keyframes logo2Animation {
+  @keyframes logoAnimation {
     0% {
       top: 50%;
       left: 50%;
