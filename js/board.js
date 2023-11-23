@@ -392,16 +392,19 @@ function renderSubtasks(element,subtasks) {
 
 
 
-
-
-
 function closeCardContainer() {
   document.getElementById("openCardContainer").classList.add("d-none");
   
 }
+
+
+
 // Edit secondCard 
 function openEditContainer(element) {
   openedEditContainerElement = element;
+
+  // Vor dem Aufrufen von showAssignetContacts2 die ausgewählten Benutzer bereitstellen
+  selectedUsers = allTask[0][element]["contacts"];
   document.getElementById("secondCardRenderContainer").classList.remove("d-none");
   document.getElementById("openCardContainer").classList.add("d-none");
 
@@ -509,14 +512,15 @@ function openEditContainer(element) {
       renderContactsSmall(allTask[0][element]);
 }
  
-function renderContactsSmall(element){
+function renderContactsSmall(element) {
   let box = document.getElementById('addContactstoassign2');
-  
+  box.innerHTML = ''; // Clear the content before rendering
+   
   for (let i = 0; i < element["contacts"].length; i++) {
     const contact = element["contacts"][i];
     box.innerHTML += `
     <div id="${contact.id}" class="userBoxContainer displayFlex">
-      <div class="imgPerson displayFlex" style="background-color: ${contact.color};">${contact.initial}</div>
+      <div class="imgPerson displayFlex" style="background-color: ${contact["color"]};">${contact["initial"]}</div>
     </div>`;
   }
 }
@@ -632,9 +636,33 @@ async function editTask(openedEditContainerElement) {
 
 function createNewTask2() {
   // Falls openEditContainer2 aufgerufen wurde, rufe editTask mit der übergebenen id auf
+  editTask(openedEditContainerElement);
+    // Hier hältst du eine Referenz zu den ausgewählten Kontakten
+    let selectedContacts = selectedUsers;
 
-    editTask(openedEditContainerElement);
-
+    // Ersetze die folgenden Zeilen in der Funktion
+    let usersHTML = "";
+    let contactsHTML = "";
+    for (let i = 0; i < contactData.length; i++) {
+      usersHTML += /*html*/`
+        <div class="userBoxContainer displayFlex">
+          <div class="imgPerson displayFlex" style="background-color: ${contactData[i].color};">${contactData[i].initial}</div>
+          <span class="userPosition">${contactData[i].name}</span>
+          <input type="checkbox" id="inputId${i}" ${selectedContacts.some(user => user.name === contactData[i].name) ? 'checked' : ''} onclick="handleCheckboxClick2('${i}', '${contactData[i].name}', '${contactData[i].initial}', '${contactData[i].color}')">
+        </div>`;
+    }
+  
+    for (let i = 0; i < selectedContacts.length; i++) {
+      contactsHTML += /*html*/`
+        <div class="userBoxContainer displayFlex">
+          <div class="imgPerson displayFlex" style="background-color: ${selectedContacts[i].color};">${selectedContacts[i].initial}</div>
+          <span class="userPosition">${selectedContacts[i].name}</span>
+        </div>`;
+    }
+  
+    // Ersetze den Inhalt von usersDateContent und cardAddUsersIcons
+    document.getElementById("usersDateContent").innerHTML = usersHTML;
+    document.querySelector(".cardAddUsersIcons").innerHTML = contactsHTML;
   closeEditContainer2();
 }
 
@@ -647,11 +675,15 @@ async function showAssignetContacts2(loggedInUser) {
     let userName = loggedInUser.contacts[i].name;
     let getInitial = loggedInUser.contacts[i].initial;
     let getColor = loggedInUser.contacts[i].color;
+    
+    // Überprüfe, ob der Kontakt ausgewählt ist
+    let isChecked = selectedUsers.some(user => user.name === userName);
+    
     box.innerHTML += /*html*/`
       <div class="userBoxContainer displayFlex">
         <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
         <span class="userPosition">${userName}</span>
-        <input type="checkbox" id="inputId${i}" onclick="handleCheckboxClick2('${i}', '${userName}', '${getInitial}', '${getColor}')">
+        <input type="checkbox" id="inputId${i}" ${isChecked ? 'checked' : ''} onclick="handleCheckboxClick2('${i}', '${userName}', '${getInitial}', '${getColor}')">
       </div>`;
 
     let userContactData = {
@@ -664,8 +696,8 @@ async function showAssignetContacts2(loggedInUser) {
     
      contactData.push(userContactData);
   }
-  return contactData;
 }
+
 
 let isBoxOfContactsCleared = false;
 
@@ -681,27 +713,27 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
   }
 
   if (checkbox.checked) {
-    if (!document.getElementById(userId)) {
-      addUser.innerHTML += `
-        <div id="${userId}" class="userBoxContainer displayFlex">
-          <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-        </div>`;
-
-      let selectedUser = {
-        name: userName,
-        email: loggedInUser.contacts[i].email,
-        phone: loggedInUser.contacts[i].phone,
-        initial: getInitial,
-        color: getColor
-      };
-
-      selectedUsers.push(selectedUser);
-    }
-  } else {
-    let userToRemove = document.getElementById(userId);
-    if (userToRemove) {
-      userToRemove.remove();
-      selectedUsers = selectedUsers.filter(user => user.name !== userName);
+    if (checkbox.checked) {
+      if (!document.getElementById(userId)) {
+        addUser.innerHTML += `
+          <div id="${userId}" class="userBoxContainer displayFlex">
+            <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+          </div>`;
+        let selectedUser = {
+          name: userName,
+          email: loggedInUser.contacts[i].email,
+          phone: loggedInUser.contacts[i].phone,
+          initial: getInitial,
+          color: getColor
+        };
+        selectedUsers.push(selectedUser);
+      }
+     } else {
+        let userToRemove = document.getElementById(userId);
+      if (userToRemove) {
+        userToRemove.remove();
+        selectedUsers = selectedUsers.filter(user => user.name !== userName);
+      }
     }
   }
 }
@@ -712,4 +744,3 @@ function loadCategory2(){
   let getValue = document.getElementById('categorySelect2').textContent.trim();
   return getValue;
 }
-
