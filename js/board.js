@@ -1,6 +1,8 @@
 let currentDraggedElement;
 let allTask = [];
 let openedEditContainerElement = null;
+// let selectedUsers = [];
+
 
 // let info = await getItem('newTask');
 // let getTaskInfo = JSON.parse(info);
@@ -40,6 +42,7 @@ function getPriorityImagePath(priority) {
 
 
 function updateHTML(getTaskInfo) {
+  selectedUsers = [];
   let toDolist = getTaskInfo.filter((t) => t["category"] == "toDo");
   let toDoContainer = document.getElementById("toDo");
   toDoContainer.innerHTML = "";
@@ -567,16 +570,15 @@ async function editTask(openedEditContainerElement) {
   // Hole die aktualisierten Werte aus den Eingabefeldern
   let getTitel = document.getElementById('addTastTitel2').value;
   let getDiscriptionArea = document.getElementById('addTastTextArea2').value;
-  // let getDateValue = document.getElementById('dueDateValue2').value;
-  // let selectedUsers = document.getElementById('addContactstoassign2').value;
   let getCategory = loadCategory2();
 
   // Aktualisiere die Werte der Karte
   taskToEdit.title = getTitel;
   taskToEdit.description = getDiscriptionArea;
-  // taskToEdit.date = getDateValue;
   taskToEdit.workCategory = getCategory;
-  // taskToEdit.contacts = selectedUsers;
+
+  // Aktualisiere die Kontakte unter "Assignet to"
+  taskToEdit.contacts = selectedUsers;
 
   // Speichere die aktualisierten Daten
   await setItem('newTask', JSON.stringify(getTaskInfo));
@@ -584,6 +586,8 @@ async function editTask(openedEditContainerElement) {
   // Führe die Update-Funktion aus, um die Änderungen anzuzeigen
   updateHTML(getTaskInfo);
 }
+
+
 
 
 function createNewTask2() {
