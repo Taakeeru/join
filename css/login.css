@@ -376,12 +376,20 @@ body {
 
   .login-header {
     display: none;
-}
+  }
+
+  #arrow-left {
+    left: 20px;
+  }
 }
 
 @media (max-width: 500px) {
   .card-body {
-    width: auto;
+    width: 100%;
+  }
+
+  #arrow-left {
+    left: 10px;
   }
 }
 
