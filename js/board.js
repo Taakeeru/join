@@ -109,7 +109,7 @@ function generateTodoHTML(element,priorityImagePath) {
   }
 
   return `
-  <div class="taskCards" onclick="openCardContainer('${element["id"]}')" draggable="true" ondragstart="startDragging(${element["id"]})">
+  <div class="taskCards"onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
           <p class="userStory">${element["workCategory"]}</p>
@@ -413,7 +413,7 @@ function openEditContainer(element) {
                      </p>
                   </div>
                   <div class="buttonContainer"> 
-                     <button onclick="getThePriority('ssad')" class="prioButtonRed">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                     <button onclick="getThePriority('high')" class="prioButtonRed">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
                      <button onclick="getThePriority('medium')" class="prioButtonYellow">Medium<img id="mediumPriority2" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
                      <button onclick="getThePriority('low')" class="prioButtonGreen">Low<img id="lowPriority2" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
                    </div>

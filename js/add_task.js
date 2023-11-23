@@ -74,7 +74,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
   if (existingTaskIndex === -1) {
     // Task does not exist, create a new one
     let newTask = {
-      id: existingTasks.length + 1,
+      id: existingTasks.length,
       title: getTitle,
       description: getDescription,
       priority: selectedPriority,
