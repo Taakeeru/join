@@ -109,6 +109,8 @@ function generateTodoHTML(element,priorityImagePath) {
       </div>`;
   }
 
+ 
+
   return `
   <div class="taskCards"onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
@@ -125,7 +127,7 @@ function generateTodoHTML(element,priorityImagePath) {
           <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar w-75"></div>
           </div>
-          <p class="cardSubNumber">1/2</p>
+          <p class="cardSubNumber"><span>0</span>/${element["subtasks"].length}</p>
         </div>
         <div class="cardAddUser">
         <div class="cardAddUsersIconsContain" ><div class="cardAddUsersIcons" > ${contactsHTML} </div></div>
@@ -325,7 +327,7 @@ function openCardContainer(element,priorityImagePath) {
      </div>
      <div class="openCardCheckbox">
      
-        <div class="subtaskText">${renderSubtasks(allTask[0][element]["subtasks"])}</div >
+     <div class="subtaskText">${renderSubtasks(element, allTask[0][element]["subtasks"])}</div>
 
      </div>
      <div class="openCardIcons">
@@ -359,14 +361,35 @@ function usersDate(element) {
   }
 }
 
-function renderSubtasks(subtasks) {
+function renderSubtasks(element,subtasks) {
   let subtasksHTML = "";
   for (let i = 0; i < subtasks.length; i++) {
     const subtask = subtasks[i];
-    subtasksHTML += `<div class="subtaskText">${subtask.value}</div>`;
+    subtasksHTML += ` <div class="subtaskCheckbox">
+    <input type="checkbox" id="${subtask.id}" name="${subtask.value}" value="${subtask.value}"onclick="checkboxClicked('${element}', '${subtask.id}')">
+    <label for="${subtask.id}">${subtask.value}</label>
+  </div>`;
   }
   return subtasksHTML;
-}
+  }
+
+  function checkboxClicked(element, subtaskId) {
+    const checkbox = document.getElementById(subtaskId);
+    
+    
+    if (checkbox.checked) {
+     
+      console.log(`Checkbox with ID ${subtaskId} in element ${element} is checked.`);
+    } else {
+    
+      console.log(`Checkbox with ID ${subtaskId} in element ${element} is unchecked.`);
+    }
+  
+    
+    // updateSubtaskCount(element);
+    console.log(element)
+  }
+
 
 
 

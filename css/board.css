@@ -359,7 +359,7 @@ body {
   color: rgba(42, 54, 71, 1);
 }
 .openCardCheckbox {
-  height: 68px;
+  height: 80px;
   margin-top: 4px;
   gap: 16px;
   display: flex;
