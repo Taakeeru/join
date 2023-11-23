@@ -43,32 +43,61 @@ async function createNewTask(){
 function clearArray(){
   allTasks.splice(0, allTasks.length);
 }
+function clearTasksArray() {
+  if (confirm('Are you sure you want to clear all tasks?')) {
+    clearArray(); // Assuming clearArray is the function that clears the array
+    setItem('newTask', JSON.stringify([])) // Also clear the data in the backend
+      .then(() => {
+        console.log('Tasks array cleared');
+      })
+      .catch((error) => {
+        console.error('Error clearing tasks array:', error);
+      });
+  }
+}
 
+async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory, selectedPriority, currentSubtasks) {
+  getTitle = getTitle.trim();
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory,selectedPriority,currentSubtasks) {
-  getTitle = getTitle.trim(); 
-  const existingTaskIndex = allTasks.findIndex(task => task.title === getTitle);
+  // Fetch existing tasks from the backend
+  let existingTasks;
+  try {
+    existingTasks = JSON.parse(await getItem('newTask'));
+  } catch (e) {
+    console.error('Error fetching existing tasks:', e);
+    existingTasks = [];
+  }
+
+  // Check if the task with the same title already exists
+  const existingTaskIndex = existingTasks.findIndex((task) => task.title === getTitle);
 
   if (existingTaskIndex === -1) {
+    // Task does not exist, create a new one
     let newTask = {
-      id: allTasks.length, 
+      id: existingTasks.length,
       title: getTitle,
       description: getDescription,
       priority: selectedPriority,
       date: getDateValue,
       contacts: contactData,
       workCategory: getCategory,
-      category:"toDo",
-      subtasks:currentSubtasks,
+      category: "toDo",
+      subtasks: currentSubtasks,
     };
-    allTasks.push(newTask);
-    console.log(allTasks);
+
+    existingTasks.push(newTask);
+
+    // Update the backend with the modified task list
+    await setItem('newTask', JSON.stringify(existingTasks));
+
+    console.log(existingTasks);
     alert('Task angelegt');
   } else {
+    // Task with the same title already exists
     alert('Task bereits vorhanden');
   }
-  await setItem('newTask', JSON.stringify(allTasks));
 }
+
 
 
 function checkInputFields() {

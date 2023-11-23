@@ -1,5 +1,8 @@
 let currentDraggedElement;
 let allTask = [];
+let openedEditContainerElement = null;
+// let selectedUsers = [];
+
 
 // let info = await getItem('newTask');
 // let getTaskInfo = JSON.parse(info);
@@ -39,6 +42,7 @@ function getPriorityImagePath(priority) {
 
 
 function updateHTML(getTaskInfo) {
+  selectedUsers = [];
   let toDolist = getTaskInfo.filter((t) => t["category"] == "toDo");
   let toDoContainer = document.getElementById("toDo");
   toDoContainer.innerHTML = "";
@@ -93,9 +97,6 @@ function updateHTML(getTaskInfo) {
 }}
 
 
-function startDragging(id) {
-  currentDraggedElement = id;
-}
 
 function generateTodoHTML(element,priorityImagePath) {
   let contactsHTML = "";
@@ -108,8 +109,10 @@ function generateTodoHTML(element,priorityImagePath) {
       </div>`;
   }
 
+ 
+
   return `
-  <div class="taskCards" onclick="openCardContainer('${element["id"]}')" draggable="true" ondragstart="startDragging(${element["id"]})">
+  <div class="taskCards"onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
           <p class="userStory">${element["workCategory"]}</p>
@@ -124,7 +127,7 @@ function generateTodoHTML(element,priorityImagePath) {
           <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar w-75"></div>
           </div>
-          <p class="cardSubNumber">1/2</p>
+          <p class="cardSubNumber"><span>0</span>/${element["subtasks"].length}</p>
         </div>
         <div class="cardAddUser">
         <div class="cardAddUsersIconsContain" ><div class="cardAddUsersIcons" > ${contactsHTML} </div></div>
@@ -138,6 +141,10 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
+function startDragging(id) {
+  currentDraggedElement = id;
+}
+
 async function moveTo(category) {
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
@@ -145,6 +152,7 @@ async function moveTo(category) {
   await setItem('newTask', JSON.stringify(getTaskInfo));
   updateHTML(getTaskInfo);
 }
+
 
 function highlight(id) {
   document.getElementById(id).classList.add("boardtoDoSektion-highlight");
@@ -318,9 +326,9 @@ function openCardContainer(element,priorityImagePath) {
         <span class="cardsCategoryText" >Subtask</span>
      </div>
      <div class="openCardCheckbox">
-        <div class="subtaskText">Implement Recipe Recommendation</div >
-        <div class="subtaskText">Implement Recipe Recommendation</div >
-        <div class="subtaskText">Implement Recipe Recommendation</div >
+     
+     <div class="subtaskText">${renderSubtasks(element, allTask[0][element]["subtasks"])}</div>
+
      </div>
      <div class="openCardIcons">
         <div  class="openCardIconsImgContainer" >
@@ -334,7 +342,7 @@ function openCardContainer(element,priorityImagePath) {
   </div>
 </div>
 </div>`
-usersDate(element)
+usersDate(element);
 }
 
 function usersDate(element) {
@@ -353,6 +361,36 @@ function usersDate(element) {
   }
 }
 
+function renderSubtasks(element,subtasks) {
+  let subtasksHTML = "";
+  for (let i = 0; i < subtasks.length; i++) {
+    const subtask = subtasks[i];
+    subtasksHTML += ` <div class="subtaskCheckbox">
+    <input type="checkbox" id="${subtask.id}" name="${subtask.value}" value="${subtask.value}"onclick="checkboxClicked('${element}', '${subtask.id}')">
+    <label for="${subtask.id}">${subtask.value}</label>
+  </div>`;
+  }
+  return subtasksHTML;
+  }
+
+  function checkboxClicked(element, subtaskId) {
+    const checkbox = document.getElementById(subtaskId);
+    
+    
+    if (checkbox.checked) {
+     
+      console.log(`Checkbox with ID ${subtaskId} in element ${element} is checked.`);
+    } else {
+    
+      console.log(`Checkbox with ID ${subtaskId} in element ${element} is unchecked.`);
+    }
+  
+    
+    // updateSubtaskCount(element);
+    console.log(element)
+  }
+
+
 
 
 
@@ -363,6 +401,7 @@ function closeCardContainer() {
 }
 // Edit secondCard 
 function openEditContainer(element) {
+  openedEditContainerElement = element;
   document.getElementById("secondCardRenderContainer").classList.remove("d-none");
   document.getElementById("openCardContainer").classList.add("d-none");
 
@@ -413,7 +452,7 @@ function openEditContainer(element) {
                      </p>
                   </div>
                   <div class="buttonContainer"> 
-                     <button onclick="getThePriority('ssad')" class="prioButtonRed">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                     <button onclick="getThePriority('high')" class="prioButtonRed">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
                      <button onclick="getThePriority('medium')" class="prioButtonYellow">Medium<img id="mediumPriority2" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
                      <button onclick="getThePriority('low')" class="prioButtonGreen">Low<img id="lowPriority2" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
                    </div>
@@ -428,7 +467,9 @@ function openEditContainer(element) {
                      <div >Select contacts to assign</div>
                   </div>
                </div>
-               <div id="addContactstoassign2" class="addContactstoassign"></div>
+               <div id="addContactstoassign2" class="addContactstoassign">
+                <div id="renderContacts"></div>
+               </div>
                <div  id="selectContainer2" class="selectContainer d-none">
                   
                </div>
@@ -463,8 +504,23 @@ function openEditContainer(element) {
             <div class="buttonContainerEdit" > <button onclick="createNewTask2()" class="displayFlex btnCreateContact">Ok<img
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
-      </div>
-  `}
+      </div>`;
+      
+      renderContactsSmall(allTask[0][element]);
+}
+ 
+function renderContactsSmall(element){
+  let box = document.getElementById('addContactstoassign2');
+  
+  for (let i = 0; i < element["contacts"].length; i++) {
+    const contact = element["contacts"][i];
+    box.innerHTML += `
+    <div id="${contact.id}" class="userBoxContainer displayFlex">
+      <div class="imgPerson displayFlex" style="background-color: ${contact.color};">${contact.initial}</div>
+    </div>`;
+  }
+}
+
 
 function closeEditContainer() {
   document.getElementById("openEditContainer").classList.add("d-none");
@@ -538,22 +594,51 @@ function addSubTask2() {
   }
 }
 
-async function createNewTask2(){
-  // if (checkInputFields()) {
+async function editTask(openedEditContainerElement) {
+  // Lese die vorhandenen Karten aus
+  let info = await getItem('newTask');
+  let getTaskInfo = JSON.parse(info);
+
+  // Finde die zu bearbeitende Karte
+  let taskToEdit = getTaskInfo.find(task => task.id === openedEditContainerElement);
+
+  if (!taskToEdit) {
+    console.error('Task not found for editing');
+    return;
+  }
+
+  // Hole die aktualisierten Werte aus den Eingabefeldern
   let getTitel = document.getElementById('addTastTitel2').value;
-  let getTextArea = document.getElementById('addTastTextArea2').value;
-  let getDateValue = document.getElementById('dueDateValue2').value;
-  // let getPriority = getThePriority(priority);
-  // let contactData = await showAssignetContacts(loggedInUser);
-  // let assignetTo = JSON.parse(seeContacts);
-  let getCategory = loadCategory2(); 
-  // let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory);
-// } else {
-  // console.log('Not all fields are filled out correctly');
-  // Oder zeige dem Benutzer eine entsprechende Fehlermeldung
-// }
+  let getDiscriptionArea = document.getElementById('addTastTextArea2').value;
+  let getCategory = loadCategory2();
+
+  // Aktualisiere die Werte der Karte
+  taskToEdit.title = getTitel;
+  taskToEdit.description = getDiscriptionArea;
+  taskToEdit.workCategory = getCategory;
+
+  // Aktualisiere die Kontakte unter "Assignet to"
+  taskToEdit.contacts = selectedUsers;
+
+  // Speichere die aktualisierten Daten
+  await setItem('newTask', JSON.stringify(getTaskInfo));
+
+  // Führe die Update-Funktion aus, um die Änderungen anzuzeigen
+  updateHTML(getTaskInfo);
 }
+
+
+
+
+function createNewTask2() {
+  // Falls openEditContainer2 aufgerufen wurde, rufe editTask mit der übergebenen id auf
+
+    editTask(openedEditContainerElement);
+
+  closeEditContainer2();
+}
+
+  
 
 async function showAssignetContacts2(loggedInUser) {
   let box = document.getElementById("selectContainer2");
@@ -582,26 +667,36 @@ async function showAssignetContacts2(loggedInUser) {
   return contactData;
 }
 
+let isBoxOfContactsCleared = false;
+
 function handleCheckboxClick2(i, userName, getInitial, getColor) {
+  let boxOfContacts = document.getElementById('addContactstoassign2');
   let checkbox = document.getElementById(`inputId${i}`);
   let addUser = document.getElementById("addContactstoassign2");
   let userId = `user_${i}`;
 
+  if (!isBoxOfContactsCleared && checkbox.checked) {
+    boxOfContacts.innerHTML = ''; // Leere den Inhalt von addContactstoassign2 nur einmal
+    isBoxOfContactsCleared = true;
+  }
+
   if (checkbox.checked) {
-    addUser.innerHTML += `
-      <div id="${userId}" class="userBoxContainer displayFlex">
-        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-      </div>`;
+    if (!document.getElementById(userId)) {
+      addUser.innerHTML += `
+        <div id="${userId}" class="userBoxContainer displayFlex">
+          <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+        </div>`;
 
-    let selectedUser = {
-      name: userName,
-      email: loggedInUser.contacts[i].email,
-      phone: loggedInUser.contacts[i].phone,
-      initial: getInitial,
-      color: getColor
-    };
+      let selectedUser = {
+        name: userName,
+        email: loggedInUser.contacts[i].email,
+        phone: loggedInUser.contacts[i].phone,
+        initial: getInitial,
+        color: getColor
+      };
 
-    selectedUsers.push(selectedUser);
+      selectedUsers.push(selectedUser);
+    }
   } else {
     let userToRemove = document.getElementById(userId);
     if (userToRemove) {
@@ -610,6 +705,8 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
     }
   }
 }
+
+
 
 function loadCategory2(){
   let getValue = document.getElementById('categorySelect2').textContent.trim();
