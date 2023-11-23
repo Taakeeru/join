@@ -320,9 +320,9 @@ function openCardContainer(element,priorityImagePath) {
         <span class="cardsCategoryText" >Subtask</span>
      </div>
      <div class="openCardCheckbox">
-        <div class="subtaskText">Implement Recipe Recommendation</div >
-        <div class="subtaskText">Implement Recipe Recommendation</div >
-        <div class="subtaskText">Implement Recipe Recommendation</div >
+     
+        <div class="subtaskText">${renderSubtasks(allTask[0][element]["subtasks"])}</div >
+
      </div>
      <div class="openCardIcons">
         <div  class="openCardIconsImgContainer" >
@@ -337,7 +337,6 @@ function openCardContainer(element,priorityImagePath) {
 </div>
 </div>`
 usersDate(element);
-openEditContainer(element);
 }
 
 function usersDate(element) {
@@ -354,6 +353,15 @@ function usersDate(element) {
       </div>
     <div>`;
   }
+}
+
+function renderSubtasks(subtasks) {
+  let subtasksHTML = "";
+  for (let i = 0; i < subtasks.length; i++) {
+    const subtask = subtasks[i];
+    subtasksHTML += `<div class="subtaskText">${subtask.value}</div>`;
+  }
+  return subtasksHTML;
 }
 
 
