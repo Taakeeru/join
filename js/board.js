@@ -1,5 +1,6 @@
 let currentDraggedElement;
 let allTask = [];
+let openedEditContainerElement = null;
 
 // let info = await getItem('newTask');
 // let getTaskInfo = JSON.parse(info);
@@ -337,7 +338,6 @@ function openCardContainer(element,priorityImagePath) {
 </div>
 </div>`
 usersDate(element);
-openEditContainer(element);
 }
 
 function usersDate(element) {
@@ -366,6 +366,7 @@ function closeCardContainer() {
 }
 // Edit secondCard 
 function openEditContainer(element) {
+  openedEditContainerElement = element;
   document.getElementById("secondCardRenderContainer").classList.remove("d-none");
   document.getElementById("openCardContainer").classList.add("d-none");
 
@@ -466,8 +467,8 @@ function openEditContainer(element) {
             <div class="buttonContainerEdit" > <button onclick="createNewTask2()" class="displayFlex btnCreateContact">Ok<img
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
-      </div>
-  `}
+      </div>`;
+}
 
 function closeEditContainer() {
   document.getElementById("openEditContainer").classList.add("d-none");
@@ -541,13 +542,13 @@ function addSubTask2() {
   }
 }
 
-async function editTask(element) {
+async function editTask(openedEditContainerElement) {
   // Lese die vorhandenen Karten aus
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
 
   // Finde die zu bearbeitende Karte
-  let taskToEdit = getTaskInfo.find(task => task.id === element);
+  let taskToEdit = getTaskInfo.find(task => task.id === openedEditContainerElement);
 
   if (!taskToEdit) {
     console.error('Task not found for editing');
@@ -556,16 +557,17 @@ async function editTask(element) {
 
   // Hole die aktualisierten Werte aus den Eingabefeldern
   let getTitel = document.getElementById('addTastTitel2').value;
-  let getTextArea = document.getElementById('addTastTextArea2').value;
-  let getDateValue = document.getElementById('dueDateValue2').value;
+  let getDiscriptionArea = document.getElementById('addTastTextArea2').value;
+  // let getDateValue = document.getElementById('dueDateValue2').value;
+  // let selectedUsers = document.getElementById('addContactstoassign2').value;
   let getCategory = loadCategory2();
 
   // Aktualisiere die Werte der Karte
   taskToEdit.title = getTitel;
-  taskToEdit.description = getTextArea;
-  taskToEdit.date = getDateValue;
-  taskToEdit.category = getCategory;
-  taskToEdit.contacts = selectedUsers;
+  taskToEdit.description = getDiscriptionArea;
+  // taskToEdit.date = getDateValue;
+  taskToEdit.workCategory = getCategory;
+  // taskToEdit.contacts = selectedUsers;
 
   // Speichere die aktualisierten Daten
   await setItem('newTask', JSON.stringify(getTaskInfo));
@@ -575,9 +577,11 @@ async function editTask(element) {
 }
 
 
-// Ändere die onclick-Funktion von createNewTask2
 function createNewTask2() {
-  editTask(currentDraggedElement);
+  // Falls openEditContainer2 aufgerufen wurde, rufe editTask mit der übergebenen id auf
+
+    editTask(openedEditContainerElement);
+
   closeEditContainer2();
 }
 
