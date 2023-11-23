@@ -235,11 +235,50 @@ body{
     align-items: center;
 }
 
+.summary-mobile {
+    display: none;
+}
+
 @media(max-width: 1000px) {
     .dislayRowBody {
-        min-height: 100vh;
+        display: none;
+    }
+
+    .positionTime {
+        display: none;
+    }
+
+    .positionTasksCards {
+        display: none;
+    }
+
+    .positionGreed {
+        display: none;
+    }
+
+    .summary-mobile {
         display: flex;
-        flex-direction: unset;
-        justify-content: flex-end;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 20px 0 20px;
+        width: 100vw;
+    }
+
+    .flex-column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .wd {
+        width: 672px !important;
     }
 }
