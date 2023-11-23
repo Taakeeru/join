@@ -444,7 +444,9 @@ function openEditContainer(element) {
                      <div >Select contacts to assign</div>
                   </div>
                </div>
-               <div id="addContactstoassign2" class="addContactstoassign"></div>
+               <div id="addContactstoassign2" class="addContactstoassign">
+                <div id="renderContacts"></div>
+               </div>
                <div  id="selectContainer2" class="selectContainer d-none">
                   
                </div>
@@ -480,7 +482,22 @@ function openEditContainer(element) {
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
       </div>`;
+      
+      renderContactsSmall(allTask[0][element]);
 }
+ 
+function renderContactsSmall(element){
+  let box = document.getElementById('addContactstoassign2');
+  
+  for (let i = 0; i < element["contacts"].length; i++) {
+    const contact = element["contacts"][i];
+    box.innerHTML += `
+    <div id="${contact.id}" class="userBoxContainer displayFlex">
+      <div class="imgPerson displayFlex" style="background-color: ${contact.color};">${contact.initial}</div>
+    </div>`;
+  }
+}
+
 
 function closeEditContainer() {
   document.getElementById("openEditContainer").classList.add("d-none");
@@ -627,26 +644,36 @@ async function showAssignetContacts2(loggedInUser) {
   return contactData;
 }
 
+let isBoxOfContactsCleared = false;
+
 function handleCheckboxClick2(i, userName, getInitial, getColor) {
+  let boxOfContacts = document.getElementById('addContactstoassign2');
   let checkbox = document.getElementById(`inputId${i}`);
   let addUser = document.getElementById("addContactstoassign2");
   let userId = `user_${i}`;
 
+  if (!isBoxOfContactsCleared && checkbox.checked) {
+    boxOfContacts.innerHTML = ''; // Leere den Inhalt von addContactstoassign2 nur einmal
+    isBoxOfContactsCleared = true;
+  }
+
   if (checkbox.checked) {
-    addUser.innerHTML += `
-      <div id="${userId}" class="userBoxContainer displayFlex">
-        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-      </div>`;
+    if (!document.getElementById(userId)) {
+      addUser.innerHTML += `
+        <div id="${userId}" class="userBoxContainer displayFlex">
+          <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+        </div>`;
 
-    let selectedUser = {
-      name: userName,
-      email: loggedInUser.contacts[i].email,
-      phone: loggedInUser.contacts[i].phone,
-      initial: getInitial,
-      color: getColor
-    };
+      let selectedUser = {
+        name: userName,
+        email: loggedInUser.contacts[i].email,
+        phone: loggedInUser.contacts[i].phone,
+        initial: getInitial,
+        color: getColor
+      };
 
-    selectedUsers.push(selectedUser);
+      selectedUsers.push(selectedUser);
+    }
   } else {
     let userToRemove = document.getElementById(userId);
     if (userToRemove) {
@@ -655,6 +682,8 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
     }
   }
 }
+
+
 
 function loadCategory2(){
   let getValue = document.getElementById('categorySelect2').textContent.trim();
