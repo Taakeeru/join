@@ -93,9 +93,6 @@ function updateHTML(getTaskInfo) {
 }}
 
 
-function startDragging(id) {
-  currentDraggedElement = id;
-}
 
 function generateTodoHTML(element,priorityImagePath) {
   let contactsHTML = "";
@@ -138,6 +135,10 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
+function startDragging(id) {
+  currentDraggedElement = id;
+}
+
 async function moveTo(category) {
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
@@ -145,6 +146,7 @@ async function moveTo(category) {
   await setItem('newTask', JSON.stringify(getTaskInfo));
   updateHTML(getTaskInfo);
 }
+
 
 function highlight(id) {
   document.getElementById(id).classList.add("boardtoDoSektion-highlight");
@@ -334,7 +336,8 @@ function openCardContainer(element,priorityImagePath) {
   </div>
 </div>
 </div>`
-usersDate(element)
+usersDate(element);
+openEditContainer(element);
 }
 
 function usersDate(element) {
@@ -538,22 +541,47 @@ function addSubTask2() {
   }
 }
 
-async function createNewTask2(){
-  // if (checkInputFields()) {
+async function editTask(element) {
+  // Lese die vorhandenen Karten aus
+  let info = await getItem('newTask');
+  let getTaskInfo = JSON.parse(info);
+
+  // Finde die zu bearbeitende Karte
+  let taskToEdit = getTaskInfo.find(task => task.id === element);
+
+  if (!taskToEdit) {
+    console.error('Task not found for editing');
+    return;
+  }
+
+  // Hole die aktualisierten Werte aus den Eingabefeldern
   let getTitel = document.getElementById('addTastTitel2').value;
   let getTextArea = document.getElementById('addTastTextArea2').value;
   let getDateValue = document.getElementById('dueDateValue2').value;
-  // let getPriority = getThePriority(priority);
-  // let contactData = await showAssignetContacts(loggedInUser);
-  // let assignetTo = JSON.parse(seeContacts);
-  let getCategory = loadCategory2(); 
-  // let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory);
-// } else {
-  // console.log('Not all fields are filled out correctly');
-  // Oder zeige dem Benutzer eine entsprechende Fehlermeldung
-// }
+  let getCategory = loadCategory2();
+
+  // Aktualisiere die Werte der Karte
+  taskToEdit.title = getTitel;
+  taskToEdit.description = getTextArea;
+  taskToEdit.date = getDateValue;
+  taskToEdit.category = getCategory;
+  taskToEdit.contacts = selectedUsers;
+
+  // Speichere die aktualisierten Daten
+  await setItem('newTask', JSON.stringify(getTaskInfo));
+
+  // Führe die Update-Funktion aus, um die Änderungen anzuzeigen
+  updateHTML(getTaskInfo);
 }
+
+
+// Ändere die onclick-Funktion von createNewTask2
+function createNewTask2() {
+  editTask(currentDraggedElement);
+  closeEditContainer2();
+}
+
+  
 
 async function showAssignetContacts2(loggedInUser) {
   let box = document.getElementById("selectContainer2");
