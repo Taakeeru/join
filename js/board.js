@@ -758,21 +758,17 @@ function showAssignetContacts2(loggedInUser) {
 let isBoxOfContactsCleared = false;
 
 function handleCheckboxClick2(i, userName, getInitial, getColor) {
-  // console.log(`Checkbox clicked for ${userName}. Checked: ${document.getElementById(`inputId${i}`).checked}`);
-  // let boxOfContacts = document.getElementById('addContactstoassign2');
   let checkbox = document.getElementById(`inputId${i}`);
   let addUser = document.getElementById("addContactstoassign2");
   let userId = `user_${i}`;
-
-  if (checkbox.checked) {
-    // Wenn die Checkbox aktiviert ist und der Benutzer nicht in der Liste ist, füge ihn hinzu
+  if (!checkbox.checked) {
     if (!document.getElementById(userId)) {
       addUser.innerHTML += `
-      <div>
-        <div id="${userId}" class="userBoxContainer displayFlex">
-          <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-        </div>
-      </div>`;
+          <div>
+            <div id="${userId}" class="userBoxContainer displayFlex">
+              <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+            </div>
+          </div>`;
       let selectedUser = {
         name: userName,
         email: loggedInUser.contacts[i].email,
@@ -781,18 +777,22 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
         color: getColor
       };
       selectedUsers.push(selectedUser);
+      checkbox.checked = true;
     }
-  } else {
+    } else {
     console.log(`Removing user with ID: ${userId}`);
+    // Wenn die Checkbox deaktiviert ist und der Benutzer in der Liste ist, entferne ihn
     let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
-    
-    // Wenn der Benutzer im Array gefunden wurde, entferne ihn
+      // Wenn der Benutzer im Array gefunden wurde, entferne ihn
     if (indexToRemove !== -1) {
       selectedUsers.splice(indexToRemove, 1);
-  }
-  debugger;
-}
-}
+    }
+    checkbox.checked = false;
+}}
+
+
+
+
 
 
 
