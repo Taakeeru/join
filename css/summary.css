@@ -239,6 +239,41 @@ body{
     display: none;
 }
 
+@media(max-width: 1200px) {
+    .tasksInBoard {
+        width: 164px;
+        height: 151px;
+        border: 1px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all .2s ease-in-out;
+        cursor: pointer; 
+        color: #4589FF;
+    }
+
+    .showTasksInBoard {
+        height: 171px;
+        width: 148px;
+    }
+
+    .showDate {
+        width: 580px;
+        height: 151px;
+    }
+
+    .boxForBoxes {
+        width: 742px;
+        height: 531px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+    }
+}
+
 @media(max-width: 1000px) {
     .dislayRowBody {
         display: none;
