@@ -122,7 +122,7 @@ function generateTodoHTML(element,priorityImagePath) {
         </div>
         <div class="cardSub">
         <div class="progress" role="progressbar" aria-label="Subtasks" aria-valuemin="0" aria-valuemax="100">
-        <div class="progress-bar" id="subtaskProgressBar" style="width: 0;"></div>
+        <div class="progress-bar" id="subtaskProgressBar${element["id"]}" style="width: 0;"></div>
       </div>
       
           <p class="cardSubNumber"><span id="test${element["id"]}">0</span>/${element["subtasks"].length}</p>
@@ -341,33 +341,21 @@ function openCardContainer(element,priorityImagePath) {
 </div>
 </div>`
 usersDate(element);
-updateCheckboxAndProgressBar(element);
+updateCheckboxStatus(element);
 }
-function updateCheckboxAndProgressBar(element) {
+function updateCheckboxStatus(element) {
   const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
   const subtaskCounts = selectedSubtaskCounts[element];
-  const progressBar = document.getElementById('subtaskProgressBar');
 
   if (subtaskCounts) {
-    let selectedCount = 0;
-
     for (const subtaskId in subtaskCounts) {
       const checkbox = document.getElementById(subtaskId);
-
       if (checkbox) {
         checkbox.checked = subtaskCounts[subtaskId];
-
-        
-        if (subtaskCounts[subtaskId]) {
-          selectedCount++;
-        }
       }
     }
-    const totalSubtasks = `${ allTask[0][element]["subtasks"].length}`; 
-    const percentage = (selectedCount / totalSubtasks) * 100;
-    progressBar.style.width = `${percentage}%`;
-    progressBar.setAttribute('aria-valuenow', percentage);
   }
+ 
 }
 
 
@@ -408,15 +396,34 @@ function renderSubtasks(element,subtasks) {
 
   let selectedSubtaskCounts = {};
 
-function checkboxClicked(element, subtaskId) {
-  const checkbox = document.getElementById(subtaskId);
-  let numberOfSubtask = document.getElementById(`test${element}`);
+  function checkboxClicked(element, subtaskId) {
+    const checkbox = document.getElementById(subtaskId);
+    let numberOfSubtask = document.getElementById(`test${element}`);
+    const progressBar = document.getElementById('subtaskProgressBar');
+  
+    if (!selectedSubtaskCounts[element]) {
+      selectedSubtaskCounts[element] = {};
+    }
+  
+    selectedSubtaskCounts[element][subtaskId] = checkbox.checked;
+  
+    let selectedCount = 0;
+    for (const id in selectedSubtaskCounts[element]) {
+      if (selectedSubtaskCounts[element][id]) {
+        selectedCount++;
+      }
+    }
+  
+    numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
+     updateProgressBar(element)
+  }
+
+function updateProgressBar(element) {
+  const progressBar = document.getElementById(`subtaskProgressBar${element}`);
 
   if (!selectedSubtaskCounts[element]) {
     selectedSubtaskCounts[element] = {};
   }
-
-  selectedSubtaskCounts[element][subtaskId] = checkbox.checked;
 
   let selectedCount = 0;
   for (const id in selectedSubtaskCounts[element]) {
@@ -424,8 +431,12 @@ function checkboxClicked(element, subtaskId) {
       selectedCount++;
     }
   }
+  const totalSubtasks =  `${ allTask[0][element]["subtasks"].length}`;  
+  const percentage = (selectedCount / totalSubtasks) * 100;
 
-  numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
+  progressBar.style.width = `${percentage}%`;
+
+  progressBar.setAttribute('aria-valuenow', percentage);
 }
 
 
