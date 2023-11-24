@@ -1,11 +1,8 @@
 let currentDraggedElement;
 let allTask = [];
 let openedEditContainerElement = null;
-// let selectedUsers = [];
 
 
-// let info = await getItem('newTask');
-// let getTaskInfo = JSON.parse(info);
 
 async function init() {
   await includeHTML();
@@ -362,20 +359,26 @@ function updateCheckboxStatus(element) {
 
 
 function usersDate(element) {
-  let userDateRender =document.getElementById('usersDateContent');
+  let userDateRender = document.getElementById('usersDateContent');
+  let contactsHTML = "";  // Erstelle eine leere Zeichenkette für die Kontakte
+
   for (let i = 0; i < allTask[0][element]["contacts"].length; i++) {
     const contact = allTask[0][element]["contacts"][i];
-    userDateRender.innerHTML += `
-    <div class="detaicardsUserContainer">
-      <div class="cardUserSymbole detailVersion" style="background-color: ${contact["color"]} !important;">
-        ${contact["initial"]}
-      </div>
-      <div>
-      <span class="cardUserDetailVersion" > ${contact["name"]}</span> 
-      </div>
-    <div>`;
+    contactsHTML += `
+      <div class="detaicardsUserContainer">
+        <div class="cardUserSymbole detailVersion" style="background-color: ${contact["color"]} !important;">
+          ${contact["initial"]}
+        </div>
+        <div>
+          <span class="cardUserDetailVersion" > ${contact["name"]}</span> 
+        </div>
+      </div>`;
   }
+
+  // Setze den HTML-Inhalt der usersDateContent-Div mit der erstellten Kontaktliste
+  userDateRender.innerHTML = contactsHTML;
 }
+
 
 function renderSubtasks(element,subtasks) {
   let subtasksHTML = "";
@@ -640,7 +643,7 @@ async function editTask(openedEditContainerElement) {
   taskToEdit.description = getDiscriptionArea;
   taskToEdit.workCategory = getCategory;
 
-  // Aktualisiere die Kontakte unter "Assignet to"
+  // Aktualisiere die Kontakte unter "Assignet to" nur mit ausgewählten Kontakten
   taskToEdit.contacts = selectedUsers;
 
   // Speichere die aktualisierten Daten
@@ -653,12 +656,14 @@ async function editTask(openedEditContainerElement) {
 
 
 
+
 function createNewTask2() {
   // Falls openEditContainer2 aufgerufen wurde, rufe editTask mit der übergebenen id auf
   editTask(openedEditContainerElement);
+
     // Hier hältst du eine Referenz zu den ausgewählten Kontakten
     let selectedContacts = selectedUsers;
-
+  
     // Ersetze die folgenden Zeilen in der Funktion
     let usersHTML = "";
     let contactsHTML = "";
@@ -682,14 +687,16 @@ function createNewTask2() {
     // Ersetze den Inhalt von usersDateContent und cardAddUsersIcons
     document.getElementById("usersDateContent").innerHTML = usersHTML;
     document.querySelector(".cardAddUsersIcons").innerHTML = contactsHTML;
+    closeEditContainer2();
+  
   closeEditContainer2();
 }
 
   
 
-async function showAssignetContacts2(loggedInUser) {
+function showAssignetContacts2(loggedInUser) {
   let box = document.getElementById("selectContainer2");
-
+  
   for (let i = 0; i < loggedInUser.contacts.length; i++) {
     let userName = loggedInUser.contacts[i].name;
     let getInitial = loggedInUser.contacts[i].initial;
@@ -713,49 +720,58 @@ async function showAssignetContacts2(loggedInUser) {
       color: getColor
     };
     
-     contactData.push(userContactData);
+    contactData.push(userContactData);
   }
 }
+
 
 
 let isBoxOfContactsCleared = false;
 
 function handleCheckboxClick2(i, userName, getInitial, getColor) {
-  let boxOfContacts = document.getElementById('addContactstoassign2');
+  // console.log(`Checkbox clicked for ${userName}. Checked: ${document.getElementById(`inputId${i}`).checked}`);
+  // let boxOfContacts = document.getElementById('addContactstoassign2');
   let checkbox = document.getElementById(`inputId${i}`);
   let addUser = document.getElementById("addContactstoassign2");
   let userId = `user_${i}`;
-
-  if (!isBoxOfContactsCleared && checkbox.checked) {
-    boxOfContacts.innerHTML = ''; // Leere den Inhalt von addContactstoassign2 nur einmal
-    isBoxOfContactsCleared = true;
-  }
+  debugger;
 
   if (checkbox.checked) {
-    if (checkbox.checked) {
-      if (!document.getElementById(userId)) {
-        addUser.innerHTML += `
-          <div id="${userId}" class="userBoxContainer displayFlex">
-            <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-          </div>`;
-        let selectedUser = {
-          name: userName,
-          email: loggedInUser.contacts[i].email,
-          phone: loggedInUser.contacts[i].phone,
-          initial: getInitial,
-          color: getColor
-        };
-        selectedUsers.push(selectedUser);
-      }
-     } else {
-        let userToRemove = document.getElementById(userId);
-      if (userToRemove) {
-        userToRemove.remove();
-        selectedUsers = selectedUsers.filter(user => user.name !== userName);
-      }
+    // Wenn die Checkbox aktiviert ist und der Benutzer nicht in der Liste ist, füge ihn hinzu
+    if (!document.getElementById(userId)) {
+      addUser.innerHTML += `
+      <div>
+        <div id="${userId}" class="userBoxContainer displayFlex">
+          <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+        </div>
+      </div>`;
+      let selectedUser = {
+        name: userName,
+        email: loggedInUser.contacts[i].email,
+        phone: loggedInUser.contacts[i].phone,
+        initial: getInitial,
+        color: getColor
+      };
+      selectedUsers.push(selectedUser);
+    }
+    debugger;
+  } else {
+    console.log(`Removing user with ID: ${userId}`);
+    // Wenn die Checkbox deaktiviert ist und der Benutzer in der Liste ist, entferne ihn
+    let userToRemove = addUser.querySelector(`#${userId}`);
+
+    if (userToRemove) {
+      userToRemove.parentNode.removeChild(userToRemove); // Remove specific element
+      delete selectedUsers.filter(user => user.name !== userName);
     }
   }
+  debugger;
 }
+
+
+
+
+
 
 
 
