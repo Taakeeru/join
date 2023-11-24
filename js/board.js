@@ -394,30 +394,30 @@ function renderSubtasks(element,subtasks) {
 
   let selectedSubtaskCounts = {};
 
-  function checkboxClicked(element, subtaskId) {
-    const checkbox = document.getElementById(subtaskId);
-    let numberOfSubtask = document.getElementById(`test${element}`);
-  
-    // Überprüfen, ob es bereits eine Zählung für dieses Element gibt
-    if (!selectedSubtaskCounts[element]) {
-      selectedSubtaskCounts[element] = {};
-    }
-  
-    // Aktualisieren Sie den Status der Checkbox für diese Subtask
-    selectedSubtaskCounts[element][subtaskId] = checkbox.checked;
-  
-    // Zählen Sie die Anzahl der ausgewählten Subtasks für dieses Element
-    const selectedCount = Object.values(selectedSubtaskCounts[element]).filter(value => value).length;
-  
-    // Aktualisieren Sie die Anzeige
-    numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
+function checkboxClicked(element, subtaskId) {
+  const checkbox = document.getElementById(subtaskId);
+  let numberOfSubtask = document.getElementById(`test${element}`);
+
+  if (!selectedSubtaskCounts[element]) {
+    selectedSubtaskCounts[element] = {};
   }
 
+  selectedSubtaskCounts[element][subtaskId] = checkbox.checked;
+
+  let selectedCount = 0;
+  for (const id in selectedSubtaskCounts[element]) {
+    if (selectedSubtaskCounts[element][id]) {
+      selectedCount++;
+    }
+  }
+
+  numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
+}
 
 function closeCardContainer() {
   document.getElementById("openCardContainer").classList.add("d-none");
-  
 }
+
 
 
 
