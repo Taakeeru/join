@@ -127,7 +127,7 @@ function generateTodoHTML(element,priorityImagePath) {
           <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar w-75"></div>
           </div>
-          <p class="cardSubNumber"><span>0</span>/${element["subtasks"].length}</p>
+          <p class="cardSubNumber"><span id="test${element["id"]}">0</span>/${element["subtasks"].length}</p>
         </div>
         <div class="cardAddUser">
         <div class="cardAddUsersIconsContain" ><div class="cardAddUsersIcons" > ${contactsHTML} </div></div>
@@ -343,7 +343,23 @@ function openCardContainer(element,priorityImagePath) {
 </div>
 </div>`
 usersDate(element);
+updateCheckboxStatus(element);
 }
+function updateCheckboxStatus(element) {
+  const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
+  const subtaskCounts = selectedSubtaskCounts[element];
+
+  if (subtaskCounts) {
+    for (const subtaskId in subtaskCounts) {
+      const checkbox = document.getElementById(subtaskId);
+      if (checkbox) {
+        checkbox.checked = subtaskCounts[subtaskId];
+      }
+    }
+  }
+}
+
+
 
 function usersDate(element) {
   let userDateRender =document.getElementById('usersDateContent');
@@ -373,23 +389,26 @@ function renderSubtasks(element,subtasks) {
   return subtasksHTML;
   }
 
+  let selectedSubtaskCounts = {};
+
   function checkboxClicked(element, subtaskId) {
     const checkbox = document.getElementById(subtaskId);
-    
-    
-    if (checkbox.checked) {
-     
-      console.log(`Checkbox with ID ${subtaskId} in element ${element} is checked.`);
-    } else {
-    
-      console.log(`Checkbox with ID ${subtaskId} in element ${element} is unchecked.`);
+    let numberOfSubtask = document.getElementById(`test${element}`);
+  
+    // Überprüfen, ob es bereits eine Zählung für dieses Element gibt
+    if (!selectedSubtaskCounts[element]) {
+      selectedSubtaskCounts[element] = {};
     }
   
-    
-    // updateSubtaskCount(element);
-    console.log(element)
+    // Aktualisieren Sie den Status der Checkbox für diese Subtask
+    selectedSubtaskCounts[element][subtaskId] = checkbox.checked;
+  
+    // Zählen Sie die Anzahl der ausgewählten Subtasks für dieses Element
+    const selectedCount = Object.values(selectedSubtaskCounts[element]).filter(value => value).length;
+  
+    // Aktualisieren Sie die Anzeige
+    numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
   }
-
 
 
 function closeCardContainer() {
