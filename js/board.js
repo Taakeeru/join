@@ -121,9 +121,10 @@ function generateTodoHTML(element,priorityImagePath) {
           </p>
         </div>
         <div class="cardSub">
-          <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar w-75"></div>
-          </div>
+        <div class="progress" role="progressbar" aria-label="Subtasks" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" id="subtaskProgressBar" style="width: 0;"></div>
+      </div>
+      
           <p class="cardSubNumber"><span id="test${element["id"]}">0</span>/${element["subtasks"].length}</p>
         </div>
         <div class="cardAddUser">
@@ -340,19 +341,32 @@ function openCardContainer(element,priorityImagePath) {
 </div>
 </div>`
 usersDate(element);
-updateCheckboxStatus(element);
+updateCheckboxAndProgressBar(element);
 }
-function updateCheckboxStatus(element) {
+function updateCheckboxAndProgressBar(element) {
   const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
   const subtaskCounts = selectedSubtaskCounts[element];
+  const progressBar = document.getElementById('subtaskProgressBar');
 
   if (subtaskCounts) {
+    let selectedCount = 0;
+
     for (const subtaskId in subtaskCounts) {
       const checkbox = document.getElementById(subtaskId);
+
       if (checkbox) {
         checkbox.checked = subtaskCounts[subtaskId];
+
+        
+        if (subtaskCounts[subtaskId]) {
+          selectedCount++;
+        }
       }
     }
+    const totalSubtasks = `${ allTask[0][element]["subtasks"].length}`; 
+    const percentage = (selectedCount / totalSubtasks) * 100;
+    progressBar.style.width = `${percentage}%`;
+    progressBar.setAttribute('aria-valuenow', percentage);
   }
 }
 
@@ -413,6 +427,9 @@ function checkboxClicked(element, subtaskId) {
 
   numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
 }
+
+
+
 
 function closeCardContainer() {
   document.getElementById("openCardContainer").classList.add("d-none");
