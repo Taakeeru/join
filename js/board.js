@@ -16,6 +16,7 @@ async function init() {
   generateAddTaskSideMenu()
   allTask.push(getTaskInfo);
   updateHTML(getTaskInfo);
+  showAssignetContacts(loggedInUser)
 }
 
 
