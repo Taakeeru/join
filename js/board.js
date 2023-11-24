@@ -763,7 +763,6 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
   let checkbox = document.getElementById(`inputId${i}`);
   let addUser = document.getElementById("addContactstoassign2");
   let userId = `user_${i}`;
-  debugger;
 
   if (checkbox.checked) {
     // Wenn die Checkbox aktiviert ist und der Benutzer nicht in der Liste ist, füge ihn hinzu
@@ -783,18 +782,16 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
       };
       selectedUsers.push(selectedUser);
     }
-    debugger;
   } else {
     console.log(`Removing user with ID: ${userId}`);
-    // Wenn die Checkbox deaktiviert ist und der Benutzer in der Liste ist, entferne ihn
-    let userToRemove = addUser.querySelector(`#${userId}`);
-
-    if (userToRemove) {
-      userToRemove.parentNode.removeChild(userToRemove); // Remove specific element
-      delete selectedUsers.filter(user => user.name !== userName);
-    }
+    let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
+    
+    // Wenn der Benutzer im Array gefunden wurde, entferne ihn
+    if (indexToRemove !== -1) {
+      selectedUsers.splice(indexToRemove, 1);
   }
   debugger;
+}
 }
 
 
