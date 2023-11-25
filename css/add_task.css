@@ -3,14 +3,18 @@ body {
   margin: 0;
   overflow-y: hidden;
 }
-.active{
-  background-color: red!important;
-}.active2{
-  background-color: yellow!important;
-}.active3{
-  background-color: green!important;
+.active {
+  background-color: red !important;
 }
-
+.active2 {
+  background-color: yellow !important;
+}
+.active3 {
+  background-color: green !important;
+}
+.containAddTask {
+  width: 440px;
+}
 .d-none {
   display: none !important;
 }
@@ -27,7 +31,7 @@ body {
   gap: 24px;
   display: flex;
   overflow-y: scroll;
-  height: calc(72vh - 144px);
+  height: calc(76vh - 144px);
 }
 
 .addTask::-webkit-scrollbar {
@@ -162,7 +166,7 @@ body {
   cursor: pointer;
 }
 
-.curser{
+.curser {
   cursor: pointer;
 }
 
@@ -195,7 +199,7 @@ body {
   padding-top: 8px;
 }
 
-.prioButtonRed{
+.prioButtonRed {
   gap: 10px;
   display: flex;
   width: 136px;
@@ -212,11 +216,11 @@ body {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
-.prioButtonRed:hover{
-  box-shadow: 0 3px rgb(255,66,6), 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+.prioButtonRed:hover {
+  box-shadow: 0 3px rgb(255, 66, 6), 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
-.prioButtonYellow{
+.prioButtonYellow {
   gap: 10px;
   display: flex;
   width: 136px;
@@ -233,11 +237,11 @@ body {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
-.prioButtonYellow:hover{
-  box-shadow:  0 3px rgb(255,168,0), 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+.prioButtonYellow:hover {
+  box-shadow: 0 3px rgb(255, 168, 0), 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
-.prioButtonGreen{
+.prioButtonGreen {
   gap: 10px;
   display: flex;
   width: 136px;
@@ -254,8 +258,8 @@ body {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
-.prioButtonGreen:hover{
-  box-shadow: 0px 3px rgb(154,233,93), 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+.prioButtonGreen:hover {
+  box-shadow: 0px 3px rgb(154, 233, 93), 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
 .buttonImg {
@@ -350,8 +354,8 @@ body {
   margin-bottom: 0;
 }
 
-.userPosition:hover{
-  background-color: #D2E3FF;
+.userPosition:hover {
+  background-color: #d2e3ff;
   border-radius: 10px;
 }
 
@@ -366,19 +370,19 @@ body {
   width: auto;
 }
 
-.subtaskList{
+.subtaskList {
   display: flex;
   justify-content: space-between;
 }
 
-.positionOfButtons{
+.positionOfButtons {
   position: absolute;
   bottom: 0;
   right: 0;
   margin: 24px;
 }
 
-.ClearBtn{
+.ClearBtn {
   width: 120px;
   height: 61px;
   border-radius: 10px;
@@ -390,58 +394,58 @@ body {
   cursor: pointer;
 }
 
-.ClearBtn:hover{
-  border: 2px solid #4589FF;
-  color: #4589FF;
+.ClearBtn:hover {
+  border: 2px solid #4589ff;
+  color: #4589ff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.createTaskBtn{
+.createTaskBtn {
   width: 174px;
   height: 61px;
   border-radius: 10px;
-  border: 1px solid #4589FF;
-  background-color: #4589FF;
+  border: 1px solid #4589ff;
+  background-color: #4589ff;
   color: white;
   font-size: 22px;
   cursor: pointer;
 }
 
-.createTaskBtn:hover{
+.createTaskBtn:hover {
   background-color: #176cff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.subtaskEditImg{
+.subtaskEditImg {
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-.subtaskEditImg:hover{
-  transform: scale(1.1); 
+.subtaskEditImg:hover {
+  transform: scale(1.1);
 }
 
-.subtaskDeleteImg{
+.subtaskDeleteImg {
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-.subtaskDeleteImg:hover{
-  transform: scale(1.1); 
+.subtaskDeleteImg:hover {
+  transform: scale(1.1);
 }
 
-.displayFlex{
+.displayFlex {
   display: flex;
   justify-content: center;
   align-items: center;
   color: grey;
 }
 
-#subtaskContainer{
+#subtaskContainer {
   margin-bottom: 24px;
 }
 
-.imgPerson{
+.imgPerson {
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -449,7 +453,7 @@ body {
   margin-right: 8px;
   margin-top: 8px;
 }
-.addContactstoassign{
+.addContactstoassign {
   display: flex;
   height: auto;
   width: 416px;
@@ -478,4 +482,129 @@ body {
 .subtaskList{
   margin-top: 0;
   margin-bottom: 16px;
+}*/
+
+@media (max-width: 1000px) {
+  .contentContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-top: 160px;
+  }
+  .positionOfButtons {
+    display: inline-flex;
+    bottom: 144px;
+    margin: 24px;
+    position: unset;
+  }
+  .containAddTask {
+    width: 300px;
+  }
 }
+
+@media (max-width: 500px) {
+  .contentContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-top: 160px;
+  }
+  .addTask {
+    width: 350px;
+  }
+  .topSektion {
+    width: 340px;
+  }
+  .inputFieldTitle {
+    width: 350px;
+  }
+  .description {
+    width: 350px;
+  }
+  .inputfieldDate {
+    width: 327px;
+  }
+  .assignedContent {
+    width: 350px;
+  }
+  .prioButtonRed {
+    width: 107px;
+  }
+
+  .SubtaskContent {
+    width: 350px;
+  }
+
+  .positionOfButtons {
+    display: inline-flex;
+    margin: 24px;
+    justify-content: center;
+    width: 300px;
+  }
+  .ClearBtn {
+    display: none;
+  }
+  .containAddTask {
+    width: 300px;
+  }
+  .addContactstoassign {
+    width: 340px;
+  }
+}
+
+@media (max-width: 390px) {
+  .contentContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-top: 160px;
+  }
+  .addTask {
+    width: 350px;
+    padding-left: 3px;
+  }
+  .topSektion {
+    width: 330px;
+  }
+  .inputFieldTitle {
+    width: 335px;
+  }
+  .description {
+    width: 335px;
+  }
+  .inputfieldDate {
+    width: 310px;
+  }
+  .assignedContent {
+    width: 335px;
+  }
+  .prioButtonRed {
+    width: 96px;
+  }
+  .prioButtonYellow {
+    width: 112px;
+  }
+  .prioButtonGreen {
+    width: 88px;
+  }
+
+  .SubtaskContent {
+    width: 335px;
+  }
+
+  .positionOfButtons {
+    
+      display: inline-flex;
+      margin: 24px;
+      justify-content: center;
+      width: 284px;
+    }
+  }
+  .ClearBtn {
+    display: none;
+  }
+
+  .addContactstoassign {
+    width: 325px;
+  }
+

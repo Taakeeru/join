@@ -23,9 +23,9 @@
       <div w3-include-html="../assets/templates/desktop_template_header.html"></div>
       <div w3-include-html="../assets/templates/mobile_template.html"></div>
       <div class="contentContainer" >
-         <button onclick="clearTasksArray()" style="height: 40px;">clear Array</button>
+         
          <div class="addTask">
-            <div action="">
+            <div class="containAddTask">
                <div class="topSektion">
                   <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle" type="" placeholder="Enter a title"></div>
                   <div class="textfield-fail" id="tile-fail-message"></div>
@@ -112,7 +112,9 @@
                   <button onclick="createNewTask()" class="createTaskBtn">Create Task <img src="../assets/img/check.svg"></button>
                </div>
             </div>
+            
          </div>
+         
          <div w3-include-html="../assets/templates/desktop_template_footer.html"></div>
       </div>
    </body>
