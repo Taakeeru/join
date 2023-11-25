@@ -741,34 +741,36 @@ function showAssignetContacts2(loggedInUser) {
         <input type="checkbox" id="inputId${i}" ${isChecked ? 'checked' : ''} onclick="handleCheckboxClick2('${i}', '${userName}', '${getInitial}', '${getColor}')">
       </div>`;
 
-    let userContactData = {
-      name: userName,
-      email: loggedInUser.contacts[i].email,
-      phone: loggedInUser.contacts[i].phone,
-      initial: getInitial,
-      color: getColor
-    };
+    // let userContactData = {
+    //   name: userName,
+    //   email: loggedInUser.contacts[i].email,
+    //   phone: loggedInUser.contacts[i].phone,
+    //   initial: getInitial,
+    //   color: getColor
+    // };
     
-    contactData.push(userContactData);
+    // contactData.push(userContactData);
   }
 }
 
 
 
-let isBoxOfContactsCleared = false;
+// let isBoxOfContactsCleared = false;
 
 function handleCheckboxClick2(i, userName, getInitial, getColor) {
   let checkbox = document.getElementById(`inputId${i}`);
   let addUser = document.getElementById("addContactstoassign2");
   let userId = `user_${i}`;
+
   if (!checkbox.checked) {
     if (!document.getElementById(userId)) {
       addUser.innerHTML += `
-          <div>
-            <div id="${userId}" class="userBoxContainer displayFlex">
-              <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-            </div>
-          </div>`;
+        <div>
+          <div id="${userId}" class="userBoxContainer displayFlex">
+            <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+          </div>
+        </div>`;
+
       let selectedUser = {
         name: userName,
         email: loggedInUser.contacts[i].email,
@@ -779,16 +781,24 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
       selectedUsers.push(selectedUser);
       checkbox.checked = true;
     }
-    } else {
+  } else {
     console.log(`Removing user with ID: ${userId}`);
     // Wenn die Checkbox deaktiviert ist und der Benutzer in der Liste ist, entferne ihn
     let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
-      // Wenn der Benutzer im Array gefunden wurde, entferne ihn
+
+    // Wenn der Benutzer im Array gefunden wurde, entferne ihn
     if (indexToRemove !== -1) {
       selectedUsers.splice(indexToRemove, 1);
+
+      // Entferne auch das entsprechende HTML-Element
+      let userElementToRemove = document.getElementById(userId);
+      if (userElementToRemove) {
+        addUser.removeChild(userElementToRemove.parentElement);
+      }
     }
     checkbox.checked = false;
-}}
+  }
+}
 
 
 
