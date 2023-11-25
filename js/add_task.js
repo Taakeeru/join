@@ -2,6 +2,7 @@ let allTasks =[];
 let contactData = [];
 let selectedPriority;
 let currentSubtasks = [];
+let checked = true;
 
 async function initAddTask() {
   await includeHTML();
@@ -56,7 +57,7 @@ function clearTasksArray() {
   }
 }
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory, selectedPriority, currentSubtasks) {
+async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory, selectedPriority, currentSubtasks){
   getTitle = getTitle.trim();
 
   // Fetch existing tasks from the backend
@@ -83,6 +84,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       workCategory: getCategory,
       category: "toDo",
       subtasks: currentSubtasks,
+      isChecked: checked  // Neuer Parameter hinzugefügt
     };
 
     existingTasks.push(newTask);
@@ -97,6 +99,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
     alert('Task bereits vorhanden');
   }
 }
+
 
 
 

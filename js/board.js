@@ -725,44 +725,30 @@ function createNewTask2() {
 
 function showAssignetContacts2(loggedInUser) {
   let box = document.getElementById("selectContainer2");
-  
+
   for (let i = 0; i < loggedInUser.contacts.length; i++) {
     let userName = loggedInUser.contacts[i].name;
     let getInitial = loggedInUser.contacts[i].initial;
     let getColor = loggedInUser.contacts[i].color;
-    
+
     // Überprüfe, ob der Kontakt ausgewählt ist
     let isChecked = selectedUsers.some(user => user.name === userName);
-    
-    box.innerHTML += /*html*/`
+
+    box.innerHTML += /*html*/ `
       <div class="userBoxContainer displayFlex">
         <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
         <span class="userPosition">${userName}</span>
-        <input type="checkbox" id="inputId${i}" ${isChecked ? 'checked' : ''} onclick="handleCheckboxClick2('${i}', '${userName}', '${getInitial}', '${getColor}')">
+        <input type="checkbox" id="inputId${i}" ${isChecked ? 'checked' : ''} onclick="handleCheckboxClick2(${i}, '${userName}', '${getInitial}', '${getColor}', ${isChecked})">
       </div>`;
-
-    // let userContactData = {
-    //   name: userName,
-    //   email: loggedInUser.contacts[i].email,
-    //   phone: loggedInUser.contacts[i].phone,
-    //   initial: getInitial,
-    //   color: getColor
-    // };
-    
-    // contactData.push(userContactData);
   }
 }
 
-
-
-// let isBoxOfContactsCleared = false;
-
-function handleCheckboxClick2(i, userName, getInitial, getColor) {
+function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
   let checkbox = document.getElementById(`inputId${i}`);
   let addUser = document.getElementById("addContactstoassign2");
   let userId = `user_${i}`;
 
-  if (!checkbox.checked) {
+  if (!isChecked) {
     if (!document.getElementById(userId)) {
       addUser.innerHTML += `
         <div>
@@ -780,6 +766,7 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
       };
       selectedUsers.push(selectedUser);
       checkbox.checked = true;
+      console.log(`user${userId} hat value true`);
     }
   } else {
     console.log(`Removing user with ID: ${userId}`);
@@ -797,8 +784,11 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
       }
     }
     checkbox.checked = false;
+    console.log(`user${userId} hat value false`);
   }
 }
+
+
 
 
 
