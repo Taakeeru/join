@@ -500,6 +500,9 @@ body {
   .containAddTask {
     width: 300px;
   }
+  .ClearBtn {
+    display: none;
+  }
 }
 
 @media (max-width: 500px) {
@@ -600,9 +603,7 @@ body {
       width: 284px;
     }
   }
-  .ClearBtn {
-    display: none;
-  }
+ 
 
   .addContactstoassign {
     width: 325px;
