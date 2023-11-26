@@ -743,20 +743,14 @@ function showAssignetContacts2(loggedInUser) {
   }
 }
 
+
 function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
   let checkbox = document.getElementById(`inputId${i}`);
-  let addUser = document.getElementById("addContactstoassign2");
   let userId = `user_${i}`;
 
-  if (!isChecked) {
-    if (!document.getElementById(userId)) {
-      addUser.innerHTML += `
-        <div>
-          <div id="${userId}" class="userBoxContainer displayFlex">
-            <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-          </div>
-        </div>`;
-
+  if (!checkbox.checked) {
+    // Überprüfe, ob der Kontakt bereits im Array vorhanden ist
+    if (!selectedUsers.some(user => user.name === userName)) {
       let selectedUser = {
         name: userName,
         email: loggedInUser.contacts[i].email,
@@ -765,31 +759,48 @@ function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
         color: getColor
       };
       selectedUsers.push(selectedUser);
+      console.log(`selectedUsers hat ${selectedUsers.length}`);
+      renderAddedContactBox(selectedUsers);
       checkbox.checked = true;
-      console.log(`user${userId} hat value true`);
-    }
-  } else {
-    console.log(`Removing user with ID: ${userId}`);
-    // Wenn die Checkbox deaktiviert ist und der Benutzer in der Liste ist, entferne ihn
-    let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
 
-    // Wenn der Benutzer im Array gefunden wurde, entferne ihn
-    if (indexToRemove !== -1) {
-      selectedUsers.splice(indexToRemove, 1);
-
-      // Entferne auch das entsprechende HTML-Element
-      let userElementToRemove = document.getElementById(userId);
-      if (userElementToRemove) {
-        addUser.removeChild(userElementToRemove.parentElement);
+      console.log(`checkbox havt value ${checkbox.checked}`);
+    }else{
+      console.log(`Kontakt bereits ausgewählt: ${userName}`);
       }
-    }
-    checkbox.checked = false;
-    console.log(`user${userId} hat value false`);
+  } else {
+      console.log(`Removing user with ID: ${userId}`);
+      // Wenn die Checkbox deaktiviert ist und der Benutzer in der Liste ist, entferne ihn
+      let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
+
+      // Wenn der Benutzer im Array gefunden wurde, entferne ihn
+      if (indexToRemove !== -1) {
+        selectedUsers.splice(indexToRemove, 1);
+      }
+      renderAddedContactBox(selectedUsers);
+      checkbox.checked = false;
+
+      console.log(`checkbox havt value ${checkbox.checked}`);
+      console.log(`${userId} hat value false`);
   }
 }
 
 
 
+
+
+
+function renderAddedContactBox(selectedUsers){
+  let currentUsers = document.getElementById("addContactstoassign2");
+  currentUsers.innerHTML = '';
+  for (let i = 0; i < selectedUsers.length; i++) {
+    const initial = selectedUsers[i].initial;
+    const color = selectedUsers[i].color;
+    currentUsers.innerHTML += /*html*/`
+          <div class="userBoxContainer displayFlex">
+            <div class="imgPerson displayFlex" style="background-color: ${color};">${initial}</div>
+          </div>`;
+  }
+}
 
 
 
