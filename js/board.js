@@ -748,8 +748,9 @@ function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
   let checkbox = document.getElementById(`inputId${i}`);
   let userId = `user_${i}`;
 
-  if (!checkbox.checked) {
-    // Überprüfe, ob der Kontakt bereits im Array vorhanden ist
+  if (!isChecked) {
+    isChecked = true;
+    // Check if the contact is already in the array
     if (!selectedUsers.some(user => user.name === userName)) {
       let selectedUser = {
         name: userName,
@@ -761,31 +762,26 @@ function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
       selectedUsers.push(selectedUser);
       console.log(`selectedUsers hat ${selectedUsers.length}`);
       renderAddedContactBox(selectedUsers);
-      checkbox.checked = true;
-
-      console.log(`checkbox havt value ${checkbox.checked}`);
-    }else{
-      console.log(`Kontakt bereits ausgewählt: ${userName}`);
-      }
+    } else {
+      console.log(`User ${userName} already exists in selectedUsers`);
+    }
+    console.log(`isChecked havt value ${isChecked}`);
   } else {
-      console.log(`Removing user with ID: ${userId}`);
-      // Wenn die Checkbox deaktiviert ist und der Benutzer in der Liste ist, entferne ihn
-      let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
+    console.log(`Removing user with ID: ${userId}`);
+    isChecked = false; 
+    // If the checkbox is unchecked and the user is in the list, remove them
+    let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
 
-      // Wenn der Benutzer im Array gefunden wurde, entferne ihn
-      if (indexToRemove !== -1) {
-        selectedUsers.splice(indexToRemove, 1);
-      }
-      renderAddedContactBox(selectedUsers);
-      checkbox.checked = false;
+    // If the user was found in the array, remove them
+    if (indexToRemove !== -1) {
+      selectedUsers.splice(indexToRemove, 1);
+    }
+    renderAddedContactBox(selectedUsers);
 
-      console.log(`checkbox havt value ${checkbox.checked}`);
-      console.log(`${userId} hat value false`);
+    console.log(`isChecked havt value ${isChecked}`);
+    console.log(`${userId} hat value false`);
   }
 }
-
-
-
 
 
 

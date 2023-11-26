@@ -84,11 +84,10 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       workCategory: getCategory,
       category: "toDo",
       subtasks: currentSubtasks,
-      isChecked: checked  // Neuer Parameter hinzugefügt
+      isChecked: checked 
     };
 
     existingTasks.push(newTask);
-
     // Update the backend with the modified task list
     await setItem('newTask', JSON.stringify(existingTasks));
 
