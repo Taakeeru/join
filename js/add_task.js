@@ -92,13 +92,24 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
     await setItem('newTask', JSON.stringify(existingTasks));
 
     console.log(existingTasks);
-    alert('Task angelegt');
+    await showCreateAnimation();
   } else {
     // Task with the same title already exists
     alert('Task bereits vorhanden');
   }
 }
 
+
+async function showCreateAnimation(){
+  const successMessage = document.getElementById('animation');
+
+  successMessage.classList.remove('d-none');
+  await new Promise(resolve => setTimeout(resolve, 2500));
+  successMessage.classList.add('slideUpDown');
+  await new Promise(resolve => setTimeout(resolve, 300));
+  successMessage.classList.remove('slideUpDown');
+  successMessage.classList.add('d-none');
+}
 
 
 
@@ -137,27 +148,32 @@ function checkInputFields() {
     low = document.getElementById("low");
     medium = document.getElementById("medium");
     urgent = document.getElementById("high");
-  
+    lowIcon = document.getElementById("lowPriority");
+    mediumIcon = document.getElementById("mediumPriority");
+    heighIcon = document.getElementById("urgentPriority");
    
     low.classList.remove("active3");
     medium.classList.remove("active2");
     urgent.classList.remove("active");
-  
-   
+    lowIcon.classList.remove("colorIcon3");
+    mediumIcon.classList.remove("colorIcon2");
+    heighIcon.classList.remove("colorIcon");
+    
     if (selectedPriority === priority) {
      
       selectedPriority = null;
     } else {
       
-      selectedPriority = priority;
-  
-      
-      if (selectedPriority === 'low') {
+      selectedPriority = priority;  
+    if (selectedPriority === 'low') {
         low.classList.add("active3");
+        lowIcon.classList.add("colorIcon3");
       } else if (selectedPriority === 'medium') {
         medium.classList.add("active2");
+        mediumIcon.classList.add("colorIcon2");
       } else if (selectedPriority === 'high') {
         urgent.classList.add("active");
+        heighIcon.classList.add("colorIcon");
       }
     }
   }

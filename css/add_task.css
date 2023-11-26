@@ -4,13 +4,28 @@ body {
   overflow-y: hidden;
 }
 .active {
-  background-color: red !important;
+  background-color: rgb(255, 66, 6) !important;
+  color: white;
 }
 .active2 {
-  background-color: yellow !important;
+  background-color: rgb(255, 168, 0) !important;
+  color: white;
 }
 .active3 {
-  background-color: green !important;
+  background-color: rgb(154, 233, 93) !important;
+  color: rgb(255, 255, 255);
+}
+
+.colorIcon{
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(534%) hue-rotate(78deg) brightness(112%) contrast(101%);
+}
+
+.colorIcon2{
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(534%) hue-rotate(78deg) brightness(112%) contrast(101%);
+}
+
+.colorIcon3{
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(534%) hue-rotate(78deg) brightness(112%) contrast(101%);
 }
 .containAddTask {
   width: 440px;
@@ -471,6 +486,48 @@ body {
   width: 32px;
 }
 
+#animation {
+  position: absolute;
+  top: 100vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(69, 137, 255, 1);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  animation: slideUp 0.3s ease-in forwards;
+  font-size: 23px;
+  height: 60px;
+  width: 334px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 52;
+}
+
+.slideUpDown {
+  animation: slideUpDown 0.5s ease-out forwards !important;
+}
+
+@keyframes slideUp {
+    from {
+        top: 100%;
+    }
+    to {
+        top: 50%;
+    }
+}
+
+@keyframes slideUpDown {
+  0% {
+      top: 50%;
+  }
+  100% {
+      top: 100%;
+  }
+}
+
 /* .addContactstoassign  {
   für container bilder übereinander
   display: flex;
@@ -608,4 +665,5 @@ body {
   .addContactstoassign {
     width: 325px;
   }
+
 
