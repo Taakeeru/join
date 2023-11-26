@@ -22,6 +22,19 @@ async function init() {
 
 // ------------------------ tastBereich------------------
 
+// function seeDate(){
+//   let datepicker = document.getElementById('datepicker');
+//   datepicker.datepicker();
+// }
+// $(document).ready(function(){
+//   $('.pickDate').datepicker({
+//       autoclose: true,
+//       clearBtn: true
+//   });
+// });
+$('.pickDate').datepicker();
+
+
 function getPriorityImagePath(priority) {
  
   const priorityPaths = {
@@ -186,19 +199,8 @@ function generateAddTaskSideMenu() {
                  </div>
                  <div class="dateContent">
                      <p class="dateTitle">Due date</p>
-                     <div class="inputfieldDateContainer modal-body">
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog curser">
-                             <div class="modal-content curser">
-                               <div class="modal-body curser">
-                                 <div>
-                                    <input required id="dueDateValue" class="inputfieldDate" type="date" placeholder="dd/mm/yyyy">
-                                 </div>
-                               </div>
-                             </div>
-                           </div>
-                         </div>
-                     </div>
+                    
+                    <input  class="pickDate" placeholder="tipe you date" type="text">
                      <div class="textfield-fail" id="date-fail-message"></div>
                   </div>
               </div>
@@ -483,19 +485,9 @@ function openEditContainer(element) {
                   <div class="textfield-fail" id="description-fail-message2"></div>
                   <div class="dateContent">
                      <p class="dateTitle">Due date</p>
-                     <div class="inputfieldDateContainer modal-body">
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog curser">
-                             <div class="modal-content curser">
-                               <div class="modal-body curser">
-                                 <div>
-                                    <input required id="dueDateValue2" class="inputfieldDate" type="date" placeholder="dd/mm/yyyy">
-                                 </div>
-                               </div>
-                             </div>
-                           </div>
-                         </div>
-                     </div>
+
+                     <input  class="pickDate" placeholder="tipe you date" type="text">
+
                      <div class="textfield-fail" id="date-fail-message2"></div>
                   </div>
                </div>
