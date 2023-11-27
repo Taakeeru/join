@@ -86,12 +86,30 @@
             </div>
             <div class="scrollContainer">
                <div class="boardBotSektion">
-                  <div
+                  <div id="mobileAdd" class="boardCategorysSektionContainerMobile d-none">
+                     <span class="mobileSpan">To do</span>
+                     <img onclick ="showAddTaskMenu()"
+                        class="boardCategorysSektionIcons"
+                        src="../assets/img/plus_button.svg"
+                        alt=""
+                        />
+                  </div>
+                  <div 
                      class="boardtoDoSektion"
                      id="toDo"
                      ondragleave="removeHighlight('toDo')"
                      ondragover="allowDrop(event); highlight('toDo')"
                      ondrop="moveTo('toDo'); removeHighlight('toDo')">
+                  </div>
+               </div>
+               <div class="boardBotSektion">
+                  <div id="mobileAdd" class="boardCategorysSektionContainerMobile d-none">
+                     <span class="mobileSpan">In progress</span>
+                     <img onclick ="showAddTaskMenu()"
+                        class="boardCategorysSektionIcons"
+                        src="../assets/img/plus_button.svg"
+                        alt=""
+                        />
                   </div>
                   <div
                      class="boardProgressSektion"
@@ -100,21 +118,40 @@
                      ondragover="allowDrop(event); highlight('progress')"
                      ondrop="moveTo('progress'); removeHighlight('progress')"
                      ></div>
+                  </div>
+                  <div class="boardBotSektion">
+                     <div id="mobileAdd" class="boardCategorysSektionContainerMobile d-none">
+                        <span class="mobileSpan">Await feedback</span>
+                        <img onclick ="showAddTaskMenu()"
+                           class="boardCategorysSektionIcons"
+                           src="../assets/img/plus_button.svg"
+                           alt=""
+                           />
+                     </div>
                   <div
                      class="boardFeedbackSektion"
                      id="feedBack"
                      ondragleave="removeHighlight('feedBack')"
                      ondragover="allowDrop(event); highlight('feedBack')"
                      ondrop="moveTo('feedBack'); removeHighlight('feedBack')"
-                     ></div>
+                     ></div></div>
+                     <div class="boardBotSektion">
+                        <div id="mobileAdd" class="boardCategorysSektionContainerMobile d-none">
+                           <span class="mobileSpan">Done</span>
+                           <img onclick ="showAddTaskMenu()"
+                              class="boardCategorysSektionIcons"
+                              src="../assets/img/plus_button.svg"
+                              alt=""
+                              />
+                        </div>
                   <div
                      class="boardDoneSektion"
                      id="done"
                      ondragleave="removeHighlight('done')"
                      ondragover="allowDrop(event); highlight('done')"
                      ondrop="moveTo('done'); removeHighlight('done')"
-                     ></div>
-               </div>
+                     ></div></div>
+               
             </div>
          </div>
          <div

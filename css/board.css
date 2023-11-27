@@ -82,6 +82,7 @@ body {
   cursor: pointer;
 }
 .scrollContainer {
+  display: flex;
   height: 72vh;
   overflow: scroll;
 }
@@ -226,23 +227,8 @@ body {
   text-align: center;
   line-height: 30px;
 }
-@media (max-height: 667px) {
-  .boardCategorysSektion {
-    flex-direction: column;
-    padding: 0px 64px 0px 64px;
-    font-weight: 700;
-    color: #42526e;
-    font-size: 23px;
-    display: flex;
-  }
-  .boardBotSektion {
-    display: flex;
-    justify-content: space-around;
-    padding: 0px 64px 0px 64px;
-    padding-bottom: 12px;
-    flex-direction: column;
-  }
-}
+
+
 /* SideMenuClass*/
 .header-sideMenu {
   display: flex;
@@ -329,7 +315,7 @@ body {
 .openCardsDetails {
   background-color: #f5f5f5;
   width: 528px;
-  
+
   z-index: 2;
   border-radius: 30px 30px 30px 30px;
   transition: all 225ms ease-in-out;
@@ -505,39 +491,115 @@ body {
   display: flex;
   align-items: center;
 }
-.cardAddUsersIconsContain{
+.cardAddUsersIconsContain {
   display: flex;
- height: auto;
- width: 180px;
+  height: auto;
+  width: 180px;
   overflow-y: hidden;
 }
-.cardAddUsersIcons{
+.cardAddUsersIcons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.detaicardsUserContainer{
+.detaicardsUserContainer {
   display: flex;
   padding: 7px 16px 7px 16px;
-  
+
   height: 56px;
   align-items: center;
   gap: 26px;
-
 }
-.detailVersion{
+.detailVersion {
   display: inline-block;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background-color: #ff5733;
-    color: #fff;
-    text-align: center;
-    line-height: 41px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #ff5733;
+  color: #fff;
+  text-align: center;
+  line-height: 41px;
 }
-.cardUserDetailVersion{
-  font-family: 'Open Sans';
-    font-size: 19px;
-    font-weight: 400;
+.cardUserDetailVersion {
+  font-family: "Open Sans";
+  font-size: 19px;
+  font-weight: 400;
+}
+@media (max-width: 1000px) {
+  .scrollContainer {
+    
+}
+#mobileAdd {
+  display: flex!important;
+  align-items: center;
+  justify-content: space-between;
+}
+.boardCategorysSektion{
+  display: none;
+}
+.boardButton{
+  display: none;
+}
+
+.scrollContainer {
+  
+ flex-direction: column;
+}
+ 
+ .boardBotSektion {
+  flex-direction: column;
+  display: flex;
+  justify-content:start;}
+
+.boardProgressSektion {
+  flex-direction: unset;
+  width: auto;
+  overflow: scroll;
+}
+
+.boardtoDoSektion {
+  width: auto;
+ flex-direction: unset;
+ overflow: scroll;
+}
+
+ .contentContainer {
+  padding-top: 100px!important;
+}
+.boardTopSektion {
+
+  align-items: center;
+}
+.boardDoneSektion{
+flex-direction: unset;
+width: auto;
+overflow: scroll;
+margin-bottom: 146px;
+}
+.boardFeedbackSektion{
+  flex-direction: unset;
+  width: auto;
+  overflow: scroll;
+}
+.boardFeedbackSektion::-webkit-scrollbar {
+  width: 0; 
+}
+.boardProgressSektion::-webkit-scrollbar {
+  width: 0; 
+}
+.boardtoDoSektion::-webkit-scrollbar {
+  width: 0; 
+}.boardDoneSektion::-webkit-scrollbar {
+  width: 0; 
+}
+.mobileSpan{
+  font-weight: 700;
+  color: #42526e;
+  font-size: 23px;
+}
+.taskCards{
+margin-bottom: 10px;
+margin-left: 9px;
+}
 }
 
