@@ -150,5 +150,4 @@ function getPriority(){
     valueHighDiv2.innerHTML = '';
     valueHighDiv.innerHTML = /*html*/`<p class="showNumber">${valuePriority}</p>`;
     valueHighDiv2.innerHTML = /*html*/`<p class="showNumber">${valuePriority}</p>`;
-    calcAllTogetherMobile(currenValues);
 }
