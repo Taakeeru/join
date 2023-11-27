@@ -210,11 +210,11 @@ function generateAddTaskSideMenu() {
                     <p class="assignedTitle small" >(optional)</p>
                     </p>
                  </div>
-                 <div class="buttonContainer"> 
-                    <button id="high" onclick="getThePriority('high')" class="prioButtonRed">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
-                    <button id="medium" onclick="getThePriority('medium')" class="prioButtonYellow">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                    <button id="low" onclick="getThePriority('low')" class="prioButtonGreen">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
-                  </div>
+                  <div class="buttonContainer"> 
+                   <button id="low" onclick="getThePriority('low', 'low', 'medium', 'high')" class="prioButtonGreen">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                   <button id="medium" onclick="getThePriority('medium', 'low', 'medium', 'high')" class="prioButtonYellow">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                   <button id="high" onclick="getThePriority('high', 'low', 'medium', 'high')" class="prioButtonRed">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                 </div>
                   
               </div>
               <div class="assignedContent assignedContent-sideMenu" >
@@ -497,10 +497,10 @@ function openEditContainer(element) {
                      <p class="assignedTitle small" >(optional)</p>
                      </p>
                   </div>
-                  <div class="buttonContainer"> 
-                     <button id="low" onclick="getThePriority('low', 'low', 'medium', 'high')" class="prioButtonGreen">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
-                     <button id="medium" onclick="getThePriority('medium', 'low', 'medium', 'high')" class="prioButtonYellow">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                     <button id="high" onclick="getThePriority('high', 'low', 'medium', 'high')" class="prioButtonRed">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                   <div class="buttonContainer"> 
+                    <button id="low" onclick="getThePriority('low', 'low', 'medium', 'high')" class="prioButtonGreen">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                    <button id="medium" onclick="getThePriority('medium', 'low', 'medium', 'high')" class="prioButtonYellow">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                    <button id="high" onclick="getThePriority('high', 'low', 'medium', 'high')" class="prioButtonRed">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
                    </div>
                </div>
                <div class="assignedContent assignedContent-sideMenu" >
