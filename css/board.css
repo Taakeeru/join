@@ -63,7 +63,7 @@ body {
 .boardCategorysSektion {
   display: flex;
   justify-content: space-around;
-  padding: 0px 64px 0px 64px;
+  padding: 0px 64px 0px 0px;
   font-weight: 700;
   color: #42526e;
   font-size: 23px;
@@ -74,7 +74,7 @@ body {
   width: 252px;
   justify-content: space-between;
   padding: 0px 16px 0px 16px;
-  align-items: center;
+  
 }
 .boardCategorysSektionIcons {
   width: 24px;
@@ -92,8 +92,9 @@ body {
 .boardBotSektion {
   display: flex;
   justify-content: space-around;
-  padding: 0px 64px 0px 64px;
+  padding: 0px 64px 0px 0px;
   padding-bottom: 12px;
+  width: 100%
 }
 
 .boardtoDoSektion {
@@ -525,10 +526,12 @@ body {
   font-size: 19px;
   font-weight: 400;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1260px) {
   .scrollContainer {
-    
+    margin: 7px;
 }
+.mainContent {
+  width: 98%;}
 #mobileAdd {
   display: flex!important;
   align-items: center;
@@ -542,14 +545,15 @@ body {
 }
 
 .scrollContainer {
-  
+  width: 79%;
  flex-direction: column;
 }
  
  .boardBotSektion {
   flex-direction: column;
   display: flex;
-  justify-content:start;}
+  justify-content:start;
+  width: calc(85% - 58px);}
 
 .boardProgressSektion {
   flex-direction: unset;
@@ -581,17 +585,7 @@ margin-bottom: 146px;
   width: auto;
   overflow: scroll;
 }
-.boardFeedbackSektion::-webkit-scrollbar {
-  width: 0; 
-}
-.boardProgressSektion::-webkit-scrollbar {
-  width: 0; 
-}
-.boardtoDoSektion::-webkit-scrollbar {
-  width: 0; 
-}.boardDoneSektion::-webkit-scrollbar {
-  width: 0; 
-}
+
 .mobileSpan{
   font-weight: 700;
   color: #42526e;
@@ -600,6 +594,134 @@ margin-bottom: 146px;
 .taskCards{
 margin-bottom: 10px;
 margin-left: 9px;
+margin: 21px;
+
 }
+.boardFeedbackSektion {
+  width: calc(97% - 58px);
+  overflow-y: hidden;
 }
+.boardProgressSektion {
+  width: calc(97% - 58px);
+  overflow-y: hidden;
+}
+.boardtoDoSektion {
+  width: calc(97% - 58px);
+  overflow-y: hidden;
+}.boardDoneSektion {
+  width: calc(97% - 58px);
+  overflow-y: hidden;
+}
+.boardFeedbackSektion::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+.boardFeedbackSektion::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(158, 158, 158, 0.1);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+.boardFeedbackSektion::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #a8a8a8;
+}
+
+.boardProgressSektion::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+.boardProgressSektion::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(158, 158, 158, 0.1);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+.boardProgressSektion::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #a8a8a8;
+}
+.boardtoDoSektion::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+.boardtoDoSektion::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(158, 158, 158, 0.1);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+.boardtoDoSektion::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #a8a8a8;
+}
+.boardDoneSektion::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+.boardDoneSektion::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(158, 158, 158, 0.1);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+.boardDoneSektion::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #a8a8a8;
+}
+
+
+}
+
+@media (max-width: 1450px) {
+  .boardBotSektion{
+    padding: 0px 0px 0px 0px;
+    width: auto;
+  }
+  .boardCategorysSektion{
+    padding: 0px 0px 0px 0px;
+  }
+}
+
+@media (max-width: 1000px) {
+  
+  .scrollContainer {
+    width: unset;
+
+  }
+  .boardFeedbackSektion {
+    width: auto;
+    overflow-y: hidden;
+  }
+  .boardProgressSektion {
+    width: auto;
+    overflow-y: hidden;
+  }
+  .boardtoDoSektion {
+    width: auto;
+    overflow-y: hidden;
+  }.boardDoneSektion {
+    width: auto;
+    overflow-y: hidden;
+  }
+  
+  }
+  .addTask::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;
+  }
+  
+  .addTask::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(158, 158, 158, 0.1);
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+  
+  .addTask::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #a8a8a8;
+  }
+ 
+
 
