@@ -319,16 +319,8 @@ function addSubTask() {
       <ul>
         <li class="subtaskList">
           <span id="${subtaskId}">${subtaskValue} </span>
-          <div class="displayFlex">
-            <img src="../assets/img/edit.svg" onclick="editSubtask('${subtaskId}')" class="subtaskEditImg">|
+          <div>
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-          </div>
-          <div class="d-none">
-            <input type="text" class="editSubtask">
-            <div class="displayFlex">
-              <img src="../assets/img/close.svg" alt="">|
-              <img src="../assets/img/checkImg.png" alt="">
-            </div>
           </div>
         </li>
       </ul>`;
