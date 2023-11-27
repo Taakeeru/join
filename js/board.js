@@ -7,7 +7,7 @@ let openedEditContainerElement = null;
 async function init() {
   await includeHTML();
   loggedInUser = await getLoggedInUser();
- highlightTitle('board');
+  highlightTitle('board');
   highlightTitleMobile('board-mobile');
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
@@ -21,19 +21,6 @@ async function init() {
 
 
 // ------------------------ tastBereich------------------
-
-// function seeDate(){
-//   let datepicker = document.getElementById('datepicker');
-//   datepicker.datepicker();
-// }
-// $(document).ready(function(){
-//   $('.pickDate').datepicker({
-//       autoclose: true,
-//       clearBtn: true
-//   });
-// });
-$('.pickDate').datepicker();
-
 
 function getPriorityImagePath(priority) {
  
@@ -105,7 +92,9 @@ function updateHTML(getTaskInfo) {
     const element = doneList[index];
     document.getElementById("done").innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
   }
-}}
+}
+getValuesFromBoard();
+}
 
 
 
@@ -178,7 +167,7 @@ function removeHighlight(id) {
 }
 
 function generateAddTaskSideMenu() {
-  document.getElementById('FirstCardRenderContainer').innerHTML=
+  document.getElementById('FirstCardRenderContainer').innerHTML =
    `<div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" >
   <div id="sideMenu" class="sideMenuStyle" onclick="event.stopPropagation()" >
      <div class="header-sideMenu"><span>Add Task</span>
@@ -792,16 +781,30 @@ function renderAddedContactBox(selectedUsers){
 }
 
 
-
-
-
-
-
-
-
-
-
 function loadCategory2(){
   let getValue = document.getElementById('categorySelect2').textContent.trim();
   return getValue;
+}
+
+
+function getValuesFromBoard() {
+  let toDoContainer = document.getElementById('toDo');
+  let progressContainer = document.getElementById('progress');
+  let feedbackContainer = document.getElementById('feedBack');
+  let doneContainer = document.getElementById('done');
+
+  let valueToDo = toDoContainer.children.length;
+  let valueProgress = progressContainer.children.length;
+  let valueFeedBack = feedbackContainer.children.length;
+  let valueDone = doneContainer.children.length;
+
+  console.log(`todo = '${valueToDo}', progress = '${valueProgress}', feedBack = '${valueFeedBack}', done = '${valueDone}', `);
+  renderCurrentNummber(valueToDo, valueProgress, valueFeedBack, valueDone);
+
+  return {
+    valueToDo: valueToDo,
+    valueProgress: valueProgress,
+    valueFeedBack: valueFeedBack,
+    valueDone: valueDone
+  };
 }

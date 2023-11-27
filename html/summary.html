@@ -9,11 +9,12 @@
       href="../assets/img/join_logo.svg"
       type="image/x-icon"
     />
-    <script src="../js/include.js"></script>
-    <script src="../js/storage.js"></script>
-    <script src="../js/profile.js"></script>
-    <script src="../js/summary.js"></script>
-    <script src="../js/register.js"></script>
+    <script defer src="../js/include.js"></script>
+    <script defer src="../js/storage.js"></script>
+    <script defer src="../js/profile.js"></script>
+    <script defer src="../js/register.js"></script>
+    <script defer src="../js/board.js"></script>
+    <script defer src="../js/summary.js"></script>    
     <link rel="stylesheet" href="../css/desktop_template_header.css" />
     <link rel="stylesheet" href="../css/desktop_template_footer.css" />
     <link rel="stylesheet" href="../css/mobile_template.css" />
@@ -22,23 +23,22 @@
   </head>
 
   <body onload="init()">
-    <div
-      w3-include-html="../assets/templates/desktop_template_header.html"
-    ></div>
+    <div w3-include-html="../assets/templates/desktop_template_header.html"></div>
     <div w3-include-html="../assets/templates/mobile_template.html"></div>
+    <div id="generateContent"></div>
     <div class="dislayRowBody">
       <div class="positionMainBox">
         <div class="boxForBoxes">
           <div class="positionGreed">
             <h1 class="showGreed" id="greeting">Good morning,</h1>
-            <h1 class="showName" id="greet-name">Max Mustermann</h1>
+            <div class="showName" id="greet-name"></div>
           </div>
           <div class="positionTime">
             <div class="showDate" onclick="showTaskBoard()">
               <div>
                 <div class="displayFlex">
                   <img src="../assets/img/ellipse3.svg" class="clockCircle" />
-                  <p class="showNumber" id="showAllTasks">1</p>
+                  <div id="showUrgentTasks"></div>
                 </div>
                 <p class="tasksUrgent">Tasks Urgent</p>
               </div>
@@ -52,9 +52,8 @@
               <div class="displayFlex">
                 <img
                   src="../assets/img/ellipse3.svg"
-                  class="showTaskInBoardImg"
-                />
-                <p class="showTheNumbers" id="showTaskInBoardNumber">1</p>
+                  class="showTaskInBoardImg"/>
+                <div id="showTaskInBoardNumber"></div>
               </div>
               <p class="tasksUrgent">Task on Board</p>
             </div>
@@ -63,7 +62,7 @@
             <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
               <div class="displayFlex">
                 <img src="../assets/img/ellipse3.svg" class="showTo-doImg" />
-                <p class="showTheNumbers" id="showNumberToDo">1</p>
+                <div id="showNumberToDo"></div>
               </div>
               <p class="textInBoxes">Tasks<br />To-do</p>
             </div>
@@ -71,9 +70,8 @@
               <div class="displayFlex">
                 <img
                   src="../assets/img/ellipse3.svg"
-                  class="showTaskInProgressImg"
-                />
-                <p class="showTheNumbers" id="showNumberProgress">1</p>
+                  class="showTaskInProgressImg"/>
+                <div id="showNumberProgress"></div>
               </div>
               <p class="textInBoxes">Task in Progress</p>
             </div>
@@ -83,7 +81,7 @@
                   src="../assets/img/ellipse3.svg"
                   class="showAwaitingFeedbackImg"
                 />
-                <p class="showTheNumbers" id="showNumberAwaitingFeedback">1</p>
+                <div id="showNumberAwaitingFeedback"></div>
               </div>
               <p class="textInBoxes">Awaiting Feedback</p>
             </div>
@@ -93,7 +91,7 @@
                   src="../assets/img/ellipse3.svg"
                   class="showTasksDoneImg"
                 />
-                <p class="showTheNumbers" id="showNumberTasksDone">1</p>
+                <div id="showNumberTasksDone"></div>
               </div>
               <p class="textInBoxes">
                 Tasks <br />
@@ -114,7 +112,7 @@
           <div>
             <div class="displayFlex">
               <img src="../assets/img/ellipse3.svg" class="clockCircle" />
-              <p class="showNumber" id="showAllTasks">1</p>
+              <div id="showUrgentTasks2"></div>
             </div>
             <p class="tasksUrgent">Tasks Urgent</p>
           </div>
@@ -128,7 +126,7 @@
         <div class="tasksInBoard displayRow wd" onclick="showTaskBoard()">
           <div class="displayFlex">
             <img src="../assets/img/ellipse3.svg" class="showTo-doImg" />
-            <p class="showTheNumbers" id="showNumberToDo">1</p>
+            <div id="showNumberToDo2"></div>
           </div>
           <p class="textInBoxes">Tasks<br />To-do</p>
         </div>
@@ -141,7 +139,7 @@
               src="../assets/img/ellipse3.svg"
               class="showTaskInBoardImg"
             />
-            <p class="showTheNumbers" id="showTaskInBoardNumber">1</p>
+            <div id="showTaskInBoardNumber2"></div>
           </div>
           <p class="tasksUrgent">Task on Board</p>
         </div>
@@ -152,7 +150,7 @@
               src="../assets/img/ellipse3.svg"
               class="showTaskInProgressImg"
             />
-            <p class="showTheNumbers" id="showNumberProgress">1</p>
+            <div id="showNumberProgress2"></div>
           </div>
           <p class="textInBoxes">Task in Progress</p>
         </div>
@@ -161,26 +159,19 @@
       <div class="flex-row">
         <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
           <div class="displayFlex">
-            <img
-              src="../assets/img/ellipse3.svg"
-              class="showAwaitingFeedbackImg"
-            />
-            <p class="showTheNumbers" id="showNumberAwaitingFeedback">1</p>
+            <img src="../assets/img/ellipse3.svg" class="showAwaitingFeedbackImg"/>
+            <div id="showNumberAwaitingFeedback2"></div>
           </div>
           <p class="textInBoxes">Awaiting Feedback</p>
         </div>
         <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
           <div class="displayFlex">
-            <img
-              src="../assets/img/ellipse3.svg"
-              class="showTasksDoneImg"
-            />
-            <p class="showTheNumbers" id="showNumberTasksDone">1</p>
+            <img src="../assets/img/ellipse3.svg" class="showTasksDoneImg"/>
+            <div id="showNumberTasksDone2"></div>
           </div>
           <p class="textInBoxes">Tasks <br/> Done</p>
         </div>
       </div>
-
     </div>
   </body>
 </html>
