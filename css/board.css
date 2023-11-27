@@ -3,6 +3,7 @@ body {
   font-family: sans-serif;
   overflow: hidden;
 }
+
 .contentContainer {
   display: flex;
   flex-direction: row-reverse;

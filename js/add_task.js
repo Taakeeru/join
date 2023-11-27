@@ -143,40 +143,43 @@ function checkInputFields() {
     return isValid;
   }
 
-  function getThePriority(priority) {
-   
-    low = document.getElementById("low");
-    medium = document.getElementById("medium");
-    urgent = document.getElementById("high");
-    lowIcon = document.getElementById("lowPriority");
-    mediumIcon = document.getElementById("mediumPriority");
-    heighIcon = document.getElementById("urgentPriority");
-   
-    low.classList.remove("active3");
-    medium.classList.remove("active2");
-    urgent.classList.remove("active");
-    lowIcon.classList.remove("colorIcon3");
-    mediumIcon.classList.remove("colorIcon2");
-    heighIcon.classList.remove("colorIcon");
-    
-    if (selectedPriority === priority) {
-     
-      selectedPriority = null;
-    } else {
-      
-      selectedPriority = priority;  
-    if (selectedPriority === 'low') {
-        low.classList.add("active3");
-        lowIcon.classList.add("colorIcon3");
-      } else if (selectedPriority === 'medium') {
-        medium.classList.add("active2");
-        mediumIcon.classList.add("colorIcon2");
-      } else if (selectedPriority === 'high') {
-        urgent.classList.add("active");
-        heighIcon.classList.add("colorIcon");
+  function getThePriority(priority, lowId, mediumId, highId) {
+    const low = document.getElementById(lowId);
+    const medium = document.getElementById(mediumId);
+    const urgent = document.getElementById(highId);
+    const lowIcon = document.getElementById("lowPriority");
+    const mediumIcon = document.getElementById("mediumPriority");
+    const highIcon = document.getElementById("urgentPriority");
+  
+    if (low && medium && urgent && lowIcon && mediumIcon && highIcon) {
+      low.classList.remove("active3");
+      medium.classList.remove("active2");
+      urgent.classList.remove("active");
+      lowIcon.classList.remove("colorIcon3");
+      mediumIcon.classList.remove("colorIcon2");
+      highIcon.classList.remove("colorIcon");
+  
+      if (selectedPriority === priority) {
+        selectedPriority = null;
+      } else {
+        selectedPriority = priority;
+  
+        if (selectedPriority === 'low') {
+          low.classList.add("active3");
+          lowIcon.classList.add("colorIcon3");
+        } else if (selectedPriority === 'medium') {
+          medium.classList.add("active2");
+          mediumIcon.classList.add("colorIcon2");
+        } else if (selectedPriority === 'high') {
+          urgent.classList.add("active");
+          highIcon.classList.add("colorIcon");
+        }
       }
+    } else {
+      console.error("Ein oder mehrere Elemente wurden nicht gefunden.");
     }
   }
+  
 
   function addContacts() {
     let box = document.getElementById("selectContainer");
