@@ -646,11 +646,13 @@ async function editTask(openedEditContainerElement) {
   let getTitel = document.getElementById('addTastTitel2').value;
   let getDiscriptionArea = document.getElementById('addTastTextArea2').value;
   let getCategory = loadCategory2();
+  let getPrio = selectedPriority;
 
   // Aktualisiere die Werte der Karte
   taskToEdit.title = getTitel;
   taskToEdit.description = getDiscriptionArea;
   taskToEdit.workCategory = getCategory;
+  taskToEdit.priority = getPrio;
 
   // Aktualisiere die Kontakte unter "Assignet to" nur mit ausgewählten Kontakten
   taskToEdit.contacts = selectedUsers;
