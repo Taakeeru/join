@@ -92,9 +92,7 @@ function updateHTML(getTaskInfo) {
     const element = doneList[index];
     document.getElementById("done").innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
   }
-}
-getValuesFromBoard();
-}
+}}
 
 
 
@@ -488,9 +486,9 @@ function openEditContainer(element) {
                      </p>
                   </div>
                    <div class="buttonContainer"> 
-                    <button id="low" onclick="getThePriority('low', 'low', 'medium', 'high')" class="prioButtonGreen">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
-                    <button id="medium" onclick="getThePriority('medium', 'low', 'medium', 'high')" class="prioButtonYellow">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                    <button id="high" onclick="getThePriority('high', 'low', 'medium', 'high')" class="prioButtonRed">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                    <button id="low2" onclick="getThePriority2('low', 'low', 'medium', 'high')" class="prioButtonGreen">Low<img id="lowPriority2" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                    <button id="medium2" onclick="getThePriority2('medium', 'low', 'medium', 'high')" class="prioButtonYellow">Medium<img id="mediumPriority2" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                    <button id="high2" onclick="getThePriority2('high', 'low', 'medium', 'high')" class="prioButtonRed">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
                    </div>
                </div>
                <div class="assignedContent assignedContent-sideMenu" >
@@ -786,25 +784,3 @@ function loadCategory2(){
   return getValue;
 }
 
-
-function getValuesFromBoard() {
-  let toDoContainer = document.getElementById('toDo');
-  let progressContainer = document.getElementById('progress');
-  let feedbackContainer = document.getElementById('feedBack');
-  let doneContainer = document.getElementById('done');
-
-  let valueToDo = toDoContainer.children.length;
-  let valueProgress = progressContainer.children.length;
-  let valueFeedBack = feedbackContainer.children.length;
-  let valueDone = doneContainer.children.length;
-
-  console.log(`todo = '${valueToDo}', progress = '${valueProgress}', feedBack = '${valueFeedBack}', done = '${valueDone}', `);
-  renderCurrentNummber(valueToDo, valueProgress, valueFeedBack, valueDone);
-
-  return {
-    valueToDo: valueToDo,
-    valueProgress: valueProgress,
-    valueFeedBack: valueFeedBack,
-    valueDone: valueDone
-  };
-}

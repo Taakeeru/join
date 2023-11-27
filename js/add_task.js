@@ -150,6 +150,7 @@ function checkInputFields() {
     const lowIcon = document.getElementById("lowPriority");
     const mediumIcon = document.getElementById("mediumPriority");
     const highIcon = document.getElementById("urgentPriority");
+
   
     if (low && medium && urgent && lowIcon && mediumIcon && highIcon) {
       low.classList.remove("active3");
@@ -180,8 +181,45 @@ function checkInputFields() {
     }
   }
   
+function getThePriority2(priority, lowId, mediumId, highId) {
+  const low2 = document.getElementById(`${lowId}2`);
+  const medium2 = document.getElementById(`${mediumId}2`);
+  const urgent2 = document.getElementById(`${highId}2`);
+  const lowIcon2 = document.getElementById("lowPriority2");
+  const mediumIcon2 = document.getElementById("mediumPriority2");
+  const highIcon2 = document.getElementById("urgentPriority2");
 
-  function addContacts() {
+  if (`${lowId}2` && `${mediumId}2` && `${highId}2` && lowIcon2 && mediumIcon2 && highIcon2) {
+    low2.classList.remove("active3");
+    medium2.classList.remove("active2");
+    urgent2.classList.remove("active");
+    lowIcon2.classList.remove("colorIcon3");
+    mediumIcon2.classList.remove("colorIcon2");
+    highIcon2.classList.remove("colorIcon");
+
+    if (selectedPriority === priority) {
+      selectedPriority = null;
+    } else {
+      selectedPriority = priority;
+
+      if (selectedPriority === 'low') {
+        low2.classList.add("active3");
+        lowIcon2.classList.add("colorIcon3");
+      } else if (selectedPriority === 'medium') {
+        medium2.classList.add("active2");
+        mediumIcon2.classList.add("colorIcon2");
+      } else if (selectedPriority === 'high') {
+        urgent2.classList.add("active");
+        highIcon2.classList.add("colorIcon");
+      }
+    }
+  } else {
+    console.error("Ein oder mehrere Elemente wurden nicht gefunden.");
+  }
+}
+
+
+function addContacts() {
     let box = document.getElementById("selectContainer");
     box.classList.toggle("d-none");
   }

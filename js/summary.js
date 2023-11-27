@@ -10,7 +10,6 @@ async function init() {
     showProfileInitials(loggedInUser);
     updateCurrentDate();
     loadUsers();
-    renderCurrentNummber();
     generateUserName(loggedInUser);
     let info = await getItem('newTask');
     let getTask = JSON.parse(info);
@@ -45,19 +44,6 @@ function updateGreeting() {
     }
 
     greeting.textContent = greetingMessage;
-}
-
-
-function renderCurrentNummber(valueToDo, valueProgress, valueFeedBack, valueDone){
-    let toDoContainer = document.getElementById('showNumberToDo').value;
-    let progressContainer = document.getElementById('showNumberProgress').value;
-    let feedbackContainer = document.getElementById('showNumberAwaitingFeedback').value;
-    let doneContainer = document.getElementById('showNumberTasksDone').value;
-
-    toDoContainer = valueToDo;
-    progressContainer = valueProgress;
-    feedbackContainer = valueFeedBack;
-    doneContainer = valueDone;
 }
 
 
@@ -119,6 +105,7 @@ function renderNumbers(currenValues){
     renderNumverMobile(currenValues);
 }
 
+
 function renderNumverMobile(currenValues){
     let toTo = document.getElementById('showNumberToDo2');
     let progress = document.getElementById('showNumberProgress2');
@@ -146,6 +133,7 @@ function calcAllTogether(currenValues){
     resultBox.innerHTML = /*html*/`<p class="showTheNumbers">${result}</p>`;
     resultBox2.innerHTML = /*html*/`<p class="showTheNumbers">${result}</p>`;
 }
+
 
 function getPriority(){
     let tasks = currentTaskInfo[0];
