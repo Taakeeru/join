@@ -149,12 +149,12 @@ body {
   background: #ffffff;
   box-shadow: 0px 0px 10px 3px #00000014;
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 
 .taskCards:hover {
-  transform: rotate(90deg);
-  transform: rotate(-30deg);
+  
+  transform: rotate(10deg);
 }
 
 .cardContent {
