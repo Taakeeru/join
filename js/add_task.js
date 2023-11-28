@@ -254,7 +254,6 @@ async function showAssignetContacts(loggedInUser) {
     
     contactData.push(userContactData);
   }
-
   return contactData;
 }
   
@@ -287,7 +286,6 @@ function handleCheckboxClick(i, userName, getInitial, getColor) {
     }
   }
 }
-  
 
 
 function closeSelectContainer(event) {

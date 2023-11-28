@@ -532,7 +532,7 @@ function openEditContainer(element) {
                   </div>
                   <input id="subtaskInput2" onclick="addSubTask2()" placeholder="Add new subtask" class="subtaskInput">
                   <ul id="selectedSubrasks"></ul>
-                  <div id="subtaskContainer2"></div>
+                  <ul id="subtaskContainer2"></ul>
                </div>
             </div>
          </div>
@@ -578,10 +578,12 @@ function closeEditContainer() {
   document.getElementById("openEditContainer").classList.add("d-none");
 }
 
+
 function generatePlaceholderTasks(category) {
   return`<div class="placeholderTaskContainer" ><span>No tasks in ${category}</span></div>`;
   
 }
+
 
 function shwoCurrentDate(){
   document.getElementById('autoJsCalendar').classList.toggle('d-none');
@@ -594,14 +596,17 @@ function closeEditContainer2() {
 
 }
 
+
 function addContacts2() {
   let box = document.getElementById("selectContainer2");
   box.classList.toggle("d-none");
 }
 
+
 function showCategoryContacts2() {
   document.getElementById("categoryContainer2").classList.toggle("d-none");
 }
+
 
 function loadTechnicalTask2() {
   let Box = document.getElementById('technicalTaskID2');
@@ -611,6 +616,7 @@ function loadTechnicalTask2() {
   }
 }
 
+
 function loadUserStory2(){
   let Box = document.getElementById('userStoryID2');
   let currentValue = Box.innerHTML;
@@ -619,6 +625,7 @@ function loadUserStory2(){
   }
 }
 
+
 function addSubTask2() {
   let subtaskInput = document.getElementById('subtaskInput2');
   let addTask =  document.getElementById('subtaskContainer2');
@@ -626,24 +633,13 @@ function addSubTask2() {
   let subtaskId = 'subtask' + Date.now();
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML +=`
-      <ul>
-        <li class="subtaskList">
-          <span id="${subtaskId}">${subtaskValue} </span>
-          <div class="displayFlex">
+        <li class="subtaskList" id="${subtaskId}">${subtaskValue} 
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-          </div>
-          <div class="d-none">
-            <input type="text" class="editSubtask">
-            <div class="displayFlex">
-              <img src="../assets/img/close.svg" alt="">|
-              <img src="../assets/img/checkImg.png" alt="">
-            </div>
-          </div>
-        </li>
-      </ul>`;
+        </li>`;
     subtaskInput.value = '';
   }
 }
+
 
 async function editTask(openedEditContainerElement) {
   // Lese die vorhandenen Karten aus
