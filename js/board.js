@@ -687,7 +687,6 @@ function clacSubtasks(){
   let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
   let newSubtasks = document.getElementById('subtaskContainer2').textContent;
 
-<<<<<<< Updated upstream
 function clacSubtasks(){
   function clacSubtasks() {
   let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
@@ -702,15 +701,13 @@ function clacSubtasks(){
   return subtasks;
 }
 
-=======
   if (!isNaN(oldSubtasks) && !isNaN(newSubtasks)) {
     let result = oldSubtasks + newSubtasks;
     return result;
   } else {
     console.log('Something went wrong by adding Subtasks')
   }
->>>>>>> Stashed changes
-}
+}}
 
 
 
