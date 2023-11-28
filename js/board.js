@@ -38,6 +38,20 @@ function getPriorityImagePath(priority) {
   }
 }
 
+function searchTask() {
+  const searchInput = document.getElementById('searchInput');
+  const searchTerm = searchInput.value.toLowerCase();
+
+  const filteredTasks = allTask[0].filter((task) => {
+    const titleMatches = task.title.toLowerCase().includes(searchTerm);
+    const descriptionMatches = task.description.toLowerCase().includes(searchTerm);
+
+    return titleMatches || descriptionMatches;
+  });
+
+  updateHTML(filteredTasks);
+}
+
 
 function updateHTML(getTaskInfo) {
   selectedUsers = [];
