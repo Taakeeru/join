@@ -569,9 +569,15 @@ function rederCurrentTasks(selectedSubrasks){
     const id = selectedSubrasks[i].id;
     box.innerHTML +=/*html*/`
       <li class="subtaskList" id="${id}">${value}
-            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${id}')" class="subtaskDeleteImg">
+            <img src="../assets/img/delete.svg" onclick="deleteSubtaskEdit('${id}')" class="subtaskDeleteImg">
       </li>`;
 }}
+
+
+function deleteSubtaskEdit(id){
+  event.stopPropagation();
+  document.getElementById(`${id}`).remove();
+}
 
 
 function closeEditContainer() {
@@ -637,6 +643,7 @@ function addSubTask2() {
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
         </li>`;
     subtaskInput.value = '';
+    currentSubtasks.push({id: subtaskId,value: subtaskValue,});
   }
 }
 
@@ -676,7 +683,11 @@ async function editTask(openedEditContainerElement) {
   updateHTML(getTaskInfo);
 }
 
+function clacSubtasks(){
+  let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
+  let newSubtasks = document.getElementById('subtaskContainer2').textContent;
 
+<<<<<<< Updated upstream
 function clacSubtasks(){
   function clacSubtasks() {
   let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
@@ -691,6 +702,14 @@ function clacSubtasks(){
   return subtasks;
 }
 
+=======
+  if (!isNaN(oldSubtasks) && !isNaN(newSubtasks)) {
+    let result = oldSubtasks + newSubtasks;
+    return result;
+  } else {
+    console.log('Something went wrong by adding Subtasks')
+  }
+>>>>>>> Stashed changes
 }
 
 
@@ -726,8 +745,6 @@ function createNewTask2() {
     document.getElementById("usersDateContent").innerHTML = usersHTML;
     document.querySelector(".cardAddUsersIcons").innerHTML = contactsHTML;
     closeEditContainer2();
-  
-  closeEditContainer2();
 }
 
   
