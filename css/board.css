@@ -45,6 +45,17 @@ body {
 .boardInputfield:focus {
   outline: none;
 }
+.inputfieldDateContainer{
+  border: 0;
+    font-size: 19px;
+    font-weight: 400;
+    width: 467px;
+    cursor: pointer;
+    padding: 11px;
+}
+.inputfieldDateContainer:focus {
+  outline: none;
+}
 .boardButton {
   background: #4589ff;
   border: 0;
@@ -138,7 +149,14 @@ body {
   background: #ffffff;
   box-shadow: 0px 0px 10px 3px #00000014;
   display: flex;
+  transition: transform 0.5s ease-in-out;
 }
+
+.taskCards:hover {
+  transform: rotate(90deg);
+  transform: rotate(-30deg);
+}
+
 .cardContent {
   gap: 22px;
   display: grid;

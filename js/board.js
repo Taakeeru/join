@@ -188,7 +188,7 @@ function generateAddTaskSideMenu() {
                  <div class="dateContent">
                      <p class="dateTitle">Due date</p>
                     
-                    <input  class="pickDate" placeholder="tipe you date" type="date" id="dueDateValue" min="2018-01-01">
+                    <input  class="inputfieldDateContainer" placeholder="tipe you date" type="date" id="dueDateValue" min="2018-01-01">
                      <div class="textfield-fail" id="date-fail-message"></div>
                   </div>
               </div>
@@ -474,7 +474,7 @@ function openEditContainer(element) {
                   <div class="dateContent">
                      <p class="dateTitle">Due date</p>
 
-                     <input  class="pickDate" placeholder="tipe you date" type="date" min="2018-01-01">
+                     <input  class="inputfieldDateContainer" placeholder="tipe you date" type="date" min="2018-01-01">
 
                      <div class="textfield-fail" id="date-fail-message2"></div>
                   </div>
