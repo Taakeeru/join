@@ -548,6 +548,9 @@ body {
   .scrollContainer {
     margin: 7px;
 }
+.leftWhiteBox{
+  display: none!important;
+}
 .mainContent {
   width: 98%;}
 #mobileAdd {
@@ -563,7 +566,7 @@ body {
 }
 
 .scrollContainer {
-  width: 77%;
+  
  flex-direction: column;
 }
  
