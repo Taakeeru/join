@@ -540,20 +540,26 @@ body {
   margin-top: 0;
   margin-bottom: 16px;
 }*/
-
-@media (max-width: 1000px) {
-  .contentContainer {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding-top: 160px;
-  }
+@media (max-width: 1260px) {
   .positionOfButtons {
     display: inline-flex;
     bottom: 144px;
     margin: 24px;
     position: unset;
   }
+
+}
+
+
+@media (max-width: 1000px) {
+ 
+  .contentContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-top: 160px;
+  }
+ 
   .containAddTask {
     width: 300px;
   }

@@ -185,10 +185,10 @@ function generateAddTaskSideMenu() {
                     <textarea  id="addTastTextArea" class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
                        rows="10"></textarea>
                  </div>
-                 <div class="dateContent">
+                 <div class="dateContentMobileDate">
                      <p class="dateTitle">Due date</p>
                     
-                    <input  class="inputfieldDateContainer" placeholder="tipe you date" type="date" id="dueDateValue" min="2018-01-01">
+                    <input  class="inputfieldDateContainer dateMobile" placeholder="tipe you date" type="date" id="dueDateValue" min="2018-01-01">
                      <div class="textfield-fail" id="date-fail-message"></div>
                   </div>
               </div>
@@ -198,10 +198,10 @@ function generateAddTaskSideMenu() {
                     <p class="assignedTitle small" >(optional)</p>
                     </p>
                  </div>
-                  <div class="buttonContainer"> 
-                   <button id="low" onclick="getThePriority('low', 'low', 'medium', 'high')" class="prioButtonGreen">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
-                   <button id="medium" onclick="getThePriority('medium', 'low', 'medium', 'high')" class="prioButtonYellow">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                   <button id="high" onclick="getThePriority('high', 'low', 'medium', 'high')" class="prioButtonRed">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                  <div class="buttonContainer mobileButtonContainer"> 
+                   <button id="low" onclick="getThePriority('low', 'low', 'medium', 'high')" class="prioButtonGreen sideMobileButtonG">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                   <button id="medium" onclick="getThePriority('medium', 'low', 'medium', 'high')" class="prioButtonYellow sideMobileButtonY">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                   <button id="high" onclick="getThePriority('high', 'low', 'medium', 'high')" class="prioButtonRed sideMobileButtonR">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
                  </div>
                   
               </div>
@@ -245,7 +245,7 @@ function generateAddTaskSideMenu() {
         </div>
      </div>
   </div>
-                    <div class="positionOfButtons">
+                    <div class="positionOfButtons mobileButtons">
                   <button  class="ClearBtn">Clear <img src="../assets/img/vector.svg"></button>
                   <button onclick="createNewTask()" class="createTaskBtn">Create Task <img src="../assets/img/check.svg"></button>
                </div>

@@ -179,6 +179,7 @@ body {
   display: grid;
   border-radius: 10px;
   gap: 8px;
+  width: 220px;
 }
 .cardDescriptionHeader {
   width: 220px;
@@ -190,6 +191,9 @@ body {
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   margin-block-start: 0;
   margin-block-end: 0;
@@ -209,6 +213,10 @@ body {
   margin-inline-end: 0px;
   color: #a8a8a8;
   font-family: "Inter";
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .cardSub {
@@ -429,19 +437,24 @@ body {
   margin-top: 25px;
 }
 .openCardText {
-  height: 23px;
+  height: 50px;
   margin-top: 25px;
+  overflow: auto;
 }
 .openCardSpanText {
   font-family: "Open Sans";
   font-weight: 400;
   font-size: 19px;
 }
+.openCardDescription{
+  overflow: auto;
+}
 .openCardDescriptionText {
   font-family: "Open Sans";
   font-weight: 700;
   font-size: 61px;
   line-height: 73px;
+ 
 }
 .openCardTitle {
   display: flex;
@@ -574,7 +587,7 @@ body {
   flex-direction: column;
   display: flex;
   justify-content:start;
-  width: calc(85% - 58px);}
+  width:100%;}
 
 .boardProgressSektion {
   flex-direction: unset;
@@ -588,8 +601,6 @@ body {
  overflow: scroll;
 }
 
- .contentContainer {
-  padding-top: 100px!important;
 }
 .boardTopSektion {
 
@@ -692,7 +703,6 @@ margin: 21px;
 }
 
 
-}
 
 @media (max-width: 1450px) {
   .boardBotSektion{
@@ -706,6 +716,9 @@ margin: 21px;
 
 @media (max-width: 1000px) {
   
+  .mobileButtons{
+    position: absolute!important;
+  }
   .scrollContainer {
     width: unset;
 
@@ -742,6 +755,54 @@ margin: 21px;
     border-radius: 5px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #a8a8a8;
+  }
+
+  @media (max-width: 1000px) {
+    .inputFieldTitle-sideMenu{
+      width: 330px !important;
+    }
+    .description-sideMenu{
+      width: 330px !important;
+    }
+    .dateMobile{
+      width: 330px !important;
+    }
+    .sideMenuStyle{
+      width: 350px;
+    }
+    .inputfieldDateContainer{
+      width: 330px !important;
+    }
+    .assignedContent-sideMenu{
+      width: 330px !important;
+    }
+    .mobileButtonContainer{
+      gap: 4px;
+    }
+    .addTask-sideMenu{
+      padding: 7px!important;
+    }
+    .sideMobileButtonG{
+     width: 109px;
+    }
+    .sideMobileButtonY{
+      width: 109px;
+    }
+    .sideMobileButtonR{
+      width: 109px;
+    }
+    .SubtaskContent{
+      width: 350px;
+    }
+    .subtaskInput{
+      width: 330px !important;
+    }
+    #subtaskContainer{
+      width: 330px !important;
+    }
+    .mobileButtons{
+      width: 300px!important;
+    }
   }
  
 
