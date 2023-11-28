@@ -531,7 +531,7 @@ function openEditContainer(element) {
                      </p>
                   </div>
                   <input id="subtaskInput2" onclick="addSubTask2()" placeholder="Add new subtask" class="subtaskInput">
-                  <ul id="selectedSubrasks"></ul>
+                  <ul id="selectedSubrasks" style="margin-bottom: 0;"></ul>
                   <ul id="subtaskContainer2"></ul>
                </div>
             </div>
@@ -659,16 +659,15 @@ async function editTask(openedEditContainerElement) {
   let getDiscriptionArea = document.getElementById('addTastTextArea2').value;
   let getCategory = loadCategory2();
   let getPrio = selectedPriority;
-
+  let getSubtask = clacSubtasks();
   // Aktualisiere die Werte der Karte
   taskToEdit.title = getTitel;
   taskToEdit.description = getDiscriptionArea;
   taskToEdit.workCategory = getCategory;
   taskToEdit.priority = getPrio;
-
+  taskToEdit.subrasks = getSubtask;
   // Aktualisiere die Kontakte unter "Assignet to" nur mit ausgewählten Kontakten
   taskToEdit.contacts = selectedUsers;
-  taskToEdit.subrasks = selectedSubrasks;
 
   // Speichere die aktualisierten Daten
   await setItem('newTask', JSON.stringify(getTaskInfo));
@@ -678,6 +677,21 @@ async function editTask(openedEditContainerElement) {
 }
 
 
+function clacSubtasks(){
+  function clacSubtasks() {
+  let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
+  let newSubtasks = document.getElementById('subtaskContainer2').textContent;
+
+  // Erstelle ein neues Array, wenn das vorhandene Array leer ist
+  let subtasks = oldSubtasks === '' ? [] : JSON.parse(oldSubtasks);
+
+  // Füge die neuen Subtasks zum Array hinzu
+  subtasks.push(...newSubtasks.split('\n'));
+
+  return subtasks;
+}
+
+}
 
 
 
