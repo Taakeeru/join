@@ -2,7 +2,10 @@ let allTasks =[];
 let contactData = [];
 let selectedPriority;
 let currentSubtasks = [];
+let selectedUsers = [];
 let checked = true;
+
+
 
 async function initAddTask() {
   await includeHTML();
@@ -41,6 +44,7 @@ async function createNewTask(){
 // }
 }
 
+
 function clearArray(){
   allTasks.splice(0, allTasks.length);
 }
@@ -56,6 +60,7 @@ function clearTasksArray() {
       });
   }
 }
+
 
 async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory, selectedPriority, currentSubtasks){
   getTitle = getTitle.trim();
@@ -112,7 +117,6 @@ async function showCreateAnimation(){
 }
 
 
-
 function checkInputFields() {
     let titleInput = document.getElementById('addTastTitel');
     let descriptionInput = document.getElementById('addTastTextArea');
@@ -141,17 +145,17 @@ function checkInputFields() {
       isValid = false;
     }
     return isValid;
-  }
+}
 
-  function getThePriority(priority, lowId, mediumId, highId) {
-    const low = document.getElementById(lowId);
+
+function getThePriority(priority, lowId, mediumId, highId) {
+  const low = document.getElementById(lowId);
     const medium = document.getElementById(mediumId);
     const urgent = document.getElementById(highId);
     const lowIcon = document.getElementById("lowPriority");
     const mediumIcon = document.getElementById("mediumPriority");
     const highIcon = document.getElementById("urgentPriority");
 
-  
     if (low && medium && urgent && lowIcon && mediumIcon && highIcon) {
       low.classList.remove("active3");
       medium.classList.remove("active2");
@@ -159,12 +163,12 @@ function checkInputFields() {
       lowIcon.classList.remove("colorIcon3");
       mediumIcon.classList.remove("colorIcon2");
       highIcon.classList.remove("colorIcon");
-  
+
       if (selectedPriority === priority) {
         selectedPriority = null;
       } else {
         selectedPriority = priority;
-  
+
         if (selectedPriority === 'low') {
           low.classList.add("active3");
           lowIcon.classList.add("colorIcon3");
@@ -179,8 +183,9 @@ function checkInputFields() {
     } else {
       console.error("Ein oder mehrere Elemente wurden nicht gefunden.");
     }
-  }
-  
+}
+
+
 function getThePriority2(priority, lowId, mediumId, highId) {
   const low2 = document.getElementById(`${lowId}2`);
   const medium2 = document.getElementById(`${mediumId}2`);
@@ -224,65 +229,64 @@ function addContacts() {
     box.classList.toggle("d-none");
   }
 
-  async function showAssignetContacts(loggedInUser) {
-    let box = document.getElementById("selectContainer");
-  
-    for (let i = 0; i < loggedInUser.contacts.length; i++) {
-      let userName = loggedInUser.contacts[i].name;
-      let getInitial = loggedInUser.contacts[i].initial;
-      let getColor = loggedInUser.contacts[i].color;
-      box.innerHTML += /*html*/`
-        <div class="userBoxContainer displayFlex">
-          <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-          <span class="userPosition">${userName}</span>
-          <input type="checkbox" id="inputId${i}" onclick="handleCheckboxClick('${i}', '${userName}', '${getInitial}', '${getColor}')">
-        </div>`;
-  
-      let userContactData = {
-        name: userName,
-        email: loggedInUser.contacts[i].email,
-        phone: loggedInUser.contacts[i].phone,
-        initial: getInitial,
-        color: getColor
-      };
-      
-      contactData.push(userContactData);
-    }
-  
-    return contactData;
+
+async function showAssignetContacts(loggedInUser) {
+  let box = document.getElementById("selectContainer");
+
+  for (let i = 0; i < loggedInUser.contacts.length; i++) {
+    let userName = loggedInUser.contacts[i].name;
+    let getInitial = loggedInUser.contacts[i].initial;
+    let getColor = loggedInUser.contacts[i].color;
+    box.innerHTML += /*html*/`
+      <div class="userBoxContainer displayFlex">
+        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+        <span class="userPosition">${userName}</span>
+        <input type="checkbox" id="inputId${i}" onclick="handleCheckboxClick('${i}', '${userName}', '${getInitial}', '${getColor}')">
+      </div>`;
+
+    let userContactData = {
+      name: userName,
+      email: loggedInUser.contacts[i].email,
+      phone: loggedInUser.contacts[i].phone,
+      initial: getInitial,
+      color: getColor
+    };
+    
+    contactData.push(userContactData);
   }
+
+  return contactData;
+}
   
 
-  let selectedUsers = [];
+function handleCheckboxClick(i, userName, getInitial, getColor) {
+  let checkbox = document.getElementById(`inputId${i}`);
+  let addUser = document.getElementById("addContactstoassign");
+  let userId = `user_${i}`;
 
-  function handleCheckboxClick(i, userName, getInitial, getColor) {
-    let checkbox = document.getElementById(`inputId${i}`);
-    let addUser = document.getElementById("addContactstoassign");
-    let userId = `user_${i}`;
-  
-    if (checkbox.checked) {
-      addUser.innerHTML += `
-        <div id="${userId}" class="userBoxContainer displayFlex">
-          <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-        </div>`;
-  
-      let selectedUser = {
-        name: userName,
-        email: loggedInUser.contacts[i].email,
-        phone: loggedInUser.contacts[i].phone,
-        initial: getInitial,
-        color: getColor
-      };
-  
-      selectedUsers.push(selectedUser);
-    } else {
-      let userToRemove = document.getElementById(userId);
-      if (userToRemove) {
-        userToRemove.remove();
-        selectedUsers = selectedUsers.filter(user => user.name !== userName);
-      }
+  if (checkbox.checked) {
+    addUser.innerHTML += `
+      <div id="${userId}" class="userBoxContainer displayFlex">
+        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+      </div>`;
+
+    let selectedUser = {
+      name: userName,
+      email: loggedInUser.contacts[i].email,
+      phone: loggedInUser.contacts[i].phone,
+      initial: getInitial,
+      color: getColor
+    };
+
+    selectedUsers.push(selectedUser);
+  } else {
+    let userToRemove = document.getElementById(userId);
+    if (userToRemove) {
+      userToRemove.remove();
+      selectedUsers = selectedUsers.filter(user => user.name !== userName);
     }
   }
+}
   
 
 
@@ -316,14 +320,9 @@ function addSubTask() {
   let subtaskId = 'subtask' + Date.now();
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML +=`
-      <ul>
-        <li class="subtaskList">
-          <span id="${subtaskId}">${subtaskValue} </span>
-          <div>
+        <li class="subtaskList" id="${subtaskId}">${subtaskValue} 
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-          </div>
-        </li>
-      </ul>`;
+        </li>`;
     subtaskInput.value = '';
 
     currentSubtasks.push({id: subtaskId,value: subtaskValue,});
@@ -369,5 +368,7 @@ function editSubtask(subtaskId) {
 
 
 function deleteSubtask(subtaskId) {
-  document.getElementById(subtaskId).parentNode.parentNode.remove();
+  document.getElementById(`${subtaskId}`).parentNode.parentNode.remove();
 }
+
+

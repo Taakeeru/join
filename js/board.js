@@ -446,6 +446,7 @@ function openEditContainer(element) {
 
   // Vor dem Aufrufen von showAssignetContacts2 die ausgewählten Benutzer bereitstellen
   selectedUsers = allTask[0][element]["contacts"];
+  let selectedSubrasks = allTask[0][element]["subtasks"];
   document.getElementById("secondCardRenderContainer").classList.remove("d-none");
   document.getElementById("openCardContainer").classList.add("d-none");
 
@@ -530,6 +531,7 @@ function openEditContainer(element) {
                      </p>
                   </div>
                   <input id="subtaskInput2" onclick="addSubTask2()" placeholder="Add new subtask" class="subtaskInput">
+                  <ul id="selectedSubrasks"></ul>
                   <div id="subtaskContainer2"></div>
                </div>
             </div>
@@ -541,6 +543,7 @@ function openEditContainer(element) {
       </div>`;
       
       renderContactsSmall(allTask[0][element]);
+      rederCurrentTasks(selectedSubrasks);
 }
  
 function renderContactsSmall(element) {
@@ -555,6 +558,20 @@ function renderContactsSmall(element) {
     </div>`;
   }
 }
+
+
+function rederCurrentTasks(selectedSubrasks){
+  let box = document.getElementById('selectedSubrasks');
+  box.innerHTML = ''; // Clear the content before rendering
+   
+  for (let i = 0; i < selectedSubrasks.length; i++) {
+    const value = selectedSubrasks[i].value;
+    const id = selectedSubrasks[i].id;
+    box.innerHTML +=/*html*/`
+      <li class="subtaskList" id="${id}">${value}
+            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${id}')" class="subtaskDeleteImg">
+      </li>`;
+}}
 
 
 function closeEditContainer() {
@@ -613,7 +630,6 @@ function addSubTask2() {
         <li class="subtaskList">
           <span id="${subtaskId}">${subtaskValue} </span>
           <div class="displayFlex">
-            <img src="../assets/img/edit.svg" onclick="editSubtask('${subtaskId}')" class="subtaskEditImg">|
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
           </div>
           <div class="d-none">
@@ -656,6 +672,7 @@ async function editTask(openedEditContainerElement) {
 
   // Aktualisiere die Kontakte unter "Assignet to" nur mit ausgewählten Kontakten
   taskToEdit.contacts = selectedUsers;
+  taskToEdit.subrasks = selectedSubrasks;
 
   // Speichere die aktualisierten Daten
   await setItem('newTask', JSON.stringify(getTaskInfo));
