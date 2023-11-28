@@ -366,7 +366,7 @@ function editSubtask(subtaskId) {
 
 
 function deleteSubtask(subtaskId) {
-  document.getElementById(`${subtaskId}`).parentNode.parentNode.remove();
+  document.getElementById(subtaskId).innerHTML ='';
 }
 
 

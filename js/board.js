@@ -531,7 +531,7 @@ function openEditContainer(element) {
                      </p>
                   </div>
                   <input id="subtaskInput2" onclick="addSubTask2()" placeholder="Add new subtask" class="subtaskInput">
-                  <ul id="selectedSubrasks"></ul>
+                  <ul id="selectedSubrasks" style="margin-bottom: 0;"></ul>
                   <ul id="subtaskContainer2"></ul>
                </div>
             </div>
@@ -569,9 +569,15 @@ function rederCurrentTasks(selectedSubrasks){
     const id = selectedSubrasks[i].id;
     box.innerHTML +=/*html*/`
       <li class="subtaskList" id="${id}">${value}
-            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${id}')" class="subtaskDeleteImg">
+            <img src="../assets/img/delete.svg" onclick="deleteSubtaskEdit('${id}')" class="subtaskDeleteImg">
       </li>`;
 }}
+
+
+function deleteSubtaskEdit(id){
+  event.stopPropagation();
+  document.getElementById(`${id}`).remove();
+}
 
 
 function closeEditContainer() {
@@ -637,6 +643,7 @@ function addSubTask2() {
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
         </li>`;
     subtaskInput.value = '';
+    currentSubtasks.push({id: subtaskId,value: subtaskValue,});
   }
 }
 
@@ -659,16 +666,15 @@ async function editTask(openedEditContainerElement) {
   let getDiscriptionArea = document.getElementById('addTastTextArea2').value;
   let getCategory = loadCategory2();
   let getPrio = selectedPriority;
-
+  let getSubtask = clacSubtasks();
   // Aktualisiere die Werte der Karte
   taskToEdit.title = getTitel;
   taskToEdit.description = getDiscriptionArea;
   taskToEdit.workCategory = getCategory;
   taskToEdit.priority = getPrio;
-
+  taskToEdit.subrasks = getSubtask;
   // Aktualisiere die Kontakte unter "Assignet to" nur mit ausgewählten Kontakten
   taskToEdit.contacts = selectedUsers;
-  taskToEdit.subrasks = selectedSubrasks;
 
   // Speichere die aktualisierten Daten
   await setItem('newTask', JSON.stringify(getTaskInfo));
@@ -677,7 +683,34 @@ async function editTask(openedEditContainerElement) {
   updateHTML(getTaskInfo);
 }
 
+function clacSubtasks(){
+  let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
+  let newSubtasks = document.getElementById('subtaskContainer2').textContent;
 
+<<<<<<< Updated upstream
+function clacSubtasks(){
+  function clacSubtasks() {
+  let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
+  let newSubtasks = document.getElementById('subtaskContainer2').textContent;
+
+  // Erstelle ein neues Array, wenn das vorhandene Array leer ist
+  let subtasks = oldSubtasks === '' ? [] : JSON.parse(oldSubtasks);
+
+  // Füge die neuen Subtasks zum Array hinzu
+  subtasks.push(...newSubtasks.split('\n'));
+
+  return subtasks;
+}
+
+=======
+  if (!isNaN(oldSubtasks) && !isNaN(newSubtasks)) {
+    let result = oldSubtasks + newSubtasks;
+    return result;
+  } else {
+    console.log('Something went wrong by adding Subtasks')
+  }
+>>>>>>> Stashed changes
+}
 
 
 
@@ -712,8 +745,6 @@ function createNewTask2() {
     document.getElementById("usersDateContent").innerHTML = usersHTML;
     document.querySelector(".cardAddUsersIcons").innerHTML = contactsHTML;
     closeEditContainer2();
-  
-  closeEditContainer2();
 }
 
   
