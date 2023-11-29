@@ -458,6 +458,7 @@ body {
 }
 .openCardDescription{
   overflow: auto;
+  height: 79px;
 }
 .openCardDescriptionText {
   font-family: "Open Sans";
