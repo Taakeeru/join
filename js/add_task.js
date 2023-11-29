@@ -316,6 +316,7 @@ function addSubTask() {
   let addTask =  document.getElementById('subtaskContainer');
   let subtaskValue = subtaskInput.value;
   let subtaskId = 'subtask' + Date.now();
+  let status = false;
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML +=`
         <li class="subtaskList" id="${subtaskId}">${subtaskValue} 
@@ -323,7 +324,7 @@ function addSubTask() {
         </li>`;
     subtaskInput.value = '';
 
-    currentSubtasks.push({id: subtaskId,value: subtaskValue,});
+    currentSubtasks.push({id: subtaskId,value: subtaskValue, status: false});
   }
 }
 

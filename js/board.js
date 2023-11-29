@@ -2,6 +2,8 @@ let currentDraggedElement;
 let allTask = [];
 let openedEditContainerElement = null;
 let currentSubtasksBoard = [];
+let selectedSubtaskCounts = [];
+
 
 
 async function init() {
@@ -400,7 +402,6 @@ function renderSubtasks(element,subtasks) {
   return subtasksHTML;
   }
 
-  let selectedSubtaskCounts = {};
 
 function checkboxClicked(element, subtaskId) {
     const checkbox = document.getElementById(subtaskId);
@@ -704,9 +705,10 @@ async function editTask(openedEditContainerElement) {
 
   // Aktualisiere das entsprechende Element in allTask[0]
   allTask[0][taskToEditIndex] = getTaskInfo[taskToEditIndex];
-
+  
   // Führe die Update-Funktion aus, um die Änderungen anzuzeigen
   updateHTML(getTaskInfo);
+  // currentSubtasksBoard.length = 0;
 }
 
 
