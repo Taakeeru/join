@@ -89,7 +89,8 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       workCategory: getCategory,
       category: "toDo",
       subtasks: currentSubtasks,
-      isChecked: checked 
+      isChecked: checked,
+      taskbar : 0,
     };
 
     existingTasks.push(newTask);
@@ -319,9 +320,9 @@ function addSubTask() {
   let status = false;
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML +=`
-        <li class="subtaskList" id="${subtaskId}">${subtaskValue} 
+        <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-        </li>`;
+        </div>`;
     subtaskInput.value = '';
 
     currentSubtasks.push({id: subtaskId,value: subtaskValue, status: false});

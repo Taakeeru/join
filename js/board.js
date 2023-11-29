@@ -15,10 +15,11 @@ async function init() {
   let getTaskInfo = JSON.parse(info);
   showProfileInitials(loggedInUser);
   loadUsers();
-  generateAddTaskSideMenu()
+  generateAddTaskSideMenu();
   allTask.push(getTaskInfo);
   updateHTML(getTaskInfo);
-  showAssignetContacts(loggedInUser)
+  showAssignetContacts(loggedInUser);
+  updateProgressBarOnload();
 }
 
 
@@ -108,12 +109,12 @@ function updateHTML(getTaskInfo) {
   for (let index = 0; index < doneList.length; index++) {
     const element = doneList[index];
     document.getElementById("done").innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
-  }
-}}
+  }}
+}
 
 
 
-function generateTodoHTML(element,priorityImagePath) {
+function generateTodoHTML(element, priorityImagePath) {
   let contactsHTML = "";
 
   for (let i = 0; i < element["contacts"].length; i++) {
@@ -124,11 +125,8 @@ function generateTodoHTML(element,priorityImagePath) {
       </div>`;
   }
 
- 
-
   return `
-  
-  <div class="taskCards"onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
+    <div class="taskCards" onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
           <p class="userStory">${element["workCategory"]}</p>
@@ -140,15 +138,14 @@ function generateTodoHTML(element,priorityImagePath) {
           </p>
         </div>
         <div class="cardSub">
-        <div class="progress" role="progressbar" aria-label="Subtasks" aria-valuemin="0" aria-valuemax="100">
-        <div class="progress-bar" id="subtaskProgressBar${element["id"]}" style="width: 0;"></div>
-      </div>
-      
+          <div class="progress" role="progressbar" aria-label="Subtasks" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" id="subtaskProgressBar${element["id"]}" style="width: 0;"></div>
+          </div>
           <p class="cardSubNumber"><span id="test${element["id"]}">0</span>/${element["subtasks"].length}</p>
         </div>
         <div class="cardAddUser">
-        <div class="cardAddUsersIconsContain" ><div class="cardAddUsersIcons" > ${contactsHTML} </div></div>
-        <img src=${priorityImagePath} alt="Priority Symbol" />
+          <div class="cardAddUsersIconsContain"><div class="cardAddUsersIcons">${contactsHTML}</div></div>
+          <img src=${priorityImagePath} alt="Priority Symbol" />
         </div>
       </div>
     </div>`;
@@ -351,6 +348,7 @@ function openCardContainer(element,priorityImagePath) {
 usersDate(element);
 updateCheckboxStatus(element);
 }
+
 function updateCheckboxStatus(element) {
   const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
   const subtaskCounts = selectedSubtaskCounts[element];
@@ -406,25 +404,25 @@ function renderSubtasks(element, subtasks) {
 
 
 
-async function checkboxClicked(element, subtaskId) {
+async function checkboxClicked(cardElement, subtaskId) {
   const checkbox = document.getElementById(subtaskId);
-  let numberOfSubtask = document.getElementById(`test${element}`);
+  let numberOfSubtask = document.getElementById(`test${cardElement}`);
 
-  if (!selectedSubtaskCounts[element]) {
-    selectedSubtaskCounts[element] = {};
+  if (!selectedSubtaskCounts[cardElement]) {
+    selectedSubtaskCounts[cardElement] = {};
   }
 
-  selectedSubtaskCounts[element][subtaskId] = checkbox.checked;
+  selectedSubtaskCounts[cardElement][subtaskId] = checkbox.checked;
 
   let selectedCount = 0;
-  for (const id in selectedSubtaskCounts[element]) {
-    if (selectedSubtaskCounts[element][id]) {
+  for (const id in selectedSubtaskCounts[cardElement]) {
+    if (selectedSubtaskCounts[cardElement][id]) {
       selectedCount++;
     }
   }
 
   numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
-  updateProgressBar(element);
+  await updateProgressBar(cardElement, subtaskId);
   await updateStatus(subtaskId, checkbox.checked);
 }
   
@@ -451,7 +449,7 @@ async function updateStatus(subtaskIdToUpdate, newStatusValue) {
   
   
 
-function updateProgressBar(element) {
+async function updateProgressBar(element, subtaskId) {
   const progressBar = document.getElementById(`subtaskProgressBar${element}`);
 
   if (!selectedSubtaskCounts[element]) {
@@ -462,6 +460,7 @@ function updateProgressBar(element) {
   for (const id in selectedSubtaskCounts[element]) {
     if (selectedSubtaskCounts[element][id]) {
       selectedCount++;
+      element.taskbar++;
     }
   }
   const totalSubtasks =  `${ allTask[0][element]["subtasks"].length}`;  
@@ -470,9 +469,42 @@ function updateProgressBar(element) {
   progressBar.style.width = `${percentage}%`;
 
   progressBar.setAttribute('aria-valuenow', percentage);
+
+  await setItem('newTask', JSON.stringify(allTask[0][element].taskbar));
 }
 
 
+// function updateProgressBarOnload() {
+//   let progressBar = 0;
+//   let tasks = allTask[0];
+//   let bar = 0;
+//   let currentSubtask = 0;
+
+//   for (let i = 0; i < tasks.length; i++) {
+//     // Die Werte in den Variablen aktualisieren
+//     bar += tasks[i].taskbar;
+//     currentSubtask += tasks[i].subtasks.length;
+//     progressBar += document.getElementById(`subtaskProgressBar${tasks[i].id}`);
+//   }
+
+//   let totalSubtasks = currentSubtask;
+//   let percentage = (bar / totalSubtasks) * 100;
+
+//   progressBar.style.width = `${percentage}%`;
+//   progressBar.setAttribute('aria-valuenow', percentage);
+// }
+
+
+function updateProgressBarOnload(element) {
+  const progressBar = document.getElementById(`subtaskProgressBar${element["id"]}`);
+
+  let seeTaskValue = element.taskbar;
+  let totalSubtasks = `${element.subtasks.length}`;
+  let percentage = (seeTaskValue / totalSubtasks) * 100;
+
+  progressBar.style.width = `${percentage}%`;
+  progressBar.setAttribute('aria-valuenow', percentage);
+}
 
 
 function closeCardContainer() {
@@ -736,8 +768,6 @@ async function editTask(openedEditContainerElement) {
   updateHTML(getTaskInfo);
   // currentSubtasksBoard.length = 0;
 }
-
-
 
 
 function createNewTask2() {
