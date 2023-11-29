@@ -686,19 +686,7 @@ async function editTask(openedEditContainerElement) {
   // Aktualisiere die Werte der Karte
   taskToEdit.title = getTitel;
   taskToEdit.description = getDiscriptionArea;
-  function searchTask() {
-    const searchInput = document.getElementById('searchInput');
-    const searchTerm = searchInput.value.toLowerCase();
-  
-    const filteredTasks = allTask[0].filter((task) => {
-      const titleMatches = task.title.toLowerCase().includes(searchTerm);
-      const descriptionMatches = task.description.toLowerCase().includes(searchTerm);
-  
-      return titleMatches || descriptionMatches;
-    });
-  
-    updateHTML(filteredTasks);
-  }  taskToEdit.workCategory = getCategory;
+  taskToEdit.workCategory = getCategory;
   taskToEdit.priority = getPrio;
   taskToEdit.subrasks = getSubtask;
   // Aktualisiere die Kontakte unter "Assignet to" nur mit ausgewählten Kontakten
