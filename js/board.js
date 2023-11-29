@@ -712,7 +712,6 @@ function calcSubtasks(){
 }
 
 
-
 function createNewTask2() {
   // Falls openEditContainer2 aufgerufen wurde, rufe editTask mit der übergebenen id auf
   editTask(openedEditContainerElement);
