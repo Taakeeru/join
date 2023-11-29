@@ -403,7 +403,7 @@ function renderSubtasks(element,subtasks) {
   }
 
 
-function checkboxClicked(element, subtaskId) {
+  function checkboxClicked(element, subtaskId) {
     const checkbox = document.getElementById(subtaskId);
     let numberOfSubtask = document.getElementById(`test${element}`);
     const progressBar = document.getElementById('subtaskProgressBar');
@@ -422,8 +422,30 @@ function checkboxClicked(element, subtaskId) {
     }
   
     numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
-     updateProgressBar(element)
+    updateProgressBar(element);
+    updateStatus(subtaskId, checkbox.checked);
   }
+  
+  function updateStatus(subtaskIdToUpdate, newStatusValue) {
+    // Iteriere durch das äußere Array
+    for (let i = 0; i < allTask.length; i++) {
+      // Iteriere durch das innere Array
+      for (let j = 0; j < allTask[i].length; j++) {
+        // Finde die Subtask mit der passenden ID
+        if (allTask[i][j].subtasks) {
+          const subtaskIndex = allTask[i][j].subtasks.findIndex(subtask => subtask.id === subtaskIdToUpdate);
+  
+          // Wenn die Subtask gefunden wurde, aktualisiere den Status
+          if (subtaskIndex !== -1) {
+            allTask[i][j].subtasks[subtaskIndex].status = newStatusValue;
+          }
+        }
+      }
+    }
+  
+    console.log(allTask);
+  }
+  
 
 function updateProgressBar(element) {
   const progressBar = document.getElementById(`subtaskProgressBar${element}`);
