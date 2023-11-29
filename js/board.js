@@ -108,8 +108,9 @@ function updateHTML(getTaskInfo) {
   for (let index = 0; index < doneList.length; index++) {
     const element = doneList[index];
     document.getElementById("done").innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
-  }
-}}
+  }}
+updateProgressBar2();
+}
 
 
 
@@ -451,21 +452,25 @@ function renderSubtasks(element, subtasks) {
   }
   
 
-function updateProgressBar(element) {
+async function updateProgressBar(element) {
   const progressBar = document.getElementById(`subtaskProgressBar${element}`);
 
   if (!selectedSubtaskCounts[element]) {
     selectedSubtaskCounts[element] = {};
   }
 
-  let selectedCount = 0;
-  for (const id in selectedSubtaskCounts[element]) {
-    if (selectedSubtaskCounts[element][id]) {
-      selectedCount++;
+  let completedCount = 0;
+  for (const subtask of allTask[0][element].subtasks) {
+    const subtaskId = subtask.id;
+
+    if (selectedSubtaskCounts[element][subtaskId] && subtask.status) {
+      // Wenn die Subtask ausgewählt ist und der Status true ist, erhöhe den Counter
+      completedCount++;
     }
   }
-  const totalSubtasks =  `${ allTask[0][element]["subtasks"].length}`;  
-  const percentage = (selectedCount / totalSubtasks) * 100;
+
+  const totalSubtasks = allTask[0][element].subtasks.length;
+  const percentage = (completedCount / totalSubtasks) * 100;
 
   progressBar.style.width = `${percentage}%`;
 
@@ -473,6 +478,13 @@ function updateProgressBar(element) {
 }
 
 
+function updateProgressBar2(){
+  if (allTask[0].subtasks) {
+    
+  } else {
+    
+  }
+}
 
 
 function closeCardContainer() {
