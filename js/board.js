@@ -108,9 +108,8 @@ function updateHTML(getTaskInfo) {
   for (let index = 0; index < doneList.length; index++) {
     const element = doneList[index];
     document.getElementById("done").innerHTML += generateTodoHTML(element,getPriorityImagePath(element.priority));
-  }}
-updateProgressBar2();
-}
+  }
+}}
 
 
 
@@ -393,84 +392,80 @@ function usersDate(element) {
 
 function renderSubtasks(element, subtasks) {
   let subtasksHTML = "";
-  
   for (let i = 0; i < subtasks.length; i++) {
     const subtask = subtasks[i];
+    const isChecked = subtask.status === true; // Hier wird der Status des Subtasks überprüft
 
-    // Überprüfen, ob der Subtask-Status true ist
-    const isChecked = subtask.status;
-
-    subtasksHTML += `
-      <div class="subtaskCheckbox">
-        <input type="checkbox" id="${subtask.id}" name="${subtask.value}" value="${subtask.value}" onclick="checkboxClicked('${element}', '${subtask.id}')" ${isChecked ? "checked" : ""}>
-        <label for="${subtask.id}">${subtask.value}</label>
-      </div>`;
+    subtasksHTML += `<div class="subtaskCheckbox">
+      <input type="checkbox" id="${subtask.id}" name="${subtask.value}" value="${subtask.value}" ${isChecked ? 'checked' : ''} onclick="checkboxClicked('${element}', '${subtask.id}')">
+      <label for="${subtask.id}">${subtask.value}</label>
+    </div>`;
   }
-
   return subtasksHTML;
 }
 
 
-  async function checkboxClicked(element, subtaskId) {
-    const checkbox = document.getElementById(subtaskId);
-    let numberOfSubtask = document.getElementById(`test${element}`);
-  
-    if (!selectedSubtaskCounts[element]) {
-      selectedSubtaskCounts[element] = {};
-    }
-  
-    selectedSubtaskCounts[element][subtaskId] = checkbox.checked;
-  
-    let selectedCount = 0;
-    for (const id in selectedSubtaskCounts[element]) {
-      if (selectedSubtaskCounts[element][id]) {
-        selectedCount++;
-      }
-    }
-  
-    numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
-    updateProgressBar(element);
-    await updateStatus(subtaskId, checkbox.checked);
+
+async function checkboxClicked(element, subtaskId) {
+  const checkbox = document.getElementById(subtaskId);
+  let numberOfSubtask = document.getElementById(`test${element}`);
+
+  if (!selectedSubtaskCounts[element]) {
+    selectedSubtaskCounts[element] = {};
   }
+
+  selectedSubtaskCounts[element][subtaskId] = checkbox.checked;
+
+  let selectedCount = 0;
+  for (const id in selectedSubtaskCounts[element]) {
+    if (selectedSubtaskCounts[element][id]) {
+      selectedCount++;
+    }
+  }
+
+  numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
+  updateProgressBar(element);
+  await updateStatus(subtaskId, checkbox.checked);
+}
   
-  async function updateStatus(subtaskIdToUpdate, newStatusValue) {
+async function updateStatus(subtaskIdToUpdate, newStatusValue) {
     // Iteriere durch das äußere Array
-      for (let j = 0; j < allTask[0].length; j++) {
-        // Finde die Subtask mit der passenden ID
-        if (allTask[0][j].subtasks) {
-          const subtaskIndex = allTask[0][j].subtasks.findIndex(subtask => subtask.id === subtaskIdToUpdate);
+    for (let j = 0; j < allTask[0].length; j++) {
+      // Finde die Subtask mit der passenden ID
+      if (allTask[0][j].subtasks) {
+        const subtaskIndex = allTask[0][j].subtasks.findIndex(subtask => subtask.id === subtaskIdToUpdate);
   
-          // Wenn die Subtask gefunden wurde, aktualisiere den Status
-          if (subtaskIndex !== -1) {
-            allTask[0][j].subtasks[subtaskIndex].status = newStatusValue;
-          }
+        // Wenn die Subtask gefunden wurde, aktualisiere den Status
+        if (subtaskIndex !== -1) {
+          allTask[0][j].subtasks[subtaskIndex].status = newStatusValue;
         }
       }
-
+    }
+  
+    // Speichere den aktualisierten Task im Backend
     await setItem('newTask', JSON.stringify(allTask[0]));
-    console.log(allTask);
-  }
+    
+    // Aktualisiere die lokale Anzeige
+    console.log(allTask[0]);
+}
+  
   
 
-async function updateProgressBar(element) {
+function updateProgressBar(element) {
   const progressBar = document.getElementById(`subtaskProgressBar${element}`);
 
   if (!selectedSubtaskCounts[element]) {
     selectedSubtaskCounts[element] = {};
   }
 
-  let completedCount = 0;
-  for (const subtask of allTask[0][element].subtasks) {
-    const subtaskId = subtask.id;
-
-    if (selectedSubtaskCounts[element][subtaskId] && subtask.status) {
-      // Wenn die Subtask ausgewählt ist und der Status true ist, erhöhe den Counter
-      completedCount++;
+  let selectedCount = 0;
+  for (const id in selectedSubtaskCounts[element]) {
+    if (selectedSubtaskCounts[element][id]) {
+      selectedCount++;
     }
   }
-
-  const totalSubtasks = allTask[0][element].subtasks.length;
-  const percentage = (completedCount / totalSubtasks) * 100;
+  const totalSubtasks =  `${ allTask[0][element]["subtasks"].length}`;  
+  const percentage = (selectedCount / totalSubtasks) * 100;
 
   progressBar.style.width = `${percentage}%`;
 
@@ -478,13 +473,6 @@ async function updateProgressBar(element) {
 }
 
 
-function updateProgressBar2(){
-  if (allTask[0].subtasks) {
-    
-  } else {
-    
-  }
-}
 
 
 function closeCardContainer() {
