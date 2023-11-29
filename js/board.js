@@ -403,10 +403,9 @@ function renderSubtasks(element,subtasks) {
   }
 
 
-  function checkboxClicked(element, subtaskId) {
+  async function checkboxClicked(element, subtaskId) {
     const checkbox = document.getElementById(subtaskId);
     let numberOfSubtask = document.getElementById(`test${element}`);
-    const progressBar = document.getElementById('subtaskProgressBar');
   
     if (!selectedSubtaskCounts[element]) {
       selectedSubtaskCounts[element] = {};
@@ -423,26 +422,24 @@ function renderSubtasks(element,subtasks) {
   
     numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
     updateProgressBar(element);
-    updateStatus(subtaskId, checkbox.checked);
+    await updateStatus(subtaskId, checkbox.checked);
   }
   
-  function updateStatus(subtaskIdToUpdate, newStatusValue) {
+  async function updateStatus(subtaskIdToUpdate, newStatusValue) {
     // Iteriere durch das äußere Array
-    for (let i = 0; i < allTask.length; i++) {
-      // Iteriere durch das innere Array
-      for (let j = 0; j < allTask[i].length; j++) {
+      for (let j = 0; j < allTask[0].length; j++) {
         // Finde die Subtask mit der passenden ID
-        if (allTask[i][j].subtasks) {
-          const subtaskIndex = allTask[i][j].subtasks.findIndex(subtask => subtask.id === subtaskIdToUpdate);
+        if (allTask[0][j].subtasks) {
+          const subtaskIndex = allTask[0][j].subtasks.findIndex(subtask => subtask.id === subtaskIdToUpdate);
   
           // Wenn die Subtask gefunden wurde, aktualisiere den Status
           if (subtaskIndex !== -1) {
-            allTask[i][j].subtasks[subtaskIndex].status = newStatusValue;
+            allTask[0][j].subtasks[subtaskIndex].status = newStatusValue;
           }
         }
       }
-    }
-  
+
+    await setItem('newTask', JSON.stringify(allTask[0]));
     console.log(allTask);
   }
   
