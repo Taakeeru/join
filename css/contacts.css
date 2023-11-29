@@ -575,10 +575,11 @@ body{
     animation: slideFromRight 0.5s ease-in-out; /* Passe die Dauer und Timing-Funktion nach Bedarf an */
 }
 
-@media(max-width: 1250px) {
+@media(max-width: 1260px) {
     .boxOfDetailsContacts{
         margin-left: 24px;
     } 
+    
 }
 
 @media (max-width: 1150px) {
@@ -673,7 +674,7 @@ body{
 
 
 @media(max-width: 1000px) {
-    .dislayRowBody{
+    /* .dislayRowBody{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -762,7 +763,7 @@ body{
     }
     .infosContact{
         width: 800px;
-    }
+    } */
 }
 
 @media(max-width: 800px) {
