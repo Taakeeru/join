@@ -402,7 +402,7 @@ function renderSubtasks(element,subtasks) {
 
   let selectedSubtaskCounts = {};
 
-  function checkboxClicked(element, subtaskId) {
+function checkboxClicked(element, subtaskId) {
     const checkbox = document.getElementById(subtaskId);
     let numberOfSubtask = document.getElementById(`test${element}`);
     const progressBar = document.getElementById('subtaskProgressBar');
@@ -561,6 +561,7 @@ function openEditContainer(element) {
       rederCurrentTasks(selectedSubrasks);
 }
  
+
 function renderContactsSmall(element) {
   let box = document.getElementById('addContactstoassign2');
   box.innerHTML = ''; // Clear the content before rendering
@@ -681,7 +682,7 @@ async function editTask(openedEditContainerElement) {
   let getDiscriptionArea = document.getElementById('addTastTextArea2').value;
   let getCategory = loadCategory2();
   let getPrio = selectedPriority;
-  let getSubtask = clacSubtasks();
+  let getSubtask = calcSubtasks();
   // Aktualisiere die Werte der Karte
   taskToEdit.title = getTitel;
   taskToEdit.description = getDiscriptionArea;
@@ -710,23 +711,9 @@ async function editTask(openedEditContainerElement) {
   updateHTML(getTaskInfo);
 }
 
-function clacSubtasks(){
+function calcSubtasks(){
   let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
   let newSubtasks = document.getElementById('subtaskContainer2').textContent;
-
-function clacSubtasks(){
-  function clacSubtasks() {
-  let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
-  let newSubtasks = document.getElementById('subtaskContainer2').textContent;
-
-  // Erstelle ein neues Array, wenn das vorhandene Array leer ist
-  let subtasks = oldSubtasks === '' ? [] : JSON.parse(oldSubtasks);
-
-  // Füge die neuen Subtasks zum Array hinzu
-  subtasks.push(...newSubtasks.split('\n'));
-
-  return subtasks;
-}
 
   if (!isNaN(oldSubtasks) && !isNaN(newSubtasks)) {
     let result = oldSubtasks + newSubtasks;
@@ -734,7 +721,7 @@ function clacSubtasks(){
   } else {
     console.log('Something went wrong by adding Subtasks')
   }
-}}
+}
 
 
 
