@@ -766,6 +766,15 @@ margin: 21px;
     padding: 0px 0px 0px 0px;
   }
 }
+.editMobileDate{
+  width: 350px!important;
+
+}
+#addTastTitel2{
+  width: 350px!important;
+}
+
+}
 
 @media (max-width: 1000px) {
   
@@ -808,7 +817,20 @@ margin: 21px;
     border-radius: 5px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #a8a8a8;
-  }}
+  }
+  @media (max-width: 400px) {
+    .openCardsDetailsEdit{
+      width: 461px;
+    }
+    #addTastTitel2 {
+      width: 330px!important;
+  }
+  .header-EditMenu {
+    width: 87%;
+  }
+  .editMobileDate {
+    width: 330px!important;
+}}
   
  
 

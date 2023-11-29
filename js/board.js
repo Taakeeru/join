@@ -486,10 +486,10 @@ function openEditContainer(element) {
                         rows="10"></textarea>
                   </div>
                   <div class="textfield-fail" id="description-fail-message2"></div>
-                  <div class="dateContent">
+                  <div class="dateContent editMobileDate">
                      <p class="dateTitle">Due date</p>
 
-                     <input  class="inputfieldDateContainer" placeholder="tipe you date" type="date" min="2018-01-01">
+                     <input  class="inputfieldDateContainer editMobileDate" placeholder="tipe you date" type="date" min="2018-01-01">
 
                      <div class="textfield-fail" id="date-fail-message2"></div>
                   </div>
@@ -589,7 +589,7 @@ function rederCurrentTasks(selectedSubrasks){
 
 
 function deleteSubtaskEdit(id){
-  event.stopPropagation();
+  
   document.getElementById(`${id}`).remove();
 }
 
