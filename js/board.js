@@ -1,7 +1,7 @@
 let currentDraggedElement;
 let allTask = [];
 let openedEditContainerElement = null;
-
+let currentSubtasksBoard = [];
 
 
 async function init() {
@@ -546,8 +546,8 @@ function openEditContainer(element) {
                      </p>
                   </div>
                   <input id="subtaskInput2" onclick="addSubTask2()" placeholder="Add new subtask" class="subtaskInput">
-                  <ul id="selectedSubrasks" style="margin-bottom: 0;"></ul>
-                  <ul id="subtaskContainer2"></ul>
+                  <div id="selectedSubrasks" style="margin-bottom: 0;"></div>
+                  <div id="subtaskContainer2"></div>
                </div>
             </div>
          </div>
@@ -576,18 +576,24 @@ function renderContactsSmall(element) {
 }
 
 
-function rederCurrentTasks(selectedSubrasks){
+function rederCurrentTasks(selectedSubrasks) {
   let box = document.getElementById('selectedSubrasks');
   box.innerHTML = ''; // Clear the content before rendering
-   
+
   for (let i = 0; i < selectedSubrasks.length; i++) {
     const value = selectedSubrasks[i].value;
     const id = selectedSubrasks[i].id;
-    box.innerHTML +=/*html*/`
-      <li class="subtaskList" id="${id}">${value}
-            <img src="../assets/img/delete.svg" onclick="deleteSubtaskEdit('${id}')" class="subtaskDeleteImg">
-      </li>`;
-}}
+    const isSubtaskExist = currentSubtasksBoard.some(subtask => subtask.id === id);
+    if (!isSubtaskExist) {
+      currentSubtasksBoard.push({ id: id, value: value });
+    }
+    box.innerHTML += /*html*/ `
+        <div class="subtaskList" id="${id}">${value}
+          <img src="../assets/img/delete.svg" onclick="deleteSubtaskEdit('${id}')" class="subtaskDeleteImg">
+        </div>`;
+  }
+}
+
 
 
 function deleteSubtaskEdit(id){
@@ -655,11 +661,11 @@ function addSubTask2() {
   let subtaskId = 'subtask' + Date.now();
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML +=`
-        <li class="subtaskList" id="${subtaskId}">${subtaskValue} 
+        <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-        </li>`;
+        </div>`;
     subtaskInput.value = '';
-    currentSubtasks.push({id: subtaskId,value: subtaskValue,});
+    currentSubtasksBoard.push({id: subtaskId, value: subtaskValue,});
   }
 }
 
@@ -670,9 +676,9 @@ async function editTask(openedEditContainerElement) {
   let getTaskInfo = JSON.parse(info);
 
   // Finde die zu bearbeitende Karte
-  let taskToEdit = getTaskInfo.find(task => task.id === openedEditContainerElement);
+  let taskToEditIndex = getTaskInfo.findIndex(task => task.id === openedEditContainerElement);
 
-  if (!taskToEdit) {
+  if (taskToEditIndex === -1) {
     console.error('Task not found for editing');
     return;
   }
@@ -682,34 +688,28 @@ async function editTask(openedEditContainerElement) {
   let getDiscriptionArea = document.getElementById('addTastTextArea2').value;
   let getCategory = loadCategory2();
   let getPrio = selectedPriority;
-  let getSubtask = calcSubtasks();
+  let getSubtask = currentSubtasksBoard;
+
   // Aktualisiere die Werte der Karte
-  taskToEdit.title = getTitel;
-  taskToEdit.description = getDiscriptionArea;
-  taskToEdit.workCategory = getCategory;
-  taskToEdit.priority = getPrio;
-  taskToEdit.subrasks = getSubtask;
+  getTaskInfo[taskToEditIndex].title = getTitel;
+  getTaskInfo[taskToEditIndex].description = getDiscriptionArea;
+  getTaskInfo[taskToEditIndex].workCategory = getCategory;
+  getTaskInfo[taskToEditIndex].priority = getPrio;
+  getTaskInfo[taskToEditIndex].subtasks = getSubtask;
   // Aktualisiere die Kontakte unter "Assignet to" nur mit ausgewählten Kontakten
-  taskToEdit.contacts = selectedUsers;
+  getTaskInfo[taskToEditIndex].contacts = selectedUsers;
 
   // Speichere die aktualisierten Daten
   await setItem('newTask', JSON.stringify(getTaskInfo));
+
+  // Aktualisiere das entsprechende Element in allTask[0]
+  allTask[0][taskToEditIndex] = getTaskInfo[taskToEditIndex];
 
   // Führe die Update-Funktion aus, um die Änderungen anzuzeigen
   updateHTML(getTaskInfo);
 }
 
-function calcSubtasks(){
-  let oldSubtasks = document.getElementById('selectedSubrasks').textContent;
-  let newSubtasks = document.getElementById('subtaskContainer2').textContent;
 
-  if (!isNaN(oldSubtasks) && !isNaN(newSubtasks)) {
-    let result = oldSubtasks + newSubtasks;
-    return result;
-  } else {
-    console.log('Something went wrong by adding Subtasks')
-  }
-}
 
 
 function createNewTask2() {
@@ -746,7 +746,6 @@ function createNewTask2() {
 }
 
   
-
 function showAssignetContacts2(loggedInUser) {
   let box = document.getElementById("selectContainer2");
 
@@ -806,7 +805,6 @@ function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
     console.log(`${userId} hat value false`);
   }
 }
-
 
 
 function renderAddedContactBox(selectedUsers){
