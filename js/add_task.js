@@ -318,9 +318,9 @@ function addSubTask() {
   let subtaskId = 'subtask' + Date.now();
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML +=`
-        <li class="subtaskList" id="${subtaskId}">${subtaskValue} 
+        <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-        </li>`;
+        </div>`;
     subtaskInput.value = '';
 
     currentSubtasks.push({id: subtaskId,value: subtaskValue,});
@@ -366,7 +366,12 @@ function editSubtask(subtaskId) {
 
 
 function deleteSubtask(subtaskId) {
+  // Element aus dem DOM entfernen
   document.getElementById(subtaskId).remove();
+
+  // Subtask aus dem Array entfernen
+  currentSubtasks = currentSubtasks.filter(subtask => subtask.id !== subtaskId);
 }
+
 
 
