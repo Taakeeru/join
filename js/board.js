@@ -351,20 +351,20 @@ usersDate(element);
 updateCheckboxStatus(element);
 }
 
-// function updateCheckboxStatus(element) {
-//   const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
-//   const subtaskCounts = selectedSubtaskCounts[element];
+function updateCheckboxStatus(element) {
+  const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
+  const subtaskCounts = selectedSubtaskCounts[element];
 
-//   if (subtaskCounts) {
-//     for (const subtaskId in subtaskCounts) {
-//       const checkbox = document.getElementById(subtaskId);
-//       if (checkbox) {
-//         checkbox.checked = subtaskCounts[subtaskId];
-//       }
-//     }
-//   }
+  if (subtaskCounts) {
+    for (const subtaskId in subtaskCounts) {
+      const checkbox = document.getElementById(subtaskId);
+      if (checkbox) {
+        checkbox.checked = subtaskCounts[subtaskId];
+      }
+    }
+  }
  
-// }
+}
 
 
 
@@ -416,14 +416,6 @@ async function checkboxClicked(cardElement, subtaskId) {
 
   selectedSubtaskCounts[cardElement][subtaskId] = checkbox.checked;
 
-  let selectedCount = 0;
-  for (const id in selectedSubtaskCounts[cardElement]) {
-    if (selectedSubtaskCounts[cardElement][id]) {
-      selectedCount++;
-    }
-  }
-
-  numberOfSubtask.innerHTML = `<span>${selectedCount}</span>`;
   await updateProgressBar(cardElement, subtaskId);
   await updateStatus(subtaskId, checkbox.checked);
 }
@@ -444,7 +436,7 @@ async function updateStatus(subtaskIdToUpdate, newStatusValue) {
   
     // Speichere den aktualisierten Task im Backend
     await setItem('newTask', JSON.stringify(allTask[0]));
-    
+    updateProgressBarOnload()
     // Aktualisiere die lokale Anzeige
     console.log(allTask[0]);
 }
@@ -458,19 +450,7 @@ async function updateProgressBar(element, subtaskId) {
     selectedSubtaskCounts[element] = {};
   }
 
-  let selectedCount = 0;
-  for (const id in selectedSubtaskCounts[element]) {
-    if (selectedSubtaskCounts[element][id]) {
-      selectedCount++;
-      element.taskbar++;
-    }
-  }
-  const totalSubtasks =  `${ allTask[0][element]["subtasks"].length}`;  
-  const percentage = (selectedCount / totalSubtasks) * 100;
-
-  progressBar.style.width = `${percentage}%`;
-
-  progressBar.setAttribute('aria-valuenow', percentage);
+  
 
   await setItem('newTask', JSON.stringify(allTask[0][element].taskbar));
 }
@@ -512,6 +492,7 @@ function updateProgressBarOnload() {
     progressBar.innerHTML = `<span>${percentage}%</span>`;
     numberOfSubtask.innerHTML = `<span>${completedSubtasks}</span>`;
   }
+  
 }
 
 
