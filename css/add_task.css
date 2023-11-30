@@ -46,7 +46,7 @@ body {
   gap: 24px;
   display: flex;
   overflow-y: scroll;
-  height: calc(76vh - 144px);
+  height: calc(100vh - 144px);
 }
 
 .addTask::-webkit-scrollbar {
@@ -388,6 +388,7 @@ body {
 .subtaskList {
   display: flex;
   justify-content: space-between;
+  margin-left: 8px;
 }
 
 .positionOfButtons {
@@ -443,6 +444,8 @@ body {
 .subtaskDeleteImg {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  margin-right: 12px;
+  margin-bottom: 4px;
 }
 
 .subtaskDeleteImg:hover {
@@ -541,41 +544,65 @@ body {
   margin-bottom: 16px;
 }*/
 @media (max-width: 1260px) {
+  .contentContainer{
+    display: flex;
+    justify-content: center;
+  }
   .positionOfButtons {
     display: inline-flex;
     bottom: 144px;
     margin: 24px;
     position: unset;
   }
-
+  .addTask{
+    width: 100vw;
+    height: calc(100vh - 184px) !important;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  .positionOfButtons{
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
 
-
 @media (max-width: 1000px) {
- 
-  .contentContainer {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding-top: 160px;
+  .addTask{
+    margin-top: 96px;
+    height: calc(100vh - 184px) !important;
   }
- 
   .containAddTask {
-    width: 300px;
+    width: 440px;
   }
   .ClearBtn {
     display: none;
+  }
+  .buttonContainer{
+    width: 440px;
+  }
+  .assignedContent{
+    width: 440px;
+  }
+  .assignedContent{
+    width: 440px;
+  }
+  .SubtaskContent{
+    width: 440px;
+  }
+  .positionOfButtons{
+    display: flex;
+    justify-content: center;
   }
 }
 
 @media (max-width: 500px) {
   .contentContainer {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding-top: 160px;
+    flex-direction: column;
+    align-items: center;
   }
-  .addTask {
+  .buttonContainer{
     width: 350px;
   }
   .topSektion {
@@ -602,22 +629,38 @@ body {
   }
 
   .positionOfButtons {
-    display: inline-flex;
-    margin: 24px;
+    display: flex;
     justify-content: center;
-    width: 300px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    justify-content: center;
+    width: 290px;
   }
   .ClearBtn {
     display: none;
   }
   .containAddTask {
-    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .addContactstoassign {
     width: 340px;
   }
-  .header-sideMenuImg{
-    
+  .textArea{
+    width: 310px;
+  }
+  .inputfieldDateContainer{
+    width: 310px;
+  }
+  .selectContainer{
+    width: 350px;
+  }
+  .userPosition{
+    width: 80vw;
+  }
+  .inputfieldDateContainer{
+    width: 320px;
   }
 }
 
@@ -626,26 +669,27 @@ body {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-    padding-top: 160px;
   }
-  .addTask {
-    width: 350px;
-    padding-left: 3px;
+  .textArea {
+    width: 242px;
   }
   .topSektion {
-    width: 330px;
+    width: 280px;
   }
   .inputFieldTitle {
-    width: 335px;
+    width: 280px;
+  }
+  .inputfieldDateContainer{
+    width: 262px;
   }
   .description {
-    width: 335px;
+    width: 280px;
   }
   .inputfieldDate {
-    width: 310px;
+    width: 260px;
   }
   .assignedContent {
-    width: 335px;
+    width: 280px;
   }
   .prioButtonRed {
     width: 96px;
@@ -658,21 +702,48 @@ body {
   }
 
   .SubtaskContent {
-    width: 335px;
+    width: 280px;
   }
-
   .positionOfButtons {
-    
-      display: inline-flex;
-      margin: 24px;
-      justify-content: center;
-      width: 284px;
-    }
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center;
+    width: 280px;
   }
- 
-
   .addContactstoassign {
-    width: 325px;
+    width: 280px;
   }
-
+  .prioButtonGreen{
+    width: 72px;
+    height: 42px;
+    font-size: 14px;
+  }
+  .prioButtonYellow{
+    width: 114px;
+    height: 42px;
+    margin-left: -12px;
+    font-size: 14px;
+  }
+  .prioButtonRed{
+    width: 96px;
+    height: 42px;
+    margin-left: -12px;
+    font-size: 14px;
+  }
+  .buttonContainer{
+    width: 280px;
+  }
+  .createTaskBtn{
+    width: 136px;
+    height: 44px;
+    font-size: 16px;
+  }
+  .inputfieldDateContainer{
+    width: 248px;
+  }
+}
 
