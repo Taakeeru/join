@@ -19,7 +19,7 @@ async function init() {
   allTask.push(getTaskInfo);
   updateHTML(getTaskInfo);
   showAssignetContacts(loggedInUser);
-  updateProgressBarOnload();
+  updateProgressBarOnload()
 }
 
 
@@ -349,20 +349,20 @@ usersDate(element);
 updateCheckboxStatus(element);
 }
 
-function updateCheckboxStatus(element) {
-  const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
-  const subtaskCounts = selectedSubtaskCounts[element];
+// function updateCheckboxStatus(element) {
+//   const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
+//   const subtaskCounts = selectedSubtaskCounts[element];
 
-  if (subtaskCounts) {
-    for (const subtaskId in subtaskCounts) {
-      const checkbox = document.getElementById(subtaskId);
-      if (checkbox) {
-        checkbox.checked = subtaskCounts[subtaskId];
-      }
-    }
-  }
+//   if (subtaskCounts) {
+//     for (const subtaskId in subtaskCounts) {
+//       const checkbox = document.getElementById(subtaskId);
+//       if (checkbox) {
+//         checkbox.checked = subtaskCounts[subtaskId];
+//       }
+//     }
+//   }
  
-}
+// }
 
 
 
@@ -495,16 +495,26 @@ async function updateProgressBar(element, subtaskId) {
 // }
 
 
-function updateProgressBarOnload(element) {
-  const progressBar = document.getElementById(`subtaskProgressBar${element["id"]}`);
+function updateProgressBarOnload() {
+  for (let i = 0; i < allTask[0].length; i++) {
+    const element = allTask[0][i];
+    const progressBar = document.getElementById(`subtaskProgressBar${element["id"]}`);
 
-  let seeTaskValue = element.taskbar;
-  let totalSubtasks = `${element.subtasks.length}`;
-  let percentage = (seeTaskValue / totalSubtasks) * 100;
+    let completedSubtasks = element.subtasks.filter(subtask => subtask.status === true).length;
+    let totalSubtasks = element.subtasks.length;
+    let percentage = (completedSubtasks / totalSubtasks) * 100;
 
-  progressBar.style.width = `${percentage}%`;
-  progressBar.setAttribute('aria-valuenow', percentage);
+    progressBar.style.width = `${percentage}%`;
+    progressBar.setAttribute('aria-valuenow', percentage);
+    progressBar.innerHTML = `<span>${percentage}%</span>`;
+  }
 }
+
+
+
+
+
+
 
 
 function closeCardContainer() {
