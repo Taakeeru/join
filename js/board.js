@@ -124,6 +124,7 @@ function generateTodoHTML(element, priorityImagePath) {
         ${contact["initial"]}
       </div>`;
   }
+  
 
   return `
     <div class="taskCards" onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
@@ -165,6 +166,7 @@ async function moveTo(category) {
   getTaskInfo[currentDraggedElement]["category"] = category;
   await setItem('newTask', JSON.stringify(getTaskInfo));
   updateHTML(getTaskInfo);
+  updateProgressBarOnload();
 }
 
 
