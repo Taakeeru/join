@@ -101,9 +101,7 @@
           </div>
         </div>
       </div>
-      <div
-      w3-include-html="../assets/templates/desktop_template_footer.html"
-    ></div>
+      <div w3-include-html="../assets/templates/desktop_template_footer.html"></div>
     </div>
 
     <div class="summary-mobile">
@@ -122,39 +120,40 @@
             <p class="tasksUrgent">Upcoming Deadline</p>
           </div>
         </div>
-
-        <div class="tasksInBoard displayRow wd" onclick="showTaskBoard()">
-          <div class="displayFlex">
-            <img src="../assets/img/ellipse3.svg" class="showTo-doImg" />
-            <div id="showNumberToDo2"></div>
-          </div>
-          <p class="textInBoxes">Tasks<br />To-do</p>
-        </div>
-      </div>
-
-      <div class="flex-row">
-        <div class="showTasksInBoard displayRow" onclick="showTaskBoard()">
+        <div class="showTasksInBoard wd" onclick="showTaskBoard()">
           <div class="displayFlex">
             <img
-              src="../assets/img/ellipse3.svg"
-              class="showTaskInBoardImg"
-            />
+              src="../assets/img/ellipse3.svg" class="showTaskInBoardImg"/>
             <div id="showTaskInBoardNumber2"></div>
           </div>
           <p class="tasksUrgent">Task on Board</p>
         </div>
+      </div>
+
+    <div class="widthOfFlexRow">
+
+      <div class="flex-row">
+        <div class="tasksInBoard displayRow " onclick="showTaskBoard()">
+          <div class="displayFlex">
+            <img src="../assets/img/ellipse3.svg" class="showTo-doImg" />
+            <div id="showNumberToDo2"></div>
+          </div>
+          <div>
+            <p class="textInBoxes">Tasks<br />To-do</p>
+          </div>
+        </div>
 
         <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
           <div class="displayFlex">
-            <img
-              src="../assets/img/ellipse3.svg"
-              class="showTaskInProgressImg"
-            />
+            <img src="../assets/img/ellipse3.svg" class="showTaskInProgressImg"/>
             <div id="showNumberProgress2"></div>
           </div>
           <p class="textInBoxes">Task in Progress</p>
         </div>
       </div>
+    </div>
+
+    <div class="widthOfFlexRow">
 
       <div class="flex-row">
         <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
@@ -164,6 +163,7 @@
           </div>
           <p class="textInBoxes">Awaiting Feedback</p>
         </div>
+
         <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
           <div class="displayFlex">
             <img src="../assets/img/ellipse3.svg" class="showTasksDoneImg"/>
@@ -171,6 +171,7 @@
           </div>
           <p class="textInBoxes">Tasks <br/> Done</p>
         </div>
+
       </div>
     </div>
   </body>

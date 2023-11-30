@@ -260,8 +260,12 @@ body{
     }
 
     .showDate {
-        width: 580px;
-        height: 151px;
+        width: 595px;
+        height: 178px;
+        margin-bottom: 16px;
+    }
+    .showDate:hover{
+        border-top-left-radius: 30px;
     }
 
     .boxForBoxes {
@@ -297,23 +301,54 @@ body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 0 20px 0 20px;
         width: 100vw;
     }
 
     .flex-column {
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 100%;
+    }
+    .widthOfFlexRow{
+        width: 595px;
+        display: flex;
+        justify-content: space-between; 
     }
 
     .flex-row {
         display: flex;
-        flex-direction: row;
-        width: 100%;
+    }
+    .wd {
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .wd:hover{
+        border-top-left-radius: 30px;
     }
 
-    .wd {
-        width: 672px !important;
+    .clockCircle{
+        width: 66px;
+        height: 66px;
+    }
+    .showTo-doImg{
+        width: 66px;
+        height: 66px;
+    }
+    .textInBoxes{
+        margin-top: -68px;
+    }
+    .showTasksInBoard{
+        width: 595px;
+        height: 178px;
+    }
+    .tasksInBoard{
+        height: 191px;
+        width: 208px;
+    }
+    .tasksInBoard:hover{
+        border-top-left-radius: 30px;
     }
 }
