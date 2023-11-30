@@ -66,12 +66,14 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
   getTitle = getTitle.trim();
 
   // Fetch existing tasks from the backend
-  let existingTasks;
+  let existingTasks = [];
   try {
-    existingTasks = JSON.parse(await getItem('newTask'));
+      const storedTasks = await getItem('newTask');
+      if (storedTasks) {
+          existingTasks = JSON.parse(storedTasks);
+      }
   } catch (e) {
-    console.error('Error fetching existing tasks:', e);
-    existingTasks = [];
+      console.error('Error fetching existing tasks:', e);
   }
 
   // Check if the task with the same title already exists
@@ -89,7 +91,8 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       workCategory: getCategory,
       category: "toDo",
       subtasks: currentSubtasks,
-      isChecked: checked 
+      isChecked: checked,
+      taskbar : 0,
     };
 
     existingTasks.push(newTask);
@@ -316,6 +319,7 @@ function addSubTask() {
   let addTask =  document.getElementById('subtaskContainer');
   let subtaskValue = subtaskInput.value;
   let subtaskId = 'subtask' + Date.now();
+  let status = false;
   if (subtaskValue.trim() !== '') { 
     addTask.innerHTML +=`
         <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
@@ -323,7 +327,7 @@ function addSubTask() {
         </div>`;
     subtaskInput.value = '';
 
-    currentSubtasks.push({id: subtaskId,value: subtaskValue,});
+    currentSubtasks.push({id: subtaskId,value: subtaskValue, status: false});
   }
 }
 
@@ -366,12 +370,7 @@ function editSubtask(subtaskId) {
 
 
 function deleteSubtask(subtaskId) {
-  // Element aus dem DOM entfernen
   document.getElementById(subtaskId).remove();
-
-  // Subtask aus dem Array entfernen
-  currentSubtasks = currentSubtasks.filter(subtask => subtask.id !== subtaskId);
 }
-
 
 
