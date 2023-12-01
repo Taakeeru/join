@@ -55,7 +55,9 @@ function searchTask() {
   });
 
   updateHTML(filteredTasks);
-  updateProgressBarOnload()
+ updateProgressBarOnload();
+  
+
 }
 
 
