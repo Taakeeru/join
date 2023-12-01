@@ -34,7 +34,7 @@
             <div class="showName" id="greet-name"></div>
           </div>
           <div class="positionTime">
-            <div class="showDate" onclick="showTaskBoard()">
+            <a class="showDate" href="../html/board.html">
               <div>
                 <div class="displayFlex">
                   <img src="../assets/img/ellipse3.svg" class="clockCircle" />
@@ -47,8 +47,8 @@
                 <p class="dateDeadline" id="date">monat 01.01.2023</p>
                 <p class="tasksUrgent">Upcoming Deadline</p>
               </div>
-            </div>
-            <div class="showTasksInBoard displayRow" onclick="showTaskBoard()">
+            </a>
+            <a class="showTasksInBoard displayRow" href="../html/board.html">
               <div class="displayFlex">
                 <img
                   src="../assets/img/ellipse3.svg"
@@ -56,17 +56,17 @@
                 <div id="showTaskInBoardNumber"></div>
               </div>
               <p class="tasksUrgent">Task on Board</p>
-            </div>
+            </a>
           </div>
           <div class="positionTasksCards">
-            <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
+            <a class="tasksInBoard displayRow" href="../html/board.html">
               <div class="displayFlex">
                 <img src="../assets/img/ellipse3.svg" class="showTo-doImg" />
                 <div id="showNumberToDo"></div>
               </div>
               <p class="textInBoxes">Tasks<br />To-do</p>
-            </div>
-            <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
+            </a>
+            <a class="tasksInBoard displayRow" href="../html/board.html">
               <div class="displayFlex">
                 <img
                   src="../assets/img/ellipse3.svg"
@@ -74,8 +74,8 @@
                 <div id="showNumberProgress"></div>
               </div>
               <p class="textInBoxes">Task in Progress</p>
-            </div>
-            <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
+            </a>
+            <a class="tasksInBoard displayRow" href="../html/board.html">
               <div class="displayFlex">
                 <img
                   src="../assets/img/ellipse3.svg"
@@ -84,8 +84,8 @@
                 <div id="showNumberAwaitingFeedback"></div>
               </div>
               <p class="textInBoxes">Awaiting Feedback</p>
-            </div>
-            <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
+            </a>
+            <a class="tasksInBoard displayRow" href="../html/board.html">
               <div class="displayFlex">
                 <img
                   src="../assets/img/ellipse3.svg"
@@ -97,7 +97,7 @@
                 Tasks <br />
                 Done
               </p>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -106,34 +106,34 @@
 
     <div class="summary-mobile">
       <div class="flex-column">
-        <div class="showDate" onclick="showTaskBoard()">
+        <a class="showDate" href="../html/board.html">
           <div>
             <div class="displayFlex">
               <img src="../assets/img/ellipse3.svg" class="clockCircle" />
               <div id="showUrgentTasks2"></div>
             </div>
-            <p class="tasksUrgent">Tasks Urgent</p>
+            <p class="tasksUrgent marginLeft">Tasks Urgent</p>
           </div>
           <div class="whiteLine"></div>
           <div class="deadlineBox">
-            <p class="dateDeadline" id="date">monat 01.01.2023</p>
+            <p class="dateDeadline" id="dateMobile">monat 01.01.2023</p>
             <p class="tasksUrgent">Upcoming Deadline</p>
           </div>
-        </div>
-        <div class="showTasksInBoard wd" onclick="showTaskBoard()">
+        </a>
+        <a class="showTasksInBoard wd" href="../html/board.html">
           <div class="displayFlex">
             <img
               src="../assets/img/ellipse3.svg" class="showTaskInBoardImg"/>
             <div id="showTaskInBoardNumber2"></div>
           </div>
           <p class="tasksUrgent">Task on Board</p>
-        </div>
+        </a>
       </div>
 
-    <div class="widthOfFlexRow">
+
 
       <div class="flex-row">
-        <div class="tasksInBoard displayRow " onclick="showTaskBoard()">
+        <a class="tasksInBoard displayRow " href="../html/board.html">
           <div class="displayFlex">
             <img src="../assets/img/ellipse3.svg" class="showTo-doImg" />
             <div id="showNumberToDo2"></div>
@@ -141,9 +141,8 @@
           <div>
             <p class="textInBoxes">Tasks<br />To-do</p>
           </div>
-        </div>
-
-        <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
+        </a>
+        <div class="tasksInBoard displayRow" href="../html/board.html">
           <div class="displayFlex">
             <img src="../assets/img/ellipse3.svg" class="showTaskInProgressImg"/>
             <div id="showNumberProgress2"></div>
@@ -151,28 +150,23 @@
           <p class="textInBoxes">Task in Progress</p>
         </div>
       </div>
-    </div>
-
-    <div class="widthOfFlexRow">
 
       <div class="flex-row">
-        <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
+        <a class="tasksInBoard displayRow" href="../html/board.html">
           <div class="displayFlex">
             <img src="../assets/img/ellipse3.svg" class="showAwaitingFeedbackImg"/>
             <div id="showNumberAwaitingFeedback2"></div>
           </div>
           <p class="textInBoxes">Awaiting Feedback</p>
-        </div>
-
-        <div class="tasksInBoard displayRow" onclick="showTaskBoard()">
+        </a>
+        <a class="tasksInBoard displayRow" href="../html/board.html">
           <div class="displayFlex">
             <img src="../assets/img/ellipse3.svg" class="showTasksDoneImg"/>
             <div id="showNumberTasksDone2"></div>
           </div>
           <p class="textInBoxes">Tasks <br/> Done</p>
-        </div>
-
+        </a>
       </div>
-    </div>
+
   </body>
 </html>

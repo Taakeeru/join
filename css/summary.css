@@ -3,6 +3,10 @@ body{
     font-family: "Open Sans", sans-serif;
 }
 
+a{
+    text-decoration: none;
+}
+
 .dislayRowBody{
     display: flex;
     flex-direction: row-reverse;
@@ -188,9 +192,8 @@ body{
 }
 
 .showTheNumbers{
-    font-size: 58px;
+    font-size: 36px;
     font-weight: bolder;
-    margin-left: 16px;
 }
 
 .showTo-doImg{
@@ -239,10 +242,10 @@ body{
     display: none;
 }
 
-@media(max-width: 1200px) {
+/* @media(max-width: 1200px) {
     .tasksInBoard {
-        width: 164px;
-        height: 151px;
+        height: 191px;
+        width: 208px;
         border: 1px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         border-radius: 30px;
@@ -261,7 +264,7 @@ body{
 
     .showDate {
         width: 595px;
-        height: 178px;
+        height: 191px;
         margin-bottom: 16px;
     }
     .showDate:hover{
@@ -276,9 +279,17 @@ body{
         justify-content: space-between;
         
     }
-}
+} */
 
 @media(max-width: 1000px) {
+    .showDate {
+        width: 595px;
+        height: 191px;
+        margin-bottom: 16px;
+    }
+    .showDate:hover{
+        border-top-left-radius: 30px;
+    }
     .dislayRowBody {
         display: none;
     }
@@ -317,7 +328,10 @@ body{
     }
 
     .flex-row {
+        width: 595px;
         display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
     }
     .wd {
         margin-bottom: 16px;
@@ -342,13 +356,114 @@ body{
     }
     .showTasksInBoard{
         width: 595px;
-        height: 178px;
+        height: 140px;
     }
     .tasksInBoard{
-        height: 191px;
-        width: 208px;
+        height: 174px;
+        width: 282px;
     }
     .tasksInBoard:hover{
         border-top-left-radius: 30px;
+    }
+    .showNumber{
+        font-size: 48px;
+    }
+    .showTheNumbers{
+        font-size: 48px;
+    }
+    .textInBoxes{
+        margin-top: -48px;
+    }
+    .showTaskInProgressImg{
+        width: 66px;
+        height: 66px;
+    }
+}
+@media(max-width: 670px) {
+    .showDate {
+        width: 400px;
+    }
+    .showTasksInBoard {
+        width: 400px;
+    }
+    .flex-row {
+        width: 400px;
+    }
+    .tasksInBoard {
+        height: 174px;
+        width: 174px;
+    }
+    .dateDeadline {
+        font-size: 24px;
+    }
+    .tasksUrgent {
+        font-size: 22px;
+    }
+    .whiteLine {
+        margin-left: 2px;
+    }
+    .textInBoxes {
+        font-size: 22px;
+    }
+}
+@media(max-width: 450px) {
+    .showDate {
+        width: 270px;
+    }
+    .showTasksInBoard {
+        width: 270px;
+    }
+    .flex-row {
+        width: 270px;
+    }
+    .tasksInBoard {
+        height: 153px;
+        width: 125px;
+    }
+    .dateDeadline {
+        font-size: 24px;
+    }
+    .tasksUrgent {
+        font-size: 22px;
+    }
+    .whiteLine {
+        height: 120px;
+        margin-left: 6px;
+    }
+    .textInBoxes {
+        font-size: 22px;
+    }
+    .clockCircle {
+        width: 52px;
+        height: 52px;
+    }
+    .showTaskInBoardImg {
+        width: 52px;
+        height: 52px;
+    }
+    .showTasksDoneImg {
+        width: 52px;
+        height: 52px;
+    }
+    .showTaskInProgressImg {
+        width: 52px;
+        height: 52px;
+    }
+    .showTo-doImg {
+        width: 52px;
+        height: 52px;
+    }
+    .showAwaitingFeedbackImg {
+        width: 52px;
+        height: 52px;
+    }
+    .showNumber{
+        margin-left: 4px;
+    }
+    .showTheNumbers {
+        margin-left: 4px;
+    }
+    .marginLeft{
+        margin-left: 8px;
     }
 }

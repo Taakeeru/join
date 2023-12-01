@@ -1,5 +1,6 @@
 let currentTaskInfo = [];
 
+
 async function init() {
     await includeHTML();
     highlightTitle('summary');
@@ -8,23 +9,34 @@ async function init() {
     updateGreeting();
     greetUser(loggedInUser);
     showProfileInitials(loggedInUser);
-    updateCurrentDate();
+    // updateCurrentDate();
+    // updateCurrentDateMobile();
     loadUsers();
     generateUserName(loggedInUser);
     let info = await getItem('newTask');
     let getTask = JSON.parse(info);
     currentTaskInfo.push(getTask);
     getAmountOfTasks();
+    upcomingDate();
 }
 
 
-function updateCurrentDate() {
-    const date = document.getElementById('date');
-    const currentDate = new Date();
-    const options = { month: 'long', day: 'numeric', year: 'numeric' };
-    const formattedDate = currentDate.toLocaleDateString('en-EN', options);
-    date.textContent = formattedDate;
-}
+// function updateCurrentDate() {
+//     const date = document.getElementById('date');
+//     const currentDate = new Date();
+//     const options = { month: 'long', day: 'numeric', year: 'numeric' };
+//     const formattedDate = currentDate.toLocaleDateString('en-EN', options);
+//     date.textContent = formattedDate;
+// }
+
+
+// function updateCurrentDateMobile() {
+//     const date = document.getElementById('dateMobile');
+//     const currentDate = new Date();
+//     const options = { month: 'long', day: 'numeric', year: 'numeric' };
+//     const formattedDate = currentDate.toLocaleDateString('en-EN', options);
+//     date.textContent = formattedDate;
+// }
 
 
 function updateGreeting() {
@@ -151,3 +163,34 @@ function getPriority(){
     valueHighDiv.innerHTML = /*html*/`<p class="showNumber">${valuePriority}</p>`;
     valueHighDiv2.innerHTML = /*html*/`<p class="showNumber">${valuePriority}</p>`;
 }
+
+
+function upcomingDate() {
+    let tasks = currentTaskInfo[0];
+    let date = document.getElementById('date');
+    let dateMobile = document.getElementById('dateMobile');
+
+    if (tasks.length === 0) {
+        console.log("No tasks available.");
+        return;
+    }
+
+    let urgentDate = new Date(tasks[0].date); // Initialize with the date of the first task
+
+    tasks.forEach(task => {
+        const taskDate = new Date(task.date);
+
+        if (taskDate < urgentDate) {
+            urgentDate = taskDate;
+        }
+    });
+
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    const formattedUrgentDate = urgentDate.toLocaleDateString('en-EN', options);
+
+    console.log(`The most urgent date is: ${formattedUrgentDate}`);
+
+    date.innerHTML = /*html*/`<div class="showTheNumbers">${formattedUrgentDate}</div>`;
+    dateMobile.innerHTML = /*html*/`<div class="showTheNumbers">${formattedUrgentDate}</div>`;
+}
+
