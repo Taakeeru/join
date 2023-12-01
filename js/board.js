@@ -1,6 +1,5 @@
 let currentDraggedElement;
 let allTask = [];
-let openedEditContainerElement = null;
 let currentSubtasksBoard = [];
 let selectedSubtaskCounts = [];
 let currentIndex = 0;
@@ -540,11 +539,11 @@ function closeCardContainer() {
 
 // Edit secondCard 
 function openEditContainer(element) {
-  openedEditContainerElement = element;
 
   // Vor dem Aufrufen von showAssignetContacts2 die ausgewählten Benutzer bereitstellen
   selectedUsers = allTask[0][element]["contacts"];
   let selectedSubrasks = allTask[0][element]["subtasks"];
+  let getId = allTask[0][element]["id"];
   document.getElementById("secondCardRenderContainer").classList.remove("d-none");
   document.getElementById("openCardContainer").classList.add("d-none");
 
@@ -635,7 +634,7 @@ function openEditContainer(element) {
             </div>
          </div>
             </div>
-            <div class="buttonContainerEdit" > <button onclick="createNewTask2()" class="displayFlex btnCreateContact">Ok<img
+            <div class="buttonContainerEdit" > <button onclick="createNewTask2('${getId}')" class="displayFlex btnCreateContact">Ok<img
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
       </div>`;
@@ -753,13 +752,13 @@ function addSubTask2() {
 }
 
 
-async function editTask(openedEditContainerElement) {
+async function editTask(getId) {
   // Lese die vorhandenen Karten aus
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
-
+  let currentID = Number(getId);
   // Finde die zu bearbeitende Karte
-  let taskToEditIndex = getTaskInfo.findIndex(task => task.id === openedEditContainerElement);
+  let taskToEditIndex = getTaskInfo.findIndex(task => task.id === currentID);
 
   if (taskToEditIndex === -1) {
     console.error('Task not found for editing');
@@ -794,9 +793,9 @@ async function editTask(openedEditContainerElement) {
 }
 
 
-function createNewTask2() {
+function createNewTask2(getId) {
   // Falls openEditContainer2 aufgerufen wurde, rufe editTask mit der übergebenen id auf
-  editTask(openedEditContainerElement);
+  editTask(getId);
 
     // Hier hältst du eine Referenz zu den ausgewählten Kontakten
     let selectedContacts = selectedUsers;
