@@ -906,15 +906,16 @@ function loadCategory2(){
 }
 
 
-function deleteCard(taskId){
+async function deleteCard(taskId){
   let idToDelete = Number(taskId);
-  let taskToDeleteIndex = allTask[0].findIndex(task => task.id === idToDelete);
+  let info = await getItem('newTask');
+  let getTaskInfo = JSON.parse(info);
+  let taskToDeleteIndex = getTaskInfo.findIndex(task => task.id === idToDelete);
   if (taskToDeleteIndex === -1) {
     console.error('Task not found for deletion');
     return;
   }
-  allTask[0].splice(taskToDeleteIndex, 1);
-
-  // await setItem('newTask', JSON.stringify(allTask[0]));
-  updateHTML(allTask[0]);
+  getTaskInfo.splice(taskToDeleteIndex, 1);
+  await setItem('newTask', JSON.stringify(getTaskInfo));
+  updateHTML(getTaskInfo);
 }
