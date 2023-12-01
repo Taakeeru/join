@@ -78,11 +78,14 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
 
   // Check if the task with the same title already exists
   const existingTaskIndex = existingTasks.findIndex((task) => task.title === getTitle);
+  const date = new Date();
+  const getTimeNumber = date.getTime();
+
 
   if (existingTaskIndex === -1) {
     // Task does not exist, create a new one
     let newTask = {
-      id: existingTasks.length + Date.now(),
+      id: existingTasks.length + getTimeNumber,
       title: getTitle,
       description: getDescription,
       priority: selectedPriority,
@@ -368,16 +371,6 @@ function editSubtask(subtaskId) {
   
 }
 
-
-// function deleteSubtask(subtaskId) {
-//   let SubtaskID = currentSubtasks.findIndex(task => task.id === subtaskId);
-//   if (SubtaskID === subtaskId) {
-//     document.getElementById(subtaskId).remove();
-//     currentSubtasks.splice(subtaskId, 1);
-//   }else{
-//     console.log('aktueller id nicht gefunden')
-//   }
-// }
 
 function deleteSubtask(subtaskId) {
   const subtaskIndex = currentSubtasks.findIndex(task => task.id === subtaskId);
