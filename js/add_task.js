@@ -78,14 +78,14 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
 
   // Check if the task with the same title already exists
   const existingTaskIndex = existingTasks.findIndex((task) => task.title === getTitle);
-  const date = new Date();
-  const getTimeNumber = date.getTime();
+  // const date = new Date();
+  // const getTimeNumber = date.getTime();
 
 
   if (existingTaskIndex === -1) {
     // Task does not exist, create a new one
     let newTask = {
-      id: existingTasks.length + getTimeNumber,
+      id: existingTasks.length + Date.now(),
       title: getTitle,
       description: getDescription,
       priority: selectedPriority,

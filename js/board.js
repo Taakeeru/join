@@ -3,6 +3,8 @@ let allTask = [];
 let openedEditContainerElement = null;
 let currentSubtasksBoard = [];
 let selectedSubtaskCounts = [];
+let currentIndex = 0;
+let startDraggingIndex = 0;
 
 
 
@@ -127,7 +129,7 @@ function generateTodoHTML(element, priorityImagePath) {
   
 
   return `
-    <div class="taskCards" onclick="openCardContainer(´${element}´, '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
+    <div class="taskCards" onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
           <p class="userStory">${element["workCategory"]}</p>
@@ -160,10 +162,25 @@ function startDragging(id) {
   currentDraggedElement = id;
 }
 
+
+function getStartDraggingIndex(element){
+  let idToDelete = Number(element);
+  startDraggingIndex = 0;
+  for (let i = 0; i < allTask[0].length; i++) {
+    const indexID = allTask[0][i].id;
+    if (indexID === idToDelete){
+      startDraggingIndex = i;
+      return startDraggingIndex;
+    }
+  }
+}
+
+
 async function moveTo(category) {
+  getStartDraggingIndex(currentDraggedElement);
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
-  getTaskInfo[currentDraggedElement]["category"] = category;
+  getTaskInfo[startDraggingIndex]["category"] = category;
   await setItem('newTask', JSON.stringify(getTaskInfo));
   updateHTML(getTaskInfo);
   updateProgressBarOnload();
@@ -287,12 +304,12 @@ function closeAddTaskMenu() {
 
 function openCardContainer(element,priorityImagePath) { 
   let priorityText;
-
-  if (allTask[0][element]["priority"] === 'high') {
+  getCurrentIndex(element);
+  if (allTask[0][currentIndex]["priority"] === 'high') {
     priorityText = 'High';
-  } else if (allTask[0][element]["priority"] === 'medium') {
+  } else if (allTask[0][currentIndex]["priority"] === 'medium') {
     priorityText = 'Medium';
-  } else if (allTask[0][element]["priority"] === 'low') {
+  } else if (allTask[0][currentIndex]["priority"] === 'low') {
     priorityText = 'Low';
   } else {
     priorityText = 'Unknown';
@@ -304,18 +321,18 @@ function openCardContainer(element,priorityImagePath) {
    `<div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer" >
   <div class="openCardsDetails" onclick="event.stopPropagation()">
      <div class="openCardTitle"> 
-      <div><span class="userDetailsTitle">${allTask[0][element]["workCategory"]}</span></div>
+      <div><span class="userDetailsTitle">${allTask[0][currentIndex]["workCategory"]}</span></div>
         <img class="userDetailsImg" onclick="closeCardContainer()" src="../assets/img/close.svg" alt="">
      </div>
      <div class="openCardDescription">
-        <span class="openCardDescriptionText">${allTask[0][element]["title"]}</span>
+        <span class="openCardDescriptionText">${allTask[0][currentIndex]["title"]}</span>
      </div>
      <div class="openCardText"> 
-        <span class="openCardSpanText">${allTask[0][element]["description"]}</span>
+        <span class="openCardSpanText">${allTask[0][currentIndex]["description"]}</span>
      </div>
      <div class="openCardDate">
         <span class="cardsCategoryText">Due date:</span>
-        <span class="openCardSecondText" >${allTask[0][element]["date"]}</span>
+        <span class="openCardSecondText" >${allTask[0][currentIndex]["date"]}</span>
      </div>
      <div class="openCardPrio">
         <span class="cardsCategoryText">Priority:</span>
@@ -332,7 +349,7 @@ function openCardContainer(element,priorityImagePath) {
      </div>
      <div class="openCardCheckbox">
      
-     <div class="subtaskText">${renderSubtasks(element, allTask[0][element]["subtasks"])}</div>
+     <div class="subtaskText">${renderSubtasks(element, allTask[0][currentIndex]["subtasks"])}</div>
 
      </div>
      <div class="openCardIcons">
@@ -340,16 +357,30 @@ function openCardContainer(element,priorityImagePath) {
            <img class="openCardIconsImg" src="../assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
         </div>
         <img class="openCardIconsImg" src="../assets/img/vector3.svg" alt="">
-        <div onclick="openEditContainer(${allTask[0][element]["id"]}),showAssignetContacts2(loggedInUser)" class="openCardIconsImgContainer" >
+        <div onclick="openEditContainer(${[currentIndex]}),showAssignetContacts2(loggedInUser)" class="openCardIconsImgContainer" >
            <img   class="openCardIconsImg" src="../assets/img/edit.svg" alt=""> <span class="openCardIconsText">Edit</span>
         </div>
      </div>
   </div>
 </div>
 </div>`
-usersDate(element);
+usersDate();
 updateCheckboxStatus(element);
 }
+
+
+function getCurrentIndex(element){
+  let idToDelete = Number(element);
+  currentIndex = 0;
+  for (let i = 0; i < allTask[0].length; i++) {
+    const indexID = allTask[0][i].id;
+    if (indexID === idToDelete){
+      currentIndex = i;
+      return currentIndex;
+    }
+  }
+}
+
 
 function updateCheckboxStatus(element) {
   const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
@@ -368,12 +399,12 @@ function updateCheckboxStatus(element) {
 
 
 
-function usersDate(element) {
+function usersDate() {
   let userDateRender = document.getElementById('usersDateContent');
   let contactsHTML = "";  // Erstelle eine leere Zeichenkette für die Kontakte
 
-  for (let i = 0; i < allTask[0][element]["contacts"].length; i++) {
-    const contact = allTask[0][element]["contacts"][i];
+  for (let i = 0; i < allTask[0][currentIndex]["contacts"].length; i++) {
+    const contact = allTask[0][currentIndex]["contacts"][i];
     contactsHTML += `
       <div class="detaicardsUserContainer">
         <div class="cardUserSymbole detailVersion" style="background-color: ${contact["color"]} !important;">
@@ -450,7 +481,7 @@ async function updateProgressBar(element, subtaskId) {
     selectedSubtaskCounts[element] = {};
   }
 
-  await setItem('newTask', JSON.stringify(allTask[0][element].taskbar));
+  await setItem('newTask', JSON.stringify(allTask[0][currentIndex].taskbar));
 }
 
 
@@ -877,6 +908,7 @@ function loadCategory2(){
   return getValue;
 }
 
+
 function deleteCard(taskId){
   let idToDelete = Number(taskId);
   let taskToDeleteIndex = allTask[0].findIndex(task => task.id === idToDelete);
@@ -885,6 +917,7 @@ function deleteCard(taskId){
     return;
   }
   allTask[0].splice(taskToDeleteIndex, 1);
-  // hier doch push ins backend hinzufügen
+
+  // await setItem('newTask', JSON.stringify(allTask[0]));
   updateHTML(allTask[0]);
 }
