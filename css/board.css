@@ -316,7 +316,7 @@ body {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  height: 621px;
+  height: calc(100vh - 223px) !important;
   width: 518px;
 }
 .addTask-sideMenu {
@@ -502,13 +502,13 @@ body {
   cursor: pointer;
 }
 .editMenu {
-  padding: 32px 24px 0px 24px !important;
+  
 }
 
 .openCardsDetailsEdit {
   background: #ffff;
   width: 528px;
-  height: 82vh;
+  height: 94vh;
   z-index: 2;
   border-radius: 30px 30px 30px 30px;
   transition: all 225ms ease-in-out;
@@ -733,7 +733,7 @@ margin: 21px;
   background-color: #a8a8a8;
 }
 .sideMenuStyle {
-  width: 400px;
+  width: 390px;
 
 }
 .inputFieldTitle-sideMenu{
@@ -778,7 +778,9 @@ margin: 21px;
 }
 
 @media (max-width: 1000px) {
-  
+  .mobileButtonContainer{
+    width: 330px!important;
+  }
   .mobileButtons{
     position: absolute!important;
   }
@@ -821,7 +823,7 @@ margin: 21px;
   }
   @media (max-width: 400px) {
     .openCardsDetailsEdit{
-      width: 461px;
+      width: 426px;
     }
     #addTastTitel2 {
       width: 330px!important;
