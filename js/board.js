@@ -843,18 +843,17 @@ function showAssignetContacts2(loggedInUser) {
       <div class="userBoxContainer displayFlex">
         <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
         <span class="userPosition">${userName}</span>
-        <input type="checkbox" id="inputId${i}" ${isChecked ? 'checked' : ''} onclick="handleCheckboxClick2(${i}, '${userName}', '${getInitial}', '${getColor}', ${isChecked})">
+        <input type="checkbox" id="inputId2${i}" ${isChecked ? 'checked' : ''} onclick="handleCheckboxClick2(${i}, '${userName}', '${getInitial}', '${getColor}', ${isChecked})">
       </div>`;
   }
 }
 
 
-function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
-  let checkbox = document.getElementById(`inputId${i}`);
+function handleCheckboxClick2(i, userName, getInitial, getColor) {
+  let checkbox = document.getElementById(`inputId2${i}`);
   let userId = `user_${i}`;
 
-  if (!isChecked) {
-    isChecked = true;
+  if (checkbox.checked) {
     // Check if the contact is already in the array
     if (!selectedUsers.some(user => user.name === userName)) {
       let selectedUser = {
@@ -870,10 +869,9 @@ function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
     } else {
       console.log(`User ${userName} already exists in selectedUsers`);
     }
-    console.log(`isChecked havt value ${isChecked}`);
+    console.log(`${userId} hat value true`);
   } else {
     console.log(`Removing user with ID: ${userId}`);
-    isChecked = false; 
     // If the checkbox is unchecked and the user is in the list, remove them
     let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
 
@@ -883,10 +881,10 @@ function handleCheckboxClick2(i, userName, getInitial, getColor, isChecked) {
     }
     renderAddedContactBox(selectedUsers);
 
-    console.log(`isChecked havt value ${isChecked}`);
     console.log(`${userId} hat value false`);
   }
 }
+
 
 
 function renderAddedContactBox(selectedUsers){
