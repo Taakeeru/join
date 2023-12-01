@@ -127,7 +127,7 @@ function generateTodoHTML(element, priorityImagePath) {
   
 
   return `
-    <div class="taskCards" onclick="openCardContainer('${element["id"]}', '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
+    <div class="taskCards" onclick="openCardContainer(´${element}´, '${priorityImagePath}')" draggable="true" ondragstart="startDragging(${element["id"]})">
       <div class="cardContent">
         <div class="cardHeader">
           <p class="userStory">${element["workCategory"]}</p>
