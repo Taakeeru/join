@@ -574,6 +574,7 @@ body {
   }
   .containAddTask {
     width: 440px;
+    margin-top: 96px;
   }
   .ClearBtn {
     display: none;
