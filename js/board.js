@@ -280,12 +280,10 @@ function showAddTaskMenu() {
   document.getElementById("sideMenu").classList.add("showmenu");
 }
 
-
 function closeAddTaskMenu() {
   document.getElementById("menuContainerBox").classList.remove("menuContainer");
   document.getElementById("sideMenu").classList.remove("showmenu");
 }
-
 
 function openCardContainer(element,priorityImagePath) { 
   let priorityText;
@@ -338,7 +336,7 @@ function openCardContainer(element,priorityImagePath) {
 
      </div>
      <div class="openCardIcons">
-        <div  class="openCardIconsImgContainer" onclick="deleteCard('${element}')">
+     <div  class="openCardIconsImgContainer" onclick="deleteCard('${element}')">
            <img class="openCardIconsImg" src="../assets/img/delete.svg" alt=""> <span class="openCardIconsText">Delete</span>
         </div>
         <img class="openCardIconsImg" src="../assets/img/vector3.svg" alt="">
@@ -352,7 +350,6 @@ function openCardContainer(element,priorityImagePath) {
 usersDate(element);
 updateCheckboxStatus(element);
 }
-
 
 function updateCheckboxStatus(element) {
   const checkboxes = document.querySelectorAll('.subtaskCheckbox input[type="checkbox"]');
@@ -368,6 +365,7 @@ function updateCheckboxStatus(element) {
   }
  
 }
+
 
 
 function usersDate(element) {
@@ -422,7 +420,6 @@ async function checkboxClicked(cardElement, subtaskId) {
   await updateStatus(subtaskId, checkbox.checked);
 }
   
-
 async function updateStatus(subtaskIdToUpdate, newStatusValue) {
     // Iteriere durch das äußere Array
     for (let j = 0; j < allTask[0].length; j++) {
@@ -452,8 +449,6 @@ async function updateProgressBar(element, subtaskId) {
   if (!selectedSubtaskCounts[element]) {
     selectedSubtaskCounts[element] = {};
   }
-
-  
 
   await setItem('newTask', JSON.stringify(allTask[0][element].taskbar));
 }
@@ -497,6 +492,12 @@ function updateProgressBarOnload() {
   }
   
 }
+
+
+
+
+
+
 
 
 function closeCardContainer() {
@@ -552,7 +553,7 @@ function openEditContainer(element) {
                      <p class="assignedTitle small" >(optional)</p>
                      </p>
                   </div>
-                   <div class="buttonContainer"> 
+                   <div class="buttonContainer editbuttonContainer"> 
                     <button id="low2" onclick="getThePriority2('low', 'low', 'medium', 'high')" class="prioButtonGreen">Low<img id="lowPriority2" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
                     <button id="medium2" onclick="getThePriority2('medium', 'low', 'medium', 'high')" class="prioButtonYellow">Medium<img id="mediumPriority2" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
                     <button id="high2" onclick="getThePriority2('high', 'low', 'medium', 'high')" class="prioButtonRed">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
@@ -646,7 +647,9 @@ function rederCurrentTasks(selectedSubrasks) {
 }
 
 
-function deleteSubtaskEdit(id){  
+
+function deleteSubtaskEdit(id){
+  
   document.getElementById(`${id}`).remove();
 }
 
@@ -657,7 +660,8 @@ function closeEditContainer() {
 
 
 function generatePlaceholderTasks(category) {
-  return`<div class="placeholderTaskContainer" ><span>No tasks in ${category}</span></div>`; 
+  return`<div class="placeholderTaskContainer" ><span>No tasks in ${category}</span></div>`;
+  
 }
 
 
@@ -669,6 +673,7 @@ function shwoCurrentDate(){
 
 function closeEditContainer2() {
   document.getElementById("openEditContainer2").classList.add("d-none");
+
 }
 
 
@@ -872,16 +877,13 @@ function loadCategory2(){
   return getValue;
 }
 
-
 function deleteCard(taskId){
   let idToDelete = Number(taskId);
   let taskToDeleteIndex = allTask[0].findIndex(task => task.id === idToDelete);
-
   if (taskToDeleteIndex === -1) {
     console.error('Task not found for deletion');
     return;
   }
-
   allTask[0].splice(taskToDeleteIndex, 1);
   // hier doch push ins backend hinzufügen
   updateHTML(allTask[0]);

@@ -580,6 +580,10 @@ body {
 .header-sideMenu{
   padding: 72px 40px 0px 80px;
 }
+.subtaskList{
+  width: 330px;
+}
+
 
 .addTask-sideMenu{
   padding-left: 61px!important;
@@ -783,6 +787,9 @@ margin: 21px;
   }
   .mobileButtons{
     position: absolute!important;
+  }
+  .editbuttonContainer{
+    width: 330px!important;
   }
   .scrollContainer {
     width: unset;
