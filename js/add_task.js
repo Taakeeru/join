@@ -82,7 +82,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
   if (existingTaskIndex === -1) {
     // Task does not exist, create a new one
     let newTask = {
-      id: existingTasks.length,
+      id: existingTasks.length + Date.now(),
       title: getTitle,
       description: getDescription,
       priority: selectedPriority,
@@ -369,8 +369,23 @@ function editSubtask(subtaskId) {
 }
 
 
+// function deleteSubtask(subtaskId) {
+//   let SubtaskID = currentSubtasks.findIndex(task => task.id === subtaskId);
+//   if (SubtaskID === subtaskId) {
+//     document.getElementById(subtaskId).remove();
+//     currentSubtasks.splice(subtaskId, 1);
+//   }else{
+//     console.log('aktueller id nicht gefunden')
+//   }
+// }
+
 function deleteSubtask(subtaskId) {
-  document.getElementById(subtaskId).remove();
+  const subtaskIndex = currentSubtasks.findIndex(task => task.id === subtaskId);
+  if (subtaskIndex !== -1) {
+    currentSubtasks.splice(subtaskIndex, 1);
+  }
+  const subtaskElement = document.getElementById(subtaskId);
+  if (subtaskElement) {
+    subtaskElement.remove();
+  }
 }
-
-
