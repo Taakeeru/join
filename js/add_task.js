@@ -28,7 +28,7 @@ async function getAllTasks() {
 
 
 async function createNewTask() {
-  // if (checkInputFields()) {
+  if (checkInputFields()) {
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
   let getDateValue = document.getElementById('dueDateValue').value;
@@ -37,10 +37,7 @@ async function createNewTask() {
   let getCategory = loadCategory();
   // let getSubtask = addedSubtask();
   await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
-  // } else {
-  console.log('Not all fields are filled out correctly');
-
-  // }
+} 
 }
 
 
@@ -50,8 +47,8 @@ function clearArray() {
 
 function clearTasksArray() {
   if (confirm('Are you sure you want to clear all tasks?')) {
-    clearArray(); // Assuming clearArray is the function that clears the array
-    setItem('newTask', JSON.stringify([])) // Also clear the data in the backend
+    clearArray(); 
+    setItem('newTask', JSON.stringify([])) 
       .then(() => {
         console.log('Tasks array cleared');
       })
@@ -65,7 +62,6 @@ function clearTasksArray() {
 async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory, selectedPriority, currentSubtasks) {
   getTitle = getTitle.trim();
 
-  // Fetch existing tasks from the backend
   let existingTasks = [];
   try {
     const storedTasks = await getItem('newTask');
@@ -76,14 +72,9 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
     console.error('Error fetching existing tasks:', e);
   }
 
-  // Check if the task with the same title already exists
   const existingTaskIndex = existingTasks.findIndex((task) => task.title === getTitle);
-  // const date = new Date();
-  // const getTimeNumber = date.getTime();
-
 
   if (existingTaskIndex === -1) {
-    // Task does not exist, create a new one
     let newTask = {
       id: existingTasks.length + Date.now(),
       title: getTitle,
@@ -99,13 +90,11 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
     };
 
     existingTasks.push(newTask);
-    // Update the backend with the modified task list
     await setItem('newTask', JSON.stringify(existingTasks));
 
     console.log(existingTasks);
     await showCreateAnimation();
   } else {
-    // Task with the same title already exists
     alert('Task bereits vorhanden');
   }
 }
