@@ -294,3 +294,12 @@ function generateTemplateHtmlCreateNewTask2(contactData,i,selectedContacts) {
         </div>`;
   
 }
+
+function generateTemplateHtmlCreateNewTask22(selectedContacts,i){
+  return `
+        <div class="userBoxContainer displayFlex">
+          <div class="imgPerson displayFlex" style="background-color: ${selectedContacts[i].color};">${selectedContacts[i].initial}</div>
+          <span class="userPosition">${selectedContacts[i].name}</span>
+        </div>`;
+  
+}
