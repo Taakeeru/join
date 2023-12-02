@@ -246,6 +246,7 @@ async function deleteContact(newName, newEmail, newPhone, initial, color) {
     }
 }
 
+
 function getContact4Delete(newName, newEmail, newPhone, initial, color) {
     return loggedInUser.contacts.find(contact =>
         contact.name === newName &&

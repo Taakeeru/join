@@ -108,9 +108,10 @@ a{
 }
 
 .tasksUrgent{
-    margin-top: -40px;
+    margin-top: -44px;
     font-size: 28px;
     font-weight: 100;
+    margin-bottom: 40px;
 }
 
 .showTasksInBoard{
@@ -178,9 +179,15 @@ a{
 
 .dateDeadline{
     margin-top: 0;
-    padding-bottom: 16px;
     font-size: 34px;
     font-weight: bolder;
+}
+
+.positionTaskUrgent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .showTaskInBoardImg{
@@ -189,11 +196,12 @@ a{
     background-image: url("/assets/img/board.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    margin-right: 10px;
 }
 
 .showTheNumbers{
-    font-size: 36px;
-    font-weight: bolder;
+    font-size: 42px;
+    font-weight: bold;
 }
 
 .showTo-doImg{
@@ -210,6 +218,7 @@ a{
     background-image: url("/assets/img/inProgress.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    margin-right: 10px;
 }
 
 .showAwaitingFeedbackImg{
@@ -218,6 +227,7 @@ a{
     background-image: url("/assets/img/awaitingFeedback.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    margin-right: 10px;
 }
 
 .showTasksDoneImg{
@@ -226,6 +236,7 @@ a{
     background-image: url("/assets/img/done.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    margin-right: 10px;
 }
 
 .textInBoxes{
@@ -350,6 +361,7 @@ a{
     .showTo-doImg{
         width: 66px;
         height: 66px;
+        margin-right: 10px;
     }
     .textInBoxes{
         margin-top: -68px;
@@ -357,6 +369,9 @@ a{
     .showTasksInBoard{
         width: 595px;
         height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .tasksInBoard{
         height: 174px;
@@ -369,14 +384,22 @@ a{
         font-size: 48px;
     }
     .showTheNumbers{
-        font-size: 48px;
+        font-size: 32px;
     }
     .textInBoxes{
-        margin-top: -48px;
+        margin-top: -44px;
+        margin-bottom: 32px;
     }
     .showTaskInProgressImg{
         width: 66px;
         height: 66px;
+    }
+    .showTaskInBoardImg{
+        width: 66px;
+        height: 66px;
+    }
+    .marginBottom{
+        margin-bottom: 46px;
     }
 }
 @media(max-width: 670px) {
@@ -398,12 +421,24 @@ a{
     }
     .tasksUrgent {
         font-size: 22px;
+        margin-top: -24px;
+        margin-bottom: 0;
     }
     .whiteLine {
-        margin-left: 2px;
+        margin-left: 8px;
+        margin-right: -20px;
     }
     .textInBoxes {
         font-size: 22px;
+        margin-top: -20px;
+        margin-bottom: 18px;
+    }
+    .showTheNumbers {
+        font-size: 28px;
+    }
+    .marginBottom{
+        margin-bottom: 46px;
+        margin-top: -42px;
     }
 }
 @media(max-width: 450px) {
@@ -460,10 +495,8 @@ a{
     .showNumber{
         margin-left: 4px;
     }
-    .showTheNumbers {
-        margin-left: 4px;
-    }
     .marginLeft{
         margin-left: 8px;
+        margin-bottom: 48px;
     }
 }

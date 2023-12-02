@@ -9,8 +9,6 @@ async function init() {
     updateGreeting();
     greetUser(loggedInUser);
     showProfileInitials(loggedInUser);
-    // updateCurrentDate();
-    // updateCurrentDateMobile();
     loadUsers();
     generateUserName(loggedInUser);
     let info = await getItem('newTask');
@@ -21,30 +19,10 @@ async function init() {
 }
 
 
-// function updateCurrentDate() {
-//     const date = document.getElementById('date');
-//     const currentDate = new Date();
-//     const options = { month: 'long', day: 'numeric', year: 'numeric' };
-//     const formattedDate = currentDate.toLocaleDateString('en-EN', options);
-//     date.textContent = formattedDate;
-// }
-
-
-// function updateCurrentDateMobile() {
-//     const date = document.getElementById('dateMobile');
-//     const currentDate = new Date();
-//     const options = { month: 'long', day: 'numeric', year: 'numeric' };
-//     const formattedDate = currentDate.toLocaleDateString('en-EN', options);
-//     date.textContent = formattedDate;
-// }
-
-
 function updateGreeting() {
     const greeting = document.getElementById('greeting');
-
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
-
     let greetingMessage = '';
 
     if (currentHour >= 5 && currentHour < 12) {
@@ -82,24 +60,27 @@ function getAmountOfTasks() {
             valueFeedBack++;
         } else if (task.category === "done") {
             valueDone++;
-        }
-    });
-
-    console.log(`todo = '${valueToDo}', progress = '${valueProgress}', feedBack = '${valueFeedBack}', done = '${valueDone}'`);
+        }});
     
-    let currenValues = {
+    let currentValues = getCurrentValues(valueToDo, valueProgress, valueFeedBack,valueDone);
+    renderNumbers(currentValues);
+    calcAllTogether(currentValues);
+    getPriority();
+}
+
+
+function  getCurrentValues(valueToDo, valueProgress, valueFeedBack,valueDone){
+    let currentValues = {
         todo: valueToDo,
         progress: valueProgress,
         feedBack: valueFeedBack,
         done: valueDone
     };
-    renderNumbers(currenValues);
-    calcAllTogether(currenValues);
-    getPriority();
-}
+    return currentValues;
+};
 
 
-function renderNumbers(currenValues){
+function renderNumbers(currentValues){
     let toTo = document.getElementById('showNumberToDo');
     let progress = document.getElementById('showNumberProgress');
     let feedBack = document.getElementById('showNumberAwaitingFeedback');
@@ -110,15 +91,15 @@ function renderNumbers(currenValues){
     feedBack.innerHTML = '';
     done.innerHTML = '';
 
-    toTo.innerHTML = /*html*/`<p class="showTheNumbers">${currenValues.todo}</p>`;
-    progress.innerHTML = /*html*/`<p class="showTheNumbers">${currenValues.progress}</p>`;
-    feedBack.innerHTML = /*html*/`<p class="showTheNumbers">${currenValues.feedBack}</p>`;
-    done.innerHTML = /*html*/`<p class="showTheNumbers">${currenValues.done}</p>`;
-    renderNumverMobile(currenValues);
+    toTo.innerHTML = /*html*/`<p class="showTheNumbers">${currentValues.todo}</p>`;
+    progress.innerHTML = /*html*/`<p class="showTheNumbers">${currentValues.progress}</p>`;
+    feedBack.innerHTML = /*html*/`<p class="showTheNumbers">${currentValues.feedBack}</p>`;
+    done.innerHTML = /*html*/`<p class="showTheNumbers">${currentValues.done}</p>`;
+    renderNumverMobile(currentValues);
 }
 
 
-function renderNumverMobile(currenValues){
+function renderNumverMobile(currentValues){
     let toTo = document.getElementById('showNumberToDo2');
     let progress = document.getElementById('showNumberProgress2');
     let feedBack = document.getElementById('showNumberAwaitingFeedback2');
@@ -129,15 +110,15 @@ function renderNumverMobile(currenValues){
     feedBack.innerHTML = '';
     done.innerHTML = '';
 
-    toTo.innerHTML = /*html*/`<p class="showTheNumbers">${currenValues.todo}</p>`;
-    progress.innerHTML = /*html*/`<p class="showTheNumbers">${currenValues.progress}</p>`;
-    feedBack.innerHTML = /*html*/`<p class="showTheNumbers">${currenValues.feedBack}</p>`;
-    done.innerHTML = /*html*/`<p class="showTheNumbers">${currenValues.done}</p>`;
+    toTo.innerHTML = /*html*/`<p class="showTheNumbers">${currentValues.todo}</p>`;
+    progress.innerHTML = /*html*/`<p class="showTheNumbers">${currentValues.progress}</p>`;
+    feedBack.innerHTML = /*html*/`<p class="showTheNumbers">${currentValues.feedBack}</p>`;
+    done.innerHTML = /*html*/`<p class="showTheNumbers">${currentValues.done}</p>`;
 }
 
 
-function calcAllTogether(currenValues){
-    let result = currenValues.todo + currenValues.progress + currenValues.feedBack + currenValues.done;
+function calcAllTogether(currentValues){
+    let result = currentValues.todo + currentValues.progress + currentValues.feedBack + currentValues.done;
     let resultBox = document.getElementById('showTaskInBoardNumber');
     let resultBox2 = document.getElementById('showTaskInBoardNumber2');
     resultBox.innerHTML = '';
@@ -169,12 +150,7 @@ function upcomingDate() {
     let tasks = currentTaskInfo[0];
     let date = document.getElementById('date');
     let dateMobile = document.getElementById('dateMobile');
-
-    if (tasks.length === 0) {
-        console.log("No tasks available.");
-        return;
-    }
-
+    upcomingDateIfStatement(tasks.length);
     let urgentDate = new Date(tasks[0].date); // Initialize with the date of the first task
 
     tasks.forEach(task => {
@@ -187,10 +163,14 @@ function upcomingDate() {
 
     const options = { month: 'long', day: 'numeric', year: 'numeric' };
     const formattedUrgentDate = urgentDate.toLocaleDateString('en-EN', options);
-
-    console.log(`The most urgent date is: ${formattedUrgentDate}`);
-
     date.innerHTML = /*html*/`<div class="showTheNumbers">${formattedUrgentDate}</div>`;
     dateMobile.innerHTML = /*html*/`<div class="showTheNumbers">${formattedUrgentDate}</div>`;
 }
 
+
+function upcomingDateIfStatement(tasks){
+    if (tasks === 0) {
+        console.log("No tasks available.");
+        return;
+    }
+}
