@@ -2,8 +2,7 @@ let firstLetter = [];
 let newContactData = [];
 let firstLetterOfContatcs = [];
 let currentContact = null;
-let currentDetails = {};
-
+let currentDetails = [];
 
 
 async function init() {
@@ -23,12 +22,10 @@ async function addContactToUserContacts(loggedInUser, name, email, phone, intial
 
     if (userIndex !== -1) {
         pushContactInfo(users[userIndex].contacts, name, email, phone, intial, getColor);
-
         await setItem('users', JSON.stringify(users));
     } else {
         console.error('User not found in users array');
     }
-
     await setItem('loggedInUser', JSON.stringify(loggedInUser));
     getLoggedInUser();
 }
@@ -50,9 +47,7 @@ async function createNewContact() {
     await addContactToUserContacts(loggedInUser, name.value, email.value, phone.value, intial, getColor);
     resetForm(name, email, phone);
     generateContactInSmall();
-    document.getElementById('addBox').classList.remove('backgoundBox');
-    document.getElementById('boxOfAddingNewContact').classList.remove('showSideWindow');
-    document.getElementById('boxOfDetailsContacts').innerHTML ='';
+    removeClassesByNewContacts();
     addContactAnimation();
 }
 
@@ -88,7 +83,6 @@ function getInitialContacts(sortedContacts){
 async function generateContactInSmall() {
     let contact = document.getElementById('contactInSmall');
     contact.innerHTML = '';
-
     let loggedInUser = await getLoggedInUser() || { contacts: [] };
     let sortedContacts = sortByFirstLetter(loggedInUser.contacts);
     let currentLetter = null;
@@ -98,32 +92,11 @@ async function generateContactInSmall() {
         let contactData = sortedContacts[i];
         let firstLetter = sortedContacts[i].name.charAt(0).toUpperCase();
         let color = sortedContacts[i].color;
-
         if (firstLetter !== currentLetter) {
-            contact.innerHTML += /*html*/`
-                <div class="positionLetterContact">
-                    <p class="letterContact" id="letterContact">${firstLetter}</p>
-                </div>
-                <div class="positionLineContact">
-                    <p class="lineContact"></p>
-                </div>`;
+            contact.innerHTML += generateContactInSmallHtml(firstLetter);
             currentLetter = firstLetter;
         }
-
-        contact.innerHTML += /*html*/`
-            <div class="sizeOfContactBox displayFlex" id="addBackgroung${i}" onclick="showDetailsOfContact('${contactData.name}', '${contactData.email}', '${contactData.phone}', '${initial}', '${color}', '${i}')">
-                <div class="whiteBackground displayFlex" >
-                    <div>
-                        <div id="renderFirstLetter" style="background-color: ${color};">
-                        <p class="imgOfContackt">${initial}</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p style="margin: 6px;">${contactData.name}</p>
-                    <p class="styleMail" id="changeStyleEMail${i}">${contactData.email}</p>
-                </div>
-            </div>`;
+        contact.innerHTML += generateContactInSmallHtml2(contactData.name, contactData.email, contactData.phone, initial, color, i);
     }
 }
 
@@ -152,64 +125,42 @@ function showDetailsOfContact(newName, newEmail, newPhone, initial, color, i) {
     detailsContact.classList.remove('d-none');
   
     if (currentContact === newName) {
-      // If the current element is already shown, hide it
       detailsContact.innerHTML = '';
-      document.getElementById(`addBackgroung${i}`).classList.remove('sizeOfContactBoxOnclick');
-      document.getElementById(`changeStyleEMail${i}`).classList.remove('changeStyleMail');
+      removeClassesByShowDetailsOfContact(i);
       currentContact = null;
     } else {
-      // Remove highlighted class from previous contact, if any
-        if (currentContact) {
-          const previousContactElement = document.getElementById(`addBackgroung${currentContactIndex}`);
-          previousContactElement.classList.remove('sizeOfContactBoxOnclick');
-          document.getElementById(`changeStyleEMail${currentContactIndex}`).classList.remove('changeStyleMail');
-        }
-      
-        // Display the new element and add highlighted class
-        document.getElementById(`addBackgroung${i}`).classList.add('sizeOfContactBoxOnclick');
-        detailsContact.innerHTML = /*html*/ `
-        <div>
-            <span class="contactInformationResponcive d-none">Contact Information</span>
-            <div class="positionHeaderContactDetails">
-                <img src="../assets/img/arrow-left-line.svg" class="arrow-left d-none" onclick="returnArrow()">
-                <div class="bigImgContactsBackground">
-                    <div id="randomBackgroundColor" class="bigImgContacts" style="background-color: ${color};">
-                        <p class="sizeOfLetterDetails">${initial}</p>
-                    </div>
-                </div>
-                <div class="contactName">
-                    <span class="nameHeaderContactDetails">${newName}</span>
-                    <div class="positionEditAndDelete" id="toHideByResponsive">
-                        <button onclick="editContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img src="../assets/img/edit.svg"
-                                style="margin-right: 8px;">Edit</button>
-                        <button onclick="deleteContact('${newName}','${newEmail}','${newPhone}', '${initial}', '${color}')" class="displayFlex clearBtn"><img
-                                src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <p class="contantInformation">Contact Information</p>
-                <p class="fontWeight">Email</p>
-                <a href="mailto:${newEmail}" target="_blank" class="mailContact">${newEmail}</a>
-                <p class="fontWeight">Phone</p>
-                <p>${newPhone}</p>
-            </div>
-            <img src="../assets/img/more_vert.svg" id="moreVertButtonId" class="moreVertImg" onclick="loadMoreVert()">
-        </div>`;
-
-         currentDetails = {
-            newName: newName,
-            newEmail: newEmail,
-            newPhone: newPhone,
-            initial: initial,
-            color: color
-        };
-
-        document.getElementById(`changeStyleEMail${i}`).classList.add('changeStyleMail');
-        startAnimation();
-        currentContact = newName;
-        currentContactIndex = i; // Update current contact index
+        elsePartOfshowDetailsOfContact(newName, newEmail, newPhone, initial, color, i);
     }
+}
+
+
+function elsePartOfshowDetailsOfContact(newName, newEmail, newPhone, initial, color, i){
+    let detailsContact = document.getElementById('boxOfDetailsContacts');
+    if (currentContact) {
+        const previousContactElement = document.getElementById(`addBackgroung${currentContactIndex}`);
+        previousContactElement.classList.remove('sizeOfContactBoxOnclick');
+        document.getElementById(`changeStyleEMail${currentContactIndex}`).classList.remove('changeStyleMail');
+      }
+      document.getElementById(`addBackgroung${i}`).classList.add('sizeOfContactBoxOnclick');
+      detailsContact.innerHTML = showDetailsOfContactHtml(color, initial, newName, newEmail, newPhone);
+      
+      saveVariable(newName, newEmail, newPhone, initial, color);
+
+      document.getElementById(`changeStyleEMail${i}`).classList.add('changeStyleMail');
+      startAnimation();
+      currentContact = newName;
+      currentContactIndex = i;
+}
+
+
+function saveVariable(newName, newEmail, newPhone, initial, color){
+    currentDetails = {
+        newName: newName,
+        newEmail: newEmail,
+        newPhone: newPhone,
+        initial: initial,
+        color: color
+    };
 }
 
 
@@ -222,66 +173,24 @@ function returnArrow() {
 function addNewContactBtn(){   
     document.getElementById('addBox').classList.add('backgoundBox');
     document.getElementById('boxOfAddingNewContact').classList.add('showSideWindow');
-    document.getElementById('boxOfAddingNewContact').innerHTML = /*html*/`
-            <div class="blueBoxAddContact">
-            <img src="../assets/img/capa1.svg" class="imgBlueBox">
-                <h1 class="h1AddContact">Add Contact</h1>
-                <p class="pAddContact">Tasks are better with a team!</p>
-            </div>
-            <img src="../assets/img/closeInWhite.svg" class="closeAddContactBox" onclick="closeAddContactBoxWithX()">
-            <div class="witheBoxAddContact">
-                <form class="detailsOFAddContact" onsubmit="createNewContact(); return false;">
-                    <img src="../assets/img/frame79.svg" class="witheBoxAddContactImg">
-                    <div class="displayFlex">
-                        <input type="text" class="inputField" placeholder="Name" minlength="2" id="nameAddContact" required>
-                        <img src="../assets/img/person.svg" class="imgInInput">
-                    </div>
-                    <div class="displayFlex">
-                        <input type="email" class="inputField" placeholder="Email" id="emailAddContact" required>
-                        <img src="../assets/img/mail.svg" class="imgInInput">
-                    </div>
-                    <div class="displayFlex">
-                        <input type="text" class="inputField" placeholder="Phone" id="phoneAddContact">
-                        <img src="../assets/img/call.svg" class="imgInInput">
-                    </div>
-                    <div class="btnsAddContact">
-                    <button class="displayFlex btnCloseContact" onclick="closeAddContactWindow()" type="button">Close <img
-                            src="../assets/img/vector.svg" class="samllIconsContactX"></button>
-                    <button class="displayFlex btnCreateContact" type="submit">Create contact
-                        <img src="../assets/img/check.svg" class="samllIconsContactOK"></button>
-                    </div>
-                </form>  
-            </div>`;
+    document.getElementById('boxOfAddingNewContact').innerHTML = addNewContactBtnHtml();
 }
 
 
 function loadMoreVert() {
-
     let editBox = document.getElementById('responsiveEdit');
     editBox.classList.remove('d-none');
-    editBox.innerHTML = /*html*/`
-        <div class="styleResponsiveEdit">
-            <button onclick="editContact('${currentDetails.newName}','${currentDetails.newEmail}','${currentDetails.newPhone}', '${currentDetails.initial}', '${currentDetails.color}')" class="flexSstart clearBtn marginLeft">
-            <img src="../assets/img/edit.svg" style="margin-right: 8px;">Edit</button>
-            <button onclick="deleteContact('${currentDetails.newName}','${currentDetails.newEmail}','${currentDetails.newPhone}', '${currentDetails.initial}', '${currentDetails.color}')" class="flexSstart clearBtn marginLeft">
-            <img src="../assets/img/delete.svg" style="margin-right: 8px">Delete</button>
-        </div>`;
+    editBox.innerHTML = loadMoreVertHtml(currentDetails.newName, currentDetails.newEmail, currentDetails.newPhone, currentDetails.initial, currentDetails.color);
 }
+
 
 function closeInfoContainer(event) {
     let box = document.getElementById('responsiveEdit');
     let moreVertButton = document.getElementById('moreVertButtonId');
-
     if (!box.contains(event.target) && event.target !== moreVertButton) { 
         box.classList.add("d-none");
     }
 }
-
-
-
-// function closeSideInfo(){
-//     document.getElementById('widthAndHeightBox').classList.add('d-none');
-// }
 
 
 function closeAddContactWindow(){
@@ -301,38 +210,7 @@ async function editContact(newName, newEmail, newPhone, initial, color){
     document.getElementById('boxOfEdingContact').classList.add('showSideWindow');
     let valueBox = document.getElementById('boxOfEdingContact');
     valueBox.innerHTML = '';
-    valueBox.innerHTML = /*html*/`
-            <div class="blueBoxEditContact">
-                <img src="../assets/img/capa1.svg" class="imgBlueBox">
-                <h1 class="h1EditContact">Edit Contact</h1>
-            </div>
-            <img src="../assets/img/closeInWhite.svg" class="closeEditContactBox" onclick="closeEditContactBox()">
-            <div class="witheBoxAddContact">
-                <div class="detailsOFAddContact">
-                    <div class="backgroundEditContactImg">
-                        <div class="witheBoxAddContactImgIn" style="background-color: ${color};">
-                            <p class="sizeOfLetterDetails">${initial}</p>
-                        </div>
-                    </div>    
-                    <div class="displayFlex">
-                        <input type="text" class="inputField" placeholder="Name" id="nameEditContact">
-                        <img src="../assets/img/person.svg" class="imgInInput">
-                    </div>
-                    <div class="displayFlex">
-                        <input type="text" class="inputField" placeholder="Email" id="emailEditContact">
-                        <img src="../assets/img/mail.svg" class="imgInInput">
-                    </div>
-                    <div class="displayFlex">
-                        <input type="text" class="inputField" placeholder="Phone" id="phoneEditContact">
-                        <img src="../assets/img/call.svg" class="imgInInput">
-                    </div>
-                    <div class="btnsAddContact">
-                        <button class="displayFlex btnCloseContact" onclick="deleteContact('${newName}','${newEmail}','${newPhone}','${initial}')">Delete</button>
-                        <button class="displayFlex btnCreateContact" onclick="saveEditContactWindow('${newName}','${newEmail}','${newPhone}','${color}')">Save <img
-                                src="../assets/img/check.svg" class="samllIconsContactOK"></button>
-                    </div>
-                </div>
-            </div>`;
+    valueBox.innerHTML = editContactHtml(color, initial, newName, newEmail, newPhone);
     setValueInIput(newName, newEmail, newPhone);
 }
 
@@ -351,36 +229,33 @@ function closeEditContactBox(){
 
 
 async function deleteContact(newName, newEmail, newPhone, initial, color) {
-    // Identify the contact to delete based on the name
-    const contactToDelete = loggedInUser.contacts.find(contact =>
-        contact.name === newName && 
-        contact.email === newEmail && 
-        contact.phone === newPhone && 
-        contact.initial === initial && 
-        contact.color === color
-    );
+    const contactToDelete = getContact4Delete(newName, newEmail, newPhone, initial, color);
 
     if (contactToDelete) {
-        // Remove the identified contact from the loggedInUser's contacts
         loggedInUser.contacts = loggedInUser.contacts.filter(contact =>
             contact !== contactToDelete
         );
-
-        // Update the loggedInUser in the users array
         const userIndex = users.findIndex(user => user.id === loggedInUser.id);
         users[userIndex].contacts = loggedInUser.contacts;
 
-        // Save the changes
         await setItem('loggedInUser', JSON.stringify(loggedInUser));
         await generateContactInSmall();
-        document.getElementById('boxOfDetailsContacts').innerHTML = '';
-        document.getElementById('boxOfEdingContact').classList.remove('showSideWindow');
-        document.getElementById('addBox').classList.remove('backgoundBox');
-        document.getElementById('boxOfDetailsContacts').classList.add('d-none');
+        changeClassesAfterDelete();
     } else {
         console.error('Contact not found in loggedInUser.contacts array');
     }
 }
+
+function getContact4Delete(newName, newEmail, newPhone, initial, color) {
+    return loggedInUser.contacts.find(contact =>
+        contact.name === newName &&
+        contact.email === newEmail &&
+        contact.phone === newPhone &&
+        contact.initial === initial &&
+        contact.color === color
+    );
+}
+
 
 
 async function saveEditContactWindow(newName, newEmail, newPhone) {
@@ -388,7 +263,6 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
     const contactIndex = loggedInUser.contacts.findIndex(contact =>
         contact.name === newName && contact.email === newEmail && contact.phone === newPhone
     );
-
     if (contactIndex !== -1) {
         loggedInUser.contacts[contactIndex].name = document.getElementById('nameEditContact').value.trim();
         loggedInUser.contacts[contactIndex].email = document.getElementById('emailEditContact').value.trim();
@@ -396,12 +270,10 @@ async function saveEditContactWindow(newName, newEmail, newPhone) {
         users[userIndex].contacts = loggedInUser.contacts;
 
         await setItem('loggedInUser', JSON.stringify(loggedInUser));
-        document.getElementById('boxOfDetailsContacts').classList.add('d-none');
-        document.getElementById('addBox').classList.remove('backgoundBox');
-        document.getElementById('boxOfEdingContact').classList.add('d-none');
+        removeClassesAfterEdit();
         await generateContactInSmall();
     } else {
-        console.error('Kontakt nicht gefunden im loggedInUser.contacts Array');
+        console.error('Contact could not be found');
     }
 }
 
