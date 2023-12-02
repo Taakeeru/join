@@ -1,10 +1,9 @@
-let allTasks =[];
+let allTasks = [];
 let contactData = [];
 let selectedPriority;
 let currentSubtasks = [];
 let selectedUsers = [];
 let checked = true;
-
 
 
 async function initAddTask() {
@@ -21,33 +20,34 @@ async function initAddTask() {
 
 async function getAllTasks() {
   try {
-      allTasks = JSON.parse(await getItem('newTask'));
-  } catch(e) {
-      console.error('Loading error:', e);
+    allTasks = JSON.parse(await getItem('newTask'));
+  } catch (e) {
+    console.error('Loading error:', e);
   }
 }
 
 
-async function createNewTask(){
+async function createNewTask() {
   // if (checkInputFields()) {
   let getTitel = document.getElementById('addTastTitel').value;
   let getTextArea = document.getElementById('addTastTextArea').value;
   let getDateValue = document.getElementById('dueDateValue').value;
   // let contactData = await showAssignetContacts(loggedInUser);
   // let assignetTo = JSON.parse(seeContacts);
-  let getCategory = loadCategory(); 
+  let getCategory = loadCategory();
   // let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory,selectedPriority,currentSubtasks);
-// } else {
+  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
+  // } else {
   console.log('Not all fields are filled out correctly');
- 
-// }
+
+  // }
 }
 
 
-function clearArray(){
+function clearArray() {
   allTasks.splice(0, allTasks.length);
 }
+
 function clearTasksArray() {
   if (confirm('Are you sure you want to clear all tasks?')) {
     clearArray(); // Assuming clearArray is the function that clears the array
@@ -62,18 +62,18 @@ function clearTasksArray() {
 }
 
 
-async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory, selectedPriority, currentSubtasks){
+async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData, getCategory, selectedPriority, currentSubtasks) {
   getTitle = getTitle.trim();
 
   // Fetch existing tasks from the backend
   let existingTasks = [];
   try {
-      const storedTasks = await getItem('newTask');
-      if (storedTasks) {
-          existingTasks = JSON.parse(storedTasks);
-      }
+    const storedTasks = await getItem('newTask');
+    if (storedTasks) {
+      existingTasks = JSON.parse(storedTasks);
+    }
   } catch (e) {
-      console.error('Error fetching existing tasks:', e);
+    console.error('Error fetching existing tasks:', e);
   }
 
   // Check if the task with the same title already exists
@@ -95,7 +95,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
       category: "toDo",
       subtasks: currentSubtasks,
       isChecked: checked,
-      taskbar : 0,
+      taskbar: 0,
     };
 
     existingTasks.push(newTask);
@@ -111,7 +111,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
 }
 
 
-async function showCreateAnimation(){
+async function showCreateAnimation() {
   const successMessage = document.getElementById('animation');
 
   successMessage.classList.remove('d-none');
@@ -124,78 +124,78 @@ async function showCreateAnimation(){
 
 
 function checkInputFields() {
-    let titleInput = document.getElementById('addTastTitel');
-    let descriptionInput = document.getElementById('addTastTextArea');
-    let dateInput = document.getElementById('dueDateValue');
-    let titleFail = document.getElementById('tile-fail-message');
-    let descriptionFail = document.getElementById('description-fail-message');
-    let dateFail = document.getElementById('date-fail-message');
-    titleFail.innerHTML = '';
-    descriptionFail.innerHTML = '';
-    dateFail.innerHTML = '';
+  let titleInput = document.getElementById('addTastTitel');
+  let descriptionInput = document.getElementById('addTastTextArea');
+  let dateInput = document.getElementById('dueDateValue');
+  let titleFail = document.getElementById('tile-fail-message');
+  let descriptionFail = document.getElementById('description-fail-message');
+  let dateFail = document.getElementById('date-fail-message');
+  titleFail.innerHTML = '';
+  descriptionFail.innerHTML = '';
+  dateFail.innerHTML = '';
 
-    let isValid=true;
-  
-    if (titleInput.value.trim() === '') {
-      titleFail.innerHTML = '<span>Title is required</span>';
-      isValid = false;
+  let isValid = true;
+
+  if (titleInput.value.trim() === '') {
+    titleFail.innerHTML = '<span>Title is required</span>';
+    isValid = false;
   }
-  
-    if (descriptionInput.value.trim() === '') {
-      descriptionFail.innerHTML = '<span>Description is required</span>';
-      isValid = false;
-    }
-  
-    if (dateInput.value.trim() === '') {
-      dateFail.innerHTML = '<span>Due date is required</span>';
-      isValid = false;
-    }
-    return isValid;
+
+  if (descriptionInput.value.trim() === '') {
+    descriptionFail.innerHTML = '<span>Description is required</span>';
+    isValid = false;
+  }
+
+  if (dateInput.value.trim() === '') {
+    dateFail.innerHTML = '<span>Due date is required</span>';
+    isValid = false;
+  }
+  return isValid;
 }
 
 
 function getThePriority(priority, lowId, mediumId, highId) {
   const low = document.getElementById(lowId);
-    const medium = document.getElementById(mediumId);
-    const urgent = document.getElementById(highId);
-    const lowIcon = document.getElementById("lowPriority");
-    const mediumIcon = document.getElementById("mediumPriority");
-    const highIcon = document.getElementById("urgentPriority");
+  const medium = document.getElementById(mediumId);
+  const urgent = document.getElementById(highId);
+  const lowIcon = document.getElementById("lowPriority");
+  const mediumIcon = document.getElementById("mediumPriority");
+  const highIcon = document.getElementById("urgentPriority");
 
-    if (low && medium && urgent && lowIcon && mediumIcon && highIcon) {
-      low.classList.remove("active3");
-      medium.classList.remove("active2");
-      urgent.classList.remove("active");
-      lowIcon.classList.remove("colorIcon3");
-      mediumIcon.classList.remove("colorIcon2");
-      highIcon.classList.remove("colorIcon");
+  if (low && medium && urgent && lowIcon && mediumIcon && highIcon) {
+    low.classList.remove("active3");
+    medium.classList.remove("active2");
+    urgent.classList.remove("active");
+    lowIcon.classList.remove("colorIcon3");
+    mediumIcon.classList.remove("colorIcon2");
+    highIcon.classList.remove("colorIcon");
 
-      if (selectedPriority === priority) {
-        selectedPriority = null;
-      } else {
-        selectedPriority = priority;
-
-        if (selectedPriority === 'low') {
-          low.classList.add("active3");
-          lowIcon.classList.add("colorIcon3");
-        } else if (selectedPriority === 'medium') {
-          medium.classList.add("active2");
-          mediumIcon.classList.add("colorIcon2");
-        } else if (selectedPriority === 'high') {
-          urgent.classList.add("active");
-          highIcon.classList.add("colorIcon");
-        }
-      }
+    if (selectedPriority === priority) {
+      selectedPriority = null;
     } else {
-      console.error("Ein oder mehrere Elemente wurden nicht gefunden.");
+      selectedPriority = priority;
+
+      if (selectedPriority === 'low') {
+        low.classList.add("active3");
+        lowIcon.classList.add("colorIcon3");
+      } else if (selectedPriority === 'medium') {
+        medium.classList.add("active2");
+        mediumIcon.classList.add("colorIcon2");
+      } else if (selectedPriority === 'high') {
+        urgent.classList.add("active");
+        highIcon.classList.add("colorIcon");
+      }
     }
+  } else {
+    console.error("Ein oder mehrere Elemente wurden nicht gefunden.");
+  }
 }
 
 
 function addContacts() {
-    let box = document.getElementById("selectContainer");
-    box.classList.toggle("d-none");
-  }
+  let box = document.getElementById("selectContainer");
+  box.classList.toggle("d-none");
+}
 
 
 async function showAssignetContacts(loggedInUser) {
@@ -205,7 +205,7 @@ async function showAssignetContacts(loggedInUser) {
     let userName = loggedInUser.contacts[i].name;
     let getInitial = loggedInUser.contacts[i].initial;
     let getColor = loggedInUser.contacts[i].color;
-    box.innerHTML += /*html*/`
+    box.innerHTML += /*html*/ `
       <div class="userBoxContainer displayFlex">
         <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
         <span class="userPosition">${userName}</span>
@@ -219,12 +219,12 @@ async function showAssignetContacts(loggedInUser) {
       initial: getInitial,
       color: getColor
     };
-    
+
     contactData.push(userContactData);
   }
   return contactData;
 }
-  
+
 
 function handleCheckboxClick(i, userName, getInitial, getColor) {
   let checkbox = document.getElementById(`inputId${i}`);
@@ -259,7 +259,7 @@ function handleCheckboxClick(i, userName, getInitial, getColor) {
 function closeSelectContainer(event) {
   let selectContainer = document.getElementById("selectContainer");
   let assignedSelect = document.getElementById("assignedSelect");
-  if (!assignedSelect.contains(event.target) && !selectContainer.contains(event.target)) { 
+  if (!assignedSelect.contains(event.target) && !selectContainer.contains(event.target)) {
     selectContainer.classList.add("d-none");
   }
 }
@@ -281,18 +281,22 @@ function closeCategoryContainer(event) {
 
 function addSubTask() {
   let subtaskInput = document.getElementById('subtaskInput');
-  let addTask =  document.getElementById('subtaskContainer');
+  let addTask = document.getElementById('subtaskContainer');
   let subtaskValue = subtaskInput.value;
   let subtaskId = 'subtask' + Date.now();
   let status = false;
-  if (subtaskValue.trim() !== '') { 
-    addTask.innerHTML +=`
+  if (subtaskValue.trim() !== '') {
+    addTask.innerHTML += `
         <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
         </div>`;
     subtaskInput.value = '';
 
-    currentSubtasks.push({id: subtaskId,value: subtaskValue, status: false});
+    currentSubtasks.push({
+      id: subtaskId,
+      value: subtaskValue,
+      status: false
+    });
   }
 }
 
@@ -306,7 +310,7 @@ function loadTechnicalTask() {
 }
 
 
-function loadUserStory(){
+function loadUserStory() {
   let Box = document.getElementById('userStoryID');
   let currentValue = Box.innerHTML;
   if (currentValue === "User Story") {
@@ -315,13 +319,13 @@ function loadUserStory(){
 }
 
 
-function loadCategory(){
+function loadCategory() {
   let getValue = document.getElementById('categorySelect').textContent.trim();
   return getValue;
 }
 
 
-function addedSubtask(){
+function addedSubtask() {
   let box = document.getElementById("subtaskValue").value;
   return box.textContent;
 }
@@ -330,7 +334,7 @@ function addedSubtask(){
 function editSubtask(subtaskId) {
   let editedValue = document.getElementById(subtaskId).textContent;
   console.log('Edit Subtask:', editedValue);
-  
+
 }
 
 

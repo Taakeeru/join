@@ -27,13 +27,12 @@ function getPriorityImagePath(priority) {
     high: "../assets/img/prio_alta.svg",
     medium: "../assets/img/prio_media.svg",
     low: "../assets/img/prio_baja.svg",
-    
   };
   if (priority in priorityPaths) {
     return priorityPaths[priority];
   } else {
-  
-    return "no found"; 
+
+    return "no found";
   }
 }
 
@@ -50,7 +49,7 @@ function searchTask() {
   });
 
   updateHTML(filteredTasks);
- updateProgressBarOnload();
+  updateProgressBarOnload();
 }
 
 
@@ -96,12 +95,12 @@ function startDragging(id) {
 }
 
 
-function getStartDraggingIndex(element){
+function getStartDraggingIndex(element) {
   let idToDelete = Number(element);
   startDraggingIndex = 0;
   for (let i = 0; i < allTask[0].length; i++) {
     const indexID = allTask[0][i].id;
-    if (indexID === idToDelete){
+    if (indexID === idToDelete) {
       startDraggingIndex = i;
       return startDraggingIndex;
     }
@@ -150,7 +149,7 @@ function closeAddTaskMenu() {
 }
 
 
-function openCardContainer(element,priorityImagePath) { 
+function openCardContainer(element, priorityImagePath) {
   let priorityText;
   getCurrentIndex(element);
   if (allTask[0][currentIndex]["priority"] === 'high') {
@@ -163,20 +162,20 @@ function openCardContainer(element,priorityImagePath) {
     priorityText = 'Unknown';
   }
   document.getElementById("FirstCardRenderContainer2").classList.remove("d-none");
-  document.getElementById("FirstCardRenderContainer2").innerHTML= 
-  generateTemplateHtmlFirstCard(allTask[0][currentIndex], currentIndex,priorityText,priorityImagePath,element);
+  document.getElementById("FirstCardRenderContainer2").innerHTML =
+    generateTemplateHtmlFirstCard(allTask[0][currentIndex], currentIndex, priorityText, priorityImagePath, element);
 
   usersDate();
   updateCheckboxStatus(element);
 }
 
 
-function getCurrentIndex(element){
+function getCurrentIndex(element) {
   let idToDelete = Number(element);
   currentIndex = 0;
   for (let i = 0; i < allTask[0].length; i++) {
     const indexID = allTask[0][i].id;
-    if (indexID === idToDelete){
+    if (indexID === idToDelete) {
       currentIndex = i;
       return currentIndex;
     }
@@ -196,12 +195,12 @@ function updateCheckboxStatus(element) {
       }
     }
   }
- }
+}
 
 
 function usersDate() {
   let userDateRender = document.getElementById('usersDateContent');
-  let contactsHTML = "";  
+  let contactsHTML = "";
 
   for (let i = 0; i < allTask[0][currentIndex]["contacts"].length; i++) {
     const contact = allTask[0][currentIndex]["contacts"][i];
@@ -215,7 +214,7 @@ function renderSubtasks(element, subtasks) {
   let subtasksHTML = "";
   for (let i = 0; i < subtasks.length; i++) {
     const subtask = subtasks[i];
-    const isChecked = subtask.status === true; 
+    const isChecked = subtask.status === true;
 
     subtasksHTML += `<div class="subtaskCheckbox">
       <input type="checkbox" id="${subtask.id}" name="${subtask.value}" value="${subtask.value}" ${isChecked ? 'checked' : ''} onclick="checkboxClicked('${element}', '${subtask.id}')">
@@ -239,27 +238,27 @@ async function checkboxClicked(cardElement, subtaskId) {
   await updateProgressBar(cardElement, subtaskId);
   await updateStatus(subtaskId, checkbox.checked);
 }
-  
+
 
 async function updateStatus(subtaskIdToUpdate, newStatusValue) {
-  
-    for (let j = 0; j < allTask[0].length; j++) {
-     
-      if (allTask[0][j].subtasks) {
-        const subtaskIndex = allTask[0][j].subtasks.findIndex(subtask => subtask.id === subtaskIdToUpdate);
-  
-        if (subtaskIndex !== -1) {
-          allTask[0][j].subtasks[subtaskIndex].status = newStatusValue;
-        }
+
+  for (let j = 0; j < allTask[0].length; j++) {
+
+    if (allTask[0][j].subtasks) {
+      const subtaskIndex = allTask[0][j].subtasks.findIndex(subtask => subtask.id === subtaskIdToUpdate);
+
+      if (subtaskIndex !== -1) {
+        allTask[0][j].subtasks[subtaskIndex].status = newStatusValue;
       }
     }
-    await setItem('newTask', JSON.stringify(allTask[0]));
-    updateProgressBarOnload()
-  
-    console.log(allTask[0]);
+  }
+  await setItem('newTask', JSON.stringify(allTask[0]));
+  updateProgressBarOnload()
+
+  console.log(allTask[0]);
 }
-  
-  
+
+
 async function updateProgressBar(element, subtaskId) {
   const progressBar = document.getElementById(`subtaskProgressBar${element}`);
 
@@ -301,17 +300,17 @@ function openEditContainer(element) {
   document.getElementById("secondCardRenderContainer").classList.remove("d-none");
   document.getElementById("openCardContainer").classList.add("d-none");
 
-  document.getElementById("secondCardRenderContainer").innerHTML=generateTemplateHtmlEditCard(allTask[0][element], element,getId);
-      
-      renderContactsSmall(allTask[0][element]);
-      rederCurrentTasks(selectedSubrasks);
+  document.getElementById("secondCardRenderContainer").innerHTML = generateTemplateHtmlEditCard(allTask[0][element], element, getId);
+
+  renderContactsSmall(allTask[0][element]);
+  rederCurrentTasks(selectedSubrasks);
 }
- 
+
 
 function renderContactsSmall(element) {
   let box = document.getElementById('addContactstoassign2');
   box.innerHTML = '';
-   
+
   for (let i = 0; i < element["contacts"].length; i++) {
     const contact = element["contacts"][i];
     box.innerHTML += `
@@ -324,14 +323,17 @@ function renderContactsSmall(element) {
 
 function rederCurrentTasks(selectedSubrasks) {
   let box = document.getElementById('selectedSubrasks');
-  box.innerHTML = ''; 
+  box.innerHTML = '';
 
   for (let i = 0; i < selectedSubrasks.length; i++) {
     const value = selectedSubrasks[i].value;
     const id = selectedSubrasks[i].id;
     const isSubtaskExist = currentSubtasksBoard.some(subtask => subtask.id === id);
     if (!isSubtaskExist) {
-      currentSubtasksBoard.push({ id: id, value: value });
+      currentSubtasksBoard.push({
+        id: id,
+        value: value
+      });
     }
     box.innerHTML += /*html*/ `
         <div class="subtaskList" id="${id}">${value}
@@ -341,8 +343,8 @@ function rederCurrentTasks(selectedSubrasks) {
 }
 
 
-function deleteSubtaskEdit(id){
-   document.getElementById(`${id}`).remove();
+function deleteSubtaskEdit(id) {
+  document.getElementById(`${id}`).remove();
 }
 
 
@@ -352,11 +354,11 @@ function closeEditContainer() {
 
 
 function generatePlaceholderTasks(category) {
-  return`<div class="placeholderTaskContainer" ><span>No tasks in ${category}</span></div>`;
-  }
+  return `<div class="placeholderTaskContainer" ><span>No tasks in ${category}</span></div>`;
+}
 
 
-function shwoCurrentDate(){
+function shwoCurrentDate() {
   document.getElementById('autoJsCalendar').classList.toggle('d-none');
 }
 
@@ -386,7 +388,7 @@ function loadTechnicalTask2() {
 }
 
 
-function loadUserStory2(){
+function loadUserStory2() {
   let Box = document.getElementById('userStoryID2');
   let currentValue = Box.innerHTML;
   if (currentValue === "User Story") {
@@ -397,17 +399,18 @@ function loadUserStory2(){
 
 function addSubTask2() {
   let subtaskInput = document.getElementById('subtaskInput2');
-  let addTask =  document.getElementById('subtaskContainer2');
+  let addTask = document.getElementById('subtaskContainer2');
   let subtaskValue = subtaskInput.value;
   let subtaskId = 'subtask' + Date.now();
-  if (subtaskValue.trim() !== '') { 
-    addTask.innerHTML +=`
+  if (subtaskValue.trim() !== '') {
+    addTask.innerHTML += `
         <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
         </div>`;
     subtaskInput.value = '';
-    currentSubtasksBoard.push({id: subtaskId, value: subtaskValue,});
+    currentSubtasksBoard.push({
+      id: subtaskId,
+      value: subtaskValue,
+    });
   }
 }
-
-

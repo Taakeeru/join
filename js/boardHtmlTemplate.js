@@ -36,7 +36,7 @@ function generateTodoHTML(element, priorityImagePath) {
 }
 
 function generateTemplateHtmlSideMenu() {
-return `<div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" >
+  return `<div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" >
   <div id="sideMenu" class="sideMenuStyle" onclick="event.stopPropagation()" >
      <div class="header-sideMenu"><span>Add Task</span>
         <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="../assets/img/close.svg" alt="">
@@ -127,7 +127,7 @@ return `<div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" >
 `;
 }
 
-function generateTemplateHtmlFirstCard(task, currentIndex,priorityText,priorityImagePath,element) {
+function generateTemplateHtmlFirstCard(task, currentIndex, priorityText, priorityImagePath, element) {
   return `<div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer" >
   <div class="openCardsDetails" onclick="event.stopPropagation()">
      <div class="openCardTitle"> 
@@ -174,10 +174,10 @@ function generateTemplateHtmlFirstCard(task, currentIndex,priorityText,priorityI
   </div>
 </div>
 </div>`
-  
+
 }
 
-function generateTemplateHtmlEditCard(task, element,getId) {
+function generateTemplateHtmlEditCard(task, element, getId) {
   return `
   <div id="openEditContainer2" onclick="closeEditContainer2()"  class="openCardContainer" >
          <div onclick="event.stopPropagation()"  class="openCardsDetailsEdit">
@@ -269,10 +269,11 @@ function generateTemplateHtmlEditCard(task, element,getId) {
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
       </div>`;
-  
+
 }
-function generateTemplateHtmlUserDate(contact){
-  return`
+
+function generateTemplateHtmlUserDate(contact) {
+  return `
       <div class="detaicardsUserContainer">
         <div class="cardUserSymbole detailVersion" style="background-color: ${contact["color"]} !important;">
           ${contact["initial"]}
@@ -282,24 +283,24 @@ function generateTemplateHtmlUserDate(contact){
         </div>
       </div>`;
 
-  
+
 }
 
-function generateTemplateHtmlCreateNewTask2(contactData,i,selectedContacts) {
-  return`
+function generateTemplateHtmlCreateNewTask2(contactData, i, selectedContacts) {
+  return `
         <div class="userBoxContainer displayFlex">
           <div class="imgPerson displayFlex" style="background-color: ${contactData[i].color};">${contactData[i].initial}</div>
           <span class="userPosition">${contactData[i].name}</span>
           <input type="checkbox" id="inputId${i}" ${selectedContacts.some(user => user.name === contactData[i].name) ? 'checked' : ''} onclick="handleCheckboxClick2('${i}', '${contactData[i].name}', '${contactData[i].initial}', '${contactData[i].color}')">
         </div>`;
-  
+
 }
 
-function generateTemplateHtmlCreateNewTask22(selectedContacts,i){
+function generateTemplateHtmlCreateNewTask22(selectedContacts, i) {
   return `
         <div class="userBoxContainer displayFlex">
           <div class="imgPerson displayFlex" style="background-color: ${selectedContacts[i].color};">${selectedContacts[i].initial}</div>
           <span class="userPosition">${selectedContacts[i].name}</span>
         </div>`;
-  
+
 }

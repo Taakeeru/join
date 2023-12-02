@@ -31,22 +31,22 @@ async function editTask(getId) {
 
 function createNewTask2(getId) {
   editTask(getId);
-    let selectedContacts = selectedUsers;
-    let usersHTML = "";
-    let contactsHTML = "";
-    for (let i = 0; i < contactData.length; i++) {
-      usersHTML += generateTemplateHtmlCreateNewTask2(contactData,i,selectedContacts);
-    }
-  
-    for (let i = 0; i < selectedContacts.length; i++) {
-      contactsHTML += generateTemplateHtmlCreateNewTask22(selectedContacts,i);
-        }
-    document.getElementById("usersDateContent").innerHTML = usersHTML;
-    document.querySelector(".cardAddUsersIcons").innerHTML = contactsHTML;
-    closeEditContainer2();
+  let selectedContacts = selectedUsers;
+  let usersHTML = "";
+  let contactsHTML = "";
+  for (let i = 0; i < contactData.length; i++) {
+    usersHTML += generateTemplateHtmlCreateNewTask2(contactData, i, selectedContacts);
+  }
+
+  for (let i = 0; i < selectedContacts.length; i++) {
+    contactsHTML += generateTemplateHtmlCreateNewTask22(selectedContacts, i);
+  }
+  document.getElementById("usersDateContent").innerHTML = usersHTML;
+  document.querySelector(".cardAddUsersIcons").innerHTML = contactsHTML;
+  closeEditContainer2();
 }
 
-  
+
 function showAssignetContacts2(loggedInUser) {
   let box = document.getElementById("selectContainer2");
 
@@ -83,23 +83,24 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
       console.log(`selectedUsers hat ${selectedUsers.length}`);
       renderAddedContactBox(selectedUsers);
     } else {
-     let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
+      let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
 
-    if (indexToRemove !== -1) {
-      selectedUsers.splice(indexToRemove, 1);
+      if (indexToRemove !== -1) {
+        selectedUsers.splice(indexToRemove, 1);
+      }
+      renderAddedContactBox(selectedUsers);
     }
-    renderAddedContactBox(selectedUsers);
   }
-}}
+}
 
 
-function renderAddedContactBox(selectedUsers){
+function renderAddedContactBox(selectedUsers) {
   let currentUsers = document.getElementById("addContactstoassign2");
   currentUsers.innerHTML = '';
   for (let i = 0; i < selectedUsers.length; i++) {
     const initial = selectedUsers[i].initial;
     const color = selectedUsers[i].color;
-    currentUsers.innerHTML += /*html*/`
+    currentUsers.innerHTML += /*html*/ `
           <div class="userBoxContainer displayFlex">
             <div class="imgPerson displayFlex" style="background-color: ${color};">${initial}</div>
           </div>`;
@@ -107,13 +108,13 @@ function renderAddedContactBox(selectedUsers){
 }
 
 
-function loadCategory2(){
+function loadCategory2() {
   let getValue = document.getElementById('categorySelect2').textContent.trim();
   return getValue;
 }
 
 
-async function deleteCard(taskId){
+async function deleteCard(taskId) {
   let idToDelete = Number(taskId);
   let info = await getItem('newTask');
   let getTaskInfo = JSON.parse(info);
