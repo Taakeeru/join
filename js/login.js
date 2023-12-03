@@ -100,17 +100,27 @@ async function login() {
                 window.location.href = '../html/summary.html';
                 }
         } else {
-            emailMessage.innerHTML = '';
-            email.classList.remove('red-bg');
-            password.classList.add('red-bg');
-            passwordMessage.innerHTML = /*html*/ `<span>*Ups! wrong password</span>`;
+            firstLoginElsePasrt(emailMessage, email, password, passwordMessage);
         }
     } else {
-        passwordMessage.innerHTML = '';
-        password.classList.remove('red-bg');
-        email.classList.add('red-bg');
-        emailMessage.innerHTML = /*html*/ `<span>*Ups! e-mail doesn't exist</span>`;
+        secondLoginElsePasrt(passwordMessage, password, email, emailMessage);
     }
+}
+
+
+function firstLoginElsePasrt(emailMessage, email, password, passwordMessage){
+    emailMessage.innerHTML = '';
+    email.classList.remove('red-bg');
+    password.classList.add('red-bg');
+    passwordMessage.innerHTML = /*html*/ `<span>*Ups! wrong password</span>`;
+}
+
+
+function secondLoginElsePasrt(passwordMessage, password, email, emailMessage){
+    passwordMessage.innerHTML = '';
+    password.classList.remove('red-bg');
+    email.classList.add('red-bg');
+    emailMessage.innerHTML = /*html*/ `<span>*Ups! e-mail doesn't exist</span>`;
 }
 
 

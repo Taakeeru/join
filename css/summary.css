@@ -114,6 +114,18 @@ a{
     margin-bottom: 40px;
 }
 
+.tasksUrgentX{
+    margin-top: -20px;
+    font-size: 28px;
+    font-weight: 100;
+}
+
+.TaskOnBoard{
+    margin-top: -16px;
+    font-size: 28px;
+    font-weight: 100;
+}
+
 .showTasksInBoard{
     height: 191px;
     width: 208px;
@@ -202,6 +214,7 @@ a{
 .showTheNumbers{
     font-size: 42px;
     font-weight: bold;
+    margin-top: 24px;
 }
 
 .showTo-doImg{
@@ -241,7 +254,7 @@ a{
 
 .textInBoxes{
     width: 80px;
-    margin-top: -40px;
+    margin-top: -8px;
     font-size: 26px;
     font-weight: 100;
     display: flex;
@@ -387,8 +400,8 @@ a{
         font-size: 32px;
     }
     .textInBoxes{
-        margin-top: -44px;
-        margin-bottom: 32px;
+        margin-top: -12px;
+        margin-bottom: 8px;
     }
     .showTaskInProgressImg{
         width: 66px;
@@ -400,6 +413,9 @@ a{
     }
     .marginBottom{
         margin-bottom: 46px;
+    }
+    .tasksUrgentX{
+        margin-top: -20px;
     }
 }
 @media(max-width: 670px) {
@@ -416,6 +432,10 @@ a{
         height: 174px;
         width: 174px;
     }
+    .TaskOnBoard{
+        margin-top: -8px;
+        font-size: 22px;
+    }
     .dateDeadline {
         font-size: 24px;
     }
@@ -430,8 +450,11 @@ a{
     }
     .textInBoxes {
         font-size: 22px;
-        margin-top: -20px;
-        margin-bottom: 18px;
+        margin-top: 2px;
+        margin-bottom: 8px;
+    }
+    .tasksUrgentX{
+        font-size: 22px;
     }
     .showTheNumbers {
         font-size: 28px;
@@ -439,6 +462,9 @@ a{
     .marginBottom{
         margin-bottom: 46px;
         margin-top: -42px;
+    }
+    .marginLeft{
+        margin-left: 40px;
     }
 }
 @media(max-width: 450px) {
@@ -466,11 +492,13 @@ a{
         margin-left: 6px;
     }
     .textInBoxes {
-        font-size: 22px;
+        font-size: 18px;
+        margin-top: 0;
     }
     .clockCircle {
         width: 52px;
         height: 52px;
+        margin-left: 12px;
     }
     .showTaskInBoardImg {
         width: 52px;
@@ -496,7 +524,7 @@ a{
         margin-left: 4px;
     }
     .marginLeft{
-        margin-left: 8px;
+        margin-left: 18px;
         margin-bottom: 48px;
     }
 }

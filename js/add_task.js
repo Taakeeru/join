@@ -28,22 +28,27 @@ async function getAllTasks() {
 
 
 async function createNewTask() {
-  if (checkInputFields()) {
-  let getTitel = document.getElementById('addTastTitel').value;
-  let getTextArea = document.getElementById('addTastTextArea').value;
-  let getDateValue = document.getElementById('dueDateValue').value;
-  // let contactData = await showAssignetContacts(loggedInUser);
-  // let assignetTo = JSON.parse(seeContacts);
-  let getCategory = loadCategory();
-  // let getSubtask = addedSubtask();
-  await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
-} 
+  let buttonCreateTask = document.getElementById('buttonCreateTask');
+  buttonCreateTask.disabled = true;
+    if (checkInputFields()) {
+    let getTitel = document.getElementById('addTastTitel').value;
+    let getTextArea = document.getElementById('addTastTextArea').value;
+    let getDateValue = document.getElementById('dueDateValue').value;
+    // let contactData = await showAssignetContacts(loggedInUser);
+    // let assignetTo = JSON.parse(seeContacts);
+    let getCategory = loadCategory();
+    // let getSubtask = addedSubtask();
+    await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
+    window.open('../html/board.html');
+  }
+  buttonCreateTask.disabled = false; 
 }
 
 
 function clearArray() {
   allTasks.splice(0, allTasks.length);
 }
+
 
 function clearTasksArray() {
   if (confirm('Are you sure you want to clear all tasks?')) {
@@ -75,19 +80,7 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
   const existingTaskIndex = existingTasks.findIndex((task) => task.title === getTitle);
 
   if (existingTaskIndex === -1) {
-    let newTask = {
-      id: existingTasks.length + Date.now(),
-      title: getTitle,
-      description: getDescription,
-      priority: selectedPriority,
-      date: getDateValue,
-      contacts: contactData,
-      workCategory: getCategory,
-      category: "toDo",
-      subtasks: currentSubtasks,
-      isChecked: checked,
-      taskbar: 0,
-    };
+    let newTask = getValues(existingTasks.length, getTitle, getDescription, selectedPriority, getDateValue, contactData, getCategory, currentSubtasks, checked);
 
     existingTasks.push(newTask);
     await setItem('newTask', JSON.stringify(existingTasks));
@@ -97,6 +90,24 @@ async function pushTaskInfo(getTitle, getDescription, getDateValue, contactData,
   } else {
     alert('Task bereits vorhanden');
   }
+}
+
+
+function getValues(existingTasks, getTitle, getDescription, selectedPriority, getDateValue, contactData, getCategory, currentSubtasks, checked){
+  let newTask = {
+    id: existingTasks + Date.now(),
+    title: getTitle,
+    description: getDescription,
+    priority: selectedPriority,
+    date: getDateValue,
+    contacts: contactData,
+    workCategory: getCategory,
+    category: "toDo",
+    subtasks: currentSubtasks,
+    isChecked: checked,
+    taskbar: 0,
+  };
+  return newTask;
 }
 
 
@@ -124,7 +135,12 @@ function checkInputFields() {
   dateFail.innerHTML = '';
 
   let isValid = true;
+  ifStatementsOfcheckInputFields(titleInput, titleFail, isValid, descriptionInput, descriptionFail, dateInput, dateFail);
+  return isValid;
+}
 
+
+function ifStatementsOfcheckInputFields(titleInput, titleFail, isValid, descriptionInput, descriptionFail, dateInput, dateFail){
   if (titleInput.value.trim() === '') {
     titleFail.innerHTML = '<span>Title is required</span>';
     isValid = false;
@@ -139,7 +155,6 @@ function checkInputFields() {
     dateFail.innerHTML = '<span>Due date is required</span>';
     isValid = false;
   }
-  return isValid;
 }
 
 
@@ -152,31 +167,40 @@ function getThePriority(priority, lowId, mediumId, highId) {
   const highIcon = document.getElementById("urgentPriority");
 
   if (low && medium && urgent && lowIcon && mediumIcon && highIcon) {
-    low.classList.remove("active3");
-    medium.classList.remove("active2");
-    urgent.classList.remove("active");
-    lowIcon.classList.remove("colorIcon3");
-    mediumIcon.classList.remove("colorIcon2");
-    highIcon.classList.remove("colorIcon");
+    removeClassesOFgetThePriority(low, medium, urgent, lowIcon, mediumIcon, highIcon);
 
     if (selectedPriority === priority) {
       selectedPriority = null;
     } else {
       selectedPriority = priority;
-
-      if (selectedPriority === 'low') {
-        low.classList.add("active3");
-        lowIcon.classList.add("colorIcon3");
-      } else if (selectedPriority === 'medium') {
-        medium.classList.add("active2");
-        mediumIcon.classList.add("colorIcon2");
-      } else if (selectedPriority === 'high') {
-        urgent.classList.add("active");
-        highIcon.classList.add("colorIcon");
-      }
+      getColorOfPriority(low, lowIcon, medium, mediumIcon, urgent, highIcon);
     }
   } else {
     console.error("Ein oder mehrere Elemente wurden nicht gefunden.");
+  }
+}
+
+
+function removeClassesOFgetThePriority(low, medium, urgent, lowIcon, mediumIcon, highIcon){
+  low.classList.remove("active3");
+  medium.classList.remove("active2");
+  urgent.classList.remove("active");
+  lowIcon.classList.remove("colorIcon3");
+  mediumIcon.classList.remove("colorIcon2");
+  highIcon.classList.remove("colorIcon");
+}
+
+
+function getColorOfPriority(low, lowIcon, medium, mediumIcon, urgent, highIcon){
+  if (selectedPriority === 'low') {
+    low.classList.add("active3");
+    lowIcon.classList.add("colorIcon3");
+  } else if (selectedPriority === 'medium') {
+    medium.classList.add("active2");
+    mediumIcon.classList.add("colorIcon2");
+  } else if (selectedPriority === 'high') {
+    urgent.classList.add("active");
+    highIcon.classList.add("colorIcon");
   }
 }
 
@@ -194,20 +218,9 @@ async function showAssignetContacts(loggedInUser) {
     let userName = loggedInUser.contacts[i].name;
     let getInitial = loggedInUser.contacts[i].initial;
     let getColor = loggedInUser.contacts[i].color;
-    box.innerHTML += /*html*/ `
-      <div class="userBoxContainer displayFlex">
-        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-        <span class="userPosition">${userName}</span>
-        <input type="checkbox" id="inputId${i}" onclick="handleCheckboxClick('${i}', '${userName}', '${getInitial}', '${getColor}')">
-      </div>`;
+    box.innerHTML += showAssignetContactsHtml(getColor, getInitial, userName, i);
 
-    let userContactData = {
-      name: userName,
-      email: loggedInUser.contacts[i].email,
-      phone: loggedInUser.contacts[i].phone,
-      initial: getInitial,
-      color: getColor
-    };
+    let userContactData = getUserContactData(userName, loggedInUser.contacts[i].email, loggedInUser.contacts[i].phone, getInitial, getColor);
 
     contactData.push(userContactData);
   }
@@ -215,24 +228,26 @@ async function showAssignetContacts(loggedInUser) {
 }
 
 
+function getUserContactData(userName, userEmail, userPhone, getInitial, getColor){
+  let userContactData = {
+    name: userName,
+    email: userEmail,
+    phone: userPhone,
+    initial: getInitial,
+    color: getColor
+  };
+  return userContactData;
+}
+
 function handleCheckboxClick(i, userName, getInitial, getColor) {
   let checkbox = document.getElementById(`inputId${i}`);
   let addUser = document.getElementById("addContactstoassign");
   let userId = `user_${i}`;
 
   if (checkbox.checked) {
-    addUser.innerHTML += `
-      <div id="${userId}" class="userBoxContainer displayFlex">
-        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-      </div>`;
+    addUser.innerHTML += andleCheckboxClickHtml(userId, getInitial, getColor);
 
-    let selectedUser = {
-      name: userName,
-      email: loggedInUser.contacts[i].email,
-      phone: loggedInUser.contacts[i].phone,
-      initial: getInitial,
-      color: getColor
-    };
+    let selectedUser = getSelectedUser(userName, loggedInUser.contacts[i].email, loggedInUser.contacts[i].phone, getInitial, getColor);
 
     selectedUsers.push(selectedUser);
   } else {
@@ -243,6 +258,18 @@ function handleCheckboxClick(i, userName, getInitial, getColor) {
     }
   }
 }
+
+
+function getSelectedUser(userName, userEmail, userPhone, getInitial, getColor){
+  let selectedUser = {
+    name: userName,
+    email: userEmail,
+    phone: userPhone,
+    initial: getInitial,
+    color: getColor
+  };
+  return selectedUser;
+};
 
 
 function closeSelectContainer(event) {
@@ -275,10 +302,7 @@ function addSubTask() {
   let subtaskId = 'subtask' + Date.now();
   let status = false;
   if (subtaskValue.trim() !== '') {
-    addTask.innerHTML += `
-        <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
-            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-        </div>`;
+    addTask.innerHTML += addSubTaskHtml(subtaskId, subtaskValue, subtaskId);
     subtaskInput.value = '';
 
     currentSubtasks.push({

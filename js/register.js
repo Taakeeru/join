@@ -39,27 +39,37 @@ async function register() {
 
     if (!emailExists) {
         if (password.value == confirmPassword.value) {
-            signUpButton.disabled = true;
-            pushUserInfo(username, email, password);
-            await setItem('users', JSON.stringify(users));
-            resetForm(signUpButton, username, email, password, confirmPassword);
-            wrongPwMessage.innerHTML = '';
-            password.classList.remove('red-bg');
-            confirmPassword.classList.remove('red-bg');
-            
-            await signUpSuccessAnimation();
-            renderLogInContent();
-        }   else {
-            emailMessage.innerHTML = '';
-            email.classList.remove('red-bg');
-            wrongPwMessage.innerHTML = /* html */ `<span>*Ups! your passowrd don't match</span>`;
-            password.classList.add('red-bg');
-            confirmPassword.classList.add('red-bg');
+            await secondIfPartOfRegister(signUpButton, username, email, password, confirmPassword, wrongPwMessage);
+        }else{
+            firstElsePartOfRegister(emailMessage, email, wrongPwMessage, password, confirmPassword);
         }
-    } else {
+    }else{
         emailMessage.innerHTML = /* html */ `<span>*Ups! your email already exists</span>`;
         email.classList.add('red-bg');
     }
+}
+
+
+async function secondIfPartOfRegister(signUpButton, username, email, password, confirmPassword, wrongPwMessage){
+    signUpButton.disabled = true;
+    pushUserInfo(username, email, password);
+    await setItem('users', JSON.stringify(users));
+    resetForm(signUpButton, username, email, password, confirmPassword);
+    wrongPwMessage.innerHTML = '';
+    password.classList.remove('red-bg');
+    confirmPassword.classList.remove('red-bg');
+    
+    await signUpSuccessAnimation();
+    renderLogInContent();
+}
+
+
+function firstElsePartOfRegister(emailMessage, email, wrongPwMessage, password, confirmPassword){
+    emailMessage.innerHTML = '';
+    email.classList.remove('red-bg');
+    wrongPwMessage.innerHTML = /* html */ `<span>*Ups! your passowrd don't match</span>`;
+    password.classList.add('red-bg');
+    confirmPassword.classList.add('red-bg');
 }
 
 
