@@ -30,19 +30,22 @@ async function getAllTasks() {
 async function createNewTask() {
   let buttonCreateTask = document.getElementById('buttonCreateTask');
   buttonCreateTask.disabled = true;
-    if (checkInputFields()) {
+
+  if (await checkInputFields()) {
     let getTitel = document.getElementById('addTastTitel').value;
     let getTextArea = document.getElementById('addTastTextArea').value;
     let getDateValue = document.getElementById('dueDateValue').value;
-    // let contactData = await showAssignetContacts(loggedInUser);
-    // let assignetTo = JSON.parse(seeContacts);
     let getCategory = loadCategory();
-    // let getSubtask = addedSubtask();
-    await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
-    window.open('../html/board.html');
+
+    if (selectedUsers.length > 0) {
+      await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
+      window.open('../html/board.html');
+    } 
   }
-  buttonCreateTask.disabled = false; 
+
+  buttonCreateTask.disabled = false;
 }
+
 
 
 function clearArray() {
