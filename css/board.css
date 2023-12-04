@@ -576,13 +576,13 @@ body {
   font-weight: 400;
 }
 .mobileSide{
-  width: 330px!important;
-  height: 245px!important;
+  width: 470px!important;
+  height: 400px!important;
 }
 .subtaskContainerMobile{
-  height: 117px;
+  height: 250px;
   overflow: scroll;
-  width: 350px;
+  width: 470px;
 
 }.subtaskContainerMobile::-webkit-scrollbar {
   display: none;
@@ -786,6 +786,20 @@ margin: 21px;
   margin-right: 145px;
 }
 
+.mobileSide{
+  width: 330px!important;
+  height: 377px!important;
+}
+.subtaskContainerMobile{
+  height: 384px;
+  overflow: scroll;
+  width: 350px;
+
+}
+.mobileButtons {
+  margin: 6px!important;
+ }}
+
 @media (max-width: 1450px) {
   .boardBotSektion{
     padding: 0px 0px 0px 0px;
@@ -803,9 +817,22 @@ margin: 21px;
   width: 350px!important;
 }
 
-}
 
 @media (max-width: 1000px) {
+  .mobileSide{
+    width: 330px!important;
+    height: 287px!important;
+  }
+  .subtaskContainerMobile{
+    height: 384px;
+    overflow: scroll;
+    width: 350px;
+  
+  }
+  .mobileButtons {
+    margin: 6px!important;
+   }
+
   .mobileButtonContainer{
     width: 330px!important;
   }
