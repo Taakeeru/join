@@ -52,6 +52,7 @@ body {
     width: 467px;
     cursor: pointer;
     padding: 11px;
+    
 }
 .inputfieldDateContainer:focus {
   outline: none;

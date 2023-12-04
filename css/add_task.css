@@ -81,7 +81,7 @@ body {
 }
 
 .inputFieldTitle {
-  color: rgba(209, 209, 209, 1);
+  color: black(231, 10, 10);
   width: 440px;
   height: 64px;
   border: 0px;
@@ -124,12 +124,12 @@ body {
 
 .textArea {
   border: 1px solid;
-  color: rgba(209, 209, 209, 1);
+  border-color: rgba(209, 209, 209, 1);
   border-radius: 0px 10px 10px 10px;
   padding: 18px;
   font-size: 19px;
   font-family: "Open Sans";
-  resize: calc();
+  color: black;
 }
 
 .small {
@@ -164,13 +164,14 @@ body {
 .inputfieldDateContainer {
   height: 48px;
   border-bottom: 1px solid;
-  color: rgba(209, 209, 209, 1);
+  border-color: rgba(209, 209, 209, 1);
   margin-inline-start: 0px;
   gap: 4px;
   display: flex;
   justify-content: space-between;
   padding: 12px 16px 0px 16px;
   align-items: center;
+  color: black;
 }
 
 .inputfieldDate {
