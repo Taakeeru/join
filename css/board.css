@@ -754,7 +754,7 @@ margin: 21px;
   display: unset;
 }
 .textArea{
-  width: 330px!important;
+  width: 350px!important;
 }
 .dateMobile{
   width: 330px!important;
@@ -768,6 +768,9 @@ margin: 21px;
 .subtaskInput{
   width: 330px!important;
 }
+.buttonContainerEdit {
+
+  margin-right: 30px;}
 
 @media (max-width: 1450px) {
   .boardBotSektion{
@@ -858,6 +861,9 @@ margin: 21px;
   }
   .editMobileDate {
     width: 330px!important;
+}
+.textArea{
+  width: 330px!important;
 }}
   
  
