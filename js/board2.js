@@ -17,15 +17,21 @@ async function editTask(getId) {
   let getPrio = selectedPriority;
   let getSubtask = currentSubtasksBoard;
 
+  getValueOfTaskInfo(getTaskInfo, taskToEditIndex, getTitel, getDiscriptionArea, getCategory, getPrio, getSubtask, selectedUsers);
+  
+  await setItem('newTask', JSON.stringify(getTaskInfo));
+  allTask[0][taskToEditIndex] = getTaskInfo[taskToEditIndex];
+  updateHTML(getTaskInfo);
+}
+
+
+function getValueOfTaskInfo(getTaskInfo, taskToEditIndex, getTitel, getDiscriptionArea, getCategory, getPrio, getSubtask, selectedUsers){
   getTaskInfo[taskToEditIndex].title = getTitel;
   getTaskInfo[taskToEditIndex].description = getDiscriptionArea;
   getTaskInfo[taskToEditIndex].workCategory = getCategory;
   getTaskInfo[taskToEditIndex].priority = getPrio;
   getTaskInfo[taskToEditIndex].subtasks = getSubtask;
   getTaskInfo[taskToEditIndex].contacts = selectedUsers;
-  await setItem('newTask', JSON.stringify(getTaskInfo));
-  allTask[0][taskToEditIndex] = getTaskInfo[taskToEditIndex];
-  updateHTML(getTaskInfo);
 }
 
 

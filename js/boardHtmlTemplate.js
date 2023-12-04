@@ -117,7 +117,7 @@ function generateTemplateHtmlSideMenu() {
   </div>
                     <div class="positionOfButtons mobileButtons">
                   <button  class="ClearBtn">Clear <img src="../assets/img/vector.svg"></button>
-                  <button onclick="createNewTask()" class="createTaskBtn">Create Task <img src="../assets/img/check.svg"></button>
+                  <button onclick="createNewTask()" class="createTaskBtn" id="buttonCreateTask">Create Task <img src="../assets/img/check.svg"></button>
                </div>
            </div>
         </div>
@@ -312,9 +312,9 @@ function showAssignetContacts2Html(getColor, getInitial, userName, i, isChecked)
 
 function addSubTask2Html(subtaskId, subtaskValue, subtaskId){
    return `
-      <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
+      <span class="subtaskList" id="${subtaskId}">${subtaskValue} 
           <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-      </div>`;
+      </span>`;
 }
 
 

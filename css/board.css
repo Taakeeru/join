@@ -382,6 +382,12 @@ body {
   font-weight: 400;
   color: rgba(42, 54, 71, 1);
 }
+
+.userBoxContainer:hover{
+  background-color: #d2e3ff;
+  border-radius: 10px;
+}
+
 .openCardCheckbox {
   height: 80px;
   margin-top: 4px;
@@ -442,6 +448,7 @@ body {
   font-family: "Open Sans";
   padding-left: 25px;
 }
+
 .openCardDate {
   height: 25px;
   margin-top: 25px;
@@ -488,7 +495,6 @@ body {
 .userDetailsImg {
   cursor: pointer;
 }
-/*edit task menu*/
 
 .header-EditMenu {
   display: flex;
@@ -501,9 +507,9 @@ body {
 .header-editMenuImg {
   cursor: pointer;
 }
-.editMenu {
+/* .editMenu {
   
-}
+} */
 
 .openCardsDetailsEdit {
   background: #ffff;
@@ -523,7 +529,7 @@ body {
   justify-content: flex-end;
   margin-right: 46px;
 }
-/*placeholderTaskContainer*/
+
 .placeholderTaskContainer {
   width: 252px;
   height: 48px;

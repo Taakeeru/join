@@ -393,7 +393,7 @@ function loadUserStory2() {
 
 function addSubTask2() {
   let subtaskInput = document.getElementById('subtaskInput2');
-  let addTask = document.getElementById('subtaskContainer2');
+  let addTask = document.getElementById('selectedSubrasks');
   let subtaskValue = subtaskInput.value;
   let subtaskId = 'subtask' + Date.now();
   if (subtaskValue.trim() !== '') {

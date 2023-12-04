@@ -369,10 +369,10 @@ body {
   margin-bottom: 0;
 }
 
-.userPosition:hover {
+/* .userPosition:hover {
   background-color: #d2e3ff;
   border-radius: 10px;
-}
+} */
 
 .userBoxContainer {
   display: flex;
@@ -469,7 +469,8 @@ body {
   border-radius: 50%;
   color: white;
   margin-right: 8px;
-  margin-top: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 .addContactstoassign {
   display: flex;
