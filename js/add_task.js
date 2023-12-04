@@ -31,20 +31,17 @@ async function createNewTask() {
   let buttonCreateTask = document.getElementById('buttonCreateTask');
   buttonCreateTask.disabled = true;
 
-  if (await checkInputFields()) {
+  if (checkInputFields()) {
     let getTitel = document.getElementById('addTastTitel').value;
     let getTextArea = document.getElementById('addTastTextArea').value;
     let getDateValue = document.getElementById('dueDateValue').value;
     let getCategory = loadCategory();
 
-    if (selectedUsers.length > 0) {
-      await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
-      window.open('../html/board.html');
-    } 
-  }
+    await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
+    window.open('../html/board.html');
 
   buttonCreateTask.disabled = false;
-}
+}}
 
 
 
