@@ -251,7 +251,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                      <span class="userPosition" id="userStoryID2" onclick="loadUserStory2()">User Story</span>
                   </div>
                </div>
-               <div class="SubtaskContent" >
+               <div class="SubtaskContent mobileEdit" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Subtask
                      <p class="assignedTitle small" >(optional)</p>
@@ -261,12 +261,15 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                   <div id="selectedSubrasks" style="margin-bottom: 0;"></div>
                   <div id="subtaskContainer2"></div>
                </div>
-            </div>
-         </div>
-            </div>
-            <div class="buttonContainerEdit" > <button onclick="createNewTask2('${getId}')" class="displayFlex btnCreateContact">Ok<img
+               <div class="buttonContainerEdit" > <button onclick="createNewTask2('${getId}')" class="displayFlex btnCreateContact">Ok<img
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
+            </div>
+            
+         </div>
+         
+            </div>
+            
       </div>`;
 }
 
