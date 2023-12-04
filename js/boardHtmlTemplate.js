@@ -37,94 +37,93 @@ function generateTodoHTML(element, priorityImagePath) {
 
 function generateTemplateHtmlSideMenu() {
   return `<div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" >
-  <div id="sideMenu" class="sideMenuStyle" onclick="event.stopPropagation()" >
-     <div class="header-sideMenu"><span>Add Task</span>
-        <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="../assets/img/close.svg" alt="">
-     </div>
-     <div class="contentContainer-sideMenu" >
-        <div class="addTask addTask-sideMenu">
-           <div action="">
-              <div class="topSektion topSektion-sideMenu">
-                 <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
-                 <div class="description description-sideMenu">
-                    <div class="descriptionContent">
+   <div id="sideMenu" class="sideMenuStyle" onclick="event.stopPropagation()" >
+      <div class="header-sideMenu"><span>Add Task</span>
+         <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="../assets/img/close.svg" alt="">
+      </div>
+      <div class="contentContainer-sideMenu" >
+         <div class="addTask addTask-sideMenu">
+            <div action="">
+               <div class="topSektion topSektion-sideMenu">
+                  <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
+                  <div id="tile-fail-message" class="tileFailMessage"></div>
+                  <div class="description description-sideMenu">
+                     <div class="descriptionContent">
                        <p class="descriptionText">Description
                        <p class="descriptionText small">(optional)</p>
                        </p>
-                    </div>
-                    <textarea  id="addTastTextArea" class="textArea" placeholder="Enter a Description" name="" id="" cols="30"
-                       rows="10"></textarea>
-                 </div>
-                 <div class="dateContentMobileDate">
+                     </div>
+                        <textarea  id="addTastTextArea" class="textArea" placeholder="Enter a Description" name="" id="" cols="30" rows="10"></textarea>
+                        <div id="description-fail-message" class="descriptionFailMessage"></div>   
+                     </div>
+                  <div class="dateContentMobileDate">
                      <p class="dateTitle">Due date</p>
                     
                     <input  class="inputfieldDateContainer dateMobile" placeholder="tipe you date" type="date" id="dueDateValue" min="2018-01-01">
                      <div class="textfield-fail" id="date-fail-message"></div>
                   </div>
-              </div>
-              <div class="assignedContent assignedContent-sideMenu" >
-                 <div class="assignedTitleContainer">
-                    <p class="assignedTitle">Priority
-                    <p class="assignedTitle small" >(optional)</p>
-                    </p>
-                 </div>
-                  <div class="buttonContainer mobileButtonContainer"> 
-                   <button id="low" onclick="getThePriority('low', 'low', 'medium', 'high')" class="prioButtonGreen sideMobileButtonG">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
-                   <button id="medium" onclick="getThePriority('medium', 'low', 'medium', 'high')" class="prioButtonYellow sideMobileButtonY">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                   <button id="high" onclick="getThePriority('high', 'low', 'medium', 'high')" class="prioButtonRed sideMobileButtonR">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
-                 </div>
-                  
-              </div>
-              <div class="assignedContent assignedContent-sideMenu" >
-              <div class="assignedTitleContainer">
-              <p class="assignedTitle">Assignet to
-              <p class="assignedTitle small" >(optional)</p>
-              </p>
-           </div>
-           <div id="assignedSelect" onclick="addContacts()"class="assignedSelect">
-              <div >Select contacts to assign</div>
-           </div>
-        </div>
-        <div id="addContactstoassign" class="addContactstoassign"></div>
-        <div  id="selectContainer" class="selectContainer d-none">
-              </div>
-              <div class="assignedContent assignedContent-sideMenu" >
-              <div class="assignedTitleContainer">
-              <p class="assignedTitle">Category</p>
-           </div>
-           <div id="categorySelect" onclick="showCategoryContacts()" class="assignedSelect">
-              <div id="SelectTaskCatergory">Select contacts to assign</div>
-           </div>
-        </div>
-        <div id="categoryContainer" class="categoryContainer d-none">
-           <div class="userBoxContainer">
-              <span class="userPosition" id="technicalTaskID" onclick="loadTechnicalTask()">Technical Task</span>
-           </div>
-           <div class="userBoxContainer">
-              <span class="userPosition" id="userStoryID" onclick="loadUserStory()">User Story</span>
-           </div>
-        </div>
-        <div class="SubtaskContent mobileSide" >
-           <div class="assignedTitleContainer">
-              <p class="assignedTitle">Subtask
-              <p class="assignedTitle small" >(optional)</p>
-              </p>
-           </div>
-           <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
-           <div class="subtaskContainerMobile" id="subtaskContainer"></div>
-        </div>
-     </div>
-  </div>
-                    <div class="positionOfButtons mobileButtons">
-                  <button  class="ClearBtn">Clear <img src="../assets/img/vector.svg"></button>
-                  <button onclick="createNewTask()" class="createTaskBtn" id="buttonCreateTask">Create Task <img src="../assets/img/check.svg"></button>
                </div>
+               <div class="assignedContent assignedContent-sideMenu" >
+                  <div class="assignedTitleContainer">
+                     <p class="assignedTitle">Priority
+                     <p class="assignedTitle small" >(optional)</p>
+                     </p>
+                  </div>
+                  <div class="buttonContainer mobileButtonContainer"> 
+                     <button id="low" onclick="getThePriority('low', 'low', 'medium', 'high')" class="prioButtonGreen sideMobileButtonG">Low<img id="lowPriority" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                     <button id="medium" onclick="getThePriority('medium', 'low', 'medium', 'high')" class="prioButtonYellow sideMobileButtonY">Medium<img id="mediumPriority" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                     <button id="high" onclick="getThePriority('high', 'low', 'medium', 'high')" class="prioButtonRed sideMobileButtonR">Urgent<img id="urgentPriority" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                  </div>
+               </div>
+               <div class="assignedContent assignedContent-sideMenu" >
+                  <div class="assignedTitleContainer">
+                     <p class="assignedTitle">Assignet to
+                     <p class="assignedTitle small" >(optional)</p>
+                     </p>
+                  </div>
+                  <div id="assignedSelect" onclick="addContacts()"class="assignedSelect">
+                     <div >Select contacts to assign</div>
+                  </div>
+               </div>
+         	   <div id="addContactstoassign" class="addContactstoassign"></div>
+               <div  id="selectContainer" class="selectContainer d-none"></div>
+               <div class="assignedContent assignedContent-sideMenu" >
+                  <div class="assignedTitleContainer">
+                     <p class="assignedTitle">Category</p>
+                  </div>
+               <div id="categorySelect" onclick="showCategoryContacts()" class="assignedSelect">
+                  <div id="SelectTaskCatergory">Select contacts to assign</div>
+               </div>
+            </div>
+            <div id="categoryContainer" class="categoryContainer d-none">
+               <div class="userBoxContainer">
+                  <span class="userPosition" id="technicalTaskID" onclick="loadTechnicalTask()">Technical Task</span>
+               </div>
+               <div class="userBoxContainer">
+                  <span class="userPosition" id="userStoryID" onclick="loadUserStory()">User Story</span>
+               </div>
+            </div>
+            <div class="SubtaskContent mobileSideBoard" >
+               <div class="assignedTitleContainer">
+                  <p class="assignedTitle">Subtask
+                  <p class="assignedTitle small" >(optional)</p>
+                  </p>
+               </div>
+               <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput marginBo">
+               <div class="subtaskContainerMobile" id="subtaskContainer"></div>
+            </div>
+            <div class="positionOfButtonsBoard mobileButtons">
+               <button  class="ClearBtn">Clear <img src="../assets/img/vector.svg"></button>
+               <button onclick="createNewTaskFromBoard()" class="createTaskBtn" id="buttonCreateTask">Create Task <img src="../assets/img/check.svg"></button>
+            </div>
+         </div>
+      </div>
+               
            </div>
         </div>
-     </div>
-  </div>
-</div>
-`;
+      </div>
+   </div>
+</div>`;
 }
 
 function generateTemplateHtmlFirstCard(task, currentIndex, priorityText, priorityImagePath, element) {
@@ -173,7 +172,7 @@ function generateTemplateHtmlFirstCard(task, currentIndex, priorityText, priorit
      </div>
   </div>
 </div>
-</div>`
+</div>`;
 }
 
 function generateTemplateHtmlEditCard(task, element, getId) {
@@ -261,7 +260,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                   <div id="selectedSubrasks" style="margin-bottom: 0;"></div>
                   <div id="subtaskContainer2"></div>
                </div>
-               <div class="buttonContainerEdit" > <button onclick="createNewTask2('${getId}')" class="displayFlex btnCreateContact">Ok<img
+               <div class="buttonContainerEdit" > <button onclick="createNewTask2('${getId}')" class="displayFlex btnCreateContact" style="color: white;">Ok<img
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
             </div>

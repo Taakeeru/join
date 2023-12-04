@@ -47,6 +47,7 @@ body {
   display: flex;
   overflow-y: scroll;
   height: calc(100vh - 144px);
+  margin-top: 0 !important;
 }
 
 .addTask::-webkit-scrollbar {
@@ -82,7 +83,7 @@ body {
 
 .inputFieldTitle {
   color: black(231, 10, 10);
-  width: 470px;
+  width: 440px;
   height: 64px;
   border: 0px;
   border-bottom: 1px solid rgba(209, 209, 209, 1);
@@ -320,7 +321,7 @@ body {
 .SubtaskContent {
   display: flex;
   flex-direction: column;
-  height: 79px;
+  height: 222px;
   padding-top: 24px !important;
 }
 
@@ -558,7 +559,7 @@ body {
   }
   .addTask{
     width: 100vw;
-    height: calc(100vh - 223px) !important;
+    height: calc(100vh - 172px) !important;
     display: flex;
     justify-content: center;
     padding: 0;
@@ -571,12 +572,13 @@ body {
 
 @media (max-width: 1000px) {
   .addTask{
-    
-    height: calc(100vh - 223px) !important;
+    height: calc(100vh - 172px) !important;
+  }
+  .contentContainer{
+    margin-top: 96px;
   }
   .containAddTask {
     width: 440px;
-    margin-top: 96px;
   }
   .ClearBtn {
     display: none;
@@ -604,6 +606,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .addTask{
+    margin-top: 0;
   }
   .buttonContainer{
     width: 350px;
