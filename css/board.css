@@ -575,6 +575,20 @@ body {
   font-size: 19px;
   font-weight: 400;
 }
+.mobileSide{
+  width: 330px!important;
+  height: 245px!important;
+}
+.subtaskContainerMobile{
+  height: 117px;
+  overflow: scroll;
+  width: 350px;
+
+}.subtaskContainerMobile::-webkit-scrollbar {
+  display: none;
+}
+
+
 @media (max-width: 1060px) {
 }
 @media (max-width: 1260px) {

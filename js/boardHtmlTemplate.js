@@ -104,14 +104,14 @@ function generateTemplateHtmlSideMenu() {
               <span class="userPosition" id="userStoryID" onclick="loadUserStory()">User Story</span>
            </div>
         </div>
-        <div class="SubtaskContent" >
+        <div class="SubtaskContent mobileSide" >
            <div class="assignedTitleContainer">
               <p class="assignedTitle">Subtask
               <p class="assignedTitle small" >(optional)</p>
               </p>
            </div>
            <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput">
-           <div id="subtaskContainer"></div>
+           <div class="subtaskContainerMobile" id="subtaskContainer"></div>
         </div>
      </div>
   </div>
