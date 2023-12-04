@@ -57,12 +57,7 @@ function showAssignetContacts2(loggedInUser) {
 
     let isChecked = selectedUsers.some(user => user.name === userName);
 
-    box.innerHTML += /*html*/ `
-      <div class="userBoxContainer displayFlex">
-        <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
-        <span class="userPosition">${userName}</span>
-        <input type="checkbox" id="inputId2${i}" ${isChecked ? 'checked' : ''} onclick="handleCheckboxClick2(${i}, '${userName}', '${getInitial}', '${getColor}', ${isChecked})">
-      </div>`;
+    box.innerHTML += showAssignetContacts2Html(getColor, getInitial, userName, i, isChecked);
   }
 }
 
@@ -72,13 +67,8 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
   let userId = `user_${i}`;
   if (checkbox.checked) {
     if (!selectedUsers.some(user => user.name === userName)) {
-      let selectedUser = {
-        name: userName,
-        email: loggedInUser.contacts[i].email,
-        phone: loggedInUser.contacts[i].phone,
-        initial: getInitial,
-        color: getColor
-      };
+      let selectedUser = getSelectedUser(userName, loggedInUser.contacts[i].email, loggedInUser.contacts[i].phone, getInitial, getColor);
+
       selectedUsers.push(selectedUser);
       console.log(`selectedUsers hat ${selectedUsers.length}`);
       renderAddedContactBox(selectedUsers);
@@ -94,6 +84,18 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
 }
 
 
+function getSelectedUser(userName, userEmail, userPhone, getInitial, getColor){
+  let selectedUser = {
+    name: userName,
+    email: userEmail,
+    phone: userPhone,
+    initial: getInitial,
+    color: getColor
+  };
+  return selectedUser;
+};
+
+
 function renderAddedContactBox(selectedUsers) {
   let currentUsers = document.getElementById("addContactstoassign2");
   currentUsers.innerHTML = '';
@@ -101,9 +103,9 @@ function renderAddedContactBox(selectedUsers) {
     const initial = selectedUsers[i].initial;
     const color = selectedUsers[i].color;
     currentUsers.innerHTML += /*html*/ `
-          <div class="userBoxContainer displayFlex">
-            <div class="imgPerson displayFlex" style="background-color: ${color};">${initial}</div>
-          </div>`;
+      <div class="userBoxContainer displayFlex">
+        <div class="imgPerson displayFlex" style="background-color: ${color};">${initial}</div>
+      </div>`;
   }
 }
 
@@ -137,30 +139,38 @@ function getThePriority2(priority, lowId, mediumId, highId) {
   const highIcon2 = document.getElementById("urgentPriority2");
 
   if (`${lowId}2` && `${mediumId}2` && `${highId}2` && lowIcon2 && mediumIcon2 && highIcon2) {
-    low2.classList.remove("active3");
-    medium2.classList.remove("active2");
-    urgent2.classList.remove("active");
-    lowIcon2.classList.remove("colorIcon3");
-    mediumIcon2.classList.remove("colorIcon2");
-    highIcon2.classList.remove("colorIcon");
-
+    removeClassesOfGetThePriority2(low2, medium2, urgent2, lowIcon2, mediumIcon2, highIcon2);
     if (selectedPriority === priority) {
       selectedPriority = null;
     } else {
       selectedPriority = priority;
-
-      if (selectedPriority === 'low') {
-        low2.classList.add("active3");
-        lowIcon2.classList.add("colorIcon3");
-      } else if (selectedPriority === 'medium') {
-        medium2.classList.add("active2");
-        mediumIcon2.classList.add("colorIcon2");
-      } else if (selectedPriority === 'high') {
-        urgent2.classList.add("active");
-        highIcon2.classList.add("colorIcon");
-      }
+      addClassesOfGetThePriority2(selectedPriority, low2, medium2, urgent2, lowIcon2, mediumIcon2, highIcon2);
     }
   } else {
     console.error("Ein oder mehrere Elemente wurden nicht gefunden.");
+  }
+}
+
+
+function removeClassesOfGetThePriority2(low2, medium2, urgent2, lowIcon2, mediumIcon2, highIcon2){
+  low2.classList.remove("active3");
+  medium2.classList.remove("active2");
+  urgent2.classList.remove("active");
+  lowIcon2.classList.remove("colorIcon3");
+  mediumIcon2.classList.remove("colorIcon2");
+  highIcon2.classList.remove("colorIcon");
+}
+
+
+function addClassesOfGetThePriority2(selectedPriority, low2, medium2, urgent2, lowIcon2, mediumIcon2, highIcon2){
+  if (selectedPriority === 'low') {
+    low2.classList.add("active3");
+    lowIcon2.classList.add("colorIcon3");
+  } else if (selectedPriority === 'medium') {
+    medium2.classList.add("active2");
+    mediumIcon2.classList.add("colorIcon2");
+  } else if (selectedPriority === 'high') {
+    urgent2.classList.add("active");
+    highIcon2.classList.add("colorIcon");
   }
 }

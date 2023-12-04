@@ -174,7 +174,6 @@ function generateTemplateHtmlFirstCard(task, currentIndex, priorityText, priorit
   </div>
 </div>
 </div>`
-
 }
 
 function generateTemplateHtmlEditCard(task, element, getId) {
@@ -269,7 +268,6 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                src="../assets/img/check.svg" class="samllIconsContactOK"></button></div>
          </div>
       </div>`;
-
 }
 
 function generateTemplateHtmlUserDate(contact) {
@@ -282,8 +280,6 @@ function generateTemplateHtmlUserDate(contact) {
           <span class="cardUserDetailVersion" > ${contact["name"]}</span> 
         </div>
       </div>`;
-
-
 }
 
 function generateTemplateHtmlCreateNewTask2(contactData, i, selectedContacts) {
@@ -293,7 +289,6 @@ function generateTemplateHtmlCreateNewTask2(contactData, i, selectedContacts) {
           <span class="userPosition">${contactData[i].name}</span>
           <input type="checkbox" id="inputId${i}" ${selectedContacts.some(user => user.name === contactData[i].name) ? 'checked' : ''} onclick="handleCheckboxClick2('${i}', '${contactData[i].name}', '${contactData[i].initial}', '${contactData[i].color}')">
         </div>`;
-
 }
 
 function generateTemplateHtmlCreateNewTask22(selectedContacts, i) {
@@ -302,5 +297,30 @@ function generateTemplateHtmlCreateNewTask22(selectedContacts, i) {
           <div class="imgPerson displayFlex" style="background-color: ${selectedContacts[i].color};">${selectedContacts[i].initial}</div>
           <span class="userPosition">${selectedContacts[i].name}</span>
         </div>`;
+}
 
+
+function showAssignetContacts2Html(getColor, getInitial, userName, i, isChecked){
+   return   /*html*/ `
+   <div class="userBoxContainer displayFlex">
+     <div class="imgPerson displayFlex" style="background-color: ${getColor};">${getInitial}</div>
+     <span class="userPosition">${userName}</span>
+     <input type="checkbox" id="inputId2${i}" ${isChecked ? 'checked' : ''} onclick="handleCheckboxClick2(${i}, '${userName}', '${getInitial}', '${getColor}', ${isChecked})">
+   </div>`;
+}
+
+
+function addSubTask2Html(subtaskId, subtaskValue, subtaskId){
+   return `
+      <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
+          <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
+      </div>`;
+}
+
+
+function rederCurrentTasksHtml(id, value){
+   return /*html*/ `
+      <div class="subtaskList" id="${id}">${value}
+        <img src="../assets/img/delete.svg" onclick="deleteSubtaskEdit('${id}')" class="subtaskDeleteImg">
+      </div>`;
 }

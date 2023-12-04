@@ -243,7 +243,6 @@ async function checkboxClicked(cardElement, subtaskId) {
 async function updateStatus(subtaskIdToUpdate, newStatusValue) {
 
   for (let j = 0; j < allTask[0].length; j++) {
-
     if (allTask[0][j].subtasks) {
       const subtaskIndex = allTask[0][j].subtasks.findIndex(subtask => subtask.id === subtaskIdToUpdate);
 
@@ -253,9 +252,7 @@ async function updateStatus(subtaskIdToUpdate, newStatusValue) {
     }
   }
   await setItem('newTask', JSON.stringify(allTask[0]));
-  updateProgressBarOnload()
-
-  console.log(allTask[0]);
+  updateProgressBarOnload();
 }
 
 
@@ -335,10 +332,7 @@ function rederCurrentTasks(selectedSubrasks) {
         value: value
       });
     }
-    box.innerHTML += /*html*/ `
-        <div class="subtaskList" id="${id}">${value}
-          <img src="../assets/img/delete.svg" onclick="deleteSubtaskEdit('${id}')" class="subtaskDeleteImg">
-        </div>`;
+    box.innerHTML += rederCurrentTasksHtml(id, value);
   }
 }
 
@@ -403,10 +397,7 @@ function addSubTask2() {
   let subtaskValue = subtaskInput.value;
   let subtaskId = 'subtask' + Date.now();
   if (subtaskValue.trim() !== '') {
-    addTask.innerHTML += `
-        <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
-            <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
-        </div>`;
+    addTask.innerHTML += addSubTask2Html(subtaskId, subtaskValue, subtaskId);
     subtaskInput.value = '';
     currentSubtasksBoard.push({
       id: subtaskId,
