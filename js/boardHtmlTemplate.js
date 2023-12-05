@@ -46,7 +46,7 @@ function generateTemplateHtmlSideMenu() {
          <div class="addTask addTask-sideMenu">
             <div action="">
                <div class="topSektion topSektion-sideMenu">
-                  <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle inputFieldTitleBoard-sideMenu" type="" placeholder="Enter a title"></div>
+                  <div class="titleContainer"><input id="addTastTitel" class=" inputFieldTitleBoard sideMenu" type="" placeholder="Enter a title"></div>
                   <div id="tile-fail-message" class="tileFailMessage"></div>
                   <div class="description description-sideMenu">
                      <div class="descriptionContent">
@@ -209,7 +209,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                      <div class="textfield-fail" id="date-fail-message2"></div>
                   </div>
                </div>
-               <div class="assignedContent assignedContent-sideMenu" >
+               <div class="assignedContent-sideMenu" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Priority
                      <p class="assignedTitle small" >(optional)</p>
