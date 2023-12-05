@@ -2,6 +2,7 @@ body {
   font-family: Open Sans;
   margin: 0;
   overflow-y: hidden;
+  font-family: "Open Sans", sans-serif;
 }
 .active {
   background-color: rgb(255, 66, 6) !important;
@@ -302,7 +303,7 @@ body {
   font-size: 19px;
   font-family: "Open Sans";
   appearance: none;
-  background: url("/assets/img/arrow_drop_down.svg") 97% / 5% no-repeat #ffff;
+  background: url("../assets/img/arrow_drop_down.svg") 97% / 5% no-repeat #ffff;
   border-bottom: 1px solid rgba(209, 209, 209, 1);
   line-height: 39px;
   cursor: pointer;
@@ -333,7 +334,7 @@ body {
   font-size: 19px;
   font-family: "Open Sans";
   appearance: none;
-  background: url("/assets/img/subtask_icons.svg") 97% / 5% no-repeat #ffff;
+  background: url("../assets/img/subtask_icons.svg") 97% / 5% no-repeat #ffff;
   border-bottom: 1px solid rgba(209, 209, 209, 1);
   line-height: 39px;
   cursor: pointer;
