@@ -1,6 +1,10 @@
 let currentTaskInfo = [];
 
 
+
+/**
+ * Load all importats fetshs and functions
+ */
 async function init() {
     await includeHTML();
     highlightTitle('summary');
@@ -19,6 +23,9 @@ async function init() {
 }
 
 
+/**
+ * The function greets you with the time of day after you log in
+ */
 function updateGreeting() {
     const greeting = document.getElementById('greeting');
     const currentTime = new Date();
@@ -37,6 +44,9 @@ function updateGreeting() {
 }
 
 
+/**
+ * The function greets logged in User
+ */
 function generateUserName(loggedInUser){
     let getName = document.getElementById('greet-name');
     getName.innerHTML = /*html*/`
@@ -44,6 +54,9 @@ function generateUserName(loggedInUser){
 }   
 
 
+/**
+ * The function filters the 4 parameters toDo, progress, FeedBack and done from the tasks and forwards the information
+ */
 function getAmountOfTasks() {
     let tasks = currentTaskInfo[0];
     let valueToDo = 0;
@@ -69,6 +82,9 @@ function getAmountOfTasks() {
 }
 
 
+/**
+ * Here the values ​​are packed into an array and returned
+ */
 function  getCurrentValues(valueToDo, valueProgress, valueFeedBack,valueDone){
     let currentValues = {
         todo: valueToDo,
@@ -80,6 +96,9 @@ function  getCurrentValues(valueToDo, valueProgress, valueFeedBack,valueDone){
 };
 
 
+/**
+ * Here the parameters are displayed, how many tasks are in each category
+ */
 function renderNumbers(currentValues){
     let toTo = document.getElementById('showNumberToDo');
     let progress = document.getElementById('showNumberProgress');
@@ -99,6 +118,10 @@ function renderNumbers(currentValues){
 }
 
 
+
+/** (mobile version)
+ * Here the parameters are displayed, how many tasks are in each category
+ */
 function renderNumverMobile(currentValues){
     let toTo = document.getElementById('showNumberToDo2');
     let progress = document.getElementById('showNumberProgress2');
@@ -117,6 +140,9 @@ function renderNumverMobile(currentValues){
 }
 
 
+/** (mobile + normal version)
+ * All tasks are summarized here and the total number is displayed
+ */
 function calcAllTogether(currentValues){
     let result = currentValues.todo + currentValues.progress + currentValues.feedBack + currentValues.done;
     let resultBox = document.getElementById('showTaskInBoardNumber');
@@ -128,6 +154,9 @@ function calcAllTogether(currentValues){
 }
 
 
+/**
+ * Filter out the priority under all tasks in board
+ */
 function getPriority(){
     let tasks = currentTaskInfo[0];
     let valuePriority = 0;
@@ -146,6 +175,9 @@ function getPriority(){
 }
 
 
+/**
+ * Here, the date that is closer to the current day is selected under all tasks and displayed
+ */
 function upcomingDate() {
     let tasks = currentTaskInfo[0];
     let date = document.getElementById('date');

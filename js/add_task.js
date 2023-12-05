@@ -31,23 +31,24 @@ async function createNewTask() {
   let buttonCreateTask = document.getElementById('buttonCreateTask');
   buttonCreateTask.disabled = true;
 
-  if (checkInputFields()) {
+  let isValid = checkInputFields();
+
+  if (isValid) {
     let getTitel = document.getElementById('addTastTitel').value;
     let getTextArea = document.getElementById('addTastTextArea').value;
     let getDateValue = document.getElementById('dueDateValue').value;
     let getCategory = loadCategory();
 
     await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
-    window.open('../html/board.html');
+    window.location.href = '../html/board.html';
+  }
 
   buttonCreateTask.disabled = false;
-}}
+}
+
 
 
 async function createNewTaskFromBoard() {
-  let buttonCreateTask = document.getElementById('buttonCreateTask');
-  buttonCreateTask.disabled = true;
-
   if (checkInputFields()) {
     let getTitel = document.getElementById('addTastTitel').value;
     let getTextArea = document.getElementById('addTastTextArea').value;
@@ -55,10 +56,11 @@ async function createNewTaskFromBoard() {
     let getCategory = loadCategory();
 
     await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
-
-  buttonCreateTask.disabled = false;
-  
-}}
+    getTitel.value ='';
+    getTextArea.value ='';
+    getDateValue.value ='';
+  }
+}
 
 
 function clearArray() {
@@ -150,13 +152,13 @@ function checkInputFields() {
   descriptionFail.innerHTML = '';
   dateFail.innerHTML = '';
 
-  let isValid = true;
-  ifStatementsOfcheckInputFields(titleInput, titleFail, isValid, descriptionInput, descriptionFail, dateInput, dateFail);
-  return isValid;
+  return ifStatementsOfcheckInputFields(titleInput, titleFail, descriptionInput, descriptionFail, dateInput, dateFail);
 }
 
 
-function ifStatementsOfcheckInputFields(titleInput, titleFail, isValid, descriptionInput, descriptionFail, dateInput, dateFail){
+function ifStatementsOfcheckInputFields(titleInput, titleFail, descriptionInput, descriptionFail, dateInput, dateFail) {
+  let isValid = true;
+
   if (titleInput.value.trim() === '') {
     titleFail.innerHTML = '<span>Title is required</span>';
     isValid = false;
@@ -171,6 +173,8 @@ function ifStatementsOfcheckInputFields(titleInput, titleFail, isValid, descript
     dateFail.innerHTML = '<span>Due date is required</span>';
     isValid = false;
   }
+
+  return isValid;
 }
 
 
