@@ -660,7 +660,7 @@ body {
   left: 347px;
 }
 .header-sideMenu{
-  padding: 72px 40px 0px 80px;
+  padding: 72px 40px 0px 48px;
 }
 .subtaskList{
   width: 330px;
@@ -894,7 +894,7 @@ padding-left: 16px!important;
 
 @media (max-width: 1000px) {
   .mobileSide{
-    width: 350px!important;
+    width: 330px!important;
     height: 287px!important;
   }
   .subtaskContainerMobile{
