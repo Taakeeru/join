@@ -44,7 +44,7 @@ function generateTemplateHtmlSideMenu() {
       </div>
       <div class="contentContainer-sideMenu" >
          <div class="addTask addTask-sideMenu">
-            <div action="">
+            <div action="" class="widthOfAddTaskBoardBox">
                <div class="topSektion topSektion-sideMenu">
                   <div class="titleContainer"><input id="addTastTitel" class=" inputFieldTitleBoard sideMenu" type="" placeholder="Enter a title"></div>
                   <div id="tile-fail-message" class="tileFailMessage"></div>
@@ -86,8 +86,8 @@ function generateTemplateHtmlSideMenu() {
                      <div >Select contacts to assign</div>
                   </div>
                </div>
-         	   <div id="addContactstoassign" class="addContactstoassign"></div>
-               <div  id="selectContainer" class="selectContainer mobileSide d-none"></div>
+         	   <div id="addContactstoassign" class="addContactstoassign addContactstoassignBoard"></div>
+               <div  id="selectContainer" class="selectContainerX mobileSide d-none"></div>
                <div class="assignedContent assignedContent-sideMenu" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Category</p>
@@ -231,10 +231,10 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                      <div >Select contacts to assign</div>
                   </div>
                </div>
-               <div id="addContactstoassign2" class="addContactstoassign">
+               <div id="addContactstoassign2" class="addContactstoassignBoard">
                 <div id="renderContacts"></div>
                </div>
-               <div  id="selectContainer2" class="selectContainer d-none">
+               <div  id="selectContainer2" class="selectContainerBoard d-none">
                   
                </div>
                <div class="assignedContentBoard" >
