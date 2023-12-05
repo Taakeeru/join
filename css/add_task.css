@@ -418,6 +418,10 @@ body {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.ClearBtn:hover .clearBtnImg{
+  filter: invert(47%) sepia(53%) saturate(6716%) hue-rotate(208deg) brightness(101%) contrast(101%);
+}
+
 .createTaskBtn {
   width: 174px;
   height: 61px;
