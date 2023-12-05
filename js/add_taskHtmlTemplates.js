@@ -16,7 +16,7 @@ function andleCheckboxClickHtml(userId, getInitial, getColor){
 }
 
 
-function addSubTaskHtml(subtaskId, subtaskValue, subtaskId){
+function addSubTaskHtml(subtaskId, subtaskValue){
     return`
         <div class="subtaskList" id="${subtaskId}">${subtaskValue} 
             <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">

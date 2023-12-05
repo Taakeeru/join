@@ -318,7 +318,7 @@ function showAssignetContacts2Html(getColor, getInitial, userName, i, isChecked)
 }
 
 
-function addSubTask2Html(subtaskId, subtaskValue, subtaskId){
+function addSubTask2Html(subtaskId, subtaskValue){
    return `
       <span class="subtaskList" id="${subtaskId}">${subtaskValue} 
           <img src="../assets/img/delete.svg" onclick="deleteSubtask('${subtaskId}')" class="subtaskDeleteImg">
