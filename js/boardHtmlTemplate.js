@@ -114,7 +114,7 @@ function generateTemplateHtmlSideMenu() {
                <div class="subtaskContainerMobile" id="subtaskContainer"></div>
             </div>
             <div class="positionOfButtonsBoard mobileButtons">
-               <button  class="ClearBtn">Clear <img src="../assets/img/vector.svg" class="clearBtnImg"></button>
+               <button onclick="clearSideAddTask()" class="ClearBtn">Clear <img src="../assets/img/vector.svg" class="clearBtnImg"></button>
                <button onclick="createNewTaskFromBoard()" class="createTaskBtn" id="buttonCreateTask">Create Task <img src="../assets/img/check.svg"></button>
             </div>
          </div>

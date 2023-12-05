@@ -354,7 +354,7 @@ body {
   flex-direction: column;
   height: 152px;
   overflow: auto;
-  width: auto;
+  width: 350px;
 }
 
 .selectOverContainer {
