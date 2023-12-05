@@ -668,6 +668,9 @@ body {
 .mobileSide{
   width: 350px!important;
 }
+.mobileButtons {
+  margin-right: 138px!important;
+ }
 
 
 .addTask-sideMenu{
@@ -860,9 +863,7 @@ margin: 21px;
   width: 350px;
 
 }
-.mobileButtons {
-  margin: 6px!important;
- }}
+}
 
  @media (max-width: 1700px) {
  .boardTopSektion{
@@ -903,7 +904,7 @@ padding-left: 16px!important;
   
   }
   .mobileButtons {
-    margin: 6px!important;
+    margin-right: 138px!important;
    }
 
   .mobileButtonContainer{
