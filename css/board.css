@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: sans-serif;
   overflow: hidden;
+  font-family: "Open Sans", sans-serif;
 }
 
 .contentContainer {
@@ -45,16 +45,17 @@ body {
 .boardInputfield:focus {
   outline: none;
 }
-.inputfieldDateContainer{
+.inputfieldDateContainerBoard{
   border: 0;
-    font-size: 19px;
-    font-weight: 400;
-    width: 467px;
-    cursor: pointer;
-    padding: 11px;
-    
+  font-size: 19px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 11px;
+  border-bottom: 1px solid;
+  border-color: rgba(209, 209, 209, 1);
+  width: 468px !important;
 }
-.inputfieldDateContainer:focus {
+.inputfieldDateContainerBoard:focus {
   outline: none;
 }
 .boardButton {
@@ -196,7 +197,6 @@ body {
   width: 220px;
   height: 19px;
   color: #4589ff;
-  font-family: Open Sans;
   font-size: 16px;
   font-weight: 700;
   line-height: 19px;
@@ -223,7 +223,6 @@ body {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   color: #a8a8a8;
-  font-family: "Inter";
   text-align: left;
   overflow: hidden;
   white-space: nowrap;
@@ -242,7 +241,6 @@ body {
 }
 .cardSubNumber {
   font-size: 13px;
-  font-family: "Inter";
   font-weight: 400;
   margin-block-start: 0em;
   margin-block-end: 0em;
@@ -265,7 +263,18 @@ body {
   text-align: center;
   line-height: 30px;
 }
-
+.inputFieldTitleBoard{
+  color: black(231, 10, 10);
+  width: 468px !important;
+  height: 64px;
+  border: 0px;
+  border-bottom: 1px solid rgba(209, 209, 209, 1);
+  padding: 0px 0px 0px 0px;
+  gap: 10px;
+  display: flex;
+  font-weight: 400;
+  font-size: 32px;
+}
 
 /* SideMenuClass*/
 .header-sideMenu {
@@ -361,7 +370,7 @@ body {
   width: 518px !important;
   overflow-x: hidden;
 }
-.topSektion-sideMenu {
+/* .topSektion-sideMenu {
   width: 470px !important;
 }
 .inputFieldTitle-sideMenu {
@@ -370,7 +379,7 @@ body {
 .description-sideMenu {
   padding-top: 8px !important;
   width: 470px !important;
-}
+} */
 
 /*openCards*/
 
@@ -415,7 +424,6 @@ body {
   gap: 8px;
 }
 .openCardIconsText {
-  font-family: "Open Sans";
   font-size: 16px;
   font-weight: 400;
   color: rgba(42, 54, 71, 1);
@@ -439,7 +447,6 @@ body {
   display: none;
 }
 .subtaskText {
-  font-family: "Open Sans";
   font-weight: 400;
   font-size: 16px;
   height: 19px;
@@ -477,13 +484,11 @@ body {
 .cardsCategoryText {
   font-size: 21px;
   font-weight: 700;
-  font-family: "Inter";
   color: rgba(66, 82, 110, 1);
 }
 .openCardSecondText {
   font-size: 19px;
   font-weight: 400;
-  font-family: "Open Sans";
   padding-left: 25px;
 }
 
@@ -497,7 +502,6 @@ body {
   overflow: auto;
 }
 .openCardSpanText {
-  font-family: "Open Sans";
   font-weight: 400;
   font-size: 19px;
 }
@@ -506,7 +510,6 @@ body {
   height: 79px;
 }
 .openCardDescriptionText {
-  font-family: "Open Sans";
   font-weight: 700;
   font-size: 61px;
   line-height: 73px;
@@ -526,7 +529,6 @@ body {
   text-align: center;
   border-radius: 8px;
   padding: 0px 24px 0px 24px;
-  font-family: "Open Sans";
   font-weight: 400;
   font-size: 23px;
 }
@@ -568,6 +570,7 @@ body {
   flex-direction: column;
   max-height: 240px;
   padding-top: 24px !important;
+  width: 470px;
 }
 
 .SubtaskContentEdit {
@@ -621,7 +624,6 @@ body {
   line-height: 41px;
 }
 .cardUserDetailVersion {
-  font-family: "Open Sans";
   font-size: 19px;
   font-weight: 400;
 }
@@ -663,7 +665,7 @@ body {
   padding: 72px 40px 0px 48px;
 }
 .subtaskList{
-  width: 330px;
+  width: 384px;
 }
 .mobileSide{
   width: 350px!important;
@@ -694,7 +696,6 @@ body {
 }
 
 .scrollContainer {
-  
  flex-direction: column;
 }
  
@@ -724,7 +725,6 @@ body {
   padding-top: 100px!important;
 }
 .boardTopSektion {
-
   align-items: center;
 }
 .boardDoneSektion{
@@ -828,26 +828,35 @@ margin: 21px;
   width: 397px;
 
 }
-.inputFieldTitle-sideMenu{
-  width: 330px!important;
+.inputFieldTitleBoard-sideMenu{
+  width: 400px!important;
+}
+.inputFieldTitleBoard{
+  width: 400px !important;
+}
+.inputfieldDateContainerBoard{
+  width: 400px !important;
+}
+#selectedSubrasks{
+  width: 400px !important;
 }
 .contentContainer-sideMenu{
   display: unset;
 }
 .textArea{
-  width: 350px!important;
+  width: 400px!important;
 }
 .dateMobile{
-  width: 330px!important;
+  width: 400px!important;
 }
 .assignedContent-sideMenu{
-  width: 330px!important;
+  width: 400px!important;
 }
 .assignedTitleContainer{
-  width: 330px!important;
+  width: 400px!important;
 }
 .subtaskInput{
-  width: 330px!important;
+  width: 400px!important;
 }
 .buttonContainerEdit {
   margin-right: 145px;
@@ -884,11 +893,11 @@ padding-left: 16px!important;
   }
 }
 .editMobileDate{
-  width: 350px!important;
+  width: 350px;
 
 }
 #addTastTitel2{
-  width: 350px!important;
+  width: 350px;
 }
 
 
@@ -944,11 +953,11 @@ padding-left: 16px!important;
   #selectedSubrasks{
     height: 120px;
     overflow: scroll;
-    width: auto;
+    width: 468px;
   }
   .mobileEdit{
     height: 250px!important;
-    width: 470px!important;
+    width: 468px;
   }
   #selectedSubrasks::-webkit-scrollbar {
     -webkit-box-shadow: inset 0 0 6px rgba(158, 158, 158, 0.1);
