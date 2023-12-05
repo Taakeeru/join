@@ -2,7 +2,6 @@ let allTasks = [];
 let contactData = [];
 let selectedPriority;
 let currentSubtasks = [];
-let selectedUsers = [];
 let checked = true;
 
 

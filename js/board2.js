@@ -1,3 +1,4 @@
+let selectedUsers = [];
 async function editTask(getId) {
 
   let info = await getItem('newTask');
@@ -71,23 +72,23 @@ function showAssignetContacts2(loggedInUser) {
 function handleCheckboxClick2(i, userName, getInitial, getColor) {
   let checkbox = document.getElementById(`inputId2${i}`);
   let userId = `user_${i}`;
+
   if (checkbox.checked) {
     if (!selectedUsers.some(user => user.name === userName)) {
       let selectedUser = getSelectedUser(userName, loggedInUser.contacts[i].email, loggedInUser.contacts[i].phone, getInitial, getColor);
-
       selectedUsers.push(selectedUser);
       console.log(`selectedUsers hat ${selectedUsers.length}`);
       renderAddedContactBox(selectedUsers);
-    } else {
-      let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
-
-      if (indexToRemove !== -1) {
-        selectedUsers.splice(indexToRemove, 1);
-      }
-      renderAddedContactBox(selectedUsers);
     }
+  } else {
+    let indexToRemove = selectedUsers.findIndex(user => user.name === userName);
+    if (indexToRemove !== -1) {
+      selectedUsers.splice(indexToRemove, 1);
+    }
+    renderAddedContactBox(selectedUsers);
   }
 }
+
 
 
 function getSelectedUser(userName, userEmail, userPhone, getInitial, getColor){
