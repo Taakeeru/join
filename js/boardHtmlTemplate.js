@@ -87,7 +87,7 @@ function generateTemplateHtmlSideMenu() {
                   </div>
                </div>
          	   <div id="addContactstoassign" class="addContactstoassign"></div>
-               <div  id="selectContainer" class="selectContainer d-none"></div>
+               <div  id="selectContainer" class="selectContainer mobileSide d-none"></div>
                <div class="assignedContent assignedContent-sideMenu" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Category</p>

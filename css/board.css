@@ -665,6 +665,9 @@ body {
 .subtaskList{
   width: 330px;
 }
+.mobileSide{
+  width: 350px!important;
+}
 
 
 .addTask-sideMenu{
@@ -819,7 +822,7 @@ margin: 21px;
   background-color: #a8a8a8;
 }
 .sideMenuStyle {
-  width: 420px;
+  width: 397px;
 
 }
 .inputFieldTitle-sideMenu{
@@ -890,7 +893,7 @@ padding-left: 16px!important;
 
 @media (max-width: 1000px) {
   .mobileSide{
-    width: 330px!important;
+    width: 350px!important;
     height: 287px!important;
   }
   .subtaskContainerMobile{
