@@ -180,3 +180,11 @@ function addClassesOfGetThePriority2(selectedPriority, low2, medium2, urgent2, l
     highIcon2.classList.add("colorIcon");
   }
 }
+function clearSideAddTask() {
+  let titleInput = document.getElementById('addTastTitel');
+  let descriptionInput = document.getElementById('addTastTextArea');
+  let dateInput = document.getElementById('dueDateValue');
+  titleInput.value=``;
+  descriptionInput.value=``;
+  dateInput.value=``;
+} 
