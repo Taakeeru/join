@@ -46,7 +46,7 @@ function generateTemplateHtmlSideMenu() {
          <div class="addTask addTask-sideMenu">
             <div action="">
                <div class="topSektion topSektion-sideMenu">
-                  <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle inputFieldTitle-sideMenu" type="" placeholder="Enter a title"></div>
+                  <div class="titleContainer"><input id="addTastTitel" class="inputFieldTitle inputFieldTitleBoard-sideMenu" type="" placeholder="Enter a title"></div>
                   <div id="tile-fail-message" class="tileFailMessage"></div>
                   <div class="description description-sideMenu">
                      <div class="descriptionContent">
@@ -60,7 +60,7 @@ function generateTemplateHtmlSideMenu() {
                   <div class="dateContentMobileDate">
                      <p class="dateTitle">Due date</p>
                     
-                    <input  class="inputfieldDateContainer dateMobile" placeholder="tipe you date" type="date" id="dueDateValue" min="2018-01-01">
+                    <input  class="inputfieldDateContainerBoard dateMobile" placeholder="tipe you date" type="date" id="dueDateValue" min="2018-01-01">
                      <div class="textfield-fail" id="date-fail-message"></div>
                   </div>
                </div>
@@ -189,7 +189,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
             <div class="addTask addTask-sideMenu editMenu">
             <div action="">
                <div class="topSektion topSektion-sideMenu">
-                  <div class="titleContainer"><input id="addTastTitel2" class="inputFieldTitle" type="" placeholder="${allTask[0][element]["title"]}"></div>
+                  <div class="titleContainer"><input id="addTastTitel2" class="inputFieldTitleBoard" type="" placeholder="${allTask[0][element]["title"]}"></div>
                   <div class="textfield-fail" id="tile-fail-message2"></div>
                   <div class="description description-sideMenu">
                      <div class="descriptionContent">
@@ -204,7 +204,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                   <div class="dateContent editMobileDate">
                      <p class="dateTitle">Due date</p>
 
-                     <input  class="inputfieldDateContainer editMobileDate" placeholder="tipe you date" type="date" min="2018-01-01">
+                     <input  class="inputfieldDateContainerBoard editMobileDate" placeholder="tipe you date" type="date" min="2018-01-01">
 
                      <div class="textfield-fail" id="date-fail-message2"></div>
                   </div>
