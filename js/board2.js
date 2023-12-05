@@ -90,7 +90,6 @@ function handleCheckboxClick2(i, userName, getInitial, getColor) {
 }
 
 
-
 function getSelectedUser(userName, userEmail, userPhone, getInitial, getColor){
   let selectedUser = {
     name: userName,
