@@ -381,3 +381,12 @@ function deleteSubtask(subtaskId) {
     subtaskElement.remove();
   }
 }
+
+function clearInputFields() {
+  let titleInput = document.getElementById('addTastTitel');
+  let descriptionInput = document.getElementById('addTastTextArea');
+  let dateInput = document.getElementById('dueDateValue');
+  titleInput.value=``;
+  descriptionInput.value=``;
+  dateInput.value=``;
+} 
