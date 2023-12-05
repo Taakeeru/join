@@ -57,14 +57,10 @@ async function createNewTaskFromBoard() {
     await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
 
   buttonCreateTask.disabled = false;
-  // document.getElementById('sideMenu').classList.remove('showmenu');
+  
 }}
 
 
-/**
- * you can delete all tasks in board with these 2 functions [clearArray() + clearTasksArray()]. 
- * create a button and give it an onclick="clearTasksArray()" function
- */
 function clearArray() {
   allTasks.splice(0, allTasks.length);
 }

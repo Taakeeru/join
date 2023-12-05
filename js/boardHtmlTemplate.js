@@ -35,6 +35,7 @@ function generateTodoHTML(element, priorityImagePath) {
     </div>`;
 }
 
+
 function generateTemplateHtmlSideMenu() {
   return `<div class="" id="menuContainerBox"onclick ="closeAddTaskMenu()" >
    <div id="sideMenu" class="sideMenuStyle" onclick="event.stopPropagation()" >
@@ -126,6 +127,7 @@ function generateTemplateHtmlSideMenu() {
 </div>`;
 }
 
+
 function generateTemplateHtmlFirstCard(task, currentIndex, priorityText, priorityImagePath, element) {
   return `<div id="openCardContainer" onclick="closeCardContainer()"  class="openCardContainer" >
   <div class="openCardsDetails" onclick="event.stopPropagation()">
@@ -174,6 +176,7 @@ function generateTemplateHtmlFirstCard(task, currentIndex, priorityText, priorit
 </div>
 </div>`;
 }
+
 
 function generateTemplateHtmlEditCard(task, element, getId) {
   return `
@@ -272,6 +275,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
       </div>`;
 }
 
+
 function generateTemplateHtmlUserDate(contact) {
   return `
       <div class="detaicardsUserContainer">
@@ -284,6 +288,7 @@ function generateTemplateHtmlUserDate(contact) {
       </div>`;
 }
 
+
 function generateTemplateHtmlCreateNewTask2(contactData, i, selectedContacts) {
   return `
         <div class="userBoxContainer displayFlex">
@@ -292,6 +297,7 @@ function generateTemplateHtmlCreateNewTask2(contactData, i, selectedContacts) {
           <input type="checkbox" id="inputId${i}" ${selectedContacts.some(user => user.name === contactData[i].name) ? 'checked' : ''} onclick="handleCheckboxClick2('${i}', '${contactData[i].name}', '${contactData[i].initial}', '${contactData[i].color}')">
         </div>`;
 }
+
 
 function generateTemplateHtmlCreateNewTask22(selectedContacts, i) {
   return `
