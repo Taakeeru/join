@@ -46,10 +46,34 @@ function searchTask() {
     const descriptionMatches = task.description.toLowerCase().includes(searchTerm);
 
     return titleMatches || descriptionMatches;
+    
   });
-
+ 
   updateHTML(filteredTasks);
-  updateProgressBarOnload();
+  updateProgressBarFiltered(filteredTasks);
+
+}
+
+function updateProgressBarFiltered(taskList) {
+  for (let i = 0; i < taskList.length; i++) {
+    const element = taskList[i];
+    const progressBar = document.getElementById(`subtaskProgressBar${element["id"]}`);
+
+    if (progressBar) {
+      let numberOfSubtask = document.getElementById(`test${element["id"]}`);
+      let completedSubtasks = element.subtasks.filter(subtask => subtask.status === true).length;
+      let totalSubtasks = element.subtasks.length;
+      let percentage = (completedSubtasks / totalSubtasks) * 100;
+
+      progressBar.style.width = `${percentage}%`;
+      progressBar.setAttribute('aria-valuenow', percentage);
+      progressBar.innerHTML = `<span>${percentage}%</span>`;
+      
+      if (numberOfSubtask) {
+        numberOfSubtask.innerHTML = `<span>${completedSubtasks}</span>`;
+      }
+    }
+  }
 }
 
 
