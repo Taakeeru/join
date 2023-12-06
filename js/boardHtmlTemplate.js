@@ -46,7 +46,7 @@ function generateTemplateHtmlSideMenu() {
          <div class="addTask mobile addTask-sideMenu ">
             <div action="" class="widthOfAddTaskBoardBox">
                <div class="topSektion topSektion-sideMenu">
-                  <div class="titleContainer"><input id="addTastTitel" class=" inputFieldTitleBoard sideMenu" type="" placeholder="Enter a title"></div>
+                  <div class="titleContainer"><input id="addTastTitel" class=" inputFieldTitleBoard inputFieldTitleBoardX sideMenu" type="" placeholder="Enter a title"></div>
                   <div id="tile-fail-message" class="tileFailMessage"></div>
                   <div class="description description-sideMenu">
                      <div class="descriptionContent">
@@ -54,7 +54,7 @@ function generateTemplateHtmlSideMenu() {
                        <p class="descriptionText small">(optional)</p>
                        </p>
                      </div>
-                        <textarea  id="addTastTextArea" class="textArea" placeholder="Enter a Description" name="" id="" cols="30" rows="10"></textarea>
+                        <textarea  id="addTastTextArea" class="textArea textAreaBoard" placeholder="Enter a Description" name="" id="" cols="30" rows="10"></textarea>
                         <div id="description-fail-message" class="descriptionFailMessage"></div>   
                      </div>
                   <div class="dateContentMobileDate">

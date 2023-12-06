@@ -1031,9 +1031,9 @@ min-height: unset;
   .editbuttonContainer{
     width: 400px!important;
   }
-  /* .textArea{
+  .textAreaBoard{
     width: 330px!important;
-  }  */
+  } 
   .boardFeedbackSektion {
     width: auto;
     overflow-y: hidden;
@@ -1053,9 +1053,9 @@ min-height: unset;
   /* .assignedContentBoard{
     width: 300px !important;
   } */
-  /* .inputFieldTitleBoard{
+  .inputFieldTitleBoardX{
     width: 330px !important;
-  }  */
+  } 
   .dateMobile{
     width: 330px!important;
   }
@@ -1136,9 +1136,9 @@ min-height: unset;
   .textArea{
     width: 330px!important;
   }
-  .inputFieldTitleBoard{
+  /* .inputFieldTitleBoard{
     width: 330px !important;
-  }
+  } */
   .assignedContentBoard{
     width: 330px;
   }
