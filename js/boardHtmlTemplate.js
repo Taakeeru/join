@@ -44,7 +44,7 @@ function generateTemplateHtmlSideMenu() {
       </div>
       <div class="contentContainer-sideMenu" >
          <div class="addTask addTask-sideMenu">
-            <div action="">
+            <div action="" class="widthOfAddTaskBoardBox">
                <div class="topSektion topSektion-sideMenu">
                   <div class="titleContainer"><input id="addTastTitel" class=" inputFieldTitleBoard sideMenu" type="" placeholder="Enter a title"></div>
                   <div id="tile-fail-message" class="tileFailMessage"></div>
@@ -86,8 +86,8 @@ function generateTemplateHtmlSideMenu() {
                      <div >Select contacts to assign</div>
                   </div>
                </div>
-         	   <div id="addContactstoassign" class="addContactstoassign"></div>
-               <div  id="selectContainer" class="selectContainer mobileSide d-none"></div>
+         	   <div id="addContactstoassign" class="addContactstoassign addContactstoassignBoard"></div>
+               <div  id="selectContainer" class="selectContainerX mobileSide d-none"></div>
                <div class="assignedContent assignedContent-sideMenu" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Category</p>
@@ -191,7 +191,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                <div class="topSektion topSektion-sideMenu">
                   <div class="titleContainer"><input id="addTastTitel2" class="inputFieldTitleBoard" type="" placeholder="${allTask[0][element]["title"]}"></div>
                   <div class="textfield-fail" id="tile-fail-message2"></div>
-                  <div class="description description-sideMenu">
+                  <div class="description">
                      <div class="descriptionContent">
                         <p class="descriptionText">Description
                         <p class="descriptionText small">(optional)</p>
@@ -204,24 +204,24 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                   <div class="dateContent editMobileDate">
                      <p class="dateTitle">Due date</p>
 
-                     <input  class="inputfieldDateContainerBoard editMobileDate" placeholder="tipe you date" type="date" min="2018-01-01">
+                     <input  class="inputfieldDateContainerBoard" placeholder="tipe you date" type="date" min="2018-01-01">
 
                      <div class="textfield-fail" id="date-fail-message2"></div>
                   </div>
                </div>
-               <div class="assignedContent-sideMenu" >
+               <div class="assignedContentBoard" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Priority
                      <p class="assignedTitle small" >(optional)</p>
                      </p>
                   </div>
                    <div class="buttonContainer editbuttonContainer"> 
-                    <button id="low2" onclick="getThePriority2('low', 'low', 'medium', 'high')" class="prioButtonGreen">Low<img id="lowPriority2" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
-                    <button id="medium2" onclick="getThePriority2('medium', 'low', 'medium', 'high')" class="prioButtonYellow">Medium<img id="mediumPriority2" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
-                    <button id="high2" onclick="getThePriority2('high', 'low', 'medium', 'high')" class="prioButtonRed">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
+                    <button id="low2" onclick="getThePriority2('low', 'low', 'medium', 'high')" class="prioButtonGreen prioButtonGreenEdit">Low<img id="lowPriority2" class="buttonImg" src="../assets/img/prio_baja.svg" alt=""></button>
+                    <button id="medium2" onclick="getThePriority2('medium', 'low', 'medium', 'high')" class="prioButtonYellow prioButtonYellowEdit">Medium<img id="mediumPriority2" class="buttonImg" src="../assets/img/prio_media.svg" alt=""></button>
+                    <button id="high2" onclick="getThePriority2('high', 'low', 'medium', 'high')" class="prioButtonRed prioButtonRedEdit">Urgent<img id="urgentPriority2" class="buttonImg" src="../assets/img/prio_alta.svg" alt=""></button>
                    </div>
                </div>
-               <div class="assignedContent assignedContent-sideMenu" >
+               <div class="assignedContentBoard" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Assignet to
                      <p class="assignedTitle small" >(optional)</p>
@@ -231,13 +231,13 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                      <div >Select contacts to assign</div>
                   </div>
                </div>
-               <div id="addContactstoassign2" class="addContactstoassign">
+               <div id="addContactstoassign2" class="addContactstoassignBoard">
                 <div id="renderContacts"></div>
                </div>
-               <div  id="selectContainer2" class="selectContainer d-none">
+               <div  id="selectContainer2" class="selectContainerBoard d-none">
                   
                </div>
-               <div class="assignedContent assignedContent-sideMenu" >
+               <div class="assignedContentBoard" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Category</p>
                   </div>
@@ -253,7 +253,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                      <span class="userPosition" id="userStoryID2" onclick="loadUserStory2()">User Story</span>
                   </div>
                </div>
-               <div class="SubtaskContent mobileEdit" >
+               <div class="SubtaskContentBoard" >
                   <div class="assignedTitleContainer">
                      <p class="assignedTitle">Subtask
                      <p class="assignedTitle small" >(optional)</p>
