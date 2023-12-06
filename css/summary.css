@@ -308,8 +308,8 @@ a{
 @media(max-width: 1000px) {
     .showDate {
         width: 595px;
-        height: 191px;
-        margin-bottom: 16px;
+        height: 172px;
+        margin-bottom: 6px;
     }
     .showDate:hover{
         border-top-left-radius: 30px;
@@ -355,10 +355,10 @@ a{
         width: 595px;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
     }
     .wd {
-        margin-bottom: 16px;
+        margin-bottom: 8px;
         display: flex;
         justify-content: center;
         flex-direction: column;
