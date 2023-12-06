@@ -362,7 +362,15 @@ function rederCurrentTasks(selectedSubrasks) {
 
 
 function deleteSubtaskEdit(id) {
-  document.getElementById(`${id}`).remove();
+  const subtaskIndex = currentSubtasksBoard.findIndex(task => task.id === id);
+  if (subtaskIndex !== -1) {
+    currentSubtasksBoard.splice(subtaskIndex, 1);
+  }
+  const subtaskElement = document.getElementById(id);
+  if (subtaskElement) {
+    subtaskElement.remove();
+  }
+
 }
 
 

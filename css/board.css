@@ -966,14 +966,15 @@ min-height: unset;
 }
 }
 
- @media (max-width: 1700px) {
- .boardTopSektion{
-padding-left: 16px!important;
- }
- .scrollContainer{
-  padding-left: 16px!important;
- }
- }
+@media (max-width: 1700px) {
+  .boardTopSektion{
+    padding-left: 16px!important;
+  }
+  .scrollContainer{
+    padding-left: 16px!important;
+    gap: 14px;
+  }
+}
 
 @media (max-width: 1450px) {
   .boardBotSektion{
@@ -1044,6 +1045,7 @@ padding-left: 16px!important;
   .boardtoDoSektion {
     width: auto;
     overflow-y: hidden;
+    gap: 0;
   }.boardDoneSektion {
     width: auto;
     overflow-y: hidden;
@@ -1192,7 +1194,7 @@ padding-left: 16px!important;
     width: 88px !important;
   }
   .editbuttonContainer{
-    width: 300px !important;
+    width: 318px !important;
   } 
   .buttonContainer{
     gap: 23px !important;
@@ -1201,7 +1203,7 @@ padding-left: 16px!important;
     width: 314px;
   }
   .mobileButtonContainer{
-    gap: 14px !important;
+    gap: 34px !important;
   }
 }
   
