@@ -17,6 +17,8 @@ async function editTask(getId) {
   let getPrio = selectedPriority;
   let getSubtask = currentSubtasksBoard;
 
+  getPrio = getPrio || 'low';
+
   getValueOfTaskInfo(getTaskInfo, taskToEditIndex, getTitel, getDiscriptionArea, getCategory, getPrio, getSubtask, selectedUsers);
   
   await setItem('newTask', JSON.stringify(getTaskInfo));
