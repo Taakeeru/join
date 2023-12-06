@@ -687,6 +687,10 @@ body {
   height: 200px;
   overflow-x: hidden;
 }
+.selectedSubrasksMobile{
+  overflow: scroll;
+  overflow-x: hidden;
+}
 
 
 @media (max-width: 1260px) {

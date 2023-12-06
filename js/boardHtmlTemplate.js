@@ -260,7 +260,7 @@ function generateTemplateHtmlEditCard(task, element, getId) {
                      </p>
                   </div>
                   <input id="subtaskInput2" onclick="addSubTask2()" placeholder="Add new subtask" class="subtaskInput">
-                  <div id="selectedSubrasks" style="margin-bottom: 0;"></div>
+                  <div class="selectedSubrasksMobile" id="selectedSubrasks" style="margin-bottom: 0;"></div>
                   <div id="subtaskContainer2"></div>
                </div>
                <div class="buttonContainerEdit" > <button onclick="createNewTask2('${getId}')" class="displayFlex btnCreateContact" style="color: white;">Ok<img
