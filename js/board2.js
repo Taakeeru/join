@@ -1,4 +1,3 @@
-let selectedUsers = [];
 async function editTask(getId) {
 
   let info = await getItem('newTask');
