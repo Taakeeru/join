@@ -296,6 +296,9 @@ body {
   font-weight: 400;
   font-size: 32px;
 }
+.inputFieldTitleBoard:focus{
+  outline: none;
+}
 
 /* SideMenuClass*/
 .header-sideMenu {
@@ -392,14 +395,14 @@ body {
   flex-direction: row-reverse;
   justify-content: flex-end;
   height: calc(100vh - 223px) !important;
-  width: 518px;
+  width: 486px;
 }
 .addTask-sideMenu {
   width: 518px !important;
   overflow-x: hidden;
 }
 .description-sideMenu {
-  width: 350px !important;
+  width: 450px !important;
 } 
 
 
@@ -652,6 +655,7 @@ body {
 .mobileSide{
   width: 470px!important;
   height: 148px!important;
+  overflow: auto;
 }
 .subtaskContainerMobile{
   height: 250px;
@@ -672,9 +676,26 @@ body {
   background-color: #a8a8a8;
   width: 8px;
 }
+.mobile{
+  width: 512px!important;
+}
+.mobileScroll{
+  width: 512px!important;
+}
+.selectContainerBoard{
+  overflow: scroll;
+  height: 200px;
+  overflow-x: hidden;
+}
 
 
 @media (max-width: 1260px) {
+  .mobile{
+    width: 440px!important;
+  }
+  .editMenu{
+    width: 484px !important;
+  }
   .scrollContainer {
     margin: 7px;
 }
@@ -772,8 +793,8 @@ min-height: unset;
   flex-direction: column;
   height: 152px !important;
   min-height: 152px !important;
-  overflow: auto;
-  width: 440px;
+  overflow: scroll;
+  width: 401px;
 }
 .selectContainerBoard::-webkit-scrollbar {
   -webkit-box-shadow: inset 0 0 6px rgba(158, 158, 158, 0.1);
@@ -931,7 +952,7 @@ min-height: unset;
   width: 400px;
 }
 .addTask-sideMenu{
-  width: 420px !important;
+  width: 491px;
 }
 .widthOfAddTaskBoardBox{
   width: 398px;
@@ -967,6 +988,13 @@ padding-left: 16px!important;
 
 
 @media (max-width: 1000px) {
+  .mobileInput
+  {
+  width: 330px!important;
+}
+  .mobile{
+    width: 364px!important;
+  }
   .mobileSide{
     width: 330px!important;
     height: 148px!important;
@@ -987,17 +1015,20 @@ padding-left: 16px!important;
   /* .mobileButtons{
     position: absolute!important;
   } */
-  .editbuttonContainer{
+  /* .editbuttonContainer{
     width: 330px!important;
     display: flex;
     justify-content: space-between;
-  }
+  } */
   .scrollContainer {
     width: unset;
   }
-  .textArea{
+  .editbuttonContainer{
+    width: 400px!important;
+  }
+  /* .textArea{
     width: 330px!important;
-  } 
+  }  */
   .boardFeedbackSektion {
     width: auto;
     overflow-y: hidden;
@@ -1013,12 +1044,12 @@ padding-left: 16px!important;
     width: auto;
     overflow-y: hidden;
   }
-  .assignedContentBoard{
+  /* .assignedContentBoard{
     width: 300px !important;
-  }
-  .inputFieldTitleBoard{
+  } */
+  /* .inputFieldTitleBoard{
     width: 330px !important;
-  } 
+  }  */
   .dateMobile{
     width: 330px!important;
   }
@@ -1029,9 +1060,9 @@ padding-left: 16px!important;
     width: 300px !important;
     margin-left: 16px;
   }
-  .subtaskInput{
+  /* .subtaskInput{
     width: 330px !important;
-  } 
+  }  */
   .subtaskList{
     width: 312px;
   }
@@ -1039,7 +1070,7 @@ padding-left: 16px!important;
     width: 330px;
   } 
   .addTask-sideMenu {
-    width: 350px !important;
+    width: 491px ;
   }
   .addTask::-webkit-scrollbar {
     width: 12px;
@@ -1124,7 +1155,7 @@ padding-left: 16px!important;
     width: 330px!important;
   }
   .openCardsDetailsEdit{
-    width: 326px;
+    width: 383px;
   }
   .prioButtonRedEdit {
     width: 96px;
@@ -1145,7 +1176,7 @@ padding-left: 16px!important;
     width: 330px !important;
   }
   .selectContainerBoard {
-    width: 300px !important;
+    width: 330px !important;
   }
   .prioButtonRedEdit {
     width: 96px !important;
@@ -1160,10 +1191,13 @@ padding-left: 16px!important;
     width: 300px !important;
   } 
   .buttonContainer{
-    gap: 8px !important;
+    gap: 23px !important;
   }
   .subtaskList{
     width: 314px;
+  }
+  .mobileButtonContainer{
+    gap: 14px !important;
   }
 }
   

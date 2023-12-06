@@ -42,8 +42,8 @@ function generateTemplateHtmlSideMenu() {
       <div class="header-sideMenu"><span>Add Task</span>
          <img onclick ="closeAddTaskMenu()" class="header-sideMenuImg" src="../assets/img/close.svg" alt="">
       </div>
-      <div class="contentContainer-sideMenu" >
-         <div class="addTask addTask-sideMenu">
+      <div class="contentContainer-sideMenu mobileScroll" >
+         <div class="addTask mobile addTask-sideMenu ">
             <div action="" class="widthOfAddTaskBoardBox">
                <div class="topSektion topSektion-sideMenu">
                   <div class="titleContainer"><input id="addTastTitel" class=" inputFieldTitleBoard sideMenu" type="" placeholder="Enter a title"></div>
@@ -110,7 +110,7 @@ function generateTemplateHtmlSideMenu() {
                   <p class="assignedTitle small" >(optional)</p>
                   </p>
                </div>
-               <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput marginBo">
+               <input id="subtaskInput" onclick="addSubTask()" placeholder="Add new subtask" class="subtaskInput mobileInput marginBo">
                <div class="subtaskContainerMobile" id="subtaskContainer"></div>
             </div>
             <div class="positionOfButtonsBoard mobileButtons">
