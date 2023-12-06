@@ -39,6 +39,8 @@ async function createNewTask() {
     let getDateValue = document.getElementById('dueDateValue').value;
     let getCategory = loadCategory();
 
+    selectedPriority = selectedPriority || 'low';
+
     await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
     window.location.href = '../html/board.html';
   }
@@ -48,12 +50,15 @@ async function createNewTask() {
 
 
 
+
 async function createNewTaskFromBoard() {
   if (checkInputFields()) {
     let getTitel = document.getElementById('addTastTitel').value;
     let getTextArea = document.getElementById('addTastTextArea').value;
     let getDateValue = document.getElementById('dueDateValue').value;
     let getCategory = loadCategory();
+
+    selectedPriority = selectedPriority || 'low';
 
     await pushTaskInfo(getTitel, getTextArea, getDateValue, selectedUsers, getCategory, selectedPriority, currentSubtasks);
     getTitel.value ='';
@@ -195,8 +200,6 @@ function getThePriority(priority, lowId, mediumId, highId) {
       selectedPriority = priority;
       getColorOfPriority(low, lowIcon, medium, mediumIcon, urgent, highIcon);
     }
-  } else {
-    console.error("Ein oder mehrere Elemente wurden nicht gefunden.");
   }
 }
 
